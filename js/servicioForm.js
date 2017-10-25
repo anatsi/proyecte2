@@ -37,13 +37,16 @@ var i=0;
       nuevo.innerHTML="<label><i class='fa fa-qestion-circle'></i>Otro turno</label><input class='threeinputs' type='time' name='f"+i+"'/><input class='threeinputs2' type='time' name='i"+i+"'/><input class='threeinputs1' type='number' value='0' onclick='suma();' onkeyup='suma();' id='in"+i+"' min='0' name='o"+i+"'/>";
     }
   }
-
+//funcion para ir sumando los recursos
   function suma() {
+    //creamor la variable que servira para almacenar la suma
     var suma;
+    //asignamos el valor de los inputs, que por defecto es 0, a variales
     var contenido1 = parseInt(document.getElementById('tm').value);
     var contenido2= parseInt(document.getElementById('tt').value);
     var contenido3= parseInt(document.getElementById('tn').value);
     var contenido4= parseInt(document.getElementById('tc').value);
+    //si los inputs todavia no existen, ponemos la variable a 0
     if (document.getElementById('in1')) {
       var contenido5=parseInt(document.getElementById('in1').value);
     }else {
@@ -69,6 +72,8 @@ var i=0;
     }else {
       var contenido9=0;
     }
+    //una vez creadas todas las variables, las sumamos
     suma = contenido1 + contenido2 + contenido3 + contenido4 + contenido5 + contenido6 + contenido7 + contenido8 + contenido9;
+    //apuntamos el resultado de la suma en el input del total
     document.getElementById('total').value= suma;
 }
