@@ -81,15 +81,15 @@
         }
         .threeinputs{
           margin:0 !important;
-          width:20% !important;
+          width:22% !important;
         }
         .threeinputs2{
           margin:0 !important;
-          width:20% !important;
+          width:22% !important;
         }
         .threeinputs1{
           margin:0 !important;
-          width:40% !important;
+          width:44% !important;
           margin-left: 99% !important;
         }
         .threeinputs:nth-child(3){
@@ -137,4 +137,7 @@
             label{
               font-size:11px;
             }
+        }
+        #total{
+          background-color: rgb(180, 180, 176);
         }

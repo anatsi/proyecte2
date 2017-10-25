@@ -82,11 +82,11 @@ if (isset($_SESSION['usuario'])==false) {
               <p><label><i class="fa fa-question-circle"></i>Correo responsable</label><input type="mail" name="correo" required/></p>
           </div>
           <div class="formthird" id='contenedor'>
-              <p><label><i class="fa fa-question-circle"></i>Personal total</label><input type="number" min='0' name="recursos" required/></p>
-              <p><label><i class="fa fa-question-circle"></i>Turno mañana</label><input type="number" min='0' name="tm"/></p>
-              <p><label><i class="fa fa-question-circle"></i>Turno tarde</label><input type="number" min='0' name="tt"/></p>
-              <p><label><i class="fa fa-question-circle"></i>Turno noche</label><input type="number" min='0'name="tn"/></p>
-              <p><label><i class="fa fa-question-circle"></i>Turno central</label><input type="number" min='0'name="tc"/></p>
+              <p><label><i class="fa fa-question-circle"></i>Personal total</label><input type="number" min='0' name="recursos" id="total"/></p>
+              <p><label><i class="fa fa-question-circle"></i>Turno mañana</label><input type="number" min='0' name="tm" id="tm" value='0' onclick="suma();" onkeyup="suma();"/></p>
+              <p><label><i class="fa fa-question-circle"></i>Turno tarde</label><input type="number" min='0' name="tt" id="tt" value='0' onclick="suma();" onkeyup="suma();"/></p>
+              <p><label><i class="fa fa-question-circle"></i>Turno noche</label><input type="number" min='0'name="tn" id="tn" value='0' onclick="suma();" onkeyup="suma();"/></p>
+              <p><label><i class="fa fa-question-circle"></i>Turno central</label><input type="number" min='0'name="tc" id="tc" value='0' onclick="suma();" onkeyup="suma();"/></p>
 
               <button type="button" name="button" id="nuevoServicio" onclick="nuevo();">Añadir otro horario</button>
               <p id="enviar"></p>

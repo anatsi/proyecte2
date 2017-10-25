@@ -34,6 +34,41 @@ var i=0;
       //colocamos el nuevo elemento dentro del contenedor de referencia y delante del otro elemento
       contenedor.insertBefore(nuevo, seleccionado);
       //le ponemos el html al elemento seleccionado
-      nuevo.innerHTML="<label><i class='fa fa-qestion-circle'></i>Otro turno</label><input class='threeinputs' type='time' name='f"+i+"'/><input class='threeinputs2' type='time' name='i"+i+"'/><input class='threeinputs1' type='number' min='0' name='o"+i+"'/>";
+      nuevo.innerHTML="<label><i class='fa fa-qestion-circle'></i>Otro turno</label><input class='threeinputs' type='time' name='f"+i+"'/><input class='threeinputs2' type='time' name='i"+i+"'/><input class='threeinputs1' type='number' value='0' onclick='suma();' onkeyup='suma();' id='in"+i+"' min='0' name='o"+i+"'/>";
     }
   }
+
+  function suma() {
+    var suma;
+    var contenido1 = parseInt(document.getElementById('tm').value);
+    var contenido2= parseInt(document.getElementById('tt').value);
+    var contenido3= parseInt(document.getElementById('tn').value);
+    var contenido4= parseInt(document.getElementById('tc').value);
+    if (document.getElementById('in1')) {
+      var contenido5=parseInt(document.getElementById('in1').value);
+    }else {
+      var contenido5=0;
+    }
+    if (document.getElementById('in2')) {
+      var contenido6=parseInt(document.getElementById('in2').value);
+    }else {
+      var contenido6=0;
+    }
+    if (document.getElementById('in3')) {
+      var contenido7= parseInt(document.getElementById('in3').value);
+    }else {
+      var contenido7=0;
+    }
+    if (document.getElementById('in4')) {
+      var contenido8= parseInt(document.getElementById('in4').value);
+    }else {
+      var contenido8=0;
+    }
+    if (document.getElementById('in5')) {
+      var contenido9= parseInt(document.getElementById('in5').value);
+    }else {
+      var contenido9=0;
+    }
+    suma = contenido1 + contenido2 + contenido3 + contenido4 + contenido5 + contenido6 + contenido7 + contenido8 + contenido9;
+    document.getElementById('total').value= suma;
+}
