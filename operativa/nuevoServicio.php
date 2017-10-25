@@ -26,6 +26,7 @@ if (isset($_SESSION['usuario'])==false) {
     <link rel="stylesheet" href="../css/formulario.css">
     <link rel="shortcut icon" href="../imagenes/favicon.ico">
 		<link rel="stylesheet" type="text/css" href="../css/dashboard.css" />
+    <script type="text/javascript" src="../js/servicioForm.js"></script>
 </head>
 <body>
   <head>
@@ -61,7 +62,7 @@ if (isset($_SESSION['usuario'])==false) {
     <div class="site-content">
       <div class="container">
         <!-- Contenido de la pagina. -->
-        <form action="nuevoServicio.php" method="post">
+        <form action="nuevoServicio.php" method="post" id="formulario">
           <div class="formthird">
               <p><label><i class="fa fa-question-circle"></i>Descripción servicio</label><input type="text" name="descripcion" required/></p>
               <p><label><i class="fa fa-question-circle"></i>Modelos</label><input type="text" name="modelos" /></p>
@@ -80,18 +81,15 @@ if (isset($_SESSION['usuario'])==false) {
               <p><label><i class="fa fa-question-circle"></i>Telefono responsable</label><input type="text" name="telefono" required/></p>
               <p><label><i class="fa fa-question-circle"></i>Correo responsable</label><input type="mail" name="correo" required/></p>
           </div>
-          <div class="formthird">
+          <div class="formthird" id='contenedor'>
               <p><label><i class="fa fa-question-circle"></i>Personal total</label><input type="number" min='0' name="recursos" required/></p>
               <p><label><i class="fa fa-question-circle"></i>Turno mañana</label><input type="number" min='0' name="tm"/></p>
               <p><label><i class="fa fa-question-circle"></i>Turno tarde</label><input type="number" min='0' name="tt"/></p>
               <p><label><i class="fa fa-question-circle"></i>Turno noche</label><input type="number" min='0'name="tn"/></p>
               <p><label><i class="fa fa-question-circle"></i>Turno central</label><input type="number" min='0'name="tc"/></p>
 
-              <p><label><i class="fa fa-question-circle"></i>Otros turnos</label><input class="threeinputs" type="time" name="f1"/><input class="threeinputs2" type="time" name="i1"/><input class="threeinputs1" type="number" min='0' name="o1"/></p>
-              <p><label><i class="fa fa-question-circle"></i>Otros turnos</label><input class="threeinputs" type="time" name="f2"/><input class="threeinputs2" type="time" name="i2"/><input class="threeinputs1" type="number" min='0' name="o2"/></p>
-              <p><label><i class="fa fa-question-circle"></i>Otros turnos</label><input class="threeinputs" type="time" name="f3"/><input class="threeinputs2" type="time" name="i3"/><input class="threeinputs1" type="number" min='0' name="o3"/></p>
-              <p><label><i class="fa fa-question-circle"></i>Otros turnos</label><input class="threeinputs" type="time" name="f4"/><input class="threeinputs2" type="time" name="i4"/><input class="threeinputs1" type="number" min='0' name="o4"/></p>
-              <p><label><i class="fa fa-question-circle"></i>Otros turnos</label><input class="threeinputs" type="time" name="f5"/><input class="threeinputs2" type="time" name="i5"/><input class="threeinputs1" type="number" min='0' name="o5"/></p>
+              <button type="button" name="button" id="nuevoServicio" onclick="nuevo();">Añadir otro horario</button>
+              <p id="enviar"></p>
           </div>
           <div class="formthird">
               <p><label><i class="fa fa-question-circle"></i>Comentario supervisor</label><textarea name="csup"></textarea></p>
@@ -132,7 +130,6 @@ if (isset($_SESSION['usuario'])==false) {
       //si se ha registrado el servicio cogemos su id para regstrar los recursos
       $ultimo= $servicio-> ultimoServicio();
       foreach ($ultimo as $servicio) {
-        echo $servicio['id'];
         $nuevorecurso=$recursos->nuevoRecurso($servicio['id'], $_POST['recursos'], $_POST['tm'], $_POST['tt'], $_POST['tn'], $_POST['tc'], $_POST['o1'], $_POST['i1'], $_POST['f1'], $_POST['o2'], $_POST['i2'],
          $_POST['f2'], $_POST['o3'], $_POST['i3'], $_POST['f3'], $_POST['o4'], $_POST['i4'], $_POST['f4'], $_POST['o5'], $_POST['i5'], $_POST['f5']);
       }
