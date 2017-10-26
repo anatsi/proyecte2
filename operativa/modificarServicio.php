@@ -82,7 +82,7 @@ if (isset($_SESSION['usuario'])==false) {
             <td data-label="Actividad" id="tdmod">CMP 71-72-72 STOP SHIP TORNILLO BOMBA</td>
             <td data-label="Personal" id="tdmod">2 2 HORAS + 8(4TT + 4TN)</td>
             <td data-label="Cliente" id="tdmod">FORD</td>
-            <td data-label="Opciones" id="tdmod">    <a href="#"><i class="material-icons">clear</i></a><a href="#"><i class="material-icons">mode_comment</i></a><a href="#"><i class="material-icons">mode_edit</i></a></td>
+            <td data-label="Opciones" id="tdmod"><a href="#"><i class="material-icons">clear</i></a><a href="#"><i class="material-icons">people</i></a><a href="#"><i class="material-icons">mode_edit</i></a></td>
           </tr>
           <tr id="trmod">
             <td scope="row" data-label="Fecha inicio" id="tdmod">11/10/17</td>
@@ -90,7 +90,7 @@ if (isset($_SESSION['usuario'])==false) {
             <td data-label="Actividad" id="tdmod">VOLANTE RUIDO BOTONERAS</td>
             <td data-label="Personal" id="tdmod">2 2 HORAS + 8(4TT + 4TN)</td>
             <td data-label="Cliente" id="tdmod">RAER 21</td>
-            <td data-label="Opciones" id="tdmod"><a href="#"><i class="material-icons">clear</i></a><a href="#"><i class="material-icons">mode_comment</i></a><a href="#"><i class="material-icons">mode_edit</i></a></td>
+            <td data-label="Opciones" id="tdmod"><a href="#"><i class="material-icons">clear</i></a><a href="#"><i class="material-icons">people</i></a><a href="#"><i class="material-icons">mode_edit</i></a></td>
           </tr>
         </tbody>
       </table>
