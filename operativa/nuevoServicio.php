@@ -79,7 +79,7 @@ if (isset($_SESSION['usuario'])==false) {
                 </select></p>
               <p><label><i class="fa fa-question-circle"></i>Responsable (*)</label><input type="text" name="responsable" required/></p>
               <p><label><i class="fa fa-question-circle"></i>Telefono responsable (*)</label><input type="text" name="telefono" required/></p>
-              <p><label><i class="fa fa-question-circle"></i>Correo responsable (*)</label><input type="mail" name="correo" required/></p>
+              <p><label><i class="fa fa-question-circle"></i>Correo responsable (*)</label><input type="mail" name="correo"/></p>
           </div>
           <div class="formthird" id='contenedor'>
               <p><label><i class="fa fa-question-circle"></i>Recursos totales (*)</label><input type="number" min='0' name="recursos" id="total" readonly/></p>
@@ -131,7 +131,8 @@ if (isset($_SESSION['usuario'])==false) {
       $ultimo= $servicio-> ultimoServicio();
       foreach ($ultimo as $servicio) {
         $nuevorecurso=$recursos->nuevoRecurso($servicio['id'], $_POST['recursos'], $_POST['tm'], $_POST['tt'], $_POST['tn'], $_POST['tc'], $_POST['o1'], $_POST['i1'], $_POST['f1'], $_POST['o2'], $_POST['i2'],
-         $_POST['f2'], $_POST['o3'], $_POST['i3'], $_POST['f3'], $_POST['o4'], $_POST['i4'], $_POST['f4'], $_POST['o5'], $_POST['i5'], $_POST['f5']);
+         $_POST['f2'], $_POST['o3'], $_POST['i3'], $_POST['f3'], $_POST['o4'], $_POST['i4'], $_POST['f4'], $_POST['o5'], $_POST['i5'], $_POST['f5'],
+          $_POST['o6'], $_POST['i6'], $_POST['f6']);
       }
        if ($nuevorecurso==null) {
          //si no se ha registrado le saca un mensaje avisandole

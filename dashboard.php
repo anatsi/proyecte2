@@ -36,7 +36,7 @@
 				<span class="right"><a href="logout.php">Cerrar Sesion</a></span>
 			</div><!--/ Codrops top bar -->
 			<header class="clearfix">
-				<h1>Dashboard</h1>
+				<h1>Intranet</h1>
 				<div id="imagen">
      			   	<img src="imagenes/logo.png" alt="Logo" height="98.6px" width="147.3px"/>
    				</div><br><br>

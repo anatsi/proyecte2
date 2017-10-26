@@ -2,10 +2,10 @@
 var i=0;
   //funcion que añadira los input del nuevo horario
   function nuevo() {
-    if (i>4) {
+    if (i>5) {
       //si hay mas de 4 no le dejamos entrar, ya que no queremos mas
       return false;
-    }else if (i==4) {
+    }else if (i==5) {
       //si hay 4 aparte de sacar un input eliminamos el boton
       //subimos el contador
       i++;
@@ -17,7 +17,7 @@ var i=0;
       //colocamos el nuevo elemento dentro del contenedor de referencia y delante del otro elemento
       contenedor.insertBefore(nuevo, seleccionado);
       //le ponemos el html al elemento creado
-      nuevo.innerHTML="<label><i class='fa fa-qestion-circle'></i>Otro turno</label><input class='threeinputs' type='time' name='f"+i+"'/><input class='threeinputs2' type='time' name='i"+i+"'/><input class='threeinputs1' type='number' min='0' name='o"+i+"'/>";
+      nuevo.innerHTML="<label><i class='fa fa-qestion-circle'></i>Otro turno</label><input class='threeinputs' type='time' name='f"+i+"'/><input class='threeinputs2' type='time' name='i"+i+"'/><input class='threeinputs1' type='number' value='0' min='0' id='in"+i+"' onclick='suma();' onkeyup='suma();' name='o"+i+"'/>";
       //cogemos el boton que queremos borrar
       var borrar= document.getElementById('nuevoServicio');
       //borramos el boton que habiamos cogido
@@ -71,6 +71,11 @@ var i=0;
       var contenido9= parseInt(document.getElementById('in5').value);
     }else {
       var contenido9=0;
+    }
+    if (document.getElementById('in6')) {
+      var contenido10= parseInt(document.getElementById('in6').value);
+    }else {
+      var contenido10=0;
     }
     //una vez creadas todas las variables, las sumamos
     suma = contenido1 + contenido2 + contenido3 + contenido4 + contenido5 + contenido6 + contenido7 + contenido8 + contenido9;
