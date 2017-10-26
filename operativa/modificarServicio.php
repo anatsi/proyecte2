@@ -26,6 +26,7 @@ if (isset($_SESSION['usuario'])==false) {
     <link rel="stylesheet" href="../css/formulario.css">
     <link rel="shortcut icon" href="../imagenes/favicon.ico">
 		<link rel="stylesheet" type="text/css" href="../css/dashboard.css" />
+    <link rel="stylesheet" href="../css/modificar.css">
     <script type="text/javascript" src="../js/servicioForm.js"></script>
 </head>
 <body>
@@ -53,7 +54,7 @@ if (isset($_SESSION['usuario'])==false) {
 
       <nav class="menu">
         <a href="index.php">Inicio</a>
-        <a href="modificarServicio.php">Modificar</a>
+        <a href="nuevoServicio.php">Nuevo Servicio</a>
         <a href="#">Consultar</a>
       </nav>
 
@@ -62,45 +63,36 @@ if (isset($_SESSION['usuario'])==false) {
     <div class="site-content">
       <div class="container">
         <!-- Contenido de la pagina. -->
-        <form action="nuevoServicio.php" method="post" id="formulario">
-          <div class="formthird">
-              <p><label><i class="fa fa-question-circle"></i>Descripción servicio (*)</label><input type="text" name="descripcion" required/></p>
-              <p><label><i class="fa fa-question-circle"></i>Modelos (*)</label><input type="text" name="modelos" /></p>
-              <p><label><i class="fa fa-question-circle"></i>Fecha inicio (*)</label><input type="date" name="finicio" required/></p>
-              <p><label><i class="fa fa-question-circle"></i>Cliente (*)</label>
-                <select name="cliente" required>
-                  <option>----Choose---</option>
-                  <?php
-                    $clientes= $cliente->listaClientes();
-                    foreach ($clientes as $cliente) {
-                      echo "<option value=".$cliente['id'].">".$cliente['nombre']."</option>";
-                    }
-                   ?>
-                </select></p>
-              <p><label><i class="fa fa-question-circle"></i>Responsable (*)</label><input type="text" name="responsable" required/></p>
-              <p><label><i class="fa fa-question-circle"></i>Telefono responsable (*)</label><input type="text" name="telefono" required/></p>
-              <p><label><i class="fa fa-question-circle"></i>Correo responsable (*)</label><input type="mail" name="correo" required/></p>
-          </div>
-          <div class="formthird" id='contenedor'>
-              <p><label><i class="fa fa-question-circle"></i>Recursos totales (*)</label><input type="number" min='0' name="recursos" id="total" readonly/></p>
-              <p><label><i class="fa fa-question-circle"></i>Turno mañana</label><input type="number" min='0' name="tm" id="tm" value='0' onclick="suma();" onkeyup="suma();"/></p>
-              <p><label><i class="fa fa-question-circle"></i>Turno tarde</label><input type="number" min='0' name="tt" id="tt" value='0' onclick="suma();" onkeyup="suma();"/></p>
-              <p><label><i class="fa fa-question-circle"></i>Turno noche</label><input type="number" min='0'name="tn" id="tn" value='0' onclick="suma();" onkeyup="suma();"/></p>
-              <p><label><i class="fa fa-question-circle"></i>Turno central</label><input type="number" min='0'name="tc" id="tc" value='0' onclick="suma();" onkeyup="suma();"/></p>
-
-              <button type="button" name="button" id="nuevoServicio" onclick="nuevo();">Añadir otro horario</button>
-              <p id="enviar"></p>
-          </div>
-          <div class="formthird">
-              <p><label><i class="fa fa-question-circle"></i>Comentario supervisor</label><textarea name="csup"></textarea></p>
-              <p><label><i class="fa fa-question-circle"></i>Comentario RRHH</label><textarea name="crrhh"></textarea></p>
-              <p><label><i class="fa fa-question-circle"></i>Comentario Admin. Financiero</label><textarea name="caf"></textarea></p>
-          </div>
-          <div class="submitbuttons">
-              <input class="submitone" type="submit" />
-          </div>
-  </form>
-
+        <table id="tablamod">
+        <thead id="theadmod">
+          <tr id="trmod">
+            <th scope="col" id="thmod">Fecha inicio</th>
+            <th scope="col" id="thmod">Modelos</th>
+            <th scope="col" id="thmod">Actividad</th>
+            <th scope="col" id="thmod">Personal</th>
+            <th scope="col" id="thmod">Cliente</th>
+            <th scope="col" id="thmod">Opciones</th>
+          </tr>
+        </thead>
+        <tbody id="tbodymod">
+          <tr id="trmod">
+            <td scope="row" data-label="Fecha inicio" id="tdmod">10/10/17</td>
+            <td data-label="Modelos" id="tdmod">KUGA+PLAT.CD</td>
+            <td data-label="Actividad" id="tdmod">CMP 71-72-72 STOP SHIP TORNILLO BOMBA</td>
+            <td data-label="Personal" id="tdmod">2 2 HORAS + 8(4TT + 4TN)</td>
+            <td data-label="Cliente" id="tdmod">FORD</td>
+            <td data-label="Opciones" id="tdmod">GYEWEWGY</td>
+          </tr>
+          <tr id="trmod">
+            <td scope="row" data-label="Fecha inicio" id="tdmod">11/10/17</td>
+            <td data-label="Modelos" id="tdmod">PLATAFORMA CD</td>
+            <td data-label="Actividad" id="tdmod">VOLANTE RUIDO BOTONERAS</td>
+            <td data-label="Personal" id="tdmod">2 2 HORAS + 8(4TT + 4TN)</td>
+            <td data-label="Cliente" id="tdmod">RAER 21</td>
+            <td data-label="Opciones" id="tdmod">DBJSCDHB</td>
+          </tr>
+        </tbody>
+      </table>
       </div> <!-- END container -->
     </div> <!-- END site-content -->
   </div> <!-- END site-pusher -->

@@ -52,7 +52,7 @@ if (isset($_SESSION['usuario'])==false) {
       <a href="../dashboard.php" class="header__logo"><img src="../imagenes/logo.png" alt=""></a>
 
       <nav class="menu">
-        <a href="#">Modificar</a>
+        <a href="modificarServicio.php">Modificar</a>
         <a href="nuevoServicio.php">Nuevo Servicio</a>
         <a href="#">Consultar</a>
       </nav>
