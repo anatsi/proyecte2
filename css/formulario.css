@@ -1,5 +1,6 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto);
         html, body {
-          font-family: 'Merriweather', sans-serif;
+          font-family: 'Roboto thin';
           font-size: 1em;
           line-height: 1.4;
           height: 100%;
@@ -58,7 +59,7 @@
           border-color:blue;
           color:#fff;
           line-height:25px;
-          font-size:16px;
+          font-size:20px;
           height: 50px;
           width: 50%;
           margin-top: 1%;
@@ -75,11 +76,10 @@
         label{
           width:46%;
           margin:2px 1%;
-          font-size:12px;
+          font-size:15px;
           color:black;
           text-align:right;
           float:left;
-          font-family:Arial,Helvetica,sans-serif;
           line-height:16px;
         }
         .threeinputs{
@@ -128,7 +128,7 @@
               float:left;
             }
             label{
-              font-size:11px;
+              font-size:14px;
             }
         }
         @media only screen and (max-width: 767px) {
@@ -138,7 +138,7 @@
               margin:0px 1%;
             }
             label{
-              font-size:11px;
+              font-size:14px;
             }
         }
         /*#total{

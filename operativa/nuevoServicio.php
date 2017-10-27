@@ -64,7 +64,7 @@ if (isset($_SESSION['usuario'])==false) {
         <!-- Contenido de la pagina. -->
         <form action="nuevoServicio.php" method="post" id="formulario">
           <div class="formthird">
-              <p><label><i class="fa fa-question-circle"></i>Descripción servicio (*)</label><input type="text" name="descripcion" required/></p>
+              <p><label><i class="fa fa-question-circle"></i>Actividad (*)</label><input type="text" name="descripcion" required/></p>
               <p><label><i class="fa fa-question-circle"></i>Modelos (*)</label><input type="text" name="modelos" /></p>
               <p><label><i class="fa fa-question-circle"></i>Fecha inicio (*)</label><input type="date" name="finicio" required/></p>
               <p><label><i class="fa fa-question-circle"></i>Cliente (*)</label>
@@ -78,8 +78,8 @@ if (isset($_SESSION['usuario'])==false) {
                    ?>
                 </select></p>
               <p><label><i class="fa fa-question-circle"></i>Responsable (*)</label><input type="text" name="responsable" required/></p>
-              <p><label><i class="fa fa-question-circle"></i>Telefono responsable (*)</label><input type="text" name="telefono" required/></p>
-              <p><label><i class="fa fa-question-circle"></i>Correo responsable (*)</label><input type="mail" name="correo"/></p>
+              <p><label><i class="fa fa-question-circle"></i>Tel. responsable (*)</label><input type="text" name="telefono" required/></p>
+              <p><label><i class="fa fa-question-circle"></i>Correo responsable (*)</label><input type="email" name="correo" required/></p>
           </div>
           <div class="formthird" id='contenedor'>
               <p><label><i class="fa fa-question-circle"></i>Recursos totales (*)</label><input type="number" min='0' name="recursos" id="total" readonly/></p>
