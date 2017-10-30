@@ -53,8 +53,9 @@ if (isset($_SESSION['usuario'])==false) {
 
       <nav class="menu">
         <a href="index.php">Inicio</a>
-        <a href="modificarServicio.php">Modificar</a>
-        <a href="#">Consultar</a>
+        <a href="nuevoServicio.php">Nueva Actividad</a>
+        <a href="modificarServicio.php">Modificar Actividad</a>
+        <a href="#">Histórico Actividades</a>
       </nav>
 
     </header>
@@ -95,6 +96,7 @@ if (isset($_SESSION['usuario'])==false) {
               <p><label><i class="fa fa-question-circle"></i>Comentario supervisor</label><textarea name="csup"></textarea></p>
               <p><label><i class="fa fa-question-circle"></i>Comentario RRHH</label><textarea name="crrhh"></textarea></p>
               <p><label><i class="fa fa-question-circle"></i>Comentario Admin. Financiero</label><textarea name="caf"></textarea></p>
+              <p><label><i class="fa fa-question-circle"></i>Comentario Depto. Operativo</label><textarea name="cdo"></textarea></p>
           </div>
           <div class="submitbuttons">
               <input class="submitone" type="submit" />
@@ -117,7 +119,7 @@ if (isset($_SESSION['usuario'])==false) {
   if (isset($_POST['descripcion'])) {
     //si los ha rellenado, llamamos a la función de insertar el servicio y le pasamos los datos.
     $nuevoServicio=$servicio->nuevoServicio($_POST['descripcion'], $_POST['modelos'], $_POST['recursos'], $_POST['finicio'], $_POST['cliente'], $_POST['responsable'], $_POST['telefono'], $_POST['correo'], $_POST['csup'],
-     $_POST['crrhh'], $_POST['caf']);
+     $_POST['crrhh'], $_POST['caf'], $_POST['cdo']);
     //comprobamos que se haya registrado.
     if ($nuevoServicio==null) {
       //si no se ha registrado le saca un mensaje avisandole

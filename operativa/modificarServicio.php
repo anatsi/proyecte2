@@ -55,8 +55,9 @@ if (isset($_SESSION['usuario'])==false) {
 
       <nav class="menu">
         <a href="index.php">Inicio</a>
-        <a href="nuevoServicio.php">Nuevo Servicio</a>
-        <a href="#">Consultar</a>
+        <a href="nuevoServicio.php">Nueva Actividad</a>
+        <a href="modificarServicio.php">Modificar Actividad</a>
+        <a href="#">Histórico Actividades</a>
       </nav>
 
     </header>
@@ -90,7 +91,7 @@ if (isset($_SESSION['usuario'])==false) {
             <td data-label="Modelos" id="tdmod">PLATAFORMA CD</td>
             <td data-label="Actividad" id="tdmod">VOLANTE RUIDO BOTONERAS</td>
             <td data-label="Personal" id="tdmod">2 2 HORAS + 8(4TT + 4TN)</td>
-            <td data-label="Cliente" id="tdmod">RAER 21</td>
+            <td data-label="Cliente" id="tdmod">RASER 21</td>
             <td data-label="Opciones" id="tdmod"><a href="#"><i class="material-icons">clear</i></a><a href="#"><i class="material-icons">people</i></a><a href="#"><i class="material-icons">mode_edit</i></a>
               <a href="#" title="Finalizar servicio"><i class="material-icons">power_settings_new</i></a></td>
           </tr>
@@ -107,46 +108,4 @@ if (isset($_SESSION['usuario'])==false) {
 
 </body>
 </html>
-<?php
-//comprbamos que realmente haya rellenado algunos campos
-  if (isset($_POST['descripcion'])) {
-    //si los ha rellenado, llamamos a la función de insertar el servicio y le pasamos los datos.
-    $nuevoServicio=$servicio->nuevoServicio($_POST['descripcion'], $_POST['modelos'], $_POST['recursos'], $_POST['finicio'], $_POST['cliente'], $_POST['responsable'], $_POST['telefono'], $_POST['correo'], $_POST['csup'],
-     $_POST['crrhh'], $_POST['caf']);
-    //comprobamos que se haya registrado.
-    if ($nuevoServicio==null) {
-      //si no se ha registrado le saca un mensaje avisandole
-      ?>
-        <script type="text/javascript">
-          alert("Error al registrar el servicio.");
-        </script>
-      <?php
-    }else {
-      //si se ha registrado el servicio cogemos su id para regstrar los recursos
-      $ultimo= $servicio-> ultimoServicio();
-      foreach ($ultimo as $servicio) {
-        $nuevorecurso=$recursos->nuevoRecurso($servicio['id'], $_POST['recursos'], $_POST['tm'], $_POST['tt'], $_POST['tn'], $_POST['tc'], $_POST['o1'], $_POST['i1'], $_POST['f1'], $_POST['o2'], $_POST['i2'],
-         $_POST['f2'], $_POST['o3'], $_POST['i3'], $_POST['f3'], $_POST['o4'], $_POST['i4'], $_POST['f4'], $_POST['o5'], $_POST['i5'], $_POST['f5']);
-      }
-       if ($nuevorecurso==null) {
-         //si no se ha registrado le saca un mensaje avisandole
-         ?>
-           <script type="text/javascript">
-             alert("Error al registrar el servicio.");
-           </script>
-         <?php
-       }else {
-         //si se ha registrado le saca un mensaje avisandole
-         ?>
-           <script type="text/javascript">
-             alert("Nuevo servicio registrado.");
-           </script>
-         <?php
-       }
-    }
-  }
- ?>
-
-
-
  <?php } ?>
