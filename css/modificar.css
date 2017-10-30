@@ -31,7 +31,7 @@ body {
 }
 i{
   color: black;
-  width: 25%;
+  width: 15%;
   height: auto;
 }
 @media screen and (max-width: 600px) {
