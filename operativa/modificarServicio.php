@@ -68,32 +68,21 @@ if (isset($_SESSION['usuario'])==false) {
         <table id="tablamod">
         <thead id="theadmod">
           <tr id="trmod">
-            <th scope="col" id="thmod">Fecha inicio</th>
-            <th scope="col" id="thmod">Modelos</th>
             <th scope="col" id="thmod">Actividad</th>
-            <th scope="col" id="thmod">Personal</th>
+            <th scope="col" id="thmod">Modelos</th>
+            <th scope="col" id="thmod">Fecha inicio</th>
             <th scope="col" id="thmod">Cliente</th>
             <th scope="col" id="thmod">Opciones</th>
           </tr>
         </thead>
         <tbody id="tbodymod">
           <tr id="trmod">
-            <td scope="row" data-label="Fecha inicio" id="tdmod">10/10/17</td>
+            <td scope="row" data-label="Actividad" id="tdmod">CMP 71-72-72 STOP SHIP TORNILLO BOMBA</td>
             <td data-label="Modelos" id="tdmod">KUGA+PLAT.CD</td>
-            <td data-label="Actividad" id="tdmod">CMP 71-72-72 STOP SHIP TORNILLO BOMBA</td>
-            <td data-label="Personal" id="tdmod">2 2 HORAS + 8(4TT + 4TN)</td>
+            <td data-label="Fecha inicio" id="tdmod">10/10/17</td>
             <td data-label="Cliente" id="tdmod">FORD</td>
             <td data-label="Opciones" id="tdmod"><a href="#" title="Cancelar servicio"><i class="material-icons">clear</i></a><a href="#" title="Modificar recursos"><i class="material-icons">people</i></a>
               <a href="#" title="Modificar información"><i class="material-icons">mode_edit</i></a><a href="#" title="Finalizar servicio"><i class="material-icons">power_settings_new</i></a></td>
-          </tr>
-          <tr id="trmod">
-            <td scope="row" data-label="Fecha inicio" id="tdmod">11/10/17</td>
-            <td data-label="Modelos" id="tdmod">PLATAFORMA CD</td>
-            <td data-label="Actividad" id="tdmod">VOLANTE RUIDO BOTONERAS</td>
-            <td data-label="Personal" id="tdmod">2 2 HORAS + 8(4TT + 4TN)</td>
-            <td data-label="Cliente" id="tdmod">RASER 21</td>
-            <td data-label="Opciones" id="tdmod"><a href="#"><i class="material-icons">clear</i></a><a href="#"><i class="material-icons">people</i></a><a href="#"><i class="material-icons">mode_edit</i></a>
-              <a href="#" title="Finalizar servicio"><i class="material-icons">power_settings_new</i></a></td>
           </tr>
         </tbody>
       </table>

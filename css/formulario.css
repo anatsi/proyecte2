@@ -11,7 +11,7 @@
           color: black;
         }
         form {
-          padding:5%;
+          padding:2%;
           -moz-border-radius:10px;
           -webkit-border-radius:10px;
           border-radius:10px;
@@ -111,9 +111,13 @@
           font-size:18px !important;
           line-height:25px !important;
           margin-right:5px;
-          position:relative;top:2px;
+          position:relative;
+          top:2px;
         }
         @media only screen and (max-width: 960px) {
+            form{
+              margin-top: 40px;
+            }
             .threeinputs1,.threeinputs2,.threeinputs,.threeinputs:nth-child(3){
               margin:1px 0 !important;
               width:48% !important;
@@ -133,6 +137,9 @@
             }
         }
         @media only screen and (max-width: 767px) {
+          form{
+            margin-top: 20px;
+          }
             .formthird {
               float:left;
               width:95%;

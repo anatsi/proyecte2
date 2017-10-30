@@ -34,6 +34,9 @@ i{
   width: 15%;
   height: auto;
 }
+i:hover{
+  color: darkgrey;
+}
 @media screen and (max-width: 600px) {
   #tablamod {
     border: 0;
