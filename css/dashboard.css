@@ -146,6 +146,12 @@ a {
 	color: white;
 }
 
+h2{
+	color: black;
+	font-size: 30px;
+	font-weight: bold;
+	padding: 1.5%;
+}
 @media screen and (max-width: 46.0625em) {
 
 	.main {

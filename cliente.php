@@ -30,6 +30,22 @@ class Cliente extends db
     }
   }
 
+  function ClienteId($id){
+  //Construimos la consulta
+  $sql="SELECT * from cliente WHERE id=".$id;
+  //Realizamos la consulta
+  $resultado=$this->realizarConsulta($sql);
+  if($resultado!=false){
+    if($resultado!=false){
+      return $resultado->fetch_assoc();
+    }else{
+      return null;
+    }
+  }else{
+    return null;
+  }
+}
+
 }
 
  ?>

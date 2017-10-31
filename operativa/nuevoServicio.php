@@ -63,6 +63,7 @@ if (isset($_SESSION['usuario'])==false) {
     <div class="site-content">
       <div class="container">
         <!-- Contenido de la pagina. -->
+        <h2>Nueva actividad</h2>
         <form action="nuevoServicio.php" method="post" id="formulario">
           <div class="formthird">
               <p><label><i class="fa fa-question-circle"></i>Actividad (*)</label><input type="text" name="descripcion" required/></p>

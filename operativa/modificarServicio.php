@@ -47,12 +47,9 @@ if (isset($_SESSION['usuario'])==false) {
 
 <div class="site-container">
   <div class="site-pusher">
-
     <header class="header">
-
       <a href="#" class="header__icon" id="header__icon"></a>
       <a href="../dashboard.php" class="header__logo"><img src="../imagenes/logo.png" alt=""></a>
-
       <nav class="menu">
         <a href="index.php">Inicio</a>
         <a href="nuevoServicio.php">Nueva Actividad</a>
@@ -65,6 +62,7 @@ if (isset($_SESSION['usuario'])==false) {
     <div class="site-content">
       <div class="container">
         <!-- Contenido de la pagina. -->
+        <h2>Actividades actuales</h2>
         <table id="tablamod">
         <thead id="theadmod">
           <tr id="trmod">
@@ -76,14 +74,22 @@ if (isset($_SESSION['usuario'])==false) {
           </tr>
         </thead>
         <tbody id="tbodymod">
-          <tr id="trmod">
-            <td scope="row" data-label="Actividad" id="tdmod">CMP 71-72-72 STOP SHIP TORNILLO BOMBA</td>
-            <td data-label="Modelos" id="tdmod">KUGA+PLAT.CD</td>
-            <td data-label="Fecha inicio" id="tdmod">10/10/17</td>
-            <td data-label="Cliente" id="tdmod">FORD</td>
-            <td data-label="Opciones" id="tdmod"><a href="#" title="Cancelar servicio"><i class="material-icons">clear</i></a><a href="#" title="Modificar recursos"><i class="material-icons">people</i></a>
-              <a href="#" title="Modificar información"><i class="material-icons">mode_edit</i></a><a href="#" title="Finalizar servicio"><i class="material-icons">power_settings_new</i></a></td>
-          </tr>
+          <?php
+            $listamodificar=$servicio->listaServiciosHoy();
+            foreach ($listamodificar as $lista) {
+              $clientes=$cliente->ClienteId($lista['id_cliente']);
+              echo "<tr id='trmod'>";
+              echo "<td scope='row' data-label='Actividad' id='tdmod'>".$lista['descripcion']."</td>";
+              echo "<td data-label='Modelos' id='tdmod'>".$lista['modelos']."</td>";
+              echo "<td data-label='Fecha inicio' id='tdmod'>".$lista['f_inicio']."</td>";
+              echo "<td data-label='Cliente' id='tdmod'>".$clientes['nombre']."</td>";
+              echo "  <td data-label='Opciones' id='tdmod'>
+              <a href='' title='Cancelar servicio'><i class='material-icons'>clear</i></a>
+              <a href='' title='Modificar recursos'><i class='material-icons'>people</i></a>
+              <a href='' title='Modificar información'><i class='material-icons'>mode_edit</i></a>
+              <a href='' title='Finalizar servicio'><i class='material-icons'>power_settings_new</i></a></td>";
+            }
+           ?>
         </tbody>
       </table>
       </div> <!-- END container -->
