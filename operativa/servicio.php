@@ -87,6 +87,22 @@ class Servicio extends db
      }
 }
 
+function ServicioId($id){
+//Construimos la consulta
+$sql="SELECT * from servicios WHERE id=".$id;
+//Realizamos la consulta
+$resultado=$this->realizarConsulta($sql);
+if($resultado!=false){
+  if($resultado!=false){
+    return $resultado->fetch_assoc();
+  }else{
+    return null;
+  }
+}else{
+  return null;
+}
+}
+
 
 
 

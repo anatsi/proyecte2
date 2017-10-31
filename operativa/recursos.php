@@ -26,6 +26,23 @@ class Recursos extends db
       return null;
     }
   }
+
+  function RecursosId($id){
+  //Construimos la consulta
+  $sql="SELECT * FROM recursos WHERE servicio=".$id;
+  //Realizamos la consulta
+  $resultado=$this->realizarConsulta($sql);
+  if($resultado!=false){
+    if($resultado!=false){
+      return $resultado->fetch_assoc();
+    }else{
+      return null;
+    }
+  }else{
+    return null;
+  }
+}
+
 }
 
  ?>

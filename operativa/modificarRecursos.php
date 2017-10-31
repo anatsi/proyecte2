@@ -59,18 +59,23 @@ if (isset($_SESSION['usuario'])==false) {
       </nav>
 
     </header>
-
+    <p color='black'>
+    <?php
+      $infoservicio=$servicio->ServicioId($_GET['servicio']);
+      $inforecurso=$recursos->RecursosId($_GET['servicio']);
+     ?>
+</p>
     <div class="site-content">
       <div class="container">
         <!-- Contenido de la pagina. -->
-        <h2>Nueva actividad</h2>
-        <form action="nuevoServicio.php" method="post" id="formulario">
+        <h2>Modificar recursos actividad</h2>
+        <form action="modificarRecursos.php" method="post" id="formulario">
           <div class="formthird" id='contenedor'>
-              <p><label><i class="fa fa-question-circle"></i>Recursos totales (*)</label><input type="number" min='0' name="recursos" id="total" readonly/></p>
-              <p><label><i class="fa fa-question-circle"></i>Turno mañana</label><input type="number" min='0' name="tm" id="tm" value='0' onclick="suma();" onkeyup="suma();"/></p>
-              <p><label><i class="fa fa-question-circle"></i>Turno tarde</label><input type="number" min='0' name="tt" id="tt" value='0' onclick="suma();" onkeyup="suma();"/></p>
-              <p><label><i class="fa fa-question-circle"></i>Turno noche</label><input type="number" min='0'name="tn" id="tn" value='0' onclick="suma();" onkeyup="suma();"/></p>
-              <p><label><i class="fa fa-question-circle"></i>Turno central</label><input type="number" min='0'name="tc" id="tc" value='0' onclick="suma();" onkeyup="suma();"/></p>
+              <p><label><i class="fa fa-question-circle"></i>Recursos totales (*)</label><input type="number" min='0' value=<?=$inforecurso['total']?> name="recursos" id="total" readonly/></p>
+              <p><label><i class="fa fa-question-circle"></i>Turno mañana</label><input type="number" min='0' name="tm" id="tm" value=<?=$inforecurso['tm']?> onclick="suma();" onkeyup="suma();"/></p>
+              <p><label><i class="fa fa-question-circle"></i>Turno tarde</label><input type="number" min='0' name="tt" id="tt" value=<?=$inforecurso['tt']?> onclick="suma();" onkeyup="suma();"/></p>
+              <p><label><i class="fa fa-question-circle"></i>Turno noche</label><input type="number" min='0'name="tn" id="tn" value=<?=$inforecurso['tn']?> onclick="suma();" onkeyup="suma();"/></p>
+              <p><label><i class="fa fa-question-circle"></i>Turno central</label><input type="number" min='0'name="tc" id="tc" value=<?=$inforecurso['tc']?> onclick="suma();" onkeyup="suma();"/></p>
           </div>
           <div class="formthird">
             <p>
@@ -111,10 +116,10 @@ if (isset($_SESSION['usuario'])==false) {
             </p>
           </div>
           <div class="formthird">
-              <p><label><i class="fa fa-question-circle"></i>Comentario supervisor</label><textarea name="csup"></textarea></p>
-              <p><label><i class="fa fa-question-circle"></i>Comentario RRHH</label><textarea name="crrhh"></textarea></p>
-              <p><label><i class="fa fa-question-circle"></i>Comentario Admin. Financiero</label><textarea name="caf"></textarea></p>
-              <p><label><i class="fa fa-question-circle"></i>Comentario Depto. Operativo</label><textarea name="cdo"></textarea></p>
+              <p><label><i class="fa fa-question-circle"></i>Comentario supervisor</label><textarea name="csup"><?=$infoservicio['com_supervisor']?></textarea></p>
+              <p><label><i class="fa fa-question-circle"></i>Comentario RRHH</label><textarea name="crrhh"><?=$infoservicio['com_rrhh']?></textarea></p>
+              <p><label><i class="fa fa-question-circle"></i>Comentario Admin. Financiero</label><textarea name="caf"><?=$infoservicio['com_admin_fin']?></textarea></p>
+              <p><label><i class="fa fa-question-circle"></i>Comentario Depto. Operativo</label><textarea name="cdo"><?=$infoservicio['com_depto']?></textarea></p>
           </div>
           <div class="submitbuttons">
               <input class="submitone" type="submit" value="Modificar"/>
