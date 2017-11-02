@@ -150,8 +150,14 @@ h2{
 	color: black;
 	font-size: 30px;
 	font-weight: bold;
-	padding: 1.5%;
-	margin-left: 8.5%;
+	padding: 1%;
+	margin-left: 9%;
+}
+h3{
+	color: rgb(85, 92, 88);
+	margin-left: 10%;
+	font-weight: bold;
+	font-size: 25px;
 }
 @media screen and (max-width: 46.0625em) {
 

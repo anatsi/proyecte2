@@ -54,23 +54,31 @@ if (isset($_SESSION['usuario'])==false) {
       <nav class="menu">
         <a href="index.php">Inicio</a>
         <a href="nuevoServicio.php">Nueva Actividad</a>
-        <a href="modificarServicio.php">Actividades Actuales</a>
+        <a href="actividadesActuales.php">Actividades Actuales</a>
         <a href="#">Histórico Actividades</a>
       </nav>
 
     </header>
-    <p color='black'>
+
     <?php
       $infoservicio=$servicio->ServicioId($_GET['servicio']);
       $inforecurso=$recursos->RecursosId($_GET['servicio']);
      ?>
-</p>
+
     <div class="site-content">
       <div class="container">
         <!-- Contenido de la pagina. -->
         <h2>Modificar recursos actividad</h2>
+        <h3><?=$infoservicio['descripcion']?></h3>
         <form action="modificarRecursos.php" method="post" id="formulario">
           <div class="formthird" id='contenedor'>
+            <input type="hidden" value=<?=$infoservicio['id']?> name="id">
+            <p><label>SELECCIONAR DIAS</label></p>
+            <p><label><i class="fa fa-question-circle"></i>Dia suelto</label><input type="date" name="suelto" id="suelto"/></p>
+            <p><label>Mas de un dia</label></p>
+            <p><label><i class="fa fa-question-circle"></i>Inicio</label><input type="date" name="inicio" id="inicio"/></p>
+            <p><label><i class="fa fa-question-circle"></i>Fin</label><input type="date" name="fin" id="fin"/></p>
+
               <p><label><i class="fa fa-question-circle"></i>Recursos totales (*)</label><input type="number" min='0' value=<?=$inforecurso['total']?> name="recursos" id="total" readonly/></p>
               <p><label><i class="fa fa-question-circle"></i>Turno mañana</label><input type="number" min='0' name="tm" id="tm" value=<?=$inforecurso['tm']?> onclick="suma();" onkeyup="suma();"/></p>
               <p><label><i class="fa fa-question-circle"></i>Turno tarde</label><input type="number" min='0' name="tt" id="tt" value=<?=$inforecurso['tt']?> onclick="suma();" onkeyup="suma();"/></p>
@@ -80,39 +88,39 @@ if (isset($_SESSION['usuario'])==false) {
           <div class="formthird">
             <p>
               <label><i class='fa fa-qestion-circle'></i>Otro turno</label>
-              <input class='threeinputs' type='time' name='f1'/>
-              <input class='threeinputs2' type='time' name='i1'/>
-              <input class='threeinputs1' type='number' value='0' min='0' id='in1' onclick='suma();' onkeyup='suma();' name='o1'/>
+              <input class='threeinputs' type='time' name='f1'value='<?=$inforecurso['fin1']?>'/>
+              <input class='threeinputs2' type='time' name='i1'value='<?=$inforecurso['inicio1']?>'/>
+              <input class='threeinputs1' type='number' value=<?=$inforecurso['otro1']?> min='0' id='in1' onclick='suma();' onkeyup='suma();' name='o1'/>
             </p>
             <p>
               <label><i class='fa fa-qestion-circle'></i>Otro turno</label>
-              <input class='threeinputs' type='time' name='f2'/>
-              <input class='threeinputs2' type='time' name='i2'/>
-              <input class='threeinputs1' type='number' value='0' min='0' id='in2' onclick='suma();' onkeyup='suma();' name='o2'/>
+              <input class='threeinputs' type='time' name='f2' value='<?=$inforecurso['fin2']?>'/>
+              <input class='threeinputs2' type='time' name='i2'value='<?=$inforecurso['inicio2']?>'/>
+              <input class='threeinputs1' type='number' value=<?=$inforecurso['otro2']?> min='0' id='in2' onclick='suma();' onkeyup='suma();' name='o2'/>
             </p>
             <p>
               <label><i class='fa fa-qestion-circle'></i>Otro turno</label>
-              <input class='threeinputs' type='time' name='f3'/>
-              <input class='threeinputs2' type='time' name='i3'/>
-              <input class='threeinputs1' type='number' value='0' min='0' id='in3' onclick='suma();' onkeyup='suma();' name='o3'/>
+              <input class='threeinputs' type='time' name='f3'value='<?=$inforecurso['fin3']?>'/>
+              <input class='threeinputs2' type='time' name='i3'value='<?=$inforecurso['inicio3']?>'/>
+              <input class='threeinputs1' type='number' value=<?=$inforecurso['otro3']?> min='0' id='in3' onclick='suma();' onkeyup='suma();' name='o3'/>
             </p>
             <p>
               <label><i class='fa fa-qestion-circle'></i>Otro turno</label>
-              <input class='threeinputs' type='time' name='f4'/>
-              <input class='threeinputs2' type='time' name='i4'/>
-              <input class='threeinputs1' type='number' value='0' min='0' id='in4' onclick='suma();' onkeyup='suma();' name='o4'/>
+              <input class='threeinputs' type='time' name='f4' value='<?=$inforecurso['fin4']?>'/>
+              <input class='threeinputs2' type='time' name='i4' value="<?=$inforecurso['inicio4']?>"/>
+              <input class='threeinputs1' type='number' value=<?=$inforecurso['otro4']?> min='0' id='in4' onclick='suma();' onkeyup='suma();' name='o4'/>
             </p>
             <p>
               <label><i class='fa fa-qestion-circle'></i>Otro turno</label>
-              <input class='threeinputs' type='time' name='f5'/>
-              <input class='threeinputs2' type='time' name='i5'/>
-              <input class='threeinputs1' type='number' value='0' min='0' id='in5' onclick='suma();' onkeyup='suma();' name='o5'/>
+              <input class='threeinputs' type='time' name='f5' value="<?=$inforecurso['fin5']?>"/>
+              <input class='threeinputs2' type='time' name='i5' value="<?=$inforecurso['inicio5']?>"/>
+              <input class='threeinputs1' type='number' value=<?=$inforecurso['otro5']?> min='0' id='in5' onclick='suma();' onkeyup='suma();' name='o5'/>
             </p>
             <p>
               <label><i class='fa fa-qestion-circle'></i>Otro turno</label>
-              <input class='threeinputs' type='time' name='f6'/>
-              <input class='threeinputs2' type='time' name='i6'/>
-              <input class='threeinputs1' type='number' value='0' min='0' id='in6' onclick='suma();' onkeyup='suma();' name='o6'/>
+              <input class='threeinputs' type='time' name='f6' value="<?=$inforecurso['fin6']?>"/>
+              <input class='threeinputs2' type='time' name='i6' value="<?=$inforecurso['inicio6']?>"/>
+              <input class='threeinputs1' type='number' value=<?=$inforecurso['otro6']?> min='0' id='in6' onclick='suma();' onkeyup='suma();' name='o6'/>
             </p>
           </div>
           <div class="formthird">
@@ -137,5 +145,23 @@ if (isset($_SESSION['usuario'])==false) {
 
 </body>
 </html>
+<?php
+if (isset($_POST['id']) && isset($_POST['recursos'])) {
+  $nuevorecurso=$recursos->modundia($_POST['id'], $_POST['suelto'], $_POST['inicio'], $_POST['fin'], $_POST['recursos'], $_POST['tm'], $_POST['tt'], $_POST['tn'], $_POST['tc'], $_POST['o1'], $_POST['i1'], $_POST['f1'],
+   $_POST['o2'], $_POST['i2'],
+   $_POST['f2'], $_POST['o3'], $_POST['i3'], $_POST['f3'], $_POST['o4'], $_POST['i4'], $_POST['f4'], $_POST['o5'], $_POST['i5'], $_POST['f5'],
+    $_POST['o6'], $_POST['i6'], $_POST['f6']);
+    if ($nuevorecurso==null) {
+      echo "Error";
+    }else {
+      ?>
+        <script type="text/javascript">
+          alert('Servicio registrado con exito');
+          window.location='actividadesActuales.php';
+        </script>
+      <?php
+    }
+}
 
+ ?>
  <?php } ?>
