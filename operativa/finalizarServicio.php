@@ -107,7 +107,11 @@ if (isset($_SESSION['usuario'])==false) {
   if (isset($_POST['fin'])) {
     $finalizado=$servicio->FinalizarActividad($_POST['fin'], $fecha, $_POST['comentario']);
     if ($finalizado == true) {
-      header('Location: actividadesActuales.php');
+      ?>
+        <script type="text/javascript">
+          window.location='actividadesActuales.php';
+        </script>
+      <?php
     }else {
       echo "Error";
     }
