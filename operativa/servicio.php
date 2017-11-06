@@ -104,14 +104,25 @@ if($resultado!=false){
 }
 
 //funcion para añadir la fecha de fin cuando se finaliza la actividad
-public function FinalizarActividad($id, $fecha, $fin){
-    $sql="UPDATE servicios SET f_fin='".$fecha."', com_fin='".$fin."' WHERE id='".$id."'";
-    $finalizarAct=$this->realizarConsulta($sql);
-    if ($finalizarAct=!false) {
-         return true;
-    }else {
-         return false;
+function FinalizarActividad($id, $fecha, $fin){
+  $sql="UPDATE servicios SET f_fin='".$fecha."', com_fin='".$fin."' WHERE id='".$id."'";
+  $finalizarAct=$this->realizarConsulta($sql);
+  if ($finalizarAct=!false) {
+       return true;
+  }else {
+       return false;
+  }
 }
+
+function CancelarActividad($id, $fecha)
+{
+  $sql="UPDATE servicios SET f_fin='".$fecha."', cancelado='true' WHERE id='".$id."'";
+  $cancelarAct=$this->realizarConsulta($sql);
+  if ($cancelarAct=!false) {
+    return true;
+  }else {
+    return false;
+  }
 }
 
 
