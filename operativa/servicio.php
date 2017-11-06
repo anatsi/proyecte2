@@ -36,10 +36,10 @@ class Servicio extends db
   }
 
     //funcion para insertar un nuevo servicio en la base de datos.
-  function nuevoServicio($descripcion, $modelos, $recursos, $finicio, $cliente, $responsable, $telefono, $correo, $csup, $crrhh, $caf, $cdo){
+  function nuevoServicio($descripcion, $modelos, $recursos, $finicio, $cliente, $responsable, $telefono, $correo, $csup, $crrhh, $caf, $cdo, $relacion){
     //realizamos la consuta y la guardamos en $sql
-    $sql="INSERT INTO servicios(id, descripcion, modelos, recursos, f_inicio, f_fin, id_cliente, responsable, telefono, correo, com_supervisor, com_rrhh, com_admin_fin, com_depto)
-    VALUES (NULL, '".$descripcion."', '".$modelos."', ".$recursos.", '".$finicio."', NULL, ".$cliente.", '".$responsable."', ".$telefono.", '".$correo."', '".$csup."', '".$crrhh."', '".$caf."', '".$cdo."')";
+    $sql="INSERT INTO servicios(id, descripcion, modelos, recursos, f_inicio, f_fin, id_cliente, responsable, telefono, correo, com_supervisor, com_rrhh, com_admin_fin, com_depto, relacion)
+    VALUES (NULL, '".$descripcion."', '".$modelos."', ".$recursos.", '".$finicio."', NULL, ".$cliente.", '".$responsable."', ".$telefono.", '".$correo."', '".$csup."', '".$crrhh."', '".$caf."', '".$cdo."', '".$relacion."')";
     //Realizamos la consulta utilizando la funcion creada en db.php
     $resultado=$this->realizarConsulta($sql);
     if($resultado!=false){

@@ -16,7 +16,7 @@
           -webkit-border-radius:10px;
           border-radius:10px;
           margin:20px auto;
-          text-align:center;
+          text-align:justify;
           width:90%;
           margin-top: 0;
         }
@@ -82,6 +82,10 @@
           text-align:right;
           float:left;
           line-height:16px;
+        }
+        button{
+          text-align: center;
+          margin-left: 140px;
         }
         .threeinputs{
           margin:0 !important;

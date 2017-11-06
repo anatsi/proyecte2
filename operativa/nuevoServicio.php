@@ -67,11 +67,18 @@ if (isset($_SESSION['usuario'])==false) {
         <form action="nuevoServicio.php" method="post" id="formulario">
           <div class="formthird">
               <p><label><i class="fa fa-question-circle"></i>Actividad (*)</label><input type="text" name="descripcion" required/></p>
-              <p><label><i class="fa fa-question-circle"></i>Modelos (*)</label><input type="text" name="modelos" /></p>
+              <p><label><i class="fa fa-question-circle"></i>Modelos (*)</label></p>
+              <p><label><i class="fa fa-question-circle"></i></label><input type="checkbox" name="mondeo" value="MONDEO"/>MONDEO</p>
+              <p><label><i class="fa fa-question-circle"></i></label><input type="checkbox" name="galaxy" value="GALAXY"/>GALAXY</p>
+              <p><label><i class="fa fa-question-circle"></i></label><input type="checkbox" name="smax" value="S-MAX"/>S-MAX</p>
+              <p><label><i class="fa fa-question-circle"></i></label><input type="checkbox" name="transit" value="TRANSIT CONNECT"/>TRANSIT CONNECT</p>
+              <p><label><i class="fa fa-question-circle"></i></label><input type="checkbox" name="kuga" value="KUGA"/>KUGA</p>
+              <p><label><i class="fa fa-question-circle"></i></label><input type="checkbox" name="todos" value="TODOS"/>TODOS</p>
+
               <p><label><i class="fa fa-question-circle"></i>Fecha inicio (*)</label><input type="date" name="finicio" required/></p>
               <p><label><i class="fa fa-question-circle"></i>Cliente (*)</label>
                 <select name="cliente" required>
-                  <option>----Choose---</option>
+                  <option> </option>
                   <?php
                     $clientes= $cliente->listaClientes();
                     foreach ($clientes as $cliente) {
@@ -94,6 +101,16 @@ if (isset($_SESSION['usuario'])==false) {
               <p id="enviar"></p>
           </div>
           <div class="formthird">
+              <p><label><i class="fa fa-question-circle"></i>Relacion</label>
+                <select name="relacion">
+                  <option></option>
+                  <?php
+                    $listaServicios=$servicio->listaServiciosHoy();
+                    foreach ($listaServicios as $servicio1) {
+                      echo "<option value='".$servicio1['id']."'>".$servicio1['descripcion']."</option>";
+                    }
+                   ?>
+                </select></p>
               <p><label><i class="fa fa-question-circle"></i>Comentario supervisor</label><textarea name="csup"></textarea></p>
               <p><label><i class="fa fa-question-circle"></i>Comentario RRHH</label><textarea name="crrhh"></textarea></p>
               <p><label><i class="fa fa-question-circle"></i>Comentario Admin. Financiero</label><textarea name="caf"></textarea></p>
@@ -118,9 +135,29 @@ if (isset($_SESSION['usuario'])==false) {
 <?php
 //comprbamos que realmente haya rellenado algunos campos
   if (isset($_POST['descripcion'])) {
+    //juntamos todos los modelos en una variable
+    $modelos="";
+    if (isset($_POST['mondeo'])) {
+      $modelos=$modelos.", ".$_POST['mondeo'];
+    }
+    if (isset($_POST['galaxy'])) {
+      $modelos=$modelos.", ".$_POST['galaxy'];
+    }
+    if (isset($_POST['smax'])) {
+      $modelos=$modelos.", ".$_POST['smax'];
+    }
+    if (isset($_POST['transit'])) {
+      $modelos=$modelos.", ".$_POST['transit'];
+    }
+    if (isset($_POST['kuga'])) {
+      $modelos=$modelos.", ".$_POST['kuga'];
+    }
+    if (isset($_POST['todos'])) {
+      $modelos=$modelos.", ".$_POST['todos'];
+    }
     //si los ha rellenado, llamamos a la función de insertar el servicio y le pasamos los datos.
-    $nuevoServicio=$servicio->nuevoServicio($_POST['descripcion'], $_POST['modelos'], $_POST['recursos'], $_POST['finicio'], $_POST['cliente'], $_POST['responsable'], $_POST['telefono'], $_POST['correo'], $_POST['csup'],
-     $_POST['crrhh'], $_POST['caf'], $_POST['cdo']);
+    $nuevoServicio=$servicio->nuevoServicio($_POST['descripcion'], $modelos, $_POST['recursos'], $_POST['finicio'], $_POST['cliente'], $_POST['responsable'], $_POST['telefono'], $_POST['correo'], $_POST['csup'],
+     $_POST['crrhh'], $_POST['caf'], $_POST['cdo'], $_POST['relacion']);
     //comprobamos que se haya registrado.
     if ($nuevoServicio==null) {
       //si no se ha registrado le saca un mensaje avisandole
