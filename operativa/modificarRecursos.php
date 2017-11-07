@@ -156,7 +156,7 @@ if (isset($_POST['id']) && isset($_POST['recursos'])) {
     }else {
       ?>
         <script type="text/javascript">
-          alert('Servicio registrado con exito');
+          alert('Actividad actualizada con exito');
           window.location='actividadesActuales.php';
         </script>
       <?php

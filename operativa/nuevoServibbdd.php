@@ -59,7 +59,7 @@
           //si no se ha registrado le saca un mensaje avisandole
           ?>
             <script type="text/javascript">
-              alert("Error al registrar el servicio. Servicio");
+              alert("Error al registrar la actividad. Servicio");
             </script>
           <?php
         }else {
@@ -81,7 +81,7 @@
              //si no se ha registrado le saca un mensaje avisandole
              ?>
                <script type="text/javascript">
-                 alert("Error al registrar el servicio. Recursos");
+                 alert("Error al registrar la actividad. Recursos");
                </script>
              <?php
            }else {
@@ -101,7 +101,7 @@
                          //si se ha registrado le saca un mensaje avisandole
                          ?>
                            <script type="text/javascript">
-                             alert("Nuevo servicio registrado.");
+                             alert("Nueva actividad registrada.");
                              window.location='nuevoServicio.php';
                            </script>
                          <?php
@@ -109,7 +109,7 @@
                      }else {
                        ?>
                          <script type="text/javascript">
-                           alert("Error al registrar el servicio. Archivos");
+                           alert("Error al registrar la actividad. Archivos");
                          </script>
                        <?php
                      }
