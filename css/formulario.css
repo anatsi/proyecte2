@@ -71,6 +71,9 @@
           background:lightblue;
           border-color:lightblue;
         }
+        input[type=file]{
+          width:275px;
+        }
         textarea,input[type=textarea] {
           min-height:80px;
         }

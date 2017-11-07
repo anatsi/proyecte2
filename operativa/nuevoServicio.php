@@ -64,7 +64,7 @@ if (isset($_SESSION['usuario'])==false) {
       <div class="container">
         <!-- Contenido de la pagina. -->
         <h2>Nueva actividad</h2>
-        <form action="nuevoServicio.php" method="post" id="formulario">
+        <form action="nuevoServibbdd.php" method="post" id="formulario" enctype="multipart/form-data">
           <div class="formthird">
               <p><label><i class="fa fa-question-circle"></i>Actividad (*)</label><input type="text" name="descripcion" required/></p>
               <p><label><i class="fa fa-question-circle"></i>Modelos (*)</label></p>
@@ -101,6 +101,10 @@ if (isset($_SESSION['usuario'])==false) {
               <p id="enviar"></p>
           </div>
           <div class="formthird">
+            <p><label><i class="fa fa-question-circle"></i>Archivos</label></p>
+            <p><input type="file" name="archivo1" value="archivo1" id='archivo1'></p>
+            <p><input type="file" name="archivo2" value="archivo2" id='archivo2'></p>
+            <p><input type="file" name="archivo3" value="archivo3" id='archivo3'></p>
               <p><label><i class="fa fa-question-circle"></i>Relacion</label>
                 <select name="relacion">
                   <option></option>
@@ -132,66 +136,7 @@ if (isset($_SESSION['usuario'])==false) {
 
 </body>
 </html>
-<?php
-//comprbamos que realmente haya rellenado algunos campos
-  if (isset($_POST['descripcion'])) {
-    //juntamos todos los modelos en una variable
-    $modelos="";
-    if (isset($_POST['mondeo'])) {
-      $modelos=$modelos.", ".$_POST['mondeo'];
-    }
-    if (isset($_POST['galaxy'])) {
-      $modelos=$modelos.", ".$_POST['galaxy'];
-    }
-    if (isset($_POST['smax'])) {
-      $modelos=$modelos.", ".$_POST['smax'];
-    }
-    if (isset($_POST['transit'])) {
-      $modelos=$modelos.", ".$_POST['transit'];
-    }
-    if (isset($_POST['kuga'])) {
-      $modelos=$modelos.", ".$_POST['kuga'];
-    }
-    if (isset($_POST['todos'])) {
-      $modelos=$modelos.", ".$_POST['todos'];
-    }
-    //si los ha rellenado, llamamos a la función de insertar el servicio y le pasamos los datos.
-    $nuevoServicio=$servicio->nuevoServicio($_POST['descripcion'], $modelos, $_POST['recursos'], $_POST['finicio'], $_POST['cliente'], $_POST['responsable'], $_POST['telefono'], $_POST['correo'], $_POST['csup'],
-     $_POST['crrhh'], $_POST['caf'], $_POST['cdo'], $_POST['relacion']);
-    //comprobamos que se haya registrado.
-    if ($nuevoServicio==null) {
-      //si no se ha registrado le saca un mensaje avisandole
-      ?>
-        <script type="text/javascript">
-          alert("Error al registrar el servicio.");
-        </script>
-      <?php
-    }else {
-      //si se ha registrado el servicio cogemos su id para regstrar los recursos
-      $ultimo= $servicio-> ultimoServicio();
-      foreach ($ultimo as $servicio) {
-        $nuevorecurso=$recursos->nuevoRecurso($servicio['id'], $_POST['recursos'], $_POST['tm'], $_POST['tt'], $_POST['tn'], $_POST['tc'], $_POST['o1'], $_POST['i1'], $_POST['f1'], $_POST['o2'], $_POST['i2'],
-         $_POST['f2'], $_POST['o3'], $_POST['i3'], $_POST['f3'], $_POST['o4'], $_POST['i4'], $_POST['f4'], $_POST['o5'], $_POST['i5'], $_POST['f5'],
-          $_POST['o6'], $_POST['i6'], $_POST['f6']);
-      }
-       if ($nuevorecurso==null) {
-         //si no se ha registrado le saca un mensaje avisandole
-         ?>
-           <script type="text/javascript">
-             alert("Error al registrar el servicio.");
-           </script>
-         <?php
-       }else {
-         //si se ha registrado le saca un mensaje avisandole
-         ?>
-           <script type="text/javascript">
-             alert("Nuevo servicio registrado.");
-           </script>
-         <?php
-       }
-    }
-  }
- ?>
+
 
 
 
