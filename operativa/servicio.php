@@ -114,7 +114,7 @@ function FinalizarActividad($id, $fecha, $fin){
        return false;
   }
 }
-
+//funcion para cancrlar una acctividad
 function CancelarActividad($id, $fecha)
 {
   $sql="UPDATE servicios SET f_fin='".$fecha."', cancelado='true' WHERE id='".$id."'";
@@ -126,6 +126,16 @@ function CancelarActividad($id, $fecha)
   }
 }
 
+//funcion para poner la relacion en una actividad
+function RelacionActividad($id1, $id2){
+  $sql="UPDATE servicios SET relacion='".$id2."' WHERE id='".$id1."'";
+  $finalizarAct=$this->realizarConsulta($sql);
+  if ($finalizarAct=!false) {
+       return true;
+  }else {
+       return false;
+  }
+}
 
 }
 

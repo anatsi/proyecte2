@@ -3,6 +3,11 @@
   <head>
     <meta charset="utf-8">
     <title></title>
+    <style media="screen" type="text/css">
+      body{
+        color: white;
+      }
+    </style>
   </head>
   <body>
     <?php
@@ -58,6 +63,13 @@
             </script>
           <?php
         }else {
+          //actualizamos la actividad con la que lo vamos a relacionar para hacer la relacion tmbn
+          if ($_POST['relacion']!=0) {
+            $ultimoid=$servicio->ultimoServicio();
+            foreach ($ultimoid as $lastid) {
+              $relacionServicio=$servicio->RelacionActividad($_POST['relacion'], $lastid['id']);
+            }
+          }
           //si se ha registrado el servicio cogemos su id para regstrar los recursos
           $ultimo= $servicio-> ultimoServicio();
           foreach ($ultimo as $servicio) {
@@ -73,34 +85,45 @@
                </script>
              <?php
            }else {
-            //por ultimo subimos los archivos al servidor
-            for ($i=1; $i < 4; $i++) {
-                if ($_FILES['archivo'.$i]['name']!="") {
-                  $nombre_archivo = $_FILES['archivo'.$i]['name'];
-                  $size_archivo =  $_FILES['archivo'.$i]['size'];
 
-                  //ruta en el servidor donde guardar el archivo
-                  $ruta="files/".$nombre_archivo;
+             if ($_FILES['archivo1']['name']!="" || $_FILES['archivo2']['name']!="" || $_FILES['archivo3']['name']!="") {
+               //por ultimo subimos los archivos al servidor
+               for ($i=1; $i < 4; $i++) {
+                   if ($_FILES['archivo'.$i]['name']!="") {
+                     $nombre_archivo = $_FILES['archivo'.$i]['name'];
+                     $size_archivo =  $_FILES['archivo'.$i]['size'];
 
-                  if(is_uploaded_file($_FILES['archivo'.$i]['tmp_name'])) {
-                    if(move_uploaded_file($_FILES['archivo'.$i]['tmp_name'], $ruta)) {
-                      //si se ha registrado le saca un mensaje avisandole
-                      ?>
-                        <script type="text/javascript">
-                          alert("Nuevo servicio registrado.");
-                          window.location='nuevoServicio.php';
-                        </script>
-                      <?php
+                     //ruta en el servidor donde guardar el archivo
+                     $ruta="files/".$nombre_archivo;
+
+                     if(is_uploaded_file($_FILES['archivo'.$i]['tmp_name'])) {
+                       if(move_uploaded_file($_FILES['archivo'.$i]['tmp_name'], $ruta)) {
+                         //si se ha registrado le saca un mensaje avisandole
+                         ?>
+                           <script type="text/javascript">
+                             alert("Nuevo servicio registrado.");
+                             window.location='nuevoServicio.php';
+                           </script>
+                         <?php
+                        }
+                     }else {
+                       ?>
+                         <script type="text/javascript">
+                           alert("Error al registrar el servicio. Archivos");
+                         </script>
+                       <?php
                      }
-                  }else {
-                    ?>
-                      <script type="text/javascript">
-                        alert("Error al registrar el servicio. Archivos");
-                      </script>
-                    <?php
-                  }
-                }
-            }
+                   }
+               }
+             }else {
+               ?>
+                 <script type="text/javascript">
+                   alert("Nuevo servicio registrado.");
+                   window.location='nuevoServicio.php';
+                 </script>
+               <?php
+             }
+
            }
         }
       }
