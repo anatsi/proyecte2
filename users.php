@@ -4,9 +4,9 @@
  */
 
  //Llamamos a la clase db, encargada de la conexion.
- require_once 'db.php';
+ require_once 'db2.php';
 
-class User extends db
+class User extends db2
 {
   //la funcion construct llama al construct de db, encargada de la conexión.
   function __construct()
@@ -14,7 +14,7 @@ class User extends db
     parent::__construct();
   }
 
-  //funcion que loguea al usuario contra la db.
+  //funcion que loguea al usuario contra la db
   function LoginUser($user){
     //Construimos la consulta
     $sql="SELECT * from users WHERE user='".$user."'";

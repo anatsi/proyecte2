@@ -2,7 +2,7 @@
 //incluimos todas las clases necesarias e iniciamos sus objetos.
 require_once '../sesiones.php';
 require_once '../users.php';
-require_once '../cliente.php';
+require_once 'cliente.php';
 require_once 'servicio.php';
 
 

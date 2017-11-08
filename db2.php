@@ -1,14 +1,14 @@
 <?php
 /**
- * Permitir la conexion contra la base de datos
+ * Permitir la conexion contra la base de datos de acceso
  */
-class db
+class db2
 {
   //Atributos necesarios para la conexion
   private $host="localhost";
   private $user="root";
   private $pass="";
-  private $db_name="usuarios";
+  private $db_name="acceso";
   //Conector
   private $conexion;
   //Propiedades para controlar errores

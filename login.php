@@ -16,8 +16,9 @@
       $registrado=$user->LoginUser($_POST['form-username']);
       //comprobamos que el usuario existe
       if ($registrado!=null) {
+        $salt='$tsi$/';
         //comprobamos que la contraseña que ha puesto es correcta.
-        if ($registrado['pass']==md5($_POST['form-password'])) {
+        if ($registrado['pass']==sha1(md5($salt . $_POST['form-password']))) {
           //si el usuario existe y la contraseña es correcta, iniciamos la sesion.
           $sesion->addUsuario($registrado['id_user']);
           ?>

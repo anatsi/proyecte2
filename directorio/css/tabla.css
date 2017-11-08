@@ -1,0 +1,66 @@
+body {
+  font-family: "Open Sans", sans-serif;
+  line-height: 1.25;
+}
+#tablamod {
+  border: 1px solid #ccc;
+  border-collapse: collapse;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  table-layout: fixed;
+}
+#tablamod #trmod {
+  background: #f8f8f8;
+  border: 1px solid #ddd;
+  padding: .35em;
+}
+#tablamod #thmod,
+#tablamod #tdmod {
+  padding: .625em;
+  text-align: center;
+}
+#tablamod #thmod {
+  font-size: .85em;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+@media screen and (max-width: 600px) {
+  #tablamod {
+    border: 0;
+  }
+  #tablamod #theadmod {
+    border: none;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+  }
+  #tablamod #trmod {
+    border-bottom: 3px solid #ddd;
+    display: block;
+    margin-bottom: .625em;
+  }
+  #tablamod #tdmod {
+    border-bottom: 1px solid #ddd;
+    display: block;
+    font-size: .8em;
+    text-align: right;
+  }
+  #tablamod #tdmod:before {
+    /*
+    * aria-label has no advantage, it won't be read inside a table
+    content: attr(aria-label);
+    */
+    content: attr(data-label);
+    float: left;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+  #tablamod #tdmod:last-child {
+    border-bottom: 0;
+  }
+}

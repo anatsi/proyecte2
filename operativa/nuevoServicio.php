@@ -2,7 +2,7 @@
 //incluimos todas las clases necesarias e iniciamos sus objetos.
 require_once '../sesiones.php';
 require_once '../users.php';
-require_once '../cliente.php';
+require_once 'cliente.php';
 require_once 'servicio.php';
 require_once 'recursos.php';
 
@@ -68,12 +68,12 @@ if (isset($_SESSION['usuario'])==false) {
           <div class="formthird">
               <p><label><i class="fa fa-question-circle"></i>Actividad (*)</label><input type="text" name="descripcion" required/></p>
               <p><label><i class="fa fa-question-circle"></i>Modelos (*)</label></p>
+              <p><label><i class="fa fa-question-circle"></i></label><input type="checkbox" name="todos" value="TODOS"/>TODOS</p>
               <p><label><i class="fa fa-question-circle"></i></label><input type="checkbox" name="mondeo" value="MONDEO"/>MONDEO</p>
               <p><label><i class="fa fa-question-circle"></i></label><input type="checkbox" name="galaxy" value="GALAXY"/>GALAXY</p>
               <p><label><i class="fa fa-question-circle"></i></label><input type="checkbox" name="smax" value="S-MAX"/>S-MAX</p>
               <p><label><i class="fa fa-question-circle"></i></label><input type="checkbox" name="transit" value="TRANSIT CONNECT"/>TRANSIT CONNECT</p>
               <p><label><i class="fa fa-question-circle"></i></label><input type="checkbox" name="kuga" value="KUGA"/>KUGA</p>
-              <p><label><i class="fa fa-question-circle"></i></label><input type="checkbox" name="todos" value="TODOS"/>TODOS</p>
 
               <p><label><i class="fa fa-question-circle"></i>Fecha inicio (*)</label><input type="date" name="finicio" required/></p>
               <p><label><i class="fa fa-question-circle"></i>Cliente (*)</label>
@@ -87,7 +87,7 @@ if (isset($_SESSION['usuario'])==false) {
                    ?>
                 </select></p>
               <p><label><i class="fa fa-question-circle"></i>Responsable (*)</label><input type="text" name="responsable" required/></p>
-              <p><label><i class="fa fa-question-circle"></i>Tel. responsable (*)</label><input type="text" name="telefono" required/></p>
+              <p><label><i class="fa fa-question-circle"></i>Tel. responsable (*)</label><input type="tel" name="telefono" required/></p>
               <p><label><i class="fa fa-question-circle"></i>Correo responsable (*)</label><input type="email" name="correo" required/></p>
           </div>
           <div class="formthird" id='contenedor'>

@@ -43,13 +43,13 @@
         $ruta2=NULL;
         $ruta3=NULL;
         if ($_FILES['archivo1']['name']!="") {
-          $ruta1="www.acceso.tsiberia.es/proyecte/operativa/files/".$_FILES['archivo1']['name'];
+          $ruta1="www.acceso.tsiberia.es/operativa/files/".$_FILES['archivo1']['name'];
         }
         if ($_FILES['archivo2']['name']!="") {
-          $ruta2="www.acceso.tsiberia.es/proyecte/operativa/files/".$_FILES['archivo2']['name'];
+          $ruta2="www.acceso.tsiberia.es/operativa/files/".$_FILES['archivo2']['name'];
         }
         if ($_FILES['archivo3']['name']!="") {
-          $ruta3="www.acceso.tsiberia.es/proyecte/operativa/files/".$_FILES['archivo3']['name'];
+          $ruta3="www.acceso.tsiberia.es/operativa/files/".$_FILES['archivo3']['name'];
         }
         //si los ha rellenado, llamamos a la función de insertar el servicio y le pasamos los datos.
         $nuevoServicio=$servicio->nuevoServicio($_POST['descripcion'], $modelos, $_POST['recursos'], $_POST['finicio'], $_POST['cliente'], $_POST['responsable'], $_POST['telefono'], $_POST['correo'], $_POST['csup'],
