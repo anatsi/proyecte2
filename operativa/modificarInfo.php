@@ -53,7 +53,7 @@ if (isset($_SESSION['usuario'])==false) {
         <a href="index.php">Inicio</a>
         <a href="nuevoServicio.php">Nueva Actividad</a>
         <a href="actividadesActuales.php">Actividades Actuales</a>
-        <a href="#">Histórico Actividades</a>
+        <a href="historicoActividades.php">Histórico Actividades</a>
       </nav>
 
     </header>

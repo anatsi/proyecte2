@@ -154,6 +154,48 @@ function RelacionActividad($id1, $id2){
     }
   }
 
+  //funcion para listar los servicios finalizados
+  function listaFinalizados(){
+    //cogemos la fecha de hoy para compararla con lo que vamos a sacar.
+    $fecha=date("Y-m-d");
+    //Construimos la consulta
+    $sql="SELECT * from servicios WHERE f_fin<='".$fecha."'";
+    //Realizamos la consulta
+    $resultado=$this->realizarConsulta($sql);
+    if($resultado!=null){
+      //Montamos la tabla de resultados
+      $tabla=[];
+      while($fila=$resultado->fetch_assoc()){
+        $tabla[]=$fila;
+      }
+      return $tabla;
+    }else{
+      return null;
+    }
+  }
+
+  //funcion para listar los servicios finalizados filtrados
+  function listaFiltrados($filtro){
+    //cogemos la fecha de hoy para compararla con lo que vamos a sacar.
+    $fecha=date("Y-m-d");
+    //Construimos la consulta
+    $sql="SELECT * FROM servicios s INNER JOIN cliente c ON s.id_cliente=c.id
+          WHERE s.descripcion LIKE '%".$filtro."%' AND f_fin<= '".$fecha."' OR s.modelos LIKE '%".$filtro."%'  AND f_fin<= '".$fecha."'
+          OR c.nombre LIKE '%".$filtro."%'  AND f_fin<= '".$fecha."' ;";
+    //Realizamos la consulta
+    $resultado=$this->realizarConsulta($sql);
+    if($resultado!=null){
+      //Montamos la tabla de resultados
+      $tabla=[];
+      while($fila=$resultado->fetch_assoc()){
+        $tabla[]=$fila;
+      }
+      return $tabla;
+    }else{
+      return null;
+    }
+  }
+
 }
 
 
