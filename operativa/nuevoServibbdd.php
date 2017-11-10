@@ -19,23 +19,13 @@
       if (isset($_POST['descripcion'])) {
         //juntamos todos los modelos en una variable
         $modelos="";
-        if (isset($_POST['mondeo'])) {
-          $modelos=$modelos.", ".$_POST['mondeo'];
-        }
-        if (isset($_POST['galaxy'])) {
-          $modelos=$modelos.", ".$_POST['galaxy'];
-        }
-        if (isset($_POST['smax'])) {
-          $modelos=$modelos.", ".$_POST['smax'];
-        }
-        if (isset($_POST['transit'])) {
-          $modelos=$modelos.", ".$_POST['transit'];
-        }
-        if (isset($_POST['kuga'])) {
-          $modelos=$modelos.", ".$_POST['kuga'];
-        }
-        if (isset($_POST['todos'])) {
-          $modelos=$modelos.", ".$_POST['todos'];
+        $arrayModelos=$_POST['sel'];
+        for ($i=0; $i < count($arrayModelos); $i++) {
+          if ($i==0) {
+            $modelos=$arrayModelos[$i];
+          }else {
+            $modelos= $modelos .", ".$arrayModelos[$i];
+          }
         }
 
         //guardamos las rutas de los archivos.

@@ -14,15 +14,15 @@
   <title>Directorio empleados</title>
   <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
   <script>
-      $(document).ready(function(){                    
-          var consulta;              
+      $(document).ready(function(){
+          var consulta;
           //hacemos focus al campo de busqueda
-          $("#busqueda").focus();                       
+          $("#busqueda").focus();
           //comprobamos si se pulsa una tecla
           $("#busqueda").keyup(function(e){
             //obtenemos el texto introducido en el campo de bÃºsqueda
-            consulta = $("#busqueda").val();           
-             //hace la bÃºsqueda             
+            consulta = $("#busqueda").val();
+             //hace la bÃºsqueda
                $.ajax({
                    type: "POST",
                    url: "buscar.php",
@@ -35,14 +35,14 @@
                    error: function(){
                        alert("Error en peticion");
                    },
-                  success: function(data){                                                    
+                  success: function(data){
                     $("#resultado").empty();
-                    $("#resultado").append(data); 
+                    $("#resultado").append(data);
                   }
-              });             
+              });
           });
       });
-      
+
   </script>
   <link rel='stylesheet prefetch' href='https://fonts.googleapis.com/css?family=Open+Sans'>
       <link rel="stylesheet" href="css/tabla.css">
@@ -50,22 +50,17 @@
 
 <body>
   <h1>DIRECTORIO EMPLEADOS</h1><br>
-    Buscar: <input type="text" id="busqueda"/><br /><br /> 
+    Buscar: <input type="text" id="busqueda"/><br /><br />
     <div id="resultado">
 
 <?php
   //MySQLi
-  require_once 'mysql-login.php';
-  $mysqli = new mysqli($hostname, $username, $password, $database);
-  $acentos = $mysqli->query("SET NAMES 'utf8'");
-  if ($mysqli -> connect_errno) {
-    die( "Fallo la conexión a MySQL: (" . $mysqli -> mysqli_connect_errno() . ") " . $mysqli -> mysqli_connect_error());
-  }
-  else{
-    
+  require_once '../db2.php';
+  $db= new db2();
+
     $consulta = "SELECT name, surname, email, tlf, movil FROM users";
-    $resultado = $mysqli -> query($consulta);
-    
+    $resultado = $db -> realizarConsulta($consulta);
+
     echo "
       <table id='tablamod'>
       <thead id='theadmod'>
@@ -88,12 +83,9 @@
             <tr id='trmod'>
               <td data-label='NOMBRE' id='tdmod'>".$nombre."</td>
               <td data-label='CORREO' id='tdmod'>".$email."</td>
-              <td data-label='MOVIL' id='tdmod'><a href='tel:".$movil."'>".$movil."</a></td>  
+              <td data-label='MOVIL' id='tdmod'><a href='tel:".$movil."'>".$movil."</a></td>
               <td data-label='TLF FIJO' id='tdmod'><a href='tel:".$fijo."'>".$fijo."</a></td>
             </tr>
-       
+
       ";} echo "</tbody></table></div></body></html>";
-  }
-  mysqli_close($mysqli);
-  //$mysqli -> mysqli_close();
 ?>

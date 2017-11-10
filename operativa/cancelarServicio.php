@@ -12,6 +12,7 @@
       $servicio= new Servicio();
       $cancelarServicio= $servicio->CancelarActividad($_GET['servicio'], $fecha);
       if ($cancelarServicio==true) {
+
         ?>
           <script type="text/javascript">
             window.location='actividadesActuales.php';

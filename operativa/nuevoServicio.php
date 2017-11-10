@@ -27,6 +27,16 @@ if (isset($_SESSION['usuario'])==false) {
     <link rel="shortcut icon" href="../imagenes/favicon.ico">
 		<link rel="stylesheet" type="text/css" href="../css/dashboard.css" />
     <script type="text/javascript" src="../js/servicioForm.js"></script>
+    <link href="../css/fSelect.css" rel="stylesheet">
+    <script src="../js/jquery.min.js"></script>
+    <script src="../js/fSelect.js"></script>
+    <script>
+      (function($) {
+          $(function() {
+              $('.test').fSelect();
+          });
+      })(jQuery);
+    </script>
 </head>
 <body>
   <head>
@@ -67,14 +77,14 @@ if (isset($_SESSION['usuario'])==false) {
         <form action="nuevoServibbdd.php" method="post" id="formulario" enctype="multipart/form-data">
           <div class="formthird">
               <p><label><i class="fa fa-question-circle"></i>Actividad (*)</label><input type="text" name="descripcion" required/></p>
-              <p><label><i class="fa fa-question-circle"></i>Modelos (*)</label></p>
-              <p><label><i class="fa fa-question-circle"></i></label><input type="checkbox" name="todos" value="TODOS"/>TODOS</p>
-              <p><label><i class="fa fa-question-circle"></i></label><input type="checkbox" name="mondeo" value="MONDEO"/>MONDEO</p>
-              <p><label><i class="fa fa-question-circle"></i></label><input type="checkbox" name="galaxy" value="GALAXY"/>GALAXY</p>
-              <p><label><i class="fa fa-question-circle"></i></label><input type="checkbox" name="smax" value="S-MAX"/>S-MAX</p>
-              <p><label><i class="fa fa-question-circle"></i></label><input type="checkbox" name="transit" value="TRANSIT CONNECT"/>TRANSIT CONNECT</p>
-              <p><label><i class="fa fa-question-circle"></i></label><input type="checkbox" name="kuga" value="KUGA"/>KUGA</p>
-
+              <p><label><i class="fa fa-question-circle"></i>Modelos (*)</label>
+                <select name="sel[]" class="test" multiple="multiple" id='multiple'>
+                        <option value='MONDEO'>MONDEO</option>
+                        <option value='KUGA'>KUGA</option>
+                        <option value='TRANSIT CONNECT'>CONNECT</option>
+                        <option value='GALAXY'>GALAXY</option>
+                        <option value='S-MAX'>S-MAX</option>
+                </select></p>
               <p><label><i class="fa fa-question-circle"></i>Fecha inicio (*)</label><input type="date" name="finicio" required/></p>
               <p><label><i class="fa fa-question-circle"></i>Cliente (*)</label>
                 <select name="cliente" required>
@@ -91,6 +101,11 @@ if (isset($_SESSION['usuario'])==false) {
               <p><label><i class="fa fa-question-circle"></i>Correo responsable (*)</label><input type="email" name="correo" required/></p>
           </div>
           <div class="formthird" id='contenedor'>
+            <p><label><i class="fa fa-question-circle"></i>Personas (aprox.)</label><input type="number" min='0' id="calculo" readonly/></p>
+            <p><label><i class="fa fa-question-circle"></i>Ciclo (segundos)</label><input type="number" min='0'id="segundos"/></p>
+            <p><label><i class="fa fa-question-circle"></i>Nº coches</label><input type="number" min='0'id="coches"/></p>
+            <button type="button" name="button" onclick="calculoPersonas();">Calcular</button>
+
               <p><label><i class="fa fa-question-circle"></i>Recursos totales (*)</label><input type="number" min='0' name="recursos" id="total" readonly/></p>
               <p><label><i class="fa fa-question-circle"></i>Turno mañana</label><input type="number" min='0' name="tm" id="tm" value='0' onclick="suma();" onkeyup="suma();"/></p>
               <p><label><i class="fa fa-question-circle"></i>Turno tarde</label><input type="number" min='0' name="tt" id="tt" value='0' onclick="suma();" onkeyup="suma();"/></p>

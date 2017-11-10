@@ -17,7 +17,7 @@ var i=0;
       //colocamos el nuevo elemento dentro del contenedor de referencia y delante del otro elemento
       contenedor.insertBefore(nuevo, seleccionado);
       //le ponemos el html al elemento creado
-      nuevo.innerHTML="<label><i class='fa fa-qestion-circle'></i>Otro turno</label><input class='threeinputs' type='time' name='f"+i+"'/><input class='threeinputs2' type='time' name='i"+i+"'/><input class='threeinputs1' type='number' value='0' min='0' id='in"+i+"' onclick='suma();' onkeyup='suma();' name='o"+i+"'/>";
+      nuevo.innerHTML="<label><i class='fa fa-qestion-circle'></i>Otro turno</label><input class='threeinputs' type='time' name='i"+i+"'/><input class='threeinputs2' type='time' name='f"+i+"'/><input class='threeinputs1' type='number' value='0' min='0' id='in"+i+"' onclick='suma();' onkeyup='suma();' name='o"+i+"'/>";
       //cogemos el boton que queremos borrar
       var borrar= document.getElementById('nuevoServicio');
       //borramos el boton que habiamos cogido
@@ -34,7 +34,7 @@ var i=0;
       //colocamos el nuevo elemento dentro del contenedor de referencia y delante del otro elemento
       contenedor.insertBefore(nuevo, seleccionado);
       //le ponemos el html al elemento seleccionado
-      nuevo.innerHTML="<label><i class='fa fa-qestion-circle'></i>Otro turno</label><input class='threeinputs' type='time' name='f"+i+"'/><input class='threeinputs2' type='time' name='i"+i+"'/><input class='threeinputs1' type='number' value='0' onclick='suma();' onkeyup='suma();' id='in"+i+"' min='0' name='o"+i+"'/>";
+      nuevo.innerHTML="<label><i class='fa fa-qestion-circle'></i>Otro turno</label><input class='threeinputs' type='time' name='i"+i+"'/><input class='threeinputs2' type='time' name='f"+i+"'/><input class='threeinputs1' type='number' value='0' onclick='suma();' onkeyup='suma();' id='in"+i+"' min='0' name='o"+i+"'/>";
     }
   }
 //funcion para ir sumando los recursos
@@ -81,4 +81,17 @@ var i=0;
     suma = contenido1 + contenido2 + contenido3 + contenido4 + contenido5 + contenido6 + contenido7 + contenido8 + contenido9;
     //apuntamos el resultado de la suma en el input del total
     document.getElementById('total').value= suma;
+}
+
+
+
+//funcion para sacar las personas aproximadas necesarias
+function calculoPersonas() {
+  var segundos= parseInt(document.getElementById('segundos').value);
+  var coches= parseInt(document.getElementById('coches').value);
+
+  var resultado= segundos*coches;
+  resultado= resultado/27900;
+
+  document.getElementById('calculo').value=Math.ceil(resultado);
 }

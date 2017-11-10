@@ -50,6 +50,7 @@
 							echo "<a href='files/Peticion_vacaciones.pdf'>Solicitar vacaciones</a>";
 						}elseif ($menu['menu']==2) {
 							echo "<a href='operativa/index.php'>APP Operativa</a>";
+							echo "<a href='directorio/index.php'>Directorio Empleados</a>";
 							echo "<a href='#'>Nóminas</a>";
 							echo "<a href='files/Plan_Trabajo_Supervisores_2017.pdf'>Plan trabajo anual</a>";
 							echo "<a href='files/Peticion_vacaciones.pdf'>Solicitar vacaciones</a>";

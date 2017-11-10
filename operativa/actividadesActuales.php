@@ -84,7 +84,6 @@ if (isset($_SESSION['usuario'])==false) {
               echo "<td data-label='Fecha inicio' id='tdmod'>".$lista['f_inicio']."</td>";
               echo "<td data-label='Cliente' id='tdmod'>".$clientes['nombre']."</td>";
               echo "  <td data-label='Opciones' id='tdmod'>
-              <a href='cancelarServicio.php?servicio=".$lista['id']."' title='Cancelar actividad'><i class='material-icons'>clear</i></a>
               <a href='modificarRecursos.php?servicio=".$lista['id']."' title='Modificar recursos actividad'><i class='material-icons'>people</i></a>
               <a href='modificarInfo.php?servicio=".$lista['id']."' title='Modificar información actividad'><i class='material-icons'>mode_edit</i></a>
               <a href='finalizarServicio.php?servicio=".$lista['id']."' title='Finalizar actividad'><i class='material-icons'>power_settings_new</i></a></td>";

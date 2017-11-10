@@ -88,38 +88,38 @@ if (isset($_SESSION['usuario'])==false) {
           <div class="formthird">
             <p>
               <label><i class='fa fa-qestion-circle'></i>Otro turno</label>
-              <input class='threeinputs' type='time' name='f1'value='<?=$inforecurso['fin1']?>'/>
-              <input class='threeinputs2' type='time' name='i1'value='<?=$inforecurso['inicio1']?>'/>
+              <input class='threeinputs' type='time' name='i1'value='<?=$inforecurso['inicio1']?>'/>
+              <input class='threeinputs2' type='time' name='f1' id="f1" value='<?=$inforecurso['fin1']?>'/>
               <input class='threeinputs1' type='number' value=<?=$inforecurso['otro1']?> min='0' id='in1' onclick='suma();' onkeyup='suma();' name='o1'/>
             </p>
             <p>
               <label><i class='fa fa-qestion-circle'></i>Otro turno</label>
-              <input class='threeinputs' type='time' name='f2' value='<?=$inforecurso['fin2']?>'/>
-              <input class='threeinputs2' type='time' name='i2'value='<?=$inforecurso['inicio2']?>'/>
+              <input class='threeinputs' type='time' name='i2'value='<?=$inforecurso['inicio2']?>'/>
+              <input class='threeinputs2' type='time' name='f2'id="f2" value='<?=$inforecurso['fin2']?>'/>
               <input class='threeinputs1' type='number' value=<?=$inforecurso['otro2']?> min='0' id='in2' onclick='suma();' onkeyup='suma();' name='o2'/>
             </p>
             <p>
               <label><i class='fa fa-qestion-circle'></i>Otro turno</label>
-              <input class='threeinputs' type='time' name='f3'value='<?=$inforecurso['fin3']?>'/>
-              <input class='threeinputs2' type='time' name='i3'value='<?=$inforecurso['inicio3']?>'/>
+              <input class='threeinputs' type='time' name='i3'value='<?=$inforecurso['inicio3']?>'/>
+              <input class='threeinputs2' type='time' name='f3' id="f3"value='<?=$inforecurso['fin3']?>'/>
               <input class='threeinputs1' type='number' value=<?=$inforecurso['otro3']?> min='0' id='in3' onclick='suma();' onkeyup='suma();' name='o3'/>
             </p>
             <p>
               <label><i class='fa fa-qestion-circle'></i>Otro turno</label>
-              <input class='threeinputs' type='time' name='f4' value='<?=$inforecurso['fin4']?>'/>
-              <input class='threeinputs2' type='time' name='i4' value="<?=$inforecurso['inicio4']?>"/>
+              <input class='threeinputs' type='time' name='i4' value="<?=$inforecurso['inicio4']?>"/>
+              <input class='threeinputs2' type='time' name='f4' id="f4"value='<?=$inforecurso['fin4']?>'/>
               <input class='threeinputs1' type='number' value=<?=$inforecurso['otro4']?> min='0' id='in4' onclick='suma();' onkeyup='suma();' name='o4'/>
             </p>
             <p>
               <label><i class='fa fa-qestion-circle'></i>Otro turno</label>
-              <input class='threeinputs' type='time' name='f5' value="<?=$inforecurso['fin5']?>"/>
-              <input class='threeinputs2' type='time' name='i5' value="<?=$inforecurso['inicio5']?>"/>
+              <input class='threeinputs' type='time' name='i5' value="<?=$inforecurso['inicio5']?>"/>
+              <input class='threeinputs2' type='time' name='f5' id="f5"value="<?=$inforecurso['fin5']?>"/>
               <input class='threeinputs1' type='number' value=<?=$inforecurso['otro5']?> min='0' id='in5' onclick='suma();' onkeyup='suma();' name='o5'/>
             </p>
             <p>
               <label><i class='fa fa-qestion-circle'></i>Otro turno</label>
-              <input class='threeinputs' type='time' name='f6' value="<?=$inforecurso['fin6']?>"/>
-              <input class='threeinputs2' type='time' name='i6' value="<?=$inforecurso['inicio6']?>"/>
+              <input class='threeinputs' type='time' name='i6' value="<?=$inforecurso['inicio6']?>"/>
+              <input class='threeinputs2' type='time' name='f6' id="f6" value="<?=$inforecurso['fin6']?>"/>
               <input class='threeinputs1' type='number' value=<?=$inforecurso['otro6']?> min='0' id='in6' onclick='suma();' onkeyup='suma();' name='o6'/>
             </p>
           </div>

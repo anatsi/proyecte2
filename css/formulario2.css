@@ -16,8 +16,8 @@
           -webkit-border-radius:10px;
           border-radius:10px;
           margin:20px auto;
-          /*text-align:justify;*/
-         width:90%;
+          text-align:justify;
+          width:90%;
           margin-top: 0;
         }
         form p {
@@ -26,7 +26,7 @@
           margin:1px 0;
           padding:0;
         }
-       input,text,email,password,input[type=text],
+        input,text,email,password,input[type=text],
         input[type=password],input[type=email],input[type=textarea],
         textarea,input[type=select],select {
           -moz-border-radius:5px;
@@ -34,27 +34,22 @@
           border-radius:5px;
           height:25px;
           line-height:25px;
-        /*  float:right; */
+          float:right;
           border:solid #ccc 1px;
           font-size:11px;
           color:#666;
-        }
-        #in1, #in2, #in3, #in4, #in5, #in6{
-          float: right;
-          text-align: justify;
-          margin-right: 27px !important;
         }
         input,text,email,password,input[type=text],input[type=password],
         input[type=email],input[type=textarea],textarea {
           width:48%;
           padding:0px 1%;
         }
-        /*input[type=select],select {
+        input[type=select],select {
           width:50%;
           padding:0px 1%;
           height:30px;
-        }*/
-        input[type=radio],radio/*,input[type=checkbox],checkbox*/ {
+        }
+        input[type=radio],radio,input[type=checkbox],checkbox {
           width:auto;
           padding:0px;
           margin-left:2%;
@@ -70,7 +65,6 @@
           width: 50%;
           margin-top: 1%;
           margin-right: 25%;
-          float: right;
         }
         input[type=submit]:hover,submit:hover {
           color: black;
@@ -144,13 +138,10 @@
               margin-left: 52% !important;
             }
             input,text,email,password,input[type=text],input[type=password],
-            input[type=email],input[type=textarea],textarea/*,input[type=select],select */{
-          /*    float:right;*/
+            input[type=email],input[type=textarea],textarea,input[type=select],select {
+              float:right;
             }
-            #in1, #in2, #in3, #in4, #in5, #in6{
-              float: right;
-            }
-            input[type=radio],radio/*,input[type=checkbox],checkbox*/ {
+            input[type=radio],radio,input[type=checkbox],checkbox {
               float:left;
             }
             label{
@@ -171,11 +162,6 @@
             }
             #busqueda{
               width: 70%;
-            }
-            #in1, #in2, #in3, #in4, #in5, #in6,
-            #f1, #f2, #f3, #f4, #f5, #f6{
-              float: none;
-              margin-left: 48% !important;
             }
         }
 

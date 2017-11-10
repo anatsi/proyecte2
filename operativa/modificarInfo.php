@@ -25,6 +25,16 @@ if (isset($_SESSION['usuario'])==false) {
     <link rel="shortcut icon" href="../imagenes/favicon.ico">
 		<link rel="stylesheet" type="text/css" href="../css/dashboard.css" />
     <script type="text/javascript" src="../js/servicioForm.js"></script>
+    <link href="../css/fSelect.css" rel="stylesheet">
+    <script src="../js/jquery.min.js"></script>
+    <script src="../js/fSelect.js"></script>
+    <script>
+      (function($) {
+          $(function() {
+              $('.test').fSelect();
+          });
+      })(jQuery);
+    </script>
 </head>
 <body>
   <head>
@@ -67,6 +77,7 @@ if (isset($_SESSION['usuario'])==false) {
         <!-- Contenido de la pagina. -->
         <h2>Modificar recursos actividad</h2>
         <h3><?=$infoservicio['descripcion']?></h3>
+        <h4><a style="color: black;" href='cancelarServicio.php?servicio=<?=$infoservicio['id']?>'>Cancelar Servicio</a></h4>
         <form action="modificarInfo.php" method="post" id="formulario">
           <div class="formthird" id='contenedor'>
             <input type="hidden" value=<?=$infoservicio['id']?> name="id">
@@ -78,7 +89,8 @@ if (isset($_SESSION['usuario'])==false) {
           </div>
           <div class="formthird">
             <p><label><i class="fa fa-question-circle"></i>Actividad</label><input type="text" value=<?=$infoservicio['descripcion']?> name="descripcion"/></p>
-            <p><label><i class="fa fa-question-circle"></i>Modelos (*)</label></p>
+            <p><label><i class="fa fa-question-circle"></i>Modelos (*)</label>
+            <select name="sel[]" class="test" multiple="multiple" id='multiple'>
               <?php
               //comprobamos que modelos estan seleccionados para asi ponerlos checkeados en el formulario
                 $mondeo=0;
@@ -91,58 +103,51 @@ if (isset($_SESSION['usuario'])==false) {
                 //sacamos los modelos de la bbdd y los separamos
                 $modelos=explode(",", $infoservicio['modelos']);
                 foreach ($modelos as $modelo) {
-                  if ($modelo==" MONDEO") {
+                  if ($modelo==" MONDEO" || $modelo=="MONDEO") {
                     $mondeo=1;
                   }
-                  if ($modelo==" GALAXY") {
+                  if ($modelo==" GALAXY" || $modelo=="GALAXY") {
                     $galaxy=1;
                   }
-                  if ($modelo==" S-MAX") {
+                  if ($modelo==" S-MAX" || $modelo=="S-MAX") {
                     $smax=1;
                   }
-                  if ($modelo==" TRANSIT CONNECT") {
+                  if ($modelo==" TRANSIT CONNECT" || $modelo=="TRANSIT CONNECT") {
                     $transit=1;
                   }
-                  if ($modelo==" KUGA") {
+                  if ($modelo==" KUGA" || $modelo=="KUGA") {
                     $kuga=1;
-                  }
-                  if ($modelo==" TODOS") {
-                    $todos=1;
                   }
                 }
                 //sacamos por pantalla todos deoendiendo de si estan checked o no
-                if ($todos==1) {
-                  echo "<p><label><i class='fa fa-question-circle'></i></label><input type='checkbox' name='todos' value='TODOS' checked/>TODOS</p>";
-                }else {
-                  echo "<p><label><i class='fa fa-question-circle'></i></label><input type='checkbox' name='todos' value='TODOS'/>TODOS</p>";
-                }
                 if ($mondeo==1) {
-                  echo "<p><label><i class='fa fa-question-circle'></i></label><input type='checkbox' name='mondeo' value='MONDEO' checked/>MONDEO</p>";
+                  echo "<option value='MONDEO' selected>MONDEO</option>";
                 }else {
-                  echo "<p><label><i class='fa fa-question-circle'></i></label><input type='checkbox' name='mondeo' value='MONDEO'/>MONDEO</p>";
+                  echo "<option value='MONDEO'>MONDEO</option>";
                 }
                 if ($galaxy==1) {
-                  echo "<p><label><i class='fa fa-question-circle'></i></label><input type='checkbox' name='galaxy' value='GALAXY' checked/>GALAXY</p>";
+                  echo "<option value='GALAXY' selected>GALAXY</option>";
                 }else {
-                  echo "<p><label><i class='fa fa-question-circle'></i></label><input type='checkbox' name='galaxy' value='GALAXY'/>GALAXY</p>";
+                  echo "<option value='GALAXY'>GALAXY</option>";
                 }
                 if ($smax==1) {
-                  echo "<p><label><i class='fa fa-question-circle'></i></label><input type='checkbox' name='smax' value='S-MAX' checked/>S-MAX</p>";
+                    echo "<option value='S-MAX' selected>S-MAX</option>";
                 }else {
-                  echo "<p><label><i class='fa fa-question-circle'></i></label><input type='checkbox' name='smax' value='S-MAX'/>S-MAX</p>";
+                  echo "<option value='S-MAX'>S-MAX</option>";
                 }
                 if ($transit==1) {
-                  echo "<p><label><i class='fa fa-question-circle'></i></label><input type='checkbox' name='transit' value='TRANSIT CONNECT' checked/>TRANSIT CONNECT</p>";
+                  echo "<option value='TRANSIT CONNECT' selected>CONNECT</option>";
                 }else {
-                  echo "<p><label><i class='fa fa-question-circle'></i></label><input type='checkbox' name='transit' value='TRANSIT CONNECT'/>TRANSIT CONNECT</p>";
+                  echo "<option value='TRANSIT CONNECT'>CONNECT</option>";
                 }
                 if ($kuga==1) {
-                  echo "<p><label><i class='fa fa-question-circle'></i></label><input type='checkbox' name='kuga' value='KUGA' checked/>KUGA</p>";
+                  echo "<option value='KUGA' selected>KUGA</option>";
                 }else {
-                  echo "<p><label><i class='fa fa-question-circle'></i></label><input type='checkbox' name='kuga' value='KUGA'/>KUGA</p>";
+                  echo "<option value='KUGA'>KUGA</option>";
                 }
 
                ?>
+               </select></p>
             <p><label><i class="fa fa-question-circle"></i>Responsable</label><input type="text" value=<?=$infoservicio['responsable']?> name="responsable"/></p>
             <p><label><i class="fa fa-question-circle"></i>Tel. responsable</label><input type="tel" value=<?=$infoservicio['telefono']?> name="tel"/></p>
             <p><label><i class="fa fa-question-circle"></i>Correo responsable</label><input type="email" value=<?=$infoservicio['correo']?> name="correo"/></p>
@@ -174,23 +179,13 @@ if (isset($_POST['submit'])) {
   if (isset($_POST['id']) && empty($_POST['inicio'])==false || isset($_POST['id']) && empty($_POST['suelto'])==false) {
     //juntamos los modelos en una variable
     $modelos="";
-    if (isset($_POST['mondeo'])) {
-      $modelos=$modelos.", ".$_POST['mondeo'];
-    }
-    if (isset($_POST['galaxy'])) {
-      $modelos=$modelos.", ".$_POST['galaxy'];
-    }
-    if (isset($_POST['smax'])) {
-      $modelos=$modelos.", ".$_POST['smax'];
-    }
-    if (isset($_POST['transit'])) {
-      $modelos=$modelos.", ".$_POST['transit'];
-    }
-    if (isset($_POST['kuga'])) {
-      $modelos=$modelos.", ".$_POST['kuga'];
-    }
-    if (isset($_POST['todos'])) {
-      $modelos=$modelos.", ".$_POST['todos'];
+    $arrayModelos=$_POST['sel'];
+    for ($i=0; $i < count($arrayModelos); $i++) {
+      if ($i==0) {
+        $modelos=$arrayModelos[$i];
+      }else {
+        $modelos= $modelos .", ".$arrayModelos[$i];
+      }
     }
     //llamamos a la funcion de modificar la informacion
     $modificacion=$servicio->modificarInfo($_POST['id'], $_POST['inicio'], $_POST['fin'], $_POST['suelto'], $_POST['descripcion'], $modelos, $_POST['responsable'], $_POST['tel'], $_POST['correo'], $_POST['csup'], $_POST['crrhh'],

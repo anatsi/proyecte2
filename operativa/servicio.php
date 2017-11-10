@@ -16,9 +16,19 @@ class Servicio extends db
   function ServiciosTomorrow()
   {
     //cogemos la fecha de mañana para compararla con lo que vamos a sacar.
-    $dia_manana = date('d',time()+84600);
-    $mes_ano = date('Y-m');
-    $fecha=$mes_ano."-".$dia_manana;
+    $dia_manana = date('d')+1;
+    $mes=date('m');
+    $numerodias=date('t');
+    if ($dia_manana>$numerodias) {
+      $dia_manana=1;
+      if ($mes!=12) {
+        $mes=$mes+1;
+      }else {
+        $mes=1;
+      }
+    }
+    $ano = date('Y');
+    $fecha=$ano."-".$mes."-".$dia_manana;
     //Construimos la consulta
     $sql="SELECT * from servicios WHERE f_inicio<='".$fecha."' AND f_fin IS NULL";
     //Realizamos la consulta
@@ -181,7 +191,7 @@ function RelacionActividad($id1, $id2){
     //Construimos la consulta
     $sql="SELECT * FROM servicios s INNER JOIN cliente c ON s.id_cliente=c.id
           WHERE s.descripcion LIKE '%".$filtro."%' AND f_fin<= '".$fecha."' OR s.modelos LIKE '%".$filtro."%'  AND f_fin<= '".$fecha."'
-          OR c.nombre LIKE '%".$filtro."%'  AND f_fin<= '".$fecha."' ;";
+          OR c.nombre LIKE '%".$filtro."%'  AND f_fin<= '".$fecha."' OR s.responsable LIKE '%".$filtro."%' AND f_fin<='".$fecha."'";
     //Realizamos la consulta
     $resultado=$this->realizarConsulta($sql);
     if($resultado!=null){

@@ -1,22 +1,17 @@
 <?php
-      
+
       $buscar = $_POST['b'];
-       
+
       if(!empty($buscar)) {
             buscar($buscar);
       }else{
 
-              require_once 'mysql-login.php';
-              $mysqli = new mysqli($hostname, $username, $password, $database);
-              $acentos = $mysqli->query("SET NAMES 'utf8'");
-              if ($mysqli -> connect_errno) {
-                die( "Fallo la conexión a MySQL: (" . $mysqli -> mysqli_connect_errno() . ") " . $mysqli -> mysqli_connect_error());
-              }
-              else{
-                
+              require_once '../db2.php';
+              $db= new db2();
+
                 $consulta = "SELECT name, surname, email, tlf, movil FROM users";
-                $resultado = $mysqli -> query($consulta);
-                
+                $resultado = $db -> realizarConsulta($consulta);
+
                 echo "
                   <table id='tablamod'>
                   <thead id='theadmod'>
@@ -42,23 +37,23 @@
                           <td data-label='MOVIL' id='tdmod'><a href='tel:".$movil."'>".$movil."</a></td>
                           <td data-label='TLF FIJO' id='tdmod'><a href='tel:".$fijo."'>".$fijo."</a></td>
                         </tr>
-                   
+
                   ";} echo "</tbody></table>";
-                  }
+
       }
-       
+
       function buscar($b) {
-            require_once 'mysql-login.php';
-            $mysqli = new mysqli($hostname, $username, $password, $database);
-            $acentos = $mysqli->query("SET NAMES 'utf8'");
+            require_once '../db2.php';
+            $db= new db2();
+
 
             $consulta = "SELECT name, surname, email, tlf, movil FROM users WHERE name LIKE '%".$b."%'";
-            $resultado = $mysqli -> query($consulta);
-             
+            $resultado = $db -> realizarConsulta($consulta);
+
             $row_cnt = $resultado -> num_rows;
 
             //printf("Result set has %d rows.\n", $row_cnt);
-             
+
             if($row_cnt == 0){
                   echo "No se han encontrado resultados para '<b>".$b."</b>'.";
             }else{
@@ -87,9 +82,9 @@
                           <td data-label='MOVIL' id='tdmod'><a href='tel:".$movil."'>".$movil."</a></td>
                           <td data-label='TLF FIJO' id='tdmod'><a href='tel:".$fijo."'>".$fijo."</a></td>
                         </tr>
-                   
+
                   ";} echo "</tbody></table></div></body></html>";
-                  
+
             }
-      }     
+      }
 ?>
