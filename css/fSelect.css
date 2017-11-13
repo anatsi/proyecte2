@@ -1,8 +1,9 @@
 .fs-wrap {
     display: inline-block;
-    cursor: pointer;
+  /*  cursor: pointer;*/
     line-height: 1;
     width: 200px;
+    margin-left: 96px;
 }
 
 .fs-label-wrap {
@@ -33,7 +34,7 @@
     border-left: 5px solid transparent;
     border-right: 5px solid transparent;
     border-top: 5px solid #333;
-    position: absolute;
+   position: absolute;
     top: 0;
     right: 5px;
     bottom: 0;
@@ -97,7 +98,7 @@
 }
 
 .fs-wrap.multiple .fs-checkbox {
-    position: absolute;
+   position: absolute;
     display: block;
     width: 30px;
     top: 0;

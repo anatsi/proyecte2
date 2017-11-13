@@ -77,11 +77,14 @@ if (isset($_SESSION['usuario'])==false) {
           <?php
             $listamodificar=$servicio->listaServiciosHoy();
             foreach ($listamodificar as $lista) {
+              //transformamos la fecha
+              $fecha=explode("-", $lista['f_inicio']);
+              $fechaHoy=$fecha[2]."-".$fecha[1]."-".$fecha[0];
               $clientes=$cliente->ClienteId($lista['id_cliente']);
               echo "<tr id='trmod'>";
               echo "<td scope='row' data-label='Actividad' id='tdmod'>".$lista['descripcion']."</td>";
               echo "<td data-label='Modelos' id='tdmod'>".$lista['modelos']."</td>";
-              echo "<td data-label='Fecha inicio' id='tdmod'>".$lista['f_inicio']."</td>";
+              echo "<td data-label='Fecha inicio' id='tdmod'>".$fechaHoy."</td>";
               echo "<td data-label='Cliente' id='tdmod'>".$clientes['nombre']."</td>";
               echo "  <td data-label='Opciones' id='tdmod'>
               <a href='modificarRecursos.php?servicio=".$lista['id']."' title='Modificar recursos actividad'><i class='material-icons'>people</i></a>

@@ -153,8 +153,6 @@ function RelacionActividad($id1, $id2){
     //realizamos la consuta y la guardamos en $sql
     $sql="INSERT INTO mod_info(id, servicio, inicio, fin, suelto, descripcion, modelos, responsable, telefono, correo, com_supervisor, com_rrhh, com_admin_fin, com_depto)
     VALUES (NULL, ".$servicio.", '".$inicio."', '".$fin."', '".$suelto."', '".$desc."', '".$modelos."', '".$responsable."', ".$tel.", '".$correo."', '".$csup."', '".$crrhh."', '".$caf."', '".$cdo."')";
-
-    echo $sql;
     //Realizamos la consulta utilizando la funcion creada en db.php
     $resultado=$this->realizarConsulta($sql);
     if($resultado!=false){

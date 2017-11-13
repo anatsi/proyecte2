@@ -175,6 +175,7 @@ if (isset($_SESSION['usuario'])==false) {
 </body>
 </html>
 <?php
+
 if (isset($_POST['submit'])) {
   if (isset($_POST['id']) && empty($_POST['inicio'])==false || isset($_POST['id']) && empty($_POST['suelto'])==false) {
     //juntamos los modelos en una variable

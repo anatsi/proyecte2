@@ -54,6 +54,10 @@
           padding:0px 1%;
           height:30px;
         }*/
+        input[type=file]{
+          margin-left: 100px;
+          margin-bottom: 5px;
+        }
         input[type=radio],radio/*,input[type=checkbox],checkbox*/ {
           width:auto;
           padding:0px;
@@ -95,6 +99,8 @@
         button{
           text-align: center;
           margin-left: 140px;
+          margin-bottom: 10px;
+          margin-top: 5px;
         }
         .threeinputs{
           margin:0 !important;
@@ -156,6 +162,10 @@
             label{
               font-size:14px;
             }
+            input[type=file]{
+              margin-left: 45px;
+              margin-bottom: 5px;
+            }
         }
         @media only screen and (max-width: 767px) {
           form{
@@ -176,6 +186,10 @@
             #f1, #f2, #f3, #f4, #f5, #f6{
               float: none;
               margin-left: 48% !important;
+            }
+            input[type=file]{
+              margin-left: 45px;
+              margin-bottom: 5px;
             }
         }
 
