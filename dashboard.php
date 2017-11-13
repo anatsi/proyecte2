@@ -33,7 +33,7 @@
 					//sacamos el nombre de usuario por su id
 					echo "<a><strong>Bienvenido ".$nombreuser['name']."</strong></a>";
 				 ?>
-				<span class="right"><a href="logout.php">Cerrar Sesion</a></span>
+				<span class="right"><a href="logout.php" id="logout">Cerrar Sesion</a></span>
 			</div><!--/ Codrops top bar -->
 			<header class="clearfix">
 				<h1>Intranet</h1>

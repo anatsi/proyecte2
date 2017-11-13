@@ -162,6 +162,9 @@ h3{
 h4{
 	margin-left: 10%;
 }
+#logout{
+	color: red;
+}
 @media screen and (max-width: 46.0625em) {
 
 	.main {

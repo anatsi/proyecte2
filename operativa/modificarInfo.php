@@ -48,7 +48,7 @@ if (isset($_SESSION['usuario'])==false) {
     //sacamos el nombre de usuario por su id
     echo "<a><strong>Bienvenido ".$nombreuser['name']."</strong></a>";
    ?>
-  <span class="right"><a href="../logout.php">Cerrar Sesion</a></span>
+  <span class="right"><a href="../logout.php" id="logout">Cerrar Sesion</a></span>
 </div><!--/ Codrops top bar -->
 
 <div class="site-container">
@@ -77,7 +77,7 @@ if (isset($_SESSION['usuario'])==false) {
         <!-- Contenido de la pagina. -->
         <h2>Modificar recursos actividad</h2>
         <h3><?=$infoservicio['descripcion']?></h3>
-        <h4><a style="color: black;" href='cancelarServicio.php?servicio=<?=$infoservicio['id']?>'>Cancelar Servicio</a></h4>
+        <h4><a style="color: red;" href='cancelarServicio.php?servicio=<?=$infoservicio['id']?>'>Cancelar Servicio</a></h4>
         <form action="modificarInfo.php" method="post" id="formulario">
           <div class="formthird" id='contenedor'>
             <input type="hidden" value=<?=$infoservicio['id']?> name="id">

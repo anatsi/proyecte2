@@ -1,5 +1,6 @@
 //inicializamos un contador
 var i=0;
+var z=1;
   //funcion que añadira los input del nuevo horario
   function nuevo() {
     if (i>5) {
@@ -94,4 +95,39 @@ function calculoPersonas() {
   resultado= resultado/27900;
 
   document.getElementById('calculo').value=Math.ceil(resultado);
+}
+
+function archivos() {
+  if (z>4) {
+    return false;
+  }else if (z==4) {
+    //si hay 4 aparte de sacar un input eliminamos el boton
+    //subimos el contador
+    z++;
+    //creamos el elemento que queremos añadir
+    var nuevo= document.createElement("p");
+    //cogemos dos elcementos de referencia para saber donde colocar el nuestro
+    var contenedor= document.getElementById('archivos');
+    //colocamos el nuevo elemento dentro del contenedor de referencia
+    contenedor.appendChild(nuevo);
+    //le ponemos el html al elemento creado
+    nuevo.innerHTML="<input type='file' name='archivo"+z+"' value='archivo"+z+"' id='archivo"+z+"'>";
+    //cogemos el boton que queremos borrar
+    var borrar= document.getElementById('nuevoarchivo');
+    //borramos el boton que habiamos cogido
+    borrar.parentNode.removeChild(borrar);
+  }else {
+    //subimos el contador
+    z++;
+    //creamos el elemento que queremos añadir
+    var nuevo= document.createElement("p");
+    //cogemos dos elcementos de referencia para saber donde colocar el nuestro
+    var contenedor= document.getElementById('archivos');
+    //colocamos el nuevo elemento dentro del contenedor de referencia
+    contenedor.appendChild(nuevo);
+    //le ponemos el html al elemento creado
+    nuevo.innerHTML="<input type='file' name='archivo"+z+"' value='archivo"+z+"' id='archivo"+z+"'>";
+    //cogemos el boton que queremos borrar
+    var borrar= document.getElementById('nuevoarchivo');
+  }
 }
