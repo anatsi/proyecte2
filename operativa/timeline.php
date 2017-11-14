@@ -95,7 +95,7 @@ if (isset($_SESSION['usuario'])==false) {
             <div class="timeline-article">
               <div class="content-left-container">
                 <div class="content-left">
-                  <p>When I orbited the Earth in a spaceship, I saw for the first time how beautiful our planet is. Mankind, let us preserve and increase this beauty, and not destroy it! <span class="article-number">01</span></p>
+                  <p>When I orbited the Earth in a spaceship, I saw for the first time how beautiful our planet is. Mankind, let us preserve and increase this beauty, and not destroy it!</p>
                 </div>
               </div>
             <!--  <div class="content-right-container">
@@ -114,7 +114,7 @@ if (isset($_SESSION['usuario'])==false) {
             <div class="timeline-article">
              <div class="content-left-container">
                 <div class="content-left">
-                  <p>When I orbited the Earth in a spaceship, I saw for the first time how beautiful our planet is. Mankind, let us preserve and increase this beauty, and not destroy it! <span class="article-number">01</span></p>
+                  <p>When I orbited the Earth in a spaceship, I saw for the first time how beautiful our planet is. Mankind, let us preserve and increase this beauty, and not destroy it!</p>
                 </div>
               </div>
             <!--  <div class="content-right-container">
