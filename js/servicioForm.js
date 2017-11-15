@@ -18,7 +18,7 @@ var z=1;
       //colocamos el nuevo elemento dentro del contenedor de referencia y delante del otro elemento
       contenedor.insertBefore(nuevo, seleccionado);
       //le ponemos el html al elemento creado
-      nuevo.innerHTML="<label><i class='fa fa-qestion-circle'></i>Otro turno</label><input class='threeinputs' type='time' name='i"+i+"'/><input class='threeinputs2' type='time' name='f"+i+"'/><input class='threeinputs1' type='number' value='0' min='0' id='in"+i+"' onclick='suma();' onkeyup='suma();' name='o"+i+"'/>";
+      nuevo.innerHTML="<label><i class='fa fa-qestion-circle'></i>Otro turno</label><input class='threeinputs' type='time' name='i"+i+"'/><input class='threeinputs2' type='time' id='f"+i+"' name='f"+i+"'/><input class='threeinputs1' type='number' value='0' min='0' id='in"+i+"' onclick='suma();' onkeyup='suma();' name='o"+i+"'/>";
       //cogemos el boton que queremos borrar
       var borrar= document.getElementById('nuevoServicio');
       //borramos el boton que habiamos cogido
@@ -35,7 +35,7 @@ var z=1;
       //colocamos el nuevo elemento dentro del contenedor de referencia y delante del otro elemento
       contenedor.insertBefore(nuevo, seleccionado);
       //le ponemos el html al elemento seleccionado
-      nuevo.innerHTML="<label><i class='fa fa-qestion-circle'></i>Otro turno</label><input class='threeinputs' type='time' name='i"+i+"'/><input class='threeinputs2' type='time' name='f"+i+"'/><input class='threeinputs1' type='number' value='0' onclick='suma();' onkeyup='suma();' id='in"+i+"' min='0' name='o"+i+"'/>";
+      nuevo.innerHTML="<label><i class='fa fa-qestion-circle'></i>Otro turno</label><input class='threeinputs' type='time' name='i"+i+"'/><input class='threeinputs2' type='time' id='f"+i+"' name='f"+i+"'/><input class='threeinputs1' type='number' value='0' onclick='suma();' onkeyup='suma();' id='in"+i+"' min='0' name='o"+i+"'/>";
     }
   }
 //funcion para ir sumando los recursos

@@ -72,9 +72,8 @@
 .timeline-article p {
   margin: 0 0 0 60px;
   padding: 0;
-  font-weight: 400;
   color: #242424;
-  font-size: 14px;
+  font-size: 16px;
   line-height: 24px;
   position: relative;
 }
@@ -152,7 +151,33 @@
   margin-bottom: 100px;
   margin-left: 50px;
 }
-
+#listaDerecha ul, #listaIzquierda ul{
+  color: black;
+}
+#vacio{
+  visibility: hidden;
+}
+.hidden{
+  display: none;
+}
+.botones{
+  margin-left: 27%;
+  margin-bottom: 5%;
+}
+#general, #recursos{
+  height: 50px;
+  width: 100px;
+  background-color: lightgrey;
+  border-radius: 20px;
+  outline: none;
+}
+p b{
+  font-weight: bold;
+}
+li a{
+  color: black;
+  text-decoration: underline;
+}
 /*===== // Vertical Timeline =====*/
 
 /*===== Resonsive Vertical Timeline =====*/
@@ -193,6 +218,13 @@
   .timeline-article .content-right:before {
     display: none;
   }
+  #vacio{
+    display: none;
+  }
+  .botones{
+    margin-left: 1%;
+    margin-bottom: 5%;
+  }
 }
 @media only screen and (max-width: 400px) {
   .timeline-article p {
@@ -201,6 +233,12 @@
   .timeline-article p span.article-number {
     display: none;
   }
-
+  #vacio{
+    display: none;
+  }
+  .botones{
+    margin-left: 1%;
+    margin-bottom: 5%;
+  }
 }
 /*===== // Resonsive Vertical Timeline =====*/

@@ -204,6 +204,40 @@ function RelacionActividad($id1, $id2){
     }
   }
 
+  //funcion para sacar las modificaciones de informacion de un servicio
+  function mod_info($id){
+    //Construimos la consulta
+     $sql="select *, replace(concat(inicio, suelto), '0000-00-00', '') as fecha from mod_info where servicio=".$id." order by fecha";
+     //Realizamos la consulta
+     $resultado=$this->realizarConsulta($sql);
+     if($resultado!=null){
+       //Montamos la tabla de resultado
+       $tabla=[];
+       while($fila=$resultado->fetch_assoc()){
+         $tabla[]=$fila;
+       }
+       return $tabla;
+     }else{
+       return null;
+     }
+}
+//funcion para sacar las modificaciones de informacion de un servicio
+function dias_recursos($id){
+  //Construimos la consulta
+   $sql="select *, replace(concat(inicio, suelto), '0000-00-00', '') as fecha from dias_recursos where servicio=".$id." order by fecha";
+   //Realizamos la consulta
+   $resultado=$this->realizarConsulta($sql);
+   if($resultado!=null){
+     //Montamos la tabla de resultado
+     $tabla=[];
+     while($fila=$resultado->fetch_assoc()){
+       $tabla[]=$fila;
+     }
+     return $tabla;
+   }else{
+     return null;
+   }
+}
 }
 
 

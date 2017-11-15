@@ -28,7 +28,7 @@ if(!empty($buscar)) {
         $clientes=$cliente->ClienteId($servicio['id_cliente']);
          echo "
             <tr id='trmod'>
-              <td data-label='NOMBRE' id='tdmod'>".$servicio['descripcion']."</td>
+              <td data-label='NOMBRE' id='tdmod'><a href='timeline.php?servicio=".$servicio['id']."'>".$servicio['descripcion']."</a></td>
               <td data-label='CORREO' id='tdmod'>".$servicio['modelos']."</td>
               <td data-label='MOVIL' id='tdmod'>".$clientes['nombre']."</td>
               <td data-label='TLF FIJO' id='tdmod'>".$servicio['responsable']."</td>
@@ -58,7 +58,7 @@ function buscar($b) {
             $clientes=$cliente->ClienteId($servicio['id_cliente']);
              echo "
                 <tr id='trmod'>
-                  <td data-label='NOMBRE' id='tdmod'>".$servicio['descripcion']."</td>
+                  <td data-label='NOMBRE' id='tdmod'><a href='timeline.php?servicio=".$servicio['id']."'>".$servicio['descripcion']."</a></td>
                   <td data-label='CORREO' id='tdmod'>".$servicio['modelos']."</td>
                   <td data-label='MOVIL' id='tdmod'>".$clientes['nombre']."</td>
                   <td data-label='TLF FIJO' id='tdmod'>".$servicio['responsable']."</td>

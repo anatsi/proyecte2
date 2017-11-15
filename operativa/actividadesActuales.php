@@ -82,7 +82,7 @@ if (isset($_SESSION['usuario'])==false) {
               $fechaHoy=$fecha[2]."-".$fecha[1]."-".$fecha[0];
               $clientes=$cliente->ClienteId($lista['id_cliente']);
               echo "<tr id='trmod'>";
-              echo "<td scope='row' data-label='Actividad' id='tdmod'>".$lista['descripcion']."</td>";
+              echo "<td scope='row' data-label='Actividad' id='tdmod'><a id='timeline' href='timeline.php?servicio=".$lista['id']."'>".$lista['descripcion']."</a></td>";
               echo "<td data-label='Modelos' id='tdmod'>".$lista['modelos']."</td>";
               echo "<td data-label='Fecha inicio' id='tdmod'>".$fechaHoy."</td>";
               echo "<td data-label='Cliente' id='tdmod'>".$clientes['nombre']."</td>";

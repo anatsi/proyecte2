@@ -37,6 +37,10 @@ i{
 i:hover{
   color: darkgrey;
 }
+tr a{
+  color: black;
+  text-decoration: underline;
+}
 @media screen and (max-width: 600px) {
   #tablamod {
     border: 0;
@@ -64,10 +68,6 @@ i:hover{
     text-align: right;
   }
   #tablamod #tdmod:before {
-    /*
-    * aria-label has no advantage, it won't be read inside a table
-    content: attr(aria-label);
-    */
     content: attr(data-label);
     float: left;
     font-weight: bold;
@@ -76,4 +76,8 @@ i:hover{
   #tablamod #tdmod:last-child {
     border-bottom: 0;
   }
+}
+#timeline{
+  color:black;
+  text-decoration: underline;
 }

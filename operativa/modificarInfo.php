@@ -75,7 +75,7 @@ if (isset($_SESSION['usuario'])==false) {
     <div class="site-content">
       <div class="container">
         <!-- Contenido de la pagina. -->
-        <h2>Modificar recursos actividad</h2>
+        <h2>Modificar informacion de la actividad</h2>
         <h3><?=$infoservicio['descripcion']?></h3>
         <h4><a style="color: red;" href='cancelarServicio.php?servicio=<?=$infoservicio['id']?>'>Cancelar Servicio</a></h4>
         <form action="modificarInfo.php" method="post" id="formulario">
