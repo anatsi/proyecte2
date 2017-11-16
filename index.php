@@ -1,4 +1,11 @@
 <?php
+    //Reconocimiento idioma
+    require('./languages/languages.php');
+    $lang = "es";
+    if ( isset($_GET['lang']) ){
+        $lang = $_GET['lang'];
+    }
+
   require_once 'sesiones.php';
   $sesion= new Sesiones();
 
@@ -7,7 +14,7 @@
   }else {
  ?>
 <!DOCTYPE html>
-<html>
+<html lang="es">
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -33,24 +40,27 @@
                             <div class="form-top">
                                 <div class="form-top-left">
                                     <p><img src="assets/files/logo.png" alt="logo TSI" title="Logo TSI" width="100" height="75" /></p>
-                                    <h3>Area privada empleados</h3>
-                                    <p>Introducir usuario y contraseña para iniciar sesión:</p>
+                                    <h3><?php echo __('Area privada empleados', $lang) ?></h3>
+                                    <p><?php echo __('Introducir usuario y contraseña para iniciar sesión:', $lang) ?></p>
                                 </div>
                                 <div class="form-top-right">
-                                    <i class="fa fa-lock"></i>
+                                    <i class="fa fa-lock">
+                                    <a href= "<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>?lang=es"><img src="./languages/Spain-flag.png" alt="Spanish" title="Spanish" width="35" height="35"/></a>
+                                    <a href= "<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>?lang=en"><img src="./languages/United-kingdom-flag.png" alt="English" title="English" width="35" height="35"/></a>
+                                    </i>
                                 </div>
                             </div>
                             <div class="form-bottom">
-                                <form role="form" action="login.php" method="post" class="login-form">
+                                <form role="form" action="login.php?lang=<?php echo $lang; ?>" method="post" class="login-form">
                                     <div class="form-group">
-                                        <label class="sr-only" for="form-username">Usuario...</label>
-                                        <input type="text" name="form-username" placeholder="Usuario..." class="form-username form-control" id="form-username">
+                                        <label class="sr-only" for="form-username"><?php echo __('Usuario...', $lang) ?></label>
+                                        <input type="text" name="form-username" placeholder="<?php echo __('Usuario...', $lang) ?>" class="form-username form-control" id="form-username">
                                     </div>
                                     <div class="form-group">
-                                        <label class="sr-only" for="form-password">Contraseña...</label>
-                                        <input type="password" name="form-password" placeholder="Contraseña..." class="form-password form-control" id="form-password">
+                                        <label class="sr-only" for="form-password"><?php echo __('Contraseña...', $lang) ?></label>
+                                        <input type="password" name="form-password" placeholder="<?php echo __('Contraseña...', $lang) ?>" class="form-password form-control" id="form-password">
                                     </div>
-                                    <button type="submit" class="btn">Enviar!</button>
+                                    <button type="submit" class="btn"><?php echo __('Enviar', $lang) ?></button>
                                 </form>
                             </div>
                         </div>
