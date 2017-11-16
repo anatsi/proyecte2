@@ -147,18 +147,6 @@ if (isset($_SESSION['usuario'])==false) {
                   echo "<p><b>ACTIVIDAD:</b> ".$modificacion['descripcion']."</p>";
                   echo "<p><b>MODELOS:</b> ".$modificacion['modelos']."</p>";
                   echo "<p><b>RESPONSABLE:</b> ".$modificacion['responsable']."</p>";
-                  if ($modificacion['com_supervisor'] != null && $modificacion['com_supervisor'] != "") {
-                    echo "<p><b>COMENTARIO SUPERVISOR:</b> ".$modificacion['com_supervisor']."</p>";
-                  }
-                  if ($modificacion['com_rrhh'] != null && $modificacion['com_rrhh'] != "") {
-                    echo "<p><b>COMENTARIO RRHH:</b> ".$modificacion['com_rrhh']."</p>";
-                  }
-                  if ($modificacion['com_admin_fin'] != null && $modificacion['com_admin_fin'] != "") {
-                    echo "<p><b>COMENTARIO ADMIN. FINANCIERO:</b> ".$modificacion['com_admin_fin']."</p>";
-                  }
-                  if ($modificacion['com_depto'] != null && $modificacion['com_depto'] != "") {
-                    echo "<p><b>COMENTARIO DEPT.OPERATIVO:</b> ".$modificacion['com_depto']."</p>";
-                  }
                   echo "</div></div>";
                   echo "<div class='meta-date'>";
                   if ($modificacion['inicio'] != null && $modificacion['inicio'] != '0000-00-00') {

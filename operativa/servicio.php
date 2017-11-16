@@ -30,7 +30,7 @@ class Servicio extends db
     $ano = date('Y');
     $fecha=$ano."-".$mes."-".$dia_manana;
     //Construimos la consulta
-    $sql="SELECT * from servicios WHERE f_inicio<='".$fecha."' AND f_fin IS NULL";
+    $sql="SELECT * from servicios WHERE f_inicio<='".$fecha."' AND f_fin IS NULL ORDER BY f_inicio desc";
     //Realizamos la consulta
     $resultado=$this->realizarConsulta($sql);
     if($resultado!=null){
@@ -65,7 +65,7 @@ class Servicio extends db
     //cogemos la fecha de hoy para compararla con lo que vamos a sacar.
     $fecha=date("Y-m-d");
     //Construimos la consulta
-    $sql="SELECT * from servicios WHERE f_inicio<='".$fecha."' AND f_fin IS NULL";
+    $sql="SELECT * from servicios WHERE f_inicio<='".$fecha."' AND f_fin IS NULL ORDER BY f_inicio desc";
     //Realizamos la consulta
     $resultado=$this->realizarConsulta($sql);
     if($resultado!=null){
@@ -149,10 +149,10 @@ function RelacionActividad($id1, $id2){
 
 
     //funcion para modificar la informacion de un servicio
-  function modificarInfo($servicio, $inicio, $fin, $suelto, $desc, $modelos, $responsable, $tel, $correo, $csup, $crrhh, $caf, $cdo){
+  function modificarInfo($servicio, $inicio, $fin, $suelto, $desc, $modelos, $responsable, $tel, $correo){
     //realizamos la consuta y la guardamos en $sql
-    $sql="INSERT INTO mod_info(id, servicio, inicio, fin, suelto, descripcion, modelos, responsable, telefono, correo, com_supervisor, com_rrhh, com_admin_fin, com_depto)
-    VALUES (NULL, ".$servicio.", '".$inicio."', '".$fin."', '".$suelto."', '".$desc."', '".$modelos."', '".$responsable."', ".$tel.", '".$correo."', '".$csup."', '".$crrhh."', '".$caf."', '".$cdo."')";
+    $sql="INSERT INTO mod_info(id, servicio, inicio, fin, suelto, descripcion, modelos, responsable, telefono, correo)
+    VALUES (NULL, ".$servicio.", '".$inicio."', '".$fin."', '".$suelto."', '".$desc."', '".$modelos."', '".$responsable."', ".$tel.", '".$correo."')";
     //Realizamos la consulta utilizando la funcion creada en db.php
     $resultado=$this->realizarConsulta($sql);
     if($resultado!=false){
