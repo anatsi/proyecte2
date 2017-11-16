@@ -40,14 +40,15 @@
                             <div class="form-top">
                                 <div class="form-top-left">
                                     <p><img src="assets/files/logo.png" alt="logo TSI" title="Logo TSI" width="100" height="75" /></p>
-                                    <h3><?php echo __('Area privada empleados', $lang) ?></h3>
+                                    <h3><?php echo __('Area empleados', $lang) ?></h3>
                                     <p><?php echo __('Introducir usuario y contraseña para iniciar sesión:', $lang) ?></p>
                                 </div>
                                 <div class="form-top-right">
                                     <i class="fa fa-lock">
-                                    <a href= "<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>?lang=es"><img src="./languages/Spain-flag.png" alt="Spanish" title="Spanish" width="35" height="35"/></a>
-                                    <a href= "<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>?lang=en"><img src="./languages/United-kingdom-flag.png" alt="English" title="English" width="35" height="35"/></a>
-                                    </i>
+                                    <a href= "<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>?lang=es"><img src="./languages/Spain-flag.png" alt="Spanish" title="Spanish" width="23" height="23"/></a>
+                                    <a href= "<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>?lang=en"><img src="./languages/United-kingdom-flag.png" alt="English" title="English" width="23" height="23"/></a>
+                                    <!--<a href= "<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>?lang=es"><FONT SIZE=3 COLOR=BLUE>ES</FONT></a>
+                                    <a href= "<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>?lang=en"><FONT SIZE=3 COLOR=BLUE>EN</FONT></a>--></i>
                                 </div>
                             </div>
                             <div class="form-bottom">

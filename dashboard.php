@@ -1,4 +1,10 @@
 <?php
+    //Reconocimiento idioma
+    require('./languages/languages.php');
+    	$lang = "es";
+    if ( isset($_GET['lang']) ){
+    	$lang = $_GET['lang'];	
+    }
 	//incluimos los archivos de sesiones y de usuarios y creamos los objetos.
 	require_once 'sesiones.php';
 	require_once 'users.php';
@@ -31,9 +37,9 @@
 					//llamamos a la función para devolver el nombre de usuario.
 					$nombreuser=$usuario->nombreUsuario($_SESSION['usuario']);
 					//sacamos el nombre de usuario por su id
-					echo "<a><strong>Bienvenido ".$nombreuser['name']."</strong></a>";
+					echo "<a><strong>".__('Bienvenido ', $lang).$nombreuser['name']."</strong></a>";
 				 ?>
-				<span class="right"><a href="logout.php" id="logout">Cerrar Sesion</a></span>
+				<span class="right"><a href="logout.php?lang=<?php echo $lang; ?>" id="logout"><?php echo __('Cerrar Sesion', $lang) ?></a></span>
 			</div><!--/ Codrops top bar -->
 			<header class="clearfix">
 				<h1>Intranet</h1>
@@ -45,18 +51,20 @@
 						//llamamos a la funcion que nos devuelve el numero para el menu.
 						$menu=$usuario->menuDash($_SESSION['usuario']);
 						if ($menu['menu']==1) {
-							echo "<a href='operativa/index.php'>APP Operativa</a>";
-							echo "<a href='#'>Nóminas</a>";
-							echo "<a href='files/Peticion_vacaciones.pdf'>Solicitar vacaciones</a>";
+							echo "<a href='operativa/index.php'>".__('Gestión actividades', $lang)."</a>";
+							echo "<a href='#'>".__('Portal nóminas', $lang)."</a>";
+							echo "<a href='directorio/index.php'>".__('Directorio empleados', $lang)."</a>";
+							echo "<a href='files/Peticion_vacaciones.pdf'>".__('Solicitar vacaciones', $lang)."</a>";
 						}elseif ($menu['menu']==2) {
-							echo "<a href='operativa/index.php'>APP Operativa</a>";
-							echo "<a href='directorio/index.php'>Directorio Empleados</a>";
-							echo "<a href='#'>Nóminas</a>";
-							echo "<a href='files/Plan_Trabajo_Supervisores_2017.pdf'>Plan trabajo anual</a>";
-							echo "<a href='files/Peticion_vacaciones.pdf'>Solicitar vacaciones</a>";
+							echo "<a href='operativa/index.php'>".__('Gestión actividades', $lang)."</a>";
+							echo "<a href='directorio/index.php'>".__('Directorio empleados', $lang)."</a>";
+							echo "<a href='#'>".__('Portal nóminas', $lang)."</a>";
+							echo "<a href='files/Plan_Trabajo_Supervisores_2017.pdf'>".__('Plan de trabajo', $lang)."</a>";
+							echo "<a href='files/Peticion_vacaciones.pdf'>".__('Solicitar vacaciones', $lang)."</a>";
 						}elseif ($menu['menu']==3) {
 							echo "<a href='#'>Nóminas</a>";
-							echo "<a href='files/Peticion_vacaciones.pdf'>Solicitar vacaciones</a>";
+							echo "<a href='directorio/index.php'>".__('Directorio empleados', $lang)."</a>";
+							echo "<a href='files/Peticion_vacaciones.pdf'>".__('Solicitar vacaciones', $lang)."</a>";
 						}else {
 							//si el numero de permisos no es correcto, sacara un aviso.
 						?>

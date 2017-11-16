@@ -6,6 +6,12 @@
   </head>
   <body>
     <?php
+    //Reconocimiento idioma
+      require('./languages/languages.php');
+          $lang = "es";
+      if ( isset($_GET['lang']) ){
+          $lang = $_GET['lang'];
+      }
     //incluimos el archivo encargado de la tabla de usuarios de la db y creamos el objeto.
       include 'users.php';
       $user= new User();
@@ -23,15 +29,15 @@
           $sesion->addUsuario($registrado['id_user']);
           ?>
             <script type="text/javascript">
-              window.location="dashboard.php";
+              window.location="dashboard.php?lang=<?php echo $lang; ?>";
             </script>
           <?php
         }else {
           //si la contraseña no coincide, sacamos un mensaje y lo reenviamos al formulario.
           ?>
             <script type="text/javascript">
-            alert('Contraseña incorrecta.');
-            window.location="index.php";
+            alert('<?php echo __('Contraseña incorrecta.', $lang) ?>');
+            window.location="index.php?lang=<?php echo $lang; ?>";
             </script>
           <?php
         }
@@ -39,8 +45,8 @@
         //si el usuario no esta registrado, se lo indicamos y le volvemos a enviar al formulario.
         ?>
           <script type="text/javascript">
-            alert('Usuario incorrecto.');
-            window.location="index.php";
+            alert('<?php echo __('Usuario incorrecto.', $lang) ?>');
+            window.location="index.php?lang=<?php echo $lang; ?>";
           </script>
         <?php
       }
