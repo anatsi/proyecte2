@@ -238,6 +238,19 @@ function dias_recursos($id){
      return null;
    }
 }
+
+//funcion para actualizar los comentarios.
+function ActualizarComentarios($id, $csup, $crrhh, $caf, $cdo){
+  $sql="UPDATE servicios
+        SET com_supervisor='".$csup."', com_rrhh='".$crrhh."', com_admin_fin='".$caf."', com_depto='".$cdo."'
+        WHERE id=".$id.";";
+  $comentarios=$this->realizarConsulta($sql);
+  if ($comentarios=!false) {
+       return true;
+  }else {
+       return false;
+  }
+}
 }
 
 

@@ -189,8 +189,8 @@ if (isset($_POST['submit'])) {
       }
     }
     //llamamos a la funcion de modificar la informacion
-    $modificacion=$servicio->modificarInfo($_POST['id'], $_POST['inicio'], $_POST['fin'], $_POST['suelto'], $_POST['descripcion'], $modelos, $_POST['responsable'], $_POST['tel'], $_POST['correo'], $_POST['csup'], $_POST['crrhh'],
-     $_POST['caf'], $_POST['cdo']);
+    $modificacion=$servicio->modificarInfo($_POST['id'], $_POST['inicio'], $_POST['fin'], $_POST['suelto'], $_POST['descripcion'], $modelos, $_POST['responsable'], $_POST['tel'], $_POST['correo']);
+    $modComentarios= $servicio->ActualizarComentarios($_POST['id'], $_POST['csup'], $_POST['crrhh'], $_POST['caf'], $_POST['cdo']);
       if ($modificacion==null) {
         echo "Error";
       }else {
