@@ -1,4 +1,6 @@
 <?php
+
+//incluimos los archivos necesarios
 require_once '../sesiones.php';
 require_once '../users.php';
 $sesion= new Sesiones();

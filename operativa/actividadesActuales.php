@@ -88,14 +88,14 @@ if (isset($_SESSION['usuario'])==false) {
               $fechaHoy=$fecha[2]."-".$fecha[1]."-".$fecha[0];
               $clientes=$cliente->ClienteId($lista['id_cliente']);
               echo "<tr id='trmod'>";
-              echo "<td scope='row' data-label='".__('Actividad ', $lang)."' id='tdmod'><a id='timeline' href='timeline.php?servicio=".$lista['id']."'>".$lista['descripcion']."</a></td>";
-              echo "<td data-label='".__('Modelos ', $lang)."' id='tdmod'>".$lista['modelos']."</td>";
-              echo "<td data-label='".__('Fecha inicio ', $lang)."' id='tdmod'>".$fechaHoy."</td>";
-              echo "<td data-label='".__('Cliente ', $lang)."' id='tdmod'>".$clientes['nombre']."</td>";
-              echo "  <td data-label='".__('Opciones ', $lang)."' id='tdmod'>
-              <a href='modificarRecursos.php?servicio=".$lista['id']."' title='Modificar recursos actividad'><i class='material-icons'>people</i></a>
-              <a href='modificarInfo.php?servicio=".$lista['id']."' title='Modificar información actividad'><i class='material-icons'>mode_edit</i></a>
-              <a href='finalizarServicio.php?servicio=".$lista['id']."' title='Finalizar actividad'><i class='material-icons'>power_settings_new</i></a></td>";
+              echo "<td scope='row' data-label='".__('Actividad', $lang)."' id='tdmod'><a id='timeline' href='timeline.php?servicio=".$lista['id']."'>".$lista['descripcion']."</a></td>";
+              echo "<td data-label='".__('Modelos', $lang)."' id='tdmod'>".$lista['modelos']."</td>";
+              echo "<td data-label='".__('Fecha inicio', $lang)."' id='tdmod'>".$fechaHoy."</td>";
+              echo "<td data-label='".__('Cliente', $lang)."' id='tdmod'>".$clientes['nombre']."</td>";
+              echo "  <td data-label='".__('Opciones', $lang)."' id='tdmod'>
+              <a href='modificarRecursos.php?servicio=".$lista['id']."' title='".__('Modificar recursos', $lang)."'><i class='material-icons'>people</i></a>
+              <a href='modificarInfo.php?servicio=".$lista['id']."' title='".__('Modificar información', $lang)."'><i class='material-icons'>mode_edit</i></a>
+              <a href='finalizarServicio.php?servicio=".$lista['id']."' title='".__('Finalizar actividad', $lang)."'><i class='material-icons'>power_settings_new</i></a></td>";
             }
            ?>
         </tbody>

@@ -38,6 +38,10 @@ $texts = array(
 	'Comentario Admin. Financiero' => 'Financial admin. comment',
 	'Comentario Depto. Operativo' => 'Operative Dept. comment',
 	'Opciones' => 'Options',
+	'Modificar recursos' => 'Edit resources',
+	'Modificar información' => 'Edit info',
+	'Finalizar actividad' => 'End activity',
+	'FILTRAR' => 'SEARCH',
 	'Sus datos ya se encuentran en nuestros registros. Para cualquier cambio contacte con rrhh@tsiberia.es' => 'Your data is already in our records. For any changes, contact with rrhh@tsiberia.es'
 );
 ?>

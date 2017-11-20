@@ -1,4 +1,10 @@
 <?php
+//Reconocimiento idioma
+require('./languages/languages.php');
+  $lang = "es";
+if ( isset($_GET['lang']) ){
+  $lang = $_GET['lang'];
+}
 //incluimos todas las clases necesarias e iniciamos sus objetos.
 require_once '../sesiones.php';
 require_once '../users.php';
@@ -20,7 +26,7 @@ if (isset($_SESSION['usuario'])==false) {
 <html >
 <head>
   <meta charset="UTF-8">
-  <title>Historico actividades</title>
+  <title><?php echo __('Historico actividades', $lang); ?></title>
     <link rel="stylesheet" href="../css/menu.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
     <link rel="stylesheet" href="../css/formulario.css">
@@ -72,21 +78,21 @@ if (isset($_SESSION['usuario'])==false) {
     //llamamos a la función para devolver el nombre de usuario.
     $nombreuser=$usuario->nombreUsuario($_SESSION['usuario']);
     //sacamos el nombre de usuario por su id
-    echo "<a><strong>Bienvenido ".$nombreuser['name']."</strong></a>";
+    echo "<a><strong>".__('Bienvenido ', $lang).$nombreuser['name']."</strong></a>";
    ?>
-  <span class="right"><a href="../logout.php" id="logout">Cerrar Sesion</a></span>
+  <span class="right"><a href="../logout.php" id="logout"><?php echo __('Cerrar Sesion', $lang); ?></a></span>
 </div><!--/ Codrops top bar -->
 
 <div class="site-container">
   <div class="site-pusher">
     <header class="header">
       <a href="#" class="header__icon" id="header__icon"></a>
-      <a href="../dashboard.php" class="header__logo"><img src="../imagenes/logo.png" alt=""></a>
+      <a href="../dashboard.php?lang=<?php echo $lang; ?>" class="header__logo"><img src="../imagenes/logo.png" alt=""></a>
       <nav class="menu">
-        <a href="index.php">Inicio</a>
-        <a href="nuevoServicio.php">Nueva Actividad</a>
-        <a href="actividadesActuales.php">Actividades Actuales</a>
-        <a href="historicoActividades.php">Histórico Actividades</a>
+        <a href="index.php?lang=<?php echo $lang; ?>"><?php echo __('Inicio', $lang); ?></a>
+        <a href="nuevoServicio.php?lang=<?php echo $lang; ?>"><?php echo __('Nueva actividad', $lang); ?></a>
+        <a href="actividadesActuales.php?lang=<?php echo $lang; ?>"><?php echo __('Actividades actuales', $lang); ?></a>
+        <a href="historicoActividades.php?lang=<?php echo $lang; ?>"><?php echo __('Historico actividades', $lang); ?></a>
       </nav>
 
     </header>
@@ -94,8 +100,8 @@ if (isset($_SESSION['usuario'])==false) {
     <div class="site-content">
       <div class="container">
         <!-- Contenido de la pagina. -->
-        <h2>Historico actividades</h2>
-       <input type="text" id="busqueda" placeholder="FILTRAR"/><br /><br />
+        <h2><?php echo __('Historico actividades', $lang); ?></h2>
+       <input type="text" id="busqueda" placeholder='<?php echo __('FILTRAR', $lang); ?>'/><br /><br />
         <div id="resultado">
         <!--tabla-->
         <?php
@@ -105,10 +111,10 @@ if (isset($_SESSION['usuario'])==false) {
             <table id='tablamod'>
             <thead id='theadmod'>
               <tr id='trmod'>
-                <th scope='col' id='thmod'>ACTIVIDAD</th>
-                <th scope='col' id='thmod'>MODELOS</th>
-                <th scope='col' id='thmod'>CLIENTE</th>
-                <th scope='col' id='thmod'>RESPONSABLE</th>
+                <th scope='col' id='thmod'>".__('Actividad', $lang)."</th>
+                <th scope='col' id='thmod'>".__('Modelos', $lang)."</th>
+                <th scope='col' id='thmod'>".__('Cliente', $lang)."</th>
+                <th scope='col' id='thmod'>".__('Responsable', $lang)."</th>
               </tr>
             </thead><tbody id='tbodymod'>
 
@@ -116,10 +122,10 @@ if (isset($_SESSION['usuario'])==false) {
               $clientes=$cliente->ClienteId($servicio['id_cliente']);
                echo "
                   <tr id='trmod'>
-                    <td data-label='NOMBRE' id='tdmod'><a href='timeline.php?servicio=".$servicio['id']."'>".$servicio['descripcion']."</a></td>
-                    <td data-label='CORREO' id='tdmod'>".$servicio['modelos']."</td>
-                    <td data-label='MOVIL' id='tdmod'>".$clientes['nombre']."</td>
-                    <td data-label='TLF FIJO' id='tdmod'>".$servicio['responsable']."</td>
+                    <td data-label='".__('Actividad', $lang)."' id='tdmod'><a href='timeline.php?servicio=".$servicio['id']."'>".$servicio['descripcion']."</a></td>
+                    <td data-label='".__('Modelos', $lang)."' id='tdmod'>".$servicio['modelos']."</td>
+                    <td data-label='".__('Cliente', $lang)."' id='tdmod'>".$clientes['nombre']."</td>
+                    <td data-label='".__('Responsable', $lang)."' id='tdmod'>".$servicio['responsable']."</td>
                   </tr>
 
             ";} echo "</tbody></table></div></body></html>";
