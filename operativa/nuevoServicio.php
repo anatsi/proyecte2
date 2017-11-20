@@ -26,7 +26,7 @@ if (isset($_SESSION['usuario'])==false) {
 <html >
 <head>
   <meta charset="UTF-8">
-  <title>Nueva actividad</title>
+  <title><?php echo __('Nueva actividad', $lang); ?></title>
     <link rel="stylesheet" href="../css/menu.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
     <link rel="stylesheet" href="../css/formulario.css">
@@ -56,7 +56,7 @@ if (isset($_SESSION['usuario'])==false) {
     //sacamos el nombre de usuario por su id
     echo "<a><strong>".__('Bienvenido ', $lang).$nombreuser['name']."</strong></a>";
    ?>
-  <span class="right"><a href="../logout.php" id="logout">Cerrar Sesion</a></span>
+  <span class="right"><a href="../logout.php" id="logout"><?php echo __('Cerrar Sesion', $lang); ?></a></span>
 </div><!--/ Codrops top bar -->
 
 <div class="site-container">
@@ -65,13 +65,13 @@ if (isset($_SESSION['usuario'])==false) {
     <header class="header">
 
       <a href="#" class="header__icon" id="header__icon"></a>
-      <a href="../dashboard.php" class="header__logo"><img src="../imagenes/logo.png" alt=""></a>
+      <a href="../dashboard.php?lang=<?php echo $lang; ?>" class="header__logo"><img src="../imagenes/logo.png" alt=""></a>
 
       <nav class="menu">
-        <a href="index.php">Inicio</a>
-        <a href="nuevoServicio.php">Nueva Actividad</a>
-        <a href="actividadesActuales.php">Actividades Actuales</a>
-        <a href="historicoActividades.php">Histórico Actividades</a>
+        <a href="index.php?lang=<?php echo $lang; ?>"><?php echo __('Inicio', $lang); ?></a>
+        <a href="nuevoServicio.php?lang=<?php echo $lang; ?>"><?php echo __('Nueva actividad', $lang); ?></a>
+        <a href="actividadesActuales.php?lang=<?php echo $lang; ?>"><?php echo __('Actividades actuales', $lang); ?></a>
+        <a href="historicoActividades.php?lang=<?php echo $lang; ?>"><?php echo __('Historico actividades', $lang); ?></a>
       </nav>
 
     </header>
@@ -79,11 +79,11 @@ if (isset($_SESSION['usuario'])==false) {
     <div class="site-content">
       <div class="container">
         <!-- Contenido de la pagina. -->
-        <h2>Nueva actividad</h2>
+        <h2><?php echo __('Nueva actividad', $lang); ?></h2>
         <form action="nuevoServibbdd.php" method="post" id="formulario" enctype="multipart/form-data">
           <div class="formthird">
-              <p><label><i class="fa fa-question-circle"></i>Actividad (*)</label><input type="text" name="descripcion" required/></p>
-              <p><label><i class="fa fa-question-circle"></i>Modelos (*)</label>
+              <p><label><i class="fa fa-question-circle"></i><?php echo __('Actividad', $lang); ?> (*)</label><input type="text" name="descripcion" required/></p>
+              <p><label><i class="fa fa-question-circle"></i><?php echo __('Modelos', $lang); ?> (*)</label>
                 <select name="sel[]" class="test" multiple="multiple" id='multiple'>
                         <option value='MONDEO'>MONDEO</option>
                         <option value='KUGA'>KUGA</option>
@@ -91,8 +91,8 @@ if (isset($_SESSION['usuario'])==false) {
                         <option value='GALAXY'>GALAXY</option>
                         <option value='S-MAX'>S-MAX</option>
                 </select></p>
-              <p><label><i class="fa fa-question-circle"></i>Fecha inicio (*)</label><input type="date" name="finicio" required/></p>
-              <p><label><i class="fa fa-question-circle"></i>Cliente (*)</label>
+              <p><label><i class="fa fa-question-circle"></i><?php echo __('Fecha inicio', $lang); ?> (*)</label><input type="date" name="finicio" required/></p>
+              <p><label><i class="fa fa-question-circle"></i><?php echo __('Cliente', $lang); ?> (*)</label>
                 <select name="cliente" required>
                   <option> </option>
                   <?php
@@ -102,34 +102,34 @@ if (isset($_SESSION['usuario'])==false) {
                     }
                    ?>
                 </select></p>
-              <p><label><i class="fa fa-question-circle"></i>Responsable (*)</label><input type="text" name="responsable" required/></p>
-              <p><label><i class="fa fa-question-circle"></i>Tel. responsable (*)</label><input type="tel" name="telefono" required/></p>
-              <p><label><i class="fa fa-question-circle"></i>Correo responsable (*)</label><input type="email" name="correo" required/></p>
+              <p><label><i class="fa fa-question-circle"></i><?php echo __('Responsable', $lang); ?> (*)</label><input type="text" name="responsable" required/></p>
+              <p><label><i class="fa fa-question-circle"></i><?php echo __('Tel. responsable', $lang); ?> (*)</label><input type="tel" name="telefono" required/></p>
+              <p><label><i class="fa fa-question-circle"></i><?php echo __('Correo responsable', $lang); ?> (*)</label><input type="email" name="correo" required/></p>
           </div>
           <div class="formthird" id='contenedor'>
-            <p><label><i class="fa fa-question-circle"></i>Personas (aprox.)</label><input type="number" min='0' id="calculo" readonly/></p>
-            <p><label><i class="fa fa-question-circle"></i>Ciclo (segundos)</label><input type="number" min='0'id="segundos"/></p>
-            <p><label><i class="fa fa-question-circle"></i>Nº coches</label><input type="number" min='0'id="coches"/></p>
-            <button type="button" name="button" onclick="calculoPersonas();">Calcular</button>
+            <p><label><i class="fa fa-question-circle"></i><?php echo __('Personas (aprox.)', $lang); ?></label><input type="number" min='0' id="calculo" readonly/></p>
+            <p><label><i class="fa fa-question-circle"></i><?php echo __('Ciclo (segundos)', $lang); ?></label><input type="number" min='0'id="segundos"/></p>
+            <p><label><i class="fa fa-question-circle"></i><?php echo __('Nº coches', $lang); ?></label><input type="number" min='0'id="coches"/></p>
+            <button type="button" name="button" onclick="calculoPersonas();"><?php echo __('Calcular', $lang); ?></button>
 
-              <p><label><i class="fa fa-question-circle"></i>Recursos totales (*)</label><input type="number" min='0' name="recursos" id="total" readonly/></p>
-              <p><label><i class="fa fa-question-circle"></i>Turno mañana</label><input type="number" min='0' name="tm" id="tm" value='0' onclick="suma();" onkeyup="suma();"/></p>
-              <p><label><i class="fa fa-question-circle"></i>Turno tarde</label><input type="number" min='0' name="tt" id="tt" value='0' onclick="suma();" onkeyup="suma();"/></p>
-              <p><label><i class="fa fa-question-circle"></i>Turno noche</label><input type="number" min='0'name="tn" id="tn" value='0' onclick="suma();" onkeyup="suma();"/></p>
-              <p><label><i class="fa fa-question-circle"></i>Turno central</label><input type="number" min='0'name="tc" id="tc" value='0' onclick="suma();" onkeyup="suma();"/></p>
+              <p><label><i class="fa fa-question-circle"></i><?php echo __('Recursos totales', $lang); ?> (*)</label><input type="number" min='0' name="recursos" id="total" readonly/></p>
+              <p><label><i class="fa fa-question-circle"></i><?php echo __('Turno mañana', $lang); ?></label><input type="number" min='0' name="tm" id="tm" value='0' onclick="suma();" onkeyup="suma();"/></p>
+              <p><label><i class="fa fa-question-circle"></i><?php echo __('Turno tarde', $lang); ?></label><input type="number" min='0' name="tt" id="tt" value='0' onclick="suma();" onkeyup="suma();"/></p>
+              <p><label><i class="fa fa-question-circle"></i><?php echo __('Turno noche', $lang); ?></label><input type="number" min='0'name="tn" id="tn" value='0' onclick="suma();" onkeyup="suma();"/></p>
+              <p><label><i class="fa fa-question-circle"></i><?php echo __('Turno central', $lang); ?></label><input type="number" min='0'name="tc" id="tc" value='0' onclick="suma();" onkeyup="suma();"/></p>
 
-              <button type="button" name="button" id="nuevoServicio" onclick="nuevo();">Añadir otro horario</button>
+              <button type="button" name="button" id="nuevoServicio" onclick="nuevo();"><?php echo __('Añadir otro horario', $lang); ?></button>
               <p id="enviar"></p>
           </div>
           <div class="formthird">
-            <p><label><i class="fa fa-question-circle"></i>Archivos</label></p>
+            <p><label><i class="fa fa-question-circle"></i><?php echo __('Archivos', $lang); ?></label></p>
             <div id="archivos">
               <p><input type='file' name='archivo1' value='archivo1' id='archivo1'></p>
             </div>
-            <button type="button" name="button" id="nuevoarchivo" onclick="archivos();">Añadir otro archivo</button>
+            <button type="button" name="button" id="nuevoarchivo" onclick="archivos();"><?php echo __('Añadir otro archivo', $lang); ?></button>
 
 
-              <p><label><i class="fa fa-question-circle"></i>Relacion</label>
+              <p><label><i class="fa fa-question-circle"></i><?php echo __('Relacion', $lang); ?></label>
                 <select name="relacion">
                   <option></option>
                   <?php
@@ -139,13 +139,13 @@ if (isset($_SESSION['usuario'])==false) {
                     }
                    ?>
                 </select></p>
-              <p><label><i class="fa fa-question-circle"></i>Comentario supervisor</label><textarea name="csup"></textarea></p>
-              <p><label><i class="fa fa-question-circle"></i>Comentario RRHH</label><textarea name="crrhh"></textarea></p>
-              <p><label><i class="fa fa-question-circle"></i>Comentario Admin. Financiero</label><textarea name="caf"></textarea></p>
-              <p><label><i class="fa fa-question-circle"></i>Comentario Depto. Operativo</label><textarea name="cdo"></textarea></p>
+              <p><label><i class="fa fa-question-circle"></i><?php echo __('Comentario supervisor', $lang); ?></label><textarea name="csup"></textarea></p>
+              <p><label><i class="fa fa-question-circle"></i><?php echo __('Comentario RRHH.', $lang); ?></label><textarea name="crrhh"></textarea></p>
+              <p><label><i class="fa fa-question-circle"></i><?php echo __('Comentario Admin. Financiero', $lang); ?></label><textarea name="caf"></textarea></p>
+              <p><label><i class="fa fa-question-circle"></i><?php echo __('Comentario Depto. Operativo', $lang); ?></label><textarea name="cdo"></textarea></p>
           </div>
           <div class="submitbuttons">
-              <input class="submitone" type="submit" />
+              <input class="submitone" type="submit" value="<?php echo __('Enviar', $lang); ?>"/>
           </div>
   </form>
 
