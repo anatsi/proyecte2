@@ -20,7 +20,7 @@ if (isset($_SESSION['usuario'])==false) {
 <html >
 <head>
   <meta charset="UTF-8">
-  <title>Nuevo servicio</title>
+  <title>Modificar recursos actividad</title>
     <link rel="stylesheet" href="../css/menu.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
     <link rel="stylesheet" href="../css/formulario.css">

@@ -1,4 +1,10 @@
 <?php
+//Reconocimiento idioma
+require('./languages/languages.php');
+  $lang = "es";
+if ( isset($_GET['lang']) ){
+  $lang = $_GET['lang'];
+}
 //incluimos todas las clases necesarias e iniciamos sus objetos.
 require_once '../sesiones.php';
 require_once '../users.php';
@@ -20,7 +26,7 @@ if (isset($_SESSION['usuario'])==false) {
 <html >
 <head>
   <meta charset="UTF-8">
-  <title>Nuevo servicio</title>
+  <title>Nueva actividad</title>
     <link rel="stylesheet" href="../css/menu.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
     <link rel="stylesheet" href="../css/formulario.css">
@@ -48,7 +54,7 @@ if (isset($_SESSION['usuario'])==false) {
     //llamamos a la función para devolver el nombre de usuario.
     $nombreuser=$usuario->nombreUsuario($_SESSION['usuario']);
     //sacamos el nombre de usuario por su id
-    echo "<a><strong>Bienvenido ".$nombreuser['name']."</strong></a>";
+    echo "<a><strong>".__('Bienvenido ', $lang).$nombreuser['name']."</strong></a>";
    ?>
   <span class="right"><a href="../logout.php" id="logout">Cerrar Sesion</a></span>
 </div><!--/ Codrops top bar -->

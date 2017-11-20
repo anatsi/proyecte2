@@ -3,7 +3,7 @@
     require('./languages/languages.php');
     	$lang = "es";
     if ( isset($_GET['lang']) ){
-    	$lang = $_GET['lang'];	
+    	$lang = $_GET['lang'];
     }
 	//incluimos los archivos de sesiones y de usuarios y creamos los objetos.
 	require_once 'sesiones.php';
@@ -51,12 +51,12 @@
 						//llamamos a la funcion que nos devuelve el numero para el menu.
 						$menu=$usuario->menuDash($_SESSION['usuario']);
 						if ($menu['menu']==1) {
-							echo "<a href='operativa/index.php'>".__('Gestión actividades', $lang)."</a>";
+							echo "<a href='operativa/index.php?lang=".$lang."'>".__('Gestión actividades', $lang)."</a>";
 							echo "<a href='#'>".__('Portal nóminas', $lang)."</a>";
 							echo "<a href='directorio/index.php'>".__('Directorio empleados', $lang)."</a>";
 							echo "<a href='files/Peticion_vacaciones.pdf'>".__('Solicitar vacaciones', $lang)."</a>";
 						}elseif ($menu['menu']==2) {
-							echo "<a href='operativa/index.php'>".__('Gestión actividades', $lang)."</a>";
+							echo "<a href='operativa/index.php?lang=".$lang."'>".__('Gestión actividades', $lang)."</a>";
 							echo "<a href='directorio/index.php'>".__('Directorio empleados', $lang)."</a>";
 							echo "<a href='#'>".__('Portal nóminas', $lang)."</a>";
 							echo "<a href='files/Plan_Trabajo_Supervisores_2017.pdf'>".__('Plan de trabajo', $lang)."</a>";

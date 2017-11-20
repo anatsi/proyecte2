@@ -1,4 +1,11 @@
 <?php
+//Reconocimiento idioma
+require('./languages/languages.php');
+  $lang = "es";
+if ( isset($_GET['lang']) ){
+  $lang = $_GET['lang'];
+}
+
 //incluimos todas las clases necesarias e iniciamos sus objetos.
 require_once '../sesiones.php';
 require_once '../users.php';
@@ -19,7 +26,7 @@ if (isset($_SESSION['usuario'])==false) {
 <html >
 <head>
   <meta charset="UTF-8">
-  <title>Nuevo servicio</title>
+  <title><?php echo __('Inicio', $lang); ?></title>
     <link rel="stylesheet" href="../css/tabla.css">
     <link rel="stylesheet" href="../css/menu.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
@@ -37,9 +44,9 @@ if (isset($_SESSION['usuario'])==false) {
     //llamamos a la función para devolver el nombre de usuario.
     $nombreuser=$usuario->nombreUsuario($_SESSION['usuario']);
     //sacamos el nombre de usuario por su id
-    echo "<a><strong>Bienvenido ".$nombreuser['name']."</strong></a>";
+    echo "<a><strong>".__('Bienvenido ', $lang).$nombreuser['name']."</strong></a>";
    ?>
-  <span class="right"><a href="../logout.php" id="logout">Cerrar Sesion</a></span>
+  <span class="right"><a href="../logout.php" id="logout"><?php echo __('Cerrar Sesion', $lang); ?></a></span>
 </div><!--/ Codrops top bar -->
 
 <div class="site-container">
@@ -49,13 +56,13 @@ if (isset($_SESSION['usuario'])==false) {
 
       <a href="#" class="header__icon" id="header__icon"></a>
 
-      <a href="../dashboard.php" class="header__logo"><img src="../imagenes/logo.png" alt=""></a>
+      <a href="../dashboard.php?lang=<?php echo $lang; ?>" class="header__logo"><img src="../imagenes/logo.png" alt=""></a>
 
       <nav class="menu">
-        <a href="index.php">Inicio</a>
-        <a href="nuevoServicio.php">Nueva Actividad</a>
-        <a href="actividadesActuales.php">Actividades Actuales</a>
-        <a href="historicoActividades.php">Histórico Actividades</a>
+        <a href="index.php?lang=<?php echo $lang; ?>"><?php echo __('Inicio', $lang); ?></a>
+        <a href="nuevoServicio.php?lang=<?php echo $lang; ?>"><?php echo __('Nueva actividad', $lang); ?></a>
+        <a href="actividadesActuales.php?lang=<?php echo $lang; ?>"><?php echo __('Actividades actuales', $lang); ?></a>
+        <a href="historicoActividades.php?lang=<?php echo $lang; ?>"><?php echo __('Historico actividades', $lang); ?></a>
       </nav>
 
     </header>
@@ -63,29 +70,29 @@ if (isset($_SESSION['usuario'])==false) {
 <div class="site-content">
   <div class="container">
     <div class="derecha">
-      <h1>HOY</h1>
+      <h1><?php echo __('Hoy', $lang); ?></h1>
       <table class="rwd-table">
         <tr>
-          <th>Servicio</th>
-          <th>Recursos</th>
+          <th><?php echo __('Actividad', $lang); ?></th>
+          <th><?php echo __('Recursos', $lang); ?></th>
         </tr>
         <?php
           $listahoy= $servicio->listaServiciosHoy();
           foreach ($listahoy as $servicio) {
             echo "<tr>";
-            echo "<td data-th='Servicio'>".$servicio['descripcion']."</td>";
-            echo "<td data-th='Recursos'>".$servicio['recursos']."</td>";
+            echo "<td data-th='".__('Actividad', $lang)."'>".$servicio['descripcion']."</td>";
+            echo "<td data-th='".__('Recursos', $lang)."'>".$servicio['recursos']."</td>";
             echo "</tr>";
           }
          ?>
       </table>
     </div>
     <div class="izquierda">
-      <h1>MAÑANA</h1>
+      <h1><?php echo __('Mañana', $lang); ?></h1>
       <table class="rwd-table">
         <tr>
-          <th>Servicio</th>
-          <th>Recursos</th>
+          <th><?php echo __('Actividad', $lang); ?></th>
+          <th><?php echo __('Recursos', $lang); ?></th>
         </tr>
         <?php
         require_once 'servicio.php';
@@ -93,8 +100,8 @@ if (isset($_SESSION['usuario'])==false) {
           $listamanana= $servicio->ServiciosTomorrow();
           foreach ($listamanana as $servicio) {
             echo "<tr>";
-            echo "<td data-th='Servicio'>".$servicio['descripcion']."</td>";
-            echo "<td data-th='Recursos'>".$servicio['recursos']."</td>";
+            echo "<td data-th='".__('Actividad', $lang)."'>".$servicio['descripcion']."</td>";
+            echo "<td data-th='".__('Recursos', $lang)."'>".$servicio['recursos']."</td>";
             echo "</tr>";
           }
          ?>

@@ -65,5 +65,6 @@ class User extends db2
     }
   }
 
+
 }
  ?>
