@@ -44,7 +44,7 @@ html, body {
       letter-spacing: 2px;
       color: black;
       font-weight: bold;
-      background-color: RGBA(204, 204, 204, .1);
+      background-color: rgb(186, 191, 193);
       outline: none; border: none;
       display:block;
       margin: 0 auto;
@@ -52,7 +52,9 @@ html, body {
       width: 90%;
       max-width: 400px;
  }
-
+textarea::placeholder{
+  color: rgb(96, 96, 90);
+}
 #contactForm textarea {
   height: 150px;
   color: black;
