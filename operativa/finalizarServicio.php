@@ -28,6 +28,14 @@ if (isset($_SESSION['usuario'])==false) {
   <script type="text/javascript" src="../js/servicioForm.js"></script>
 </head>
 <style media="screen">
+html, body {
+  font-family: 'Roboto thin';
+  font-size: 1em;
+  line-height: 1.4;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
 #contactForm {
       margin: 0 auto;
 }
