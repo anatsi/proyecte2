@@ -34,7 +34,7 @@
   }
   .derecha tr, .derecha td, .derecha th,
   .izquierda tr, .izquierda td, .izquierda th{
-    min-width: 100px;
+  /*  min-width: 50px;*/
     max-width: 200px;
   }
   .rwd-table td:before {

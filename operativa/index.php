@@ -71,7 +71,7 @@ if (isset($_SESSION['usuario'])==false) {
 <div class="site-content">
   <div class="container">
     <div class="derecha">
-      <h2><?php echo __('HOY', $lang); ?></h2>
+      <h2>Hoy</h2>
       <table class="rwd-table">
         <tr>
           <th><?php echo __('Actividad', $lang); ?></th>
@@ -126,7 +126,7 @@ if (isset($_SESSION['usuario'])==false) {
       </table>
     </div>
     <div class="izquierda">
-      <h2><?php echo __('MAÑANA', $lang); ?></h2>
+      <h2>Mañana</h2>
       <table class="rwd-table">
         <tr>
           <th><?php echo __('Actividad', $lang); ?></th>

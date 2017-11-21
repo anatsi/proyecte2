@@ -79,7 +79,7 @@ var z=1;
       var contenido10=0;
     }
     //una vez creadas todas las variables, las sumamos
-    suma = contenido1 + contenido2 + contenido3 + contenido4 + contenido5 + contenido6 + contenido7 + contenido8 + contenido9;
+    suma = contenido1 + contenido2 + contenido3 + contenido4 + contenido5 + contenido6 + contenido7 + contenido8 + contenido9 + contenido10;
     //apuntamos el resultado de la suma en el input del total
     document.getElementById('total').value= suma;
 }
