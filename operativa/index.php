@@ -11,12 +11,13 @@ require_once '../sesiones.php';
 require_once '../users.php';
 require_once 'cliente.php';
 require_once 'servicio.php';
-
+require_once 'recursos.php';
 
 $usuario=new User();
 $sesion=new Sesiones();
 $cliente=new Cliente();
 $servicio=new Servicio();
+$recursos= new Recursos();
 
 if (isset($_SESSION['usuario'])==false) {
   header('Location: ../index.php');
@@ -70,38 +71,112 @@ if (isset($_SESSION['usuario'])==false) {
 <div class="site-content">
   <div class="container">
     <div class="derecha">
-      <h1><?php echo __('HOY', $lang); ?></h1>
+      <h2><?php echo __('HOY', $lang); ?></h2>
       <table class="rwd-table">
         <tr>
           <th><?php echo __('Actividad', $lang); ?></th>
+          <th>Relacion</th>
           <th><?php echo __('Recursos', $lang); ?></th>
+          <th>Mañana</th>
+          <th>Tarde</th>
+          <th>Noche</th>
+          <th>Central</th>
+          <th>Especiales</th>
         </tr>
         <?php
           $listahoy= $servicio->listaServiciosHoy();
-          foreach ($listahoy as $servicio) {
+          foreach ($listahoy as $servicios) {
+            $recursoId=$recursos->recursosId($servicios['id']);
             echo "<tr>";
-            echo "<td data-th='".__('Actividad', $lang)."'>".$servicio['descripcion']."</td>";
-            echo "<td data-th='".__('Recursos', $lang)."'>".$servicio['recursos']."</td>";
+            echo "<td data-th='".__('Actividad', $lang)."'>".$servicios['descripcion']."</td>";
+            echo "<td data-th='Relacion'>";
+            if ($servicios['relacion']!=null && $servicios['relacion']!=0) {
+              $relacion=$servicio->ServicioRelacion($servicios['id']);
+              echo $relacion['relacionada'];
+            }
+            echo "</td>";
+            echo "<td data-th='".__('Recursos', $lang)."'>".$servicios['recursos']."</td>";
+            echo "<td data-th='Mañana'>".$recursoId['tm']."</td>";
+            echo "<td data-th='Tarde'>".$recursoId['tt']."</td>";
+            echo "<td data-th='Noche'>".$recursoId['tn']."</td>";
+            echo "<td data-th='Central'>".$recursoId['tc']."</td>";
+            echo "<td data-th='Especiales'>";
+            if ($recursoId['otro1']!=0) {
+              echo $recursoId['otro1'] ." (" .$recursoId['inicio1'] ."-". $recursoId['fin1'] .")<br>";
+            }
+            if ($recursoId['otro2']!=0) {
+              echo $recursoId['otro2'] ." (" .$recursoId['inicio2'] ."-". $recursoId['fin2'] .")<br>";
+            }
+            if ($recursoId['otro3']!=0) {
+              echo $recursoId['otro3'] ." (" .$recursoId['inicio3'] ."-". $recursoId['fin3'] .")<br>";
+            }
+            if ($recursoId['otro4']!=0) {
+              echo $recursoId['otro4'] ." (" .$recursoId['inicio4'] ."-". $recursoId['fin4'] .")<br>";
+            }
+            if ($recursoId['otro5']!=0) {
+              echo $recursoId['otro5'] ." (" .$recursoId['inicio5'] ."-". $recursoId['fin5'] .")<br>";
+            }
+            if ($recursoId['otro6']!=0) {
+              echo $recursoId['otro6'] ." (" .$recursoId['inicio6'] ."-". $recursoId['fin6'] .")<br>";
+            }
+            echo "</td>";
             echo "</tr>";
           }
          ?>
       </table>
     </div>
     <div class="izquierda">
-      <h1><?php echo __('MAÑANA', $lang); ?></h1>
+      <h2><?php echo __('MAÑANA', $lang); ?></h2>
       <table class="rwd-table">
         <tr>
           <th><?php echo __('Actividad', $lang); ?></th>
+          <th>Relacion</th>
           <th><?php echo __('Recursos', $lang); ?></th>
+          <th>Mañana</th>
+          <th>Tarde</th>
+          <th>Noche</th>
+          <th>Central</th>
+          <th>Especiales</th>
         </tr>
         <?php
         require_once 'servicio.php';
         $servicio=new Servicio();
           $listamanana= $servicio->ServiciosTomorrow();
-          foreach ($listamanana as $servicio) {
+          foreach ($listamanana as $servicios) {
+            $recursoId=$recursos->recursosId($servicios['id']);
             echo "<tr>";
-            echo "<td data-th='".__('Actividad', $lang)."'>".$servicio['descripcion']."</td>";
-            echo "<td data-th='".__('Recursos', $lang)."'>".$servicio['recursos']."</td>";
+            echo "<td data-th='".__('Actividad', $lang)."'>".$servicios['descripcion']."</td>";
+            echo "<td data-th='relacion'>";
+            if ($servicios['relacion']!=null && $servicios['relacion']!=0) {
+              $relacion=$servicio->ServicioRelacion($servicios['id']);
+              echo $relacion['relacionada'];
+            }
+            echo "</td>";
+            echo "<td data-th='".__('Recursos', $lang)."'>".$servicios['recursos']."</td>";
+            echo "<td data-th='Mañana'>".$recursoId['tm']."</td>";
+            echo "<td data-th='Tarde'>".$recursoId['tt']."</td>";
+            echo "<td data-th='Noche'>".$recursoId['tn']."</td>";
+            echo "<td data-th='Central'>".$recursoId['tc']."</td>";
+            echo "<td data-th='Especiales'>";
+            if ($recursoId['otro1']!=0) {
+              echo $recursoId['otro1'] ." (" .$recursoId['inicio1'] ."-". $recursoId['fin1'] .")<br>";
+            }
+            if ($recursoId['otro2']!=0) {
+              echo $recursoId['otro2'] ." (" .$recursoId['inicio2'] ."-". $recursoId['fin2'] .")<br>";
+            }
+            if ($recursoId['otro3']!=0) {
+              echo $recursoId['otro3'] ." (" .$recursoId['inicio3'] ."-". $recursoId['fin3'] .")<br>";
+            }
+            if ($recursoId['otro4']!=0) {
+              echo $recursoId['otro4'] ." (" .$recursoId['inicio4'] ."-". $recursoId['fin4'] .")<br>";
+            }
+            if ($recursoId['otro5']!=0) {
+              echo $recursoId['otro5'] ." (" .$recursoId['inicio5'] ."-". $recursoId['fin5'] .")<br>";
+            }
+            if ($recursoId['otro6']!=0) {
+              echo $recursoId['otro6'] ." (" .$recursoId['inicio6'] ."-". $recursoId['fin6'] .")<br>";
+            }
+            echo "</td>";
             echo "</tr>";
           }
          ?>

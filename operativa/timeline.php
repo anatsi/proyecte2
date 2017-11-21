@@ -64,25 +64,69 @@ if (isset($_SESSION['usuario'])==false) {
         <?php
           $servicioId= $servicio->servicioId($_GET['servicio']);
           $clienteId= $cliente->ClienteId($servicioId['id_cliente']);
+          $recursosId= $recursos->recursosId($servicioId['id']);
           echo "<h2>".$servicioId['descripcion']."</h2>";
+          if ($servicioId['relacion']!=null && $servicioId['relacion']!=0) {
+            $relacion=$servicio->ServicioRelacion($servicioId['id']);
+            $fecha=explode("-", $relacion['inicio']);
+            $inicio=$fecha[2]."-".$fecha[1]."-".$fecha[0];
+            echo "<h4 id='relacion'>RELACIONADA CON ".$relacion['relacionada'] ." DESDE ".$inicio ."</h4>";
+          }
           //parte de la derecha
           echo "<div id='listaDerecha'>";
           echo "<ul>";
           echo "<li>Modelos: ".$servicioId['modelos']."</li>";
-          echo "<li>Fecha inicio: ".$servicioId['f_inicio']."</li>";
+          //tranformacion de las fechas
+            $fecha=explode("-", $servicioId['f_inicio']);
+            $f_inicio=$fecha[2]."-".$fecha[1]."-".$fecha[0];
+          echo "<li>Fecha inicio: ".$f_inicio."</li>";
           if ($servicioId['f_fin']!= null) {
-            echo "<li>Fecha fin: ".$servicioId['f_fin']."</li>";
+            //transformacion de la fechas
+            $fecha=explode("-", $servicioId['f_fin']);
+            $f_fin=$fecha[2]."-".$fecha[1]."-".$fecha[0];
+            echo "<li>Fecha fin: ".$f_fin."</li>";
           }
-          echo "<li>Recursos: ".$servicioId['recursos']."</li>";
+          echo "<li>Recursos totales: ".$servicioId['recursos']."</li>";
+          if ($recursosId['tm']!=null && $recursosId['tm']!=0) {
+            echo "<li>      Turno mañana:".$recursosId['tm']."</li>";
+          }
+          if ($recursosId['tt']!=null && $recursosId['tt']!=0) {
+            echo "<li>      Turno tarde:".$recursosId['tt']."</li>";
+          }
+          if ($recursosId['tn']!=null && $recursosId['tn']!=0) {
+            echo "<li>      Turno noche:".$recursosId['tn']."</li>";
+          }
+          if ($recursosId['tc']!=null && $recursosId['tc']!=0) {
+            echo "<li>      Turno central:".$recursosId['tc']."</li>";
+          }
+          if ($recursosId['otro1']!=null && $recursosId['otro1']!=0) {
+            echo "<li>De ".$recursosId['inicio1']." a ".$recursosId['fin1'].": " .$recursosId['otro1']."</li>";
+          }
+          if ($recursosId['otro2']!=null && $recursosId['otro2']!=0) {
+            echo "<li>De ".$recursosId['inicio2']." a ".$recursosId['fin2'].": " .$recursosId['otro2']."</li>";
+          }
+          if ($recursosId['otro3']!=null && $recursosId['otro3']!=0) {
+            echo "<li>De ".$recursosId['inicio3']." a ".$recursosId['fin3'].": " .$recursosId['otro3']."</li>";
+          }
+          if ($recursosId['otro4']!=null && $recursosId['otro4']!=0) {
+            echo "<li>De ".$recursosId['inicio4']." a ".$recursosId['fin4'].": " .$recursosId['otro4']."</li>";
+          }
+          if ($recursosId['otro5']!=null && $recursosId['otro5']!=0) {
+            echo "<li>De ".$recursosId['inicio5']." a ".$recursosId['fin5'].": " .$recursosId['otro5']."</li>";
+          }
+          if ($recursosId['otro6']!=null && $recursosId['otro6']!=0) {
+            echo "<li>De ".$recursosId['inicio6']." a ".$recursosId['fin6'].": " .$recursosId['otro6']."</li>";
+          }
           echo "<li>Cliente: ".$clienteId['nombre']."</li>";
-          echo "<li>Responsable: ".$servicioId['responsable']."</li>";
-          echo "<li>Tel. responsable: ".$servicioId['telefono']."</li>";
-          echo "<li>Correo responsable: ".$servicioId['correo']."</li>";
+
           echo "</ul>";
           echo "</div>";
           //parte de la izquierda
           echo "<div id='listaIzquierda'>";
           echo "<ul>";
+          echo "<li>Responsable: ".$servicioId['responsable']."</li>";
+          echo "<li>Tel. responsable: ".$servicioId['telefono']."</li>";
+          echo "<li>Correo responsable: ".$servicioId['correo']."</li>";
           if ($servicioId['com_supervisor']!=null) {
             echo "<li>Comentario Supervisor: ".$servicioId['com_supervisor']."</li>";
           }else {

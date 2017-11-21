@@ -1,6 +1,6 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto);
 .derecha, .izquierda{
-  float: left;
+  margin-left: 3%;
 }
 .rwd-table {
   margin: 1em 0;
@@ -29,12 +29,13 @@
   display: inline-block;
 }
 @media (min-width: 480px) {
-  .izquierda, .derecha{
-    margin-left: 150px;
+ .izquierda, .derecha{
+    margin-left: 100px;
   }
   .derecha tr, .derecha td, .derecha th,
   .izquierda tr, .izquierda td, .izquierda th{
-    min-width: 200px;
+    min-width: 100px;
+    max-width: 200px;
   }
   .rwd-table td:before {
     display: none;
@@ -74,7 +75,4 @@
 }
 .rwd-table th, .rwd-table td:before {
   color: #dd5;
-}
-h1{
-  color: black;
 }

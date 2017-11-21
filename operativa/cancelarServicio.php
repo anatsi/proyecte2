@@ -6,7 +6,7 @@
   </head>
   <body>
     <?php
-    $fecha=date('d-m-Y');
+    $fecha=date('Y-m-d');
 
       include 'servicio.php';
       $servicio= new Servicio();

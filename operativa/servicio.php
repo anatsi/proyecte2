@@ -251,6 +251,26 @@ function ActualizarComentarios($id, $csup, $crrhh, $caf, $cdo){
        return false;
   }
 }
+
+function ServicioRelacion($id){
+//Construimos la consulta
+$sql="SELECT descripcion,
+(SELECT descripcion FROM servicios s2 WHERE s2.id=s1.relacion) AS relacionada,
+(SELECT s3.f_inicio FROM servicios s3 where s3.id=".$id." or s3.id=s1.relacion order by s3.f_inicio desc limit 1) as inicio
+FROM servicios s1
+WHERE id=".$id;
+//Realizamos la consulta
+$resultado=$this->realizarConsulta($sql);
+if($resultado!=false){
+  if($resultado!=false){
+    return $resultado->fetch_assoc();
+  }else{
+    return null;
+  }
+}else{
+  return null;
+}
+}
 }
 
 
