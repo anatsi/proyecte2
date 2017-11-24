@@ -62,15 +62,24 @@ if (isset($_SESSION['usuario'])==false) {
       <div class="container">
         <!-- Contenido de la pagina. -->
         <?php
+        //llamar a las funciones necesarias para sacar la informacion
           $servicioId= $servicio->servicioId($_GET['servicio']);
           $clienteId= $cliente->ClienteId($servicioId['id_cliente']);
           $recursosId= $recursos->recursosId($servicioId['id']);
+          //sacar el nombre del servicio que describimos
           echo "<h2>".$servicioId['descripcion']."</h2>";
+          //si tiene alguna relacion, sacar la infor de la relacion
           if ($servicioId['relacion']!=null && $servicioId['relacion']!=0) {
             $relacion=$servicio->ServicioRelacion($servicioId['id']);
             $fecha=explode("-", $relacion['inicio']);
             $inicio=$fecha[2]."-".$fecha[1]."-".$fecha[0];
-            echo "<h4 id='relacion'>RELACIONADA CON ".$relacion['relacionada'] ." DESDE ".$inicio ."</h4>";
+            echo "<h4 id='relacion'>RELACIONADA CON ".$relacion['relacionada'] ." DESDE ".$inicio;
+              if ($relacion['fin']!=null && $relacion['fin']!='0000-00-00') {
+                $fecha=explode("-", $relacion['fin']);
+                $fin=$fecha[2]."-".$fecha[1]."-".$fecha[0];
+                echo " HASTA ".$fin;
+              }
+            echo "</h4>";
           }
           //parte de la derecha
           echo "<div id='listaDerecha'>";
@@ -153,23 +162,25 @@ if (isset($_SESSION['usuario'])==false) {
             echo "<li id='vacio'>ftgyuhjnkm</li>";
           }
           if ($servicioId['archivo1']!=null) {
-            echo "<li><a href='".$servicioId['archivo1']."'>Descargar archivo</a></li>";
+            echo "<li><a href='".$servicioId['archivo1']."' target='_new'>Descargar archivo</a></li>";
           }
           if ($servicioId['archivo2']!=null) {
-            echo "<li><a href='".$servicioId['archivo2']."'>Descargar archivo</a></li>";
+            echo "<li><a href='".$servicioId['archivo2']."' target='_new'>Descargar archivo</a></li>";
           }
           if ($servicioId['archivo3']!=null) {
-            echo "<li><a href='".$servicioId['archivo3']."'>Descargar archivo</a></li>";
+            echo "<li><a href='".$servicioId['archivo3']."' target='_new'>Descargar archivo</a></li>";
           }
           if ($servicioId['archivo4']!=null) {
-            echo "<li><a href='".$servicioId['archivo4']."'>Descargar archivo</a></li>";
+            echo "<li><a href='".$servicioId['archivo4']."' target='_new'>Descargar archivo</a></li>";
           }
           if ($servicioId['archivo5']!=null) {
-            echo "<li><a href='".$servicioId['archivo5']."'>Descargar archivo</a></li>";
+            echo "<li><a href='".$servicioId['archivo5']."' target='_new'>Descargar archivo</a></li>";
           }
           echo "</ul>";
           echo "</div>";
          ?>
+
+         <a href="#" target='_new'></a>
          <div class="botones">
            <button id="general" onclick="timeline1();">General</button>
            <button id="recursos" onclick="timeline2();">Recursos</button>

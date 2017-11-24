@@ -256,7 +256,8 @@ function ServicioRelacion($id){
 //Construimos la consulta
 $sql="SELECT descripcion,
 (SELECT descripcion FROM servicios s2 WHERE s2.id=s1.relacion) AS relacionada,
-(SELECT s3.f_inicio FROM servicios s3 where s3.id=".$id." or s3.id=s1.relacion order by s3.f_inicio desc limit 1) as inicio
+(SELECT s3.f_inicio FROM servicios s3 WHERE s3.id=".$id." or s3.id=s1.relacion ORDER BY s3.f_inicio DESC LIMIT 1) AS inicio,
+(SELECT s4.f_fin FROM servicios s4 WHERE s4.id=".$id." or s4.id=s1.relacion ORDER BY s4.f_fin ASC LIMIT 1) AS fin
 FROM servicios s1
 WHERE id=".$id;
 //Realizamos la consulta
@@ -271,6 +272,8 @@ if($resultado!=false){
   return null;
 }
 }
+
+
 }
 
 
