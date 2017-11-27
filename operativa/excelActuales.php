@@ -37,7 +37,7 @@ foreach ($lista as $serv) {
   $objPHPExcel->setActiveSheetIndex(0)
   ->setCellValue('A'.$i, $serv['descripcion'])
   ->setCellValue('B'.$i, $serv['modelos'])
-  ->setCellValue('C'.$i, $serv['f_inicio'])
+  ->setCellValue('C'.$i, $fechaHoy)
   ->setCellValue('D'.$i, $clientes['nombre']);
   $i++;
 }
