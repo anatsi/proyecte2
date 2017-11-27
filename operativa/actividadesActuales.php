@@ -69,6 +69,8 @@ if (isset($_SESSION['usuario'])==false) {
       <div class="container">
         <!-- Contenido de la pagina. -->
         <h2><?php echo __('Actividades actuales', $lang); ?></h2>
+        <h3><a href='excelActuales.php' id='excel'>Exportar a excel</a></h3>
+        <br>
         <table id="tablamod">
         <thead id="theadmod">
           <tr id="trmod">

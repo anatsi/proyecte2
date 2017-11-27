@@ -41,6 +41,10 @@ tr a{
   color: black;
   text-decoration: underline;
 }
+
+#excel{
+  color: green;
+}
 @media screen and (max-width: 600px) {
   #tablamod {
     border: 0;
