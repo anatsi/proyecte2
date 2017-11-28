@@ -14,12 +14,9 @@ $objPHPExcel = new PHPExcel();
 // Establecer propiedades
 $objPHPExcel->getProperties()
 ->setCreator("Tomas")
-->setLastModifiedBy("Tomas")
 ->setTitle("Documento Excel de Actividades Actuales")
-->setSubject("Documento Excel de Actividades Actuales")
 ->setDescription("Resumen de las actividades actuales.")
 ->setKeywords("Excel Office 2007 openxml php")
-->setCategory("Actividades actiales");
 
 // Agregar Informacion
 $objPHPExcel->setActiveSheetIndex(0)
