@@ -26,7 +26,8 @@ $objPHPExcel->setActiveSheetIndex(0)
 ->setCellValue('D1', 'RESPONSABLE');
 
 if (isset($_GET['b'])) {
-  $lista=$servicio->listaFiltrados($_GET['b']);
+  $filtro=base64_decode($_GET['b']);
+  $lista=$servicio->listaFiltrados($filtro);
 }else {
   $lista=$servicio->listaFinalizados();
 }

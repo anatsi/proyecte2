@@ -44,8 +44,9 @@ function buscar($b) {
   $servicio= new Servicio();
   $cliente= new Cliente();
     $filtrados= $servicio->listaFiltrados($b);
+    $filtro=base64_encode($b);
         echo "
-          <h3><a href='excelHistorico.php?b=".$b."' id='excel'>Exportar a excel</a></h3>
+          <h3><a href='excelHistorico.php?b=".$filtro."' id='excel'>Exportar a excel</a></h3>
           <table id='tablamod'>
           <thead id='theadmod'>
             <tr id='trmod'>
