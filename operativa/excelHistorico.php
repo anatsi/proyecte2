@@ -22,10 +22,15 @@ $objPHPExcel->getProperties()
 $objPHPExcel->setActiveSheetIndex(0)
 ->setCellValue('A1', 'ACTIVIDAD')
 ->setCellValue('B1', 'MODELOS')
-->setCellValue('C1', 'FECHA INICIO')
-->setCellValue('D1', 'CLIENTE');
+->setCellValue('C1', 'CLIENTE')
+->setCellValue('D1', 'RESPONSABLE');
 
-$lista=$servicio->listaServiciosHoy();
+if (isset($_GET['b'])) {
+  $lista=$servicio->listaFiltrados($_GET['b']);
+}else {
+  $lista=$servicio->listaFinalizados();
+}
+
   $i=2;
 foreach ($lista as $serv) {
   $fecha=explode("-", $serv['f_inicio']);
@@ -34,8 +39,8 @@ foreach ($lista as $serv) {
   $objPHPExcel->setActiveSheetIndex(0)
   ->setCellValue('A'.$i, $serv['descripcion'])
   ->setCellValue('B'.$i, $serv['modelos'])
-  ->setCellValue('C'.$i, $fechaHoy)
-  ->setCellValue('D'.$i, $clientes['nombre']);
+  ->setCellValue('C'.$i, $clientes['nombre'])
+  ->setCellValue('D'.$i, $serv['responsable']);
   $i++;
 }
 
