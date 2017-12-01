@@ -10,14 +10,10 @@ if ( isset($_GET['lang']) ){
 require_once '../sesiones.php';
 require_once '../users.php';
 require_once 'cliente.php';
-require_once 'servicio.php';
-require_once 'recursos.php';
 
 $usuario=new User();
 $sesion=new Sesiones();
 $cliente=new Cliente();
-$servicio=new Servicio();
-$recursos= new Recursos();
 
 if (isset($_SESSION['usuario'])==false) {
   header('Location: ../index.php');
@@ -60,14 +56,14 @@ if (isset($_SESSION['usuario'])==false) {
 
       <nav class="menu">
         <a href="indexRRHH.php">Inicio</a>
-        <a href="#">Gestión de usuarios</a>
+        <a href="#">Gestión de empleados</a>
       </nav>
 
     </header>
 
 <div class="site-content">
   <div class="container">
-    <!--Cuerpo de la pagina -->
+    <!--Contenido de la pagina -->
   </div>
 </div>
 </div>
