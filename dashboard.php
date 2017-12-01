@@ -51,7 +51,12 @@
 						//llamamos a la funcion que nos devuelve el numero para el menu.
 						$menu=$usuario->menuDash($_SESSION['usuario']);
 						if ($menu['menu']==1) {
-							echo "<a href='operativa/index.php?lang=".$lang."'>".__('Gestión actividades', $lang)."</a>";
+              if ($menu['admin']==1) {
+                echo "<a href='operativa/index.php?lang=".$lang."'>".__('Gestión actividades', $lang)."</a>";
+              }
+              if ($menu['admin']==2) {
+                echo "<a href='operativa/indexRRHH.php?lang=".$lang."'>".__('Gestión actividades', $lang)."</a>";
+              }
 							echo "<a href='#'>".__('Portal nóminas', $lang)."</a>";
 							echo "<a href='directorio/index.php'>".__('Directorio empleados', $lang)."</a>";
 							echo "<a href='files/Peticion_vacaciones.pdf'>".__('Solicitar vacaciones', $lang)."</a>";

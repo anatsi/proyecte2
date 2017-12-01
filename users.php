@@ -51,7 +51,7 @@ class User extends db2
   //funcion para sacar el nombre del usuario por su id
   function menuDash($id){
     //Construimos la consulta
-    $sql="SELECT menu from users WHERE id_user='".$id."'";
+    $sql="SELECT menu, admin from users WHERE id_user='".$id."'";
     //Realizamos la consulta
     $resultado=$this->realizarConsulta($sql);
     if($resultado!=false){
