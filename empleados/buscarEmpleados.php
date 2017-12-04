@@ -33,7 +33,7 @@ if(!empty($buscar)) {
                 echo "<td data-label='Opciones' id='tdmod'>";
                 echo "<a href='desactivarEmpleado.php?e=".$empleados['id']."' title='Desactivar empleado'><i class='material-icons'>remove_circle</i></a>";
               }else {
-                echo "<td data-label='Activo' id='tdmod'></td>";
+                echo "<td data-label='' id='tdmod'></td>";
                 echo "<td data-label='Opciones' id='tdmod'>";
                 echo"<a href='activarEmpleado.php?e=".$empleados['id']."' title='Activar empleado'><i class='material-icons'>check_circle</i></a>";
               }
@@ -68,7 +68,7 @@ function buscar($b) {
                 echo "<td data-label='Opciones' id='tdmod'>";
                 echo "<a href='desactivarEmpleado.php?e=".$empleados['id']."' title='Desactivar empleado'><i class='material-icons'>remove_circle</i></a>";
               }else {
-                echo "<td data-label='Activo' id='tdmod'></td>";
+                echo "<td data-label='' id='tdmod'></td>";
                 echo "<td data-label='Opciones' id='tdmod'>";
                 echo"<a href='activarEmpleado.php?e=".$empleados['id']."' title='Activar empleado'><i class='material-icons'>check_circle</i></a>";
               }
