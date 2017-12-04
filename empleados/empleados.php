@@ -12,7 +12,7 @@ class Empleados extends db
     parent::__construct();
   }
 
-  //funcion para listar los clientes en el formulario de nuevos servicios
+  //funcion para listar todos los empleados de la bbdd
   function listaEmpleados(){
     //Construimos la consulta
     $sql="SELECT * from empleados order by activo desc";
@@ -30,9 +30,10 @@ class Empleados extends db
     }
   }
 
+  //funcion para listar los empleados filtrados
   function listaFiltrados($b){
     //Construimos la consulta
-    $sql="SELECT * from empleados where nombre LIKE '%".$b."%' OR apellidos LIKE '%".$b."%' order by activo desc";
+    $sql="SELECT * from empleados where concat(nombre, ' ', apellidos) like '%".$b."%' order by activo desc";
     //Realizamos la consulta
     $resultado=$this->realizarConsulta($sql);
     if($resultado!=null){
@@ -47,7 +48,7 @@ class Empleados extends db
     }
   }
 
-  //funcion para añadir la fecha de fin cuando se finaliza la actividad
+  //funciones para activar y desactivar empleados
   function ActivarEmpleado($id){
     $sql="UPDATE empleados SET activo=1 where id=".$id;
     $finalizarAct=$this->realizarConsulta($sql);
@@ -58,7 +59,6 @@ class Empleados extends db
     }
   }
 
-  //funcion para añadir la fecha de fin cuando se finaliza la actividad
   function DesactivarEmpleado($id){
     $sql="UPDATE empleados SET activo=0 where id=".$id;
     $finalizarAct=$this->realizarConsulta($sql);

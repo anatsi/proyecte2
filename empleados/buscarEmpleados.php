@@ -70,7 +70,7 @@ function buscar($b) {
               }else {
                 echo "<td data-label='Activo' id='tdmod'></td>";
                 echo "<td data-label='Opciones' id='tdmod'>";
-                echo"<a href='activarEmpleados.php?e=".$empleados['id']."' title='Activar empleado'><i class='material-icons'>check_circle</i></a>";
+                echo"<a href='activarEmpleado.php?e=".$empleados['id']."' title='Activar empleado'><i class='material-icons'>check_circle</i></a>";
               }
               echo "<a href='' title='Editar información'><i class='material-icons'>mode_edit</i></a></td></tr>";
       ;} echo "</tbody></table></div>";
