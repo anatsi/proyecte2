@@ -56,6 +56,7 @@
               }
               if ($menu['admin']==2) {
                 echo "<a href='operativa/indexRRHH.php?lang=".$lang."'>".__('Gestión actividades', $lang)."</a>";
+                echo "<a href='empleados/gestionEmpleados.php'>Gestión de empleados</a>";
               }
 							echo "<a href='#'>".__('Portal nóminas', $lang)."</a>";
 							echo "<a href='directorio/index.php'>".__('Directorio empleados', $lang)."</a>";

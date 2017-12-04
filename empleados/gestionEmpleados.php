@@ -1,10 +1,4 @@
 <?php
-//Reconocimiento idioma
-require('./languages/languages.php');
-  $lang = "es";
-if ( isset($_GET['lang']) ){
-  $lang = $_GET['lang'];
-}
 //incluimos todas las clases necesarias e iniciamos sus objetos.
 require_once '../sesiones.php';
 require_once '../users.php';
@@ -75,19 +69,18 @@ if (isset($_SESSION['usuario'])==false) {
     //llamamos a la función para devolver el nombre de usuario.
     $nombreuser=$usuario->nombreUsuario($_SESSION['usuario']);
     //sacamos el nombre de usuario por su id
-    echo "<a><strong>".__('Bienvenido ', $lang).$nombreuser['name']."</strong></a>";
+    echo "<a><strong>Bienvenido".$nombreuser['name']."</strong></a>";
    ?>
-  <span class="right"><a href="../logout.php" id='logout'><?php echo __('Cerrar Sesion', $lang); ?></a></span>
+  <span class="right"><a href="../logout.php" id='logout'>Cerrar sesion</a></span>
 </div><!--/ Codrops top bar -->
 
 <div class="site-container">
   <div class="site-pusher">
     <header class="header">
       <a href="#" class="header__icon" id="header__icon"></a>
-      <a href="../dashboard.php?lang=<?php echo $lang; ?>" class="header__logo"><img src="../imagenes/logo.png" alt=""></a>
+      <a href="../dashboard.php" class="header__logo"><img src="../imagenes/logo.png" alt=""></a>
       <nav class="menu">
-        <a href="indexRRHH.php?lang=<?php echo $lang; ?>"><?php echo __('Inicio', $lang); ?></a>
-        <a href="gestionEmpleados.php?lang=<?php echo $lang; ?>">Gestión de empleados</a>
+        <a href="gestionEmpleados.php">Inicio</a>
       </nav>
 
     </header>
@@ -97,7 +90,7 @@ if (isset($_SESSION['usuario'])==false) {
         <!-- Contenido de la pagina. -->
         <h2>Gestión de empleados</h2>
         <h3><a title='Añadir empleado' href="#"><i class="material-icons" id="nuevoEmpleado">group_add</i></a></h3>
-        <input type="text" id="busqueda" placeholder='<?php echo __('FILTRAR', $lang); ?>'/><br /><br />
+        <input type="text" id="busqueda" placeholder='FILTRAR'/><br /><br />
          <div id="resultado">
         <table id="tablamod">
         <thead id="theadmod">
@@ -105,7 +98,7 @@ if (isset($_SESSION['usuario'])==false) {
             <th scope="col" id="thmod">Nombre</th>
             <th scope="col" id="thmod">Apellidos</th>
             <th scope="col" id="thmod">Activo</th>
-            <th scope="col" id="thmod"><?php echo __('Opciones', $lang); ?></th>
+            <th scope="col" id="thmod">Opciones</th>
           </tr>
         </thead>
         <tbody id="tbodymod">
