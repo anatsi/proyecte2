@@ -36,16 +36,16 @@ if (isset($_SESSION['usuario'])==false) {
             $("#busqueda").keyup(function(e){
               //obtenemos el texto introducido en el campo de bÃºsqueda
               consulta = $("#busqueda").val();
-               //hace la bÃºsqueda
+               //hace la busqueda
                  $.ajax({
                      type: "POST",
                      url: "buscarEmpleados.php",
                      data: "b="+consulta,
                      dataType: "html",
-                    /* beforeSend: function(){
+                     beforeSend: function(){
                           //imagen de carga
                          $("#resultado").html("<p align='center'><img src='ajax-loader.gif' /></p>");
-                     },*/
+                     },
                      error: function(){
                          alert("Error en peticion");
                      },
@@ -111,11 +111,11 @@ if (isset($_SESSION['usuario'])==false) {
               if ($empleados['activo']==1) {
                 echo "<td data-label='Activo' id='tdmod'><i class='material-icons'>done</i></td>";
                 echo "<td data-label='Opciones' id='tdmod'>";
-                echo "<a href='' title='Desactivar empleado'><i class='material-icons'>remove_circle</i></a>";
+                echo "<a href='desactivarEmpleado.php?e=".$empleados['id']."' title='Desactivar empleado'><i class='material-icons'>remove_circle</i></a>";
               }else {
                 echo "<td data-label='Activo' id='tdmod'></td>";
                 echo "<td data-label='Opciones' id='tdmod'>";
-                echo"<a href='' title='Activar empleado'><i class='material-icons'>check_circle</i></a>";
+                echo"<a href='activarEmpleado.php?e=".$empleados['id']."' title='Activar empleado'><i class='material-icons'>check_circle</i></a>";
               }
               echo "<a href='' title='Editar información'><i class='material-icons'>mode_edit</i></a></td></tr>";
             }

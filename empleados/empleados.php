@@ -47,6 +47,29 @@ class Empleados extends db
     }
   }
 
+  //funcion para añadir la fecha de fin cuando se finaliza la actividad
+  function ActivarEmpleado($id){
+    $sql="UPDATE empleados SET activo=1 where id=".$id;
+    $finalizarAct=$this->realizarConsulta($sql);
+    if ($finalizarAct=!false) {
+         return true;
+    }else {
+         return false;
+    }
+  }
+
+  //funcion para añadir la fecha de fin cuando se finaliza la actividad
+  function DesactivarEmpleado($id){
+    $sql="UPDATE empleados SET activo=0 where id=".$id;
+    $finalizarAct=$this->realizarConsulta($sql);
+    if ($finalizarAct=!false) {
+         return true;
+    }else {
+         return false;
+    }
+  }
+
+
 
 }
 
