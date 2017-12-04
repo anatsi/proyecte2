@@ -69,7 +69,7 @@ if (isset($_SESSION['usuario'])==false) {
     //llamamos a la función para devolver el nombre de usuario.
     $nombreuser=$usuario->nombreUsuario($_SESSION['usuario']);
     //sacamos el nombre de usuario por su id
-    echo "<a><strong>Bienvenido".$nombreuser['name']."</strong></a>";
+    echo "<a><strong>Bienvenido ".$nombreuser['name']."</strong></a>";
    ?>
   <span class="right"><a href="../logout.php" id='logout'>Cerrar sesion</a></span>
 </div><!--/ Codrops top bar -->
