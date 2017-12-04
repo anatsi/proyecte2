@@ -56,7 +56,7 @@ if (isset($_SESSION['usuario'])==false) {
 
       <nav class="menu">
         <a href="indexRRHH.php">Inicio</a>
-        <a href="#">Gestión de empleados</a>
+        <a href="gestionEmpleados.php">Gestión de empleados</a>
       </nav>
 
     </header>

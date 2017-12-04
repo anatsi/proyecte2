@@ -37,6 +37,9 @@ i{
 i:hover{
   color: darkgrey;
 }
+#nuevoEmpleado{
+  font-size: 40px;
+}
 tr a{
   color: black;
   text-decoration: underline;
