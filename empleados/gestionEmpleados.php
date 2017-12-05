@@ -116,7 +116,7 @@ if (isset($_SESSION['usuario'])==false) {
                 echo "<td data-label='Opciones' id='tdmod'>";
                 echo"<a href='activarEmpleado.php?e=".$empleados['id']."' title='Activar empleado'><i class='material-icons'>check_circle</i></a>";
               }
-              echo "<a href='' title='Editar información'><i class='material-icons'>mode_edit</i></a></td></tr>";
+              echo "<a href='' title='Editar información del empleado'><i class='material-icons'>mode_edit</i></a></td></tr>";
             }
            ?>
         </tbody>
