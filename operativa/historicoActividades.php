@@ -116,6 +116,7 @@ if (isset($_SESSION['usuario'])==false) {
                 <th scope='col' id='thmod'>".__('Modelos', $lang)."</th>
                 <th scope='col' id='thmod'>".__('Cliente', $lang)."</th>
                 <th scope='col' id='thmod'>".__('Responsable', $lang)."</th>
+                <th scope='col' id='thmod'>Telefono</th>
               </tr>
             </thead><tbody id='tbodymod'>
 
@@ -127,6 +128,7 @@ if (isset($_SESSION['usuario'])==false) {
                     <td data-label='".__('Modelos', $lang)."' id='tdmod'>".$servicio['modelos']."</td>
                     <td data-label='".__('Cliente', $lang)."' id='tdmod'>".$clientes['nombre']."</td>
                     <td data-label='".__('Responsable', $lang)."' id='tdmod'>".$servicio['responsable']."</td>
+                    <td data-label='Telefono' id='tdmod'><a href='tel:".$servicio['telefono']."'>".$servicio['telefono']."</a></td>
                   </tr>
 
             ";} echo "</tbody></table></div></body></html>";

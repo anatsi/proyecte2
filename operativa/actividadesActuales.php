@@ -79,6 +79,7 @@ if (isset($_SESSION['usuario'])==false) {
             <th scope="col" id="thmod"><?php echo __('Fecha inicio', $lang); ?></th>
             <th scope="col" id="thmod"><?php echo __('Cliente', $lang); ?></th>
             <th scope="col" id="thmod"><?php echo __('Opciones', $lang); ?></th>
+            <th scope="col" id="thmod">Telefono</th>
           </tr>
         </thead>
         <tbody id="tbodymod">
@@ -94,6 +95,7 @@ if (isset($_SESSION['usuario'])==false) {
               echo "<td data-label='".__('Modelos', $lang)."' id='tdmod'>".$lista['modelos']."</td>";
               echo "<td data-label='".__('Fecha inicio', $lang)."' id='tdmod'>".$fechaHoy."</td>";
               echo "<td data-label='".__('Cliente', $lang)."' id='tdmod'>".$clientes['nombre']."</td>";
+              echo "<td data-label='Telefono' id='tdmod'><a href='tel:".$lista['telefono']."'>".$lista['telefono']."</a></td>";
               echo "  <td data-label='".__('Opciones', $lang)."' id='tdmod'>
               <a href='modificarRecursos.php?servicio=".$lista['id']."' title='".__('Modificar recursos', $lang)."'><i class='material-icons'>people</i></a>
               <a href='modificarInfo.php?servicio=".$lista['id']."' title='".__('Modificar información', $lang)."'><i class='material-icons'>mode_edit</i></a>
