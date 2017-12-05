@@ -23,7 +23,6 @@ if (isset($_SESSION['usuario'])==false) {
     <link rel="shortcut icon" href="../imagenes/favicon.ico">
 		<link rel="stylesheet" type="text/css" href="../css/dashboard.css" />
     <link rel="stylesheet" href="../css/modificar.css">
-    <script type="text/javascript" src="../js/servicioForm.js"></script>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!--  script para el filtrado en la tabla  -->
     <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
@@ -89,7 +88,7 @@ if (isset($_SESSION['usuario'])==false) {
       <div class="container">
         <!-- Contenido de la pagina. -->
         <h2>Gestión de empleados</h2>
-        <h3><a title='Añadir empleado' href="#"><i class="material-icons" id="nuevoEmpleado">group_add</i></a></h3>
+        <h3><a title='Añadir empleado' href="nuevoEmpleado.php"><i class="material-icons" id="nuevoEmpleado">group_add</i></a></h3>
         <input type="text" id="busqueda" placeholder='FILTRAR'/><br /><br />
          <div id="resultado">
         <table id="tablamod">
