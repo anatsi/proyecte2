@@ -70,6 +70,7 @@ if (isset($_SESSION['usuario'])==false) {
 
 <div class="site-content">
   <div class="container">
+    <?php echo "<h2>Semana ".date('W')."</h2>"; ?>
     <div class="derecha">
       <h2>Hoy</h2>
       <table class="rwd-table">
