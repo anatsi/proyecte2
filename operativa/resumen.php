@@ -66,13 +66,10 @@ if (isset($_SESSION['usuario'])==false) {
         <h2>Resumen semanal</h2>
         <form action="excelResumen.php" method="post" id="formulario">
           <div class="formthird">
-            <p><label><i class="fa fa-question-circle"></i>INICIO (*)</label><input type="date" name="finicio" required/></p>
+            <p><label><i class="fa fa-question-circle"></i>INICIO (*)</label><input type="date" name="inicio" required/></p>
           </div>
           <div class="formthird">
-          </div>
-          <div class="formthird">
-            <p><label><i class="fa fa-question-circle"></i>FIN (*)</label><input type="date" name="finicio" required/></p>
-
+            <p><label><i class="fa fa-question-circle"></i>FIN (*)</label><input type="date" name="fin" required/></p>
           </div>
           <div class="submitbuttons">
               <input id="exportarResumen" type="submit" value="EXPORTAR"/>

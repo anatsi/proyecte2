@@ -207,7 +207,7 @@ function RelacionActividad($id1, $id2){
   //funcion para sacar las modificaciones de informacion de un servicio
   function mod_info($id){
     //Construimos la consulta
-     $sql="select *, replace(concat(inicio, suelto), '0000-00-00', '') as fecha from mod_info where servicio=".$id." order by fecha";
+     $sql="SELECT *, replace(concat(inicio, suelto), '0000-00-00', '') AS fecha FROM mod_info WHERE servicio=".$id." ORDER BY fecha";
      //Realizamos la consulta
      $resultado=$this->realizarConsulta($sql);
      if($resultado!=null){
@@ -224,7 +224,7 @@ function RelacionActividad($id1, $id2){
 //funcion para sacar las modificaciones de informacion de un servicio
 function dias_recursos($id){
   //Construimos la consulta
-   $sql="select *, replace(concat(inicio, suelto), '0000-00-00', '') as fecha from dias_recursos where servicio=".$id." order by fecha";
+   $sql="SELECT *, replace(concat(inicio, suelto), '0000-00-00', '') AS fecha FROM dias_recursos WHERE servicio=".$id." ORDER BY fecha";
    //Realizamos la consulta
    $resultado=$this->realizarConsulta($sql);
    if($resultado!=null){
@@ -271,6 +271,24 @@ if($resultado!=false){
 }else{
   return null;
 }
+}
+
+//funcion para sacar las modificaciones de informacion de un servicio
+function listaResumen($fin){
+  //Construimos la consulta
+   $sql="SELECT * FROM servicios WHERE f_inicio<='".$fin."'";
+   //Realizamos la consulta
+   $resultado=$this->realizarConsulta($sql);
+   if($resultado!=null){
+     //Montamos la tabla de resultado
+     $tabla=[];
+     while($fila=$resultado->fetch_assoc()){
+       $tabla[]=$fila;
+     }
+     return $tabla;
+   }else{
+     return null;
+   }
 }
 
 
