@@ -85,6 +85,8 @@ textarea::placeholder{
         <a href="nuevoServicio.php">Nueva Actividad</a>
         <a href="actividadesActuales.php">Actividades Actuales</a>
         <a href="historicoActividades.php">Histórico Actividades</a>
+        <a href="resumen.php">Resumen semanal</a>
+        
       </nav>
 
     </header>

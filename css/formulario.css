@@ -65,8 +65,8 @@
           float:left;
         }
         input[type=submit],submit {
-          background:blue;
-          border-color:blue;
+          background:darkgrey;
+          border-color:darkgrey;
           color:#fff;
           line-height:25px;
           font-size:20px;
@@ -78,8 +78,8 @@
         }
         input[type=submit]:hover,submit:hover {
           color: black;
-          background:lightblue;
-          border-color:lightblue;
+          background:lightgrey;
+          border-color:lightgrey;
         }
         input[type=file]{
           width:275px;
@@ -138,6 +138,12 @@
           margin-left: 10%;
           width: 20%;
         }
+        #exportarResumen{
+          width: 20%;
+          float: left;
+          margin-top: 5%;
+          margin-left: 3%
+        }
         @media only screen and (max-width: 960px) {
             form{
               margin-top: 40px;
@@ -190,6 +196,10 @@
             input[type=file]{
               margin-left: 45px;
               margin-bottom: 5px;
+            }
+            #exportarResumen{
+              font-size: 20px;
+              width: 90%;
             }
         }
 
