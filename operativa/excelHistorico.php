@@ -47,6 +47,14 @@ foreach ($lista as $serv) {
 
 // Establecer la hoja activa, para que cuando se abra el documento se muestre primero.
 $objPHPExcel->setActiveSheetIndex(0);
+//adaptar las celdas al ancho del texto
+for($col = 'A'; $col !== 'Z'; $col++) {
+    $objPHPExcel->getActiveSheet()
+        ->getColumnDimension($col)
+        ->setAutoSize(true);
+}
+//poner el encabezado en negrita
+$objPHPExcel->getActiveSheet()->getStyle("A1:Q1")->getFont()->setBold(true);
 
 // Se modifican los encabezados del HTTP para indicar que se envia un archivo de Excel.
 header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
