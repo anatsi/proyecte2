@@ -20,6 +20,8 @@ $objPHPExcel->getProperties()
 ->setDescription("Resumen de las actividades actuales.")
 ->setKeywords("Excel Office 2007 openxml php");
 
+//array para cambiar el color
+$style = array('font' => array('color' => array('rgb' => 'E72512')));
 // Agregar Informacion
 $objPHPExcel->setActiveSheetIndex(0)
 ->setCellValue('A1', 'ACTIVIDAD')
@@ -82,6 +84,7 @@ $objPHPExcel->setActiveSheetIndex(0)
       $otros=$otros. $recurso['otro6']." (".$recurso['inicio6']."-".$recurso['fin6'].")";
     }
 
+
     //sacar datos en el excel
     $objPHPExcel->setActiveSheetIndex(0)
     ->setCellValue('A'.$i, $serv['descripcion'])
@@ -106,6 +109,96 @@ $objPHPExcel->setActiveSheetIndex(0)
     ->setCellValue('T'.$i, $serv['relacion'])
     ->setCellValue('U'.$i, $serv['cancelado']);
     $i++;
+    //sacar modificaciones de esa actividad
+    $modInfo=$servicio->infoResumen($serv['id'], $_POST['inicio'], $_POST['fin']);
+    $numeroInfo=count($modInfo);
+    $modRecursos=$servicio->diasRecursosResumen($serv['id'], $_POST['inicio'], $_POST['fin']);
+    $numeroRecursos=count($modRecursos);
+    //modificaciones de la informacion
+    if ($numeroInfo>0) {
+      foreach ($modInfo as $info) {
+        //comrpobacion de las fechas y cambio de formato de las fechas
+        if ($info['inicio']!='0000-00-00') {
+          $inicioInfo=explode("-", $info['inicio']);
+          $inicioInfo=$inicioInfo[2]."-".$inicioInfo[1]."-".$inicioInfo[0];
+          if ($info['fin']!='0000-00-00') {
+            $finInfo=explode("-", $info['fin']);
+            $finInfo=$finInfo[2]."-".$finInfo[1]."-".$finInfo[0];
+          }else {
+            $finInfo='';
+          }
+        }else {
+          $inicioInfo=explode("-", $info['suelto']);
+          $inicioInfo=$inicioInfo[2]."-".$inicioInfo[1]."-".$inicioInfo[0];
+          $finInfo=explode("-", $info['suelto']);
+          $finInfo=$finInfo[2]."-".$finInfo[1]."-".$finInfo[0];
+        }
+        //cambiar color de la letra
+        $objPHPExcel->getActiveSheet()->getStyle('A'.$i.':Z'.$i.'')->applyFromArray($style);
+        //escribir los datos en el excel
+        $objPHPExcel->setActiveSheetIndex(0)
+        ->setCellValue('A'.$i, $info['descripcion'])
+        ->setCellValue('B'.$i, $info['modelos'])
+        ->setCellValue('C'.$i, $inicioInfo)
+        ->setCellValue('D'.$i, $finInfo)
+        ->setCellValue('L'.$i, $info['responsable'])
+        ->setCellValue('M'.$i, $info['telefono'])
+        ->setCellValue('N'.$i, $info['correo']);
+        $i++;
+      }
+    }
+
+    //modificaciones de los recursos
+    if ($numeroRecursos>0) {
+      foreach ($modRecursos as $mod) {
+        //comrpobacion de las fechas y cambio de formato de las fechas
+        if ($mod['inicio']!='0000-00-00') {
+          $inicioRec=explode("-", $mod['inicio']);
+          $inicioRec=$inicioRec[2]."-".$inicioRec[1]."-".$inicioRec[0];
+          if ($mod['fin']!='0000-00-00') {
+            $finRec=$mod['fin'];
+          }else {
+            $finRec='';
+          }
+        }else {
+          $inicioRec=$mod['suelto'];
+          $finRec=$mod['suelto'];
+        }
+        //juntamos los recursos de horarios raros
+        $otros=0;
+        if ($mod['otro1']!=0) {
+          $otros=$mod['otro1']." (".$mod['inicio1']."-".$mod['fin1'].") //";
+        }
+        if ($mod['otro2']!=0) {
+          $otros=$otros. $mod['otro2']." (".$mod['inicio2']."-".$mod['fin2'].") //";
+        }
+        if ($mod['otro3']!=0) {
+          $otros=$otros. $mod['otro3']." (".$mod['inicio3']."-".$mod['fin3'].") //";
+        }
+        if ($mod['otro4']!=0) {
+          $otros=$otros. $mod['otro4']." (".$mod['inicio4']."-".$mod['fin4'].") //";
+        }
+        if ($mod['otro5']!=0) {
+          $otros=$otros. $mod['otro5']." (".$mod['inicio5']."-".$mod['fin5'].") //";
+        }
+        if ($mod['otro6']!=0) {
+          $otros=$otros. $mod['otro6']." (".$mod['inicio6']."-".$mod['fin6'].")";
+        }
+        //cambiar color de la letra
+        $objPHPExcel->getActiveSheet()->getStyle('A'.$i.':Z'.$i.'')->applyFromArray($style);
+        //escribimos los datos en el sitio
+        $objPHPExcel->setActiveSheetIndex(0)
+        ->setCellValue('C'.$i, $inicioRec)
+        ->setCellValue('D'.$i, $finRec)
+        ->setCellValue('E'.$i, $mod['total'])
+        ->setCellValue('F'.$i, $mod['tm'])
+        ->setCellValue('G'.$i, $mod['tt'])
+        ->setCellValue('H'.$i, $mod['tn'])
+        ->setCellValue('I'.$i, $mod['tc'])
+        ->setCellValue('J'.$i, $otros);
+        $i++;
+      }
+    }
   }
 
 // Establecer la hoja activa, para que cuando se abra el documento se muestre primero.

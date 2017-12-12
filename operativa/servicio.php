@@ -273,10 +273,10 @@ if($resultado!=false){
 }
 }
 
-//funcion para sacar las modificaciones de informacion de un servicio
+//funcion para sacar la lista para el excel de resumen
 function listaResumen($fin){
   //Construimos la consulta
-   $sql="SELECT * FROM servicios WHERE f_inicio<='".$fin."'";
+   $sql="SELECT * FROM servicios WHERE f_inicio<='".$fin."' AND f_fin>='".$fin."' OR f_inicio<='".$fin."' AND f_fin is null";
    //Realizamos la consulta
    $resultado=$this->realizarConsulta($sql);
    if($resultado!=null){
@@ -290,6 +290,50 @@ function listaResumen($fin){
      return null;
    }
 }
+
+//funcion para sacar las modificaciones de informacion de un servicio para el resumen
+function infoResumen($id, $inicio, $fin){
+  //Construimos la consulta
+   $sql="SELECT * FROM mod_info
+          WHERE servicio=".$id." and suelto between '".$inicio."' AND '".$fin."'
+          or servicio=".$id." and inicio<='".$fin."' and fin = '0000-00-00' and suelto = '0000-00-00'
+          OR servicio=".$id." and inicio<='".$fin."' and fin between '".$inicio."' and '".$fin."' and suelto = '0000-00-00'";
+   //Realizamos la consulta
+   $resultado=$this->realizarConsulta($sql);
+   if($resultado!=null){
+     //Montamos la tabla de resultado
+     $tabla=[];
+     while($fila=$resultado->fetch_assoc()){
+       $tabla[]=$fila;
+     }
+     return $tabla;
+   }else{
+     return null;
+   }
+}
+
+//funcion para sacar las modificaciones de recursos de un servicio para el resumen
+function diasRecursosResumen($id, $inicio, $fin){
+  //Construimos la consulta
+   $sql="SELECT * FROM dias_recursos
+          WHERE servicio=".$id." and suelto between '".$inicio."' AND '".$fin."'
+          or servicio=".$id." and inicio<='".$fin."' and fin = '0000-00-00' and suelto = '0000-00-00'
+          OR servicio=".$id." and inicio<='".$fin."' and fin between '".$inicio."' and '".$fin."' and suelto = '0000-00-00'";
+   //Realizamos la consulta
+   $resultado=$this->realizarConsulta($sql);
+   if($resultado!=null){
+     //Montamos la tabla de resultado
+     $tabla=[];
+     while($fila=$resultado->fetch_assoc()){
+       $tabla[]=$fila;
+     }
+     return $tabla;
+   }else{
+     return null;
+   }
+}
+
+
 
 
 }
