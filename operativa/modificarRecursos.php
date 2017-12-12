@@ -56,8 +56,8 @@ if (isset($_SESSION['usuario'])==false) {
         <a href="nuevoServicio.php">Nueva Actividad</a>
         <a href="actividadesActuales.php">Actividades Actuales</a>
         <a href="historicoActividades.php">Histórico Actividades</a>
-        <a href="resumen.php">Resumen semanal</a>
-        
+        <a href="resumen.php">Resumen temporal</a>
+
       </nav>
 
     </header>

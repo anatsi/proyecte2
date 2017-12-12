@@ -54,7 +54,7 @@ if (isset($_SESSION['usuario'])==false) {
         <a href="nuevoServicio.php?lang=<?php echo $lang; ?>"><?php echo __('Nueva actividad', $lang); ?></a>
         <a href="actividadesActuales.php?lang=<?php echo $lang; ?>"><?php echo __('Actividades actuales', $lang); ?></a>
         <a href="historicoActividades.php?lang=<?php echo $lang; ?>"><?php echo __('Historico actividades', $lang); ?></a>
-        <a href="resumen.php">Resumen semanal</a>
+        <a href="resumen.php">Resumen temporal</a>
 
       </nav>
 
@@ -63,7 +63,7 @@ if (isset($_SESSION['usuario'])==false) {
     <div class="site-content">
       <div class="container">
         <!-- Contenido de la pagina. -->
-        <h2>Resumen semanal</h2>
+        <h2>Resumen temporal</h2>
         <form action="excelResumen.php" method="post" id="formulario">
           <div class="formthird">
             <p><label><i class="fa fa-question-circle"></i>INICIO (*)</label><input type="date" name="inicio" required/></p>
