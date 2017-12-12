@@ -207,7 +207,7 @@ function RelacionActividad($id1, $id2){
   //funcion para sacar las modificaciones de informacion de un servicio
   function mod_info($id){
     //Construimos la consulta
-     $sql="SELECT *, replace(concat(inicio, suelto), '0000-00-00', '') AS fecha FROM mod_info WHERE servicio=".$id." ORDER BY fecha";
+     $sql="SELECT *, replace(concat(inicio, suelto), '0000-00-00', '') AS fecha FROM mod_info WHERE servicio=".$id." ORDER BY fecha desc";
      //Realizamos la consulta
      $resultado=$this->realizarConsulta($sql);
      if($resultado!=null){
@@ -224,7 +224,7 @@ function RelacionActividad($id1, $id2){
 //funcion para sacar las modificaciones de informacion de un servicio
 function dias_recursos($id){
   //Construimos la consulta
-   $sql="SELECT *, replace(concat(inicio, suelto), '0000-00-00', '') AS fecha FROM dias_recursos WHERE servicio=".$id." ORDER BY fecha";
+   $sql="SELECT *, replace(concat(inicio, suelto), '0000-00-00', '') AS fecha FROM dias_recursos WHERE servicio=".$id." ORDER BY fecha desc";
    //Realizamos la consulta
    $resultado=$this->realizarConsulta($sql);
    if($resultado!=null){
