@@ -20,7 +20,7 @@ body {
 #tablamod #thmod,
 #tablamod #tdmod {
   padding: .625em;
-  text-align: center;
+  text-align: left;
   font-size: 14px;
 }
 #tablamod #thmod {
@@ -72,13 +72,14 @@ tr a{
     border-bottom: 1px solid #ddd;
     display: block;
     font-size: .8em;
-    text-align: right;
+    text-align: left;
   }
   #tablamod #tdmod:before {
     content: attr(data-label);
     float: left;
     font-weight: bold;
     text-transform: uppercase;
+    width: 160px;
   }
   #tablamod #tdmod:last-child {
     border-bottom: 0;
