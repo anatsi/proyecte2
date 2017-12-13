@@ -116,7 +116,7 @@ for($col = 'A'; $col !== 'Z'; $col++) {
 }
 
 //poner el encabezado en negrita
-$objPHPExcel->getActiveSheet()->getStyle("A1:Q1")->getFont()->setBold(true);
+$objPHPExcel->getActiveSheet()->getStyle("A1:Z1")->getFont()->setBold(true);
 
 // Se modifican los encabezados del HTTP para indicar que se envia un archivo de Excel.
 header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
