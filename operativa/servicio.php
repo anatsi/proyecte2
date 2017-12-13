@@ -187,9 +187,9 @@ function RelacionActividad($id1, $id2){
     //cogemos la fecha de hoy para compararla con lo que vamos a sacar.
     $fecha=date("Y-m-d");
     //Construimos la consulta
-    $sql="SELECT * FROM servicios s INNER JOIN cliente c ON s.id_cliente=c.id
-          WHERE s.descripcion LIKE '%".$filtro."%' AND f_fin<= '".$fecha."' OR s.modelos LIKE '%".$filtro."%'  AND f_fin<= '".$fecha."'
-          OR c.nombre LIKE '%".$filtro."%'  AND f_fin<= '".$fecha."' OR s.responsable LIKE '%".$filtro."%' AND f_fin<='".$fecha."'";
+    $sql="SELECT *
+          FROM servicios s INNER JOIN cliente c ON s.id_cliente=c.id
+          WHERE f_fin<= '".$fecha."' AND CONCAT(s.descripcion, s.modelos, c.nombre, s.responsable) LIKE '%".$filtro."%'";
     //Realizamos la consulta
     $resultado=$this->realizarConsulta($sql);
     if($resultado!=null){

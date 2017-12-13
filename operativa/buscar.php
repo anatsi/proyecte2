@@ -4,10 +4,10 @@ require_once 'cliente.php';
 $servicio= new Servicio();
 $cliente= new Cliente();
 
-$buscar = $_POST['b'];
+$b = str_replace(" ", "%", $_POST['b']);
 
-if(!empty($buscar)) {
-      buscar($buscar);
+if(!empty($b)) {
+      buscar($b);
 }else{
 
 
