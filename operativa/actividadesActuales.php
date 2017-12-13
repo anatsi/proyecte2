@@ -79,8 +79,8 @@ if (isset($_SESSION['usuario'])==false) {
             <th scope="col" id="thmod"><?php echo __('Modelos', $lang); ?></th>
             <th scope="col" id="thmod"><?php echo __('Fecha inicio', $lang); ?></th>
             <th scope="col" id="thmod"><?php echo __('Cliente', $lang); ?></th>
-            <th scope="col" id="thmod"><?php echo __('Opciones', $lang); ?></th>
             <th scope="col" id="thmod">Telefono</th>
+            <th scope="col" id="thmod"><?php echo __('Opciones', $lang); ?></th>
           </tr>
         </thead>
         <tbody id="tbodymod">

@@ -73,7 +73,25 @@ if (isset($_SESSION['usuario'])==false) {
   <div class="container">
     <?php echo "<h2>Semana ".date('W')."</h2>"; ?>
     <div class="derecha">
-      <h2>Hoy</h2>
+      <?php
+        $dia=date('w');
+        if ($dia == 0) {
+          $hoy=date('d')+2;
+          $hoy=$hoy . date('-m-Y');
+          $manana=date('d')+3;
+          $manana=$manana . date('-m-Y');
+        }elseif ($dia == 6) {
+          $hoy=date('d')+1;
+          $hoy=$hoy . date('-m-Y');
+          $manana=date('d')+2;
+          $manana=$manana . date('-m-Y');
+        }else {
+          $hoy=date('d-m-Y');
+          $manana=date('d')+1;
+          $manana= $manana . date('-m-Y');
+        }
+       ?>
+       <h2><?php echo $hoy; ?></h2>
       <table class="rwd-table">
         <tr>
           <th><?php echo __('Actividad', $lang); ?></th>
@@ -128,7 +146,7 @@ if (isset($_SESSION['usuario'])==false) {
       </table>
     </div>
     <div class="izquierda">
-      <h2>Mañana</h2>
+      <h2><?php echo $manana; ?></h2>
       <table class="rwd-table">
         <tr>
           <th><?php echo __('Actividad', $lang); ?></th>
