@@ -22,6 +22,7 @@ if(!empty($b)) {
           <th scope='col' id='thmod'>MODELOS</th>
           <th scope='col' id='thmod'>CLIENTE</th>
           <th scope='col' id='thmod'>RESPONSABLE</th>
+          <th scope='col' id='thmod'>TELEFONO</th>
         </tr>
       </thead><tbody id='tbodymod'>
 
@@ -33,6 +34,7 @@ if(!empty($b)) {
               <td data-label='MODELOS' id='tdmod'>".$servicio['modelos']."</td>
               <td data-label='CLIENTE' id='tdmod'>".$clientes['nombre']."</td>
               <td data-label='RESPONSABLE' id='tdmod'>".$servicio['responsable']."</td>
+              <td data-label='Telefono' id='tdmod'><a href='tel:".$servicio['telefono']."'>".$servicio['telefono']."</a></td>
             </tr>
 
       ";} echo "</tbody></table></div></body></html>";
@@ -54,19 +56,21 @@ function buscar($b) {
               <th scope='col' id='thmod'>MODELOS</th>
               <th scope='col' id='thmod'>CLIENTE</th>
               <th scope='col' id='thmod'>RESPONSABLE</th>
+              <th scope='col' id='thmod'>TELEFONO</th>
             </tr>
           </thead><tbody id='tbodymod'>
 
           "; foreach ($filtrados as $servicio) {
-            $clientes=$cliente->ClienteId($servicio['id_cliente']);
              echo "
                 <tr id='trmod'>
                   <td data-label='ACTIVIDAD' id='tdmod'><a href='timeline.php?servicio=".$servicio['id']."'>".$servicio['descripcion']."</a></td>
                   <td data-label='MODELOS' id='tdmod'>".$servicio['modelos']."</td>
-                  <td data-label='CLIENTE' id='tdmod'>".$clientes['nombre']."</td>
+                  <td data-label='CLIENTE' id='tdmod'>".$servicio['nombre']."</td>
                   <td data-label='RESPONSABLE' id='tdmod'>".$servicio['responsable']."</td>
+                  <td data-label='Telefono' id='tdmod'><a href='tel:".$servicio['telefono']."'>".$servicio['telefono']."</a></td>
                 </tr>
 
           ";} echo "</tbody></table></div></body></html>";
+
 }
  ?>

@@ -64,10 +64,8 @@ if (isset($_SESSION['usuario'])==false) {
       <div class="container">
         <!-- Contenido de la pagina. -->
         <?php
-        echo $_GET['servicio'];
         //llamar a las funciones necesarias para sacar la informacion
           $servicioId= $servicio->servicioId($_GET['servicio']);
-          var_dump($servicioId);
           $clienteId= $cliente->ClienteId($servicioId['id_cliente']);
           $recursosId= $recursos->recursosId($servicioId['id']);
           //sacar el nombre del servicio que describimos
