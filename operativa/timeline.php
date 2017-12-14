@@ -75,7 +75,7 @@ if (isset($_SESSION['usuario'])==false) {
             $relacion=$servicio->ServicioRelacion($servicioId['id']);
             $fecha=explode("-", $relacion['inicio']);
             $inicio=$fecha[2]."-".$fecha[1]."-".$fecha[0];
-            echo "<h4 id='relacion'>RELACIONADA CON ".$relacion['relacionada'] ." DESDE ".$inicio;
+            echo "<h4 id='relacion'>RELACIONADA CON <a href='timeline.php?servicio=".$relacion['id_relacionada']."'>".$relacion['relacionada'] ."</a> DESDE ".$inicio;
               if ($relacion['fin']!=null && $relacion['fin']!='0000-00-00') {
                 $fecha=explode("-", $relacion['fin']);
                 $fin=$fecha[2]."-".$fecha[1]."-".$fecha[0];
@@ -184,12 +184,12 @@ if (isset($_SESSION['usuario'])==false) {
 
          <a href="#" target='_new'></a>
          <div class="botones">
-           <button id="general" onclick="timeline1();">General</button>
-           <button id="recursos" onclick="timeline2();">Recursos</button>
+           <button id="recursos" onclick="timeline1();">Recursos</button>
+           <button id="general" onclick="timeline2();">General</button>
          </div>
 
         <!-- Vertical Timeline -->
-        <div id="timeline1" class="shown">
+        <div id="timeline2" class="hidden">
           <section id="conference-timeline">
             <div class="timeline-start">Start</div>
             <div class="conference-center-line"></div>
@@ -227,7 +227,7 @@ if (isset($_SESSION['usuario'])==false) {
             <div class="timeline-end">End</div>
           </section>
         </div>
-        <div id="timeline2" class="hidden">
+        <div id="timeline1" class="shown">
           <section id="conference-timeline">
             <div class="timeline-start">Start</div>
             <div class="conference-center-line"></div>
