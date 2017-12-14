@@ -85,6 +85,19 @@ foreach ($lista as $serv) {
   if ($recurso['otro6']!=0) {
     $otros= $otros . $recurso['otro6'] .' ('.$recurso['inicio6'].'-'.$recurso['fin6'].') // ';
   }
+  //sacar el nombre de la actividad relacionada
+  if ($serv['relacion']!=null && $serv['relacion']!=0) {
+    $relacionar=$servicio->ServicioRelacion($serv['id']);
+    $relacionada=$relacionar['relacionada'];
+  }else {
+    $relacionada='';
+  }
+  //sacar un si si esta cancelado y un no si no lo esta.
+  if ($serv['cancelado']==true) {
+    $cancelado='SI';
+  }else {
+    $cancelado='NO';
+  }
   //escribir los datos en el excel
   $objPHPExcel->setActiveSheetIndex(0)
   ->setCellValue('A'.$i, $serv['descripcion'])
@@ -106,8 +119,8 @@ foreach ($lista as $serv) {
   ->setCellValue('Q'.$i, $serv['com_admin_fin'])
   ->setCellValue('R'.$i, $serv['com_depto'])
   ->setCellValue('S'.$i, $serv['com_fin'])
-  ->setCellValue('T'.$i, $serv['cancelado'])
-  ->setCellValue('U'.$i, $serv['relacion']);
+  ->setCellValue('T'.$i, $cancelado)
+  ->setCellValue('U'.$i, $relacionada);
   $i++;
 }
 

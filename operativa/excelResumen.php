@@ -84,6 +84,20 @@ $objPHPExcel->setActiveSheetIndex(0)
       $otros=$otros. $recurso['otro6']." (".$recurso['inicio6']."-".$recurso['fin6'].")";
     }
 
+    //sacar el nombre de la actividad que esta relacionada.
+    if ($serv['relacion']!=null && $serv['relacion']!=0) {
+      $relacionar=$servicio->ServicioRelacion($serv['id']);
+      $relacionado=$relacionar['relacionada'];
+    }else {
+      $relacionado='';
+    }
+
+    //sacar un si si la actividad ha sido cancelada y un no si no lo ha sido
+    if ($serv['cancelado']==true) {
+      $cancelado='SI';
+    }else {
+      $cancelado='NO';
+    }
 
     //sacar datos en el excel
     $objPHPExcel->setActiveSheetIndex(0)
@@ -106,8 +120,8 @@ $objPHPExcel->setActiveSheetIndex(0)
     ->setCellValue('Q'.$i, $serv['com_admin_fin'])
     ->setCellValue('R'.$i, $serv['com_depto'])
     ->setCellValue('S'.$i, $serv['com_fin'])
-    ->setCellValue('T'.$i, $serv['relacion'])
-    ->setCellValue('U'.$i, $serv['cancelado']);
+    ->setCellValue('T'.$i, $relacionado)
+    ->setCellValue('U'.$i, $cancelado);
     $i++;
     //sacar modificaciones de esa actividad
     $modInfo=$servicio->infoResumen($serv['id'], $_POST['inicio'], $_POST['fin']);

@@ -254,7 +254,7 @@ function ActualizarComentarios($id, $csup, $crrhh, $caf, $cdo){
 
 function ServicioRelacion($id){
 //Construimos la consulta
-$sql="SELECT descripcion,
+$sql="SELECT descripcion, relacion as id_relacionada,
 (SELECT descripcion FROM servicios s2 WHERE s2.id=s1.relacion) AS relacionada,
 (SELECT s3.f_inicio FROM servicios s3 WHERE s3.id=".$id." or s3.id=s1.relacion ORDER BY s3.f_inicio DESC LIMIT 1) AS inicio,
 (SELECT s4.f_fin FROM servicios s4 WHERE s4.id=".$id." and s4.f_fin is not null or s4.id=s1.relacion and s4.f_fin is not null ORDER BY s4.f_fin ASC LIMIT 1) AS fin
@@ -332,9 +332,6 @@ function diasRecursosResumen($id, $inicio, $fin){
      return null;
    }
 }
-
-
-
 
 }
 
