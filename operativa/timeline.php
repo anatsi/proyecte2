@@ -216,7 +216,7 @@ if (isset($_SESSION['usuario'])==false) {
                     echo "<p><b>MODELOS:</b> ".$modificacion['modelos']."</p>";
                     echo "<p><b>RESPONSABLE:</b> ".$modificacion['responsable']."</p>";
                     echo "</div></div>";
-                    echo "<div class='meta-date'>";
+                    echo "<div class='meta-date' id='meta-date-left'>";
                     //transformamos la fecha
                     $inicio=explode("-", $modificacion['inicio']);
                     $fin=explode("-", $modificacion['fin']);
@@ -234,7 +234,7 @@ if (isset($_SESSION['usuario'])==false) {
                     echo "<p><b>MODELOS:</b> ".$modificacion['modelos']."</p>";
                     echo "<p><b>RESPONSABLE:</b> ".$modificacion['responsable']."</p>";
                     echo "</div></div>";
-                    echo "<div class='meta-date'>";
+                    echo "<div class='meta-date' id='meta-date-right'>";
                     $suelto=explode("-", $modificacion['suelto']);
                     $suelto=$suelto[2]."-".$suelto[1]."-".$suelto[0];
                     echo "<span class='month'>".$suelto."</span>";
@@ -292,7 +292,7 @@ if (isset($_SESSION['usuario'])==false) {
                     }
 
                     echo "</div></div>";
-                    echo "<div class='meta-date'>";
+                    echo "<div class='meta-date' id='meta-date-left'>";
                     //transformamos la fecha
                     $inicio=explode("-", $modificacion['inicio']);
                     $fin=explode("-", $modificacion['fin']);
@@ -339,7 +339,7 @@ if (isset($_SESSION['usuario'])==false) {
                     }
 
                     echo "</div></div>";
-                    echo "<div class='meta-date'>";
+                    echo "<div class='meta-date' id='meta-date-right'>";
                     //transformar la fecha y sacarla
                     $suelto=explode("-", $modificacion['suelto']);
                     $suelto=$suelto[2]."-".$suelto[1]."-".$suelto[0];

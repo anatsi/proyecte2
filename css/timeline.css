@@ -121,7 +121,12 @@
   margin-left: -50px;
   color: #fff;
   border-radius: 100%;
-  background: #00b0bd;
+}
+.timeline-article #meta-date-left{
+  background: rgb(121, 2, 20);
+}
+.timeline-article #meta-date-right{
+  background: rgb(8, 0, 98);
 }
 .timeline-article .meta-date .date,
 .timeline-article .meta-date .month {
