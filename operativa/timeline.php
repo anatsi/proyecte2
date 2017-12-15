@@ -138,6 +138,11 @@ if (isset($_SESSION['usuario'])==false) {
           echo "<li>Responsable: ".$servicioId['responsable']."</li>";
           echo "<li>Tel. responsable: ".$servicioId['telefono']."</li>";
           echo "<li>Correo responsable: ".$servicioId['correo']."</li>";
+          if ($servicioId['com_depto']!=null) {
+            echo "<li>Descripción: ".$servicioId['com_depto']."</li>";
+          }else {
+            echo "<li id='vacio'>ftgyuhjnkm</li>";
+          }
           if ($servicioId['com_supervisor']!=null) {
             echo "<li>Comentario Supervisor: ".$servicioId['com_supervisor']."</li>";
           }else {
@@ -153,11 +158,7 @@ if (isset($_SESSION['usuario'])==false) {
           }else {
             echo "<li id='vacio'>ftgyuhjnkm</li>";
           }
-          if ($servicioId['com_depto']!=null) {
-            echo "<li>Comentario Dept. Operativo: ".$servicioId['com_depto']."</li>";
-          }else {
-            echo "<li id='vacio'>ftgyuhjnkm</li>";
-          }
+
           if ($servicioId['com_fin']!=null) {
             echo "<li>Comentario Final: ".$servicioId['com_fin']."</li>";
           }else {
