@@ -197,15 +197,6 @@ if (isset($_SESSION['usuario'])==false) {
               <?php
                 $modificaciones=$servicio->mod_info($servicioId['id']);
                 foreach ($modificaciones as $modificacion) {
-                  //sacamos los datos
-                /*  echo "<div class='timeline-article'>";
-                  echo "<div class='content-left-container'>";
-                  echo "<div class='content-left'>";
-                  echo "<p><b>ACTIVIDAD:</b> ".$modificacion['descripcion']."</p>";
-                  echo "<p><b>MODELOS:</b> ".$modificacion['modelos']."</p>";
-                  echo "<p><b>RESPONSABLE:</b> ".$modificacion['responsable']."</p>";
-                  echo "</div></div>";
-                  echo "<div class='meta-date'>";*/
                   if ($modificacion['inicio'] != null && $modificacion['inicio'] != '0000-00-00') {
 
                     //sacamos los datos
