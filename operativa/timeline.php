@@ -198,15 +198,25 @@ if (isset($_SESSION['usuario'])==false) {
                 $modificaciones=$servicio->mod_info($servicioId['id']);
                 foreach ($modificaciones as $modificacion) {
                   //sacamos los datos
-                  echo "<div class='timeline-article'>";
+                /*  echo "<div class='timeline-article'>";
                   echo "<div class='content-left-container'>";
                   echo "<div class='content-left'>";
                   echo "<p><b>ACTIVIDAD:</b> ".$modificacion['descripcion']."</p>";
                   echo "<p><b>MODELOS:</b> ".$modificacion['modelos']."</p>";
                   echo "<p><b>RESPONSABLE:</b> ".$modificacion['responsable']."</p>";
                   echo "</div></div>";
-                  echo "<div class='meta-date'>";
+                  echo "<div class='meta-date'>";*/
                   if ($modificacion['inicio'] != null && $modificacion['inicio'] != '0000-00-00') {
+
+                    //sacamos los datos
+                    echo "<div class='timeline-article'>";
+                    echo "<div class='content-left-container'>";
+                    echo "<div class='content-left'>";
+                    echo "<p><b>ACTIVIDAD:</b> ".$modificacion['descripcion']."</p>";
+                    echo "<p><b>MODELOS:</b> ".$modificacion['modelos']."</p>";
+                    echo "<p><b>RESPONSABLE:</b> ".$modificacion['responsable']."</p>";
+                    echo "</div></div>";
+                    echo "<div class='meta-date'>";
                     //transformamos la fecha
                     $inicio=explode("-", $modificacion['inicio']);
                     $fin=explode("-", $modificacion['fin']);
@@ -216,6 +226,15 @@ if (isset($_SESSION['usuario'])==false) {
                     echo "<span class='date'>".$inicio."</span>";
                     echo "<span class='date'>".$fin."</span>";
                   }else {
+                    //sacamos los datos
+                    echo "<div class='timeline-article'>";
+                    echo "<div class='content-right-container'>";
+                    echo "<div class='content-right'>";
+                    echo "<p><b>ACTIVIDAD:</b> ".$modificacion['descripcion']."</p>";
+                    echo "<p><b>MODELOS:</b> ".$modificacion['modelos']."</p>";
+                    echo "<p><b>RESPONSABLE:</b> ".$modificacion['responsable']."</p>";
+                    echo "</div></div>";
+                    echo "<div class='meta-date'>";
                     $suelto=explode("-", $modificacion['suelto']);
                     $suelto=$suelto[2]."-".$suelto[1]."-".$suelto[0];
                     echo "<span class='month'>".$suelto."</span>";
@@ -235,45 +254,45 @@ if (isset($_SESSION['usuario'])==false) {
               <?php
                 $modificaciones=$servicio->dias_recursos($servicioId['id']);
                 foreach ($modificaciones as $modificacion) {
-                  //sacamos los datos
-                  echo "<div class='timeline-article'>";
-                  echo "<div class='content-left-container'>";
-                  echo "<div class='content-left'>";
-                  echo "<p><b>RECURSOS TOTAL:</b> ".$modificacion['total']."</p>";
-                  if ($modificacion['tm'] != 0) {
-                    echo "<p><b>TURNO MAÑANA:</b> ".$modificacion['tm']."</p>";
-                  }
-                  if ($modificacion['tt'] != 0) {
-                    echo "<p><b>TURNO TARDE:</b> ".$modificacion['tt']."</p>";
-                  }
-                  if ($modificacion['tn'] != 0) {
-                    echo "<p><b>TURNO NOCHE:</b> ".$modificacion['tn']."</p>";
-                  }
-                  if ($modificacion['tc'] != 0) {
-                    echo "<p><b>TURNO CENTRAL:</b> ".$modificacion['tc']."</p>";
-                  }
-                  if ($modificacion['otro1'] != 0) {
-                    echo "<p><b>DE ".$modificacion['inicio1']." A ".$modificacion['fin1'].":</b> ".$modificacion['otro1']."</p>";
-                  }
-                  if ($modificacion['otro2'] != 0) {
-                    echo "<p><b>DE ".$modificacion['inicio2']." A ".$modificacion['fin2'].":</b> ".$modificacion['otro2']."</p>";
-                  }
-                  if ($modificacion['otro3'] != 0) {
-                    echo "<p><b>DE ".$modificacion['inicio3']." A ".$modificacion['fin3'].":</b> ".$modificacion['otro3']."</p>";
-                  }
-                  if ($modificacion['otro4'] != 0) {
-                    echo "<p><b>DE ".$modificacion['inicio4']." A ".$modificacion['fin4'].":</b> ".$modificacion['otro4']."</p>";
-                  }
-                  if ($modificacion['otro5'] != 0) {
-                    echo "<p><b>DE ".$modificacion['inicio5']." A ".$modificacion['fin5'].":</b> ".$modificacion['otro5']."</p>";
-                  }
-                  if ($modificacion['otro6'] != 0) {
-                    echo "<p><b>DE ".$modificacion['inicio6']." A ".$modificacion['fin6'].":</b> ".$modificacion['otro6']."</p>";
-                  }
-
-                  echo "</div></div>";
-                  echo "<div class='meta-date'>";
                   if ($modificacion['inicio'] != null && $modificacion['inicio'] != '0000-00-00') {
+                    //sacamos los datos
+                    echo "<div class='timeline-article'>";
+                    echo "<div class='content-left-container'>";
+                    echo "<div class='content-left'>";
+                    echo "<p><b>RECURSOS TOTAL:</b> ".$modificacion['total']."</p>";
+                    if ($modificacion['tm'] != 0) {
+                      echo "<p><b>TURNO MAÑANA:</b> ".$modificacion['tm']."</p>";
+                    }
+                    if ($modificacion['tt'] != 0) {
+                      echo "<p><b>TURNO TARDE:</b> ".$modificacion['tt']."</p>";
+                    }
+                    if ($modificacion['tn'] != 0) {
+                      echo "<p><b>TURNO NOCHE:</b> ".$modificacion['tn']."</p>";
+                    }
+                    if ($modificacion['tc'] != 0) {
+                      echo "<p><b>TURNO CENTRAL:</b> ".$modificacion['tc']."</p>";
+                    }
+                    if ($modificacion['otro1'] != 0) {
+                      echo "<p><b>DE ".$modificacion['inicio1']." A ".$modificacion['fin1'].":</b> ".$modificacion['otro1']."</p>";
+                    }
+                    if ($modificacion['otro2'] != 0) {
+                      echo "<p><b>DE ".$modificacion['inicio2']." A ".$modificacion['fin2'].":</b> ".$modificacion['otro2']."</p>";
+                    }
+                    if ($modificacion['otro3'] != 0) {
+                      echo "<p><b>DE ".$modificacion['inicio3']." A ".$modificacion['fin3'].":</b> ".$modificacion['otro3']."</p>";
+                    }
+                    if ($modificacion['otro4'] != 0) {
+                      echo "<p><b>DE ".$modificacion['inicio4']." A ".$modificacion['fin4'].":</b> ".$modificacion['otro4']."</p>";
+                    }
+                    if ($modificacion['otro5'] != 0) {
+                      echo "<p><b>DE ".$modificacion['inicio5']." A ".$modificacion['fin5'].":</b> ".$modificacion['otro5']."</p>";
+                    }
+                    if ($modificacion['otro6'] != 0) {
+                      echo "<p><b>DE ".$modificacion['inicio6']." A ".$modificacion['fin6'].":</b> ".$modificacion['otro6']."</p>";
+                    }
+
+                    echo "</div></div>";
+                    echo "<div class='meta-date'>";
                     //transformamos la fecha
                     $inicio=explode("-", $modificacion['inicio']);
                     $fin=explode("-", $modificacion['fin']);
@@ -283,6 +302,45 @@ if (isset($_SESSION['usuario'])==false) {
                     echo "<span class='date'>".$inicio."</span>";
                     echo "<span class='date'>".$fin."</span>";
                   }else {
+                    //sacamos los datos
+                    echo "<div class='timeline-article'>";
+                    echo "<div class='content-right-container'>";
+                    echo "<div class='content-right'>";
+                    echo "<p><b>RECURSOS TOTAL:</b> ".$modificacion['total']."</p>";
+                    if ($modificacion['tm'] != 0) {
+                      echo "<p><b>TURNO MAÑANA:</b> ".$modificacion['tm']."</p>";
+                    }
+                    if ($modificacion['tt'] != 0) {
+                      echo "<p><b>TURNO TARDE:</b> ".$modificacion['tt']."</p>";
+                    }
+                    if ($modificacion['tn'] != 0) {
+                      echo "<p><b>TURNO NOCHE:</b> ".$modificacion['tn']."</p>";
+                    }
+                    if ($modificacion['tc'] != 0) {
+                      echo "<p><b>TURNO CENTRAL:</b> ".$modificacion['tc']."</p>";
+                    }
+                    if ($modificacion['otro1'] != 0) {
+                      echo "<p><b>DE ".$modificacion['inicio1']." A ".$modificacion['fin1'].":</b> ".$modificacion['otro1']."</p>";
+                    }
+                    if ($modificacion['otro2'] != 0) {
+                      echo "<p><b>DE ".$modificacion['inicio2']." A ".$modificacion['fin2'].":</b> ".$modificacion['otro2']."</p>";
+                    }
+                    if ($modificacion['otro3'] != 0) {
+                      echo "<p><b>DE ".$modificacion['inicio3']." A ".$modificacion['fin3'].":</b> ".$modificacion['otro3']."</p>";
+                    }
+                    if ($modificacion['otro4'] != 0) {
+                      echo "<p><b>DE ".$modificacion['inicio4']." A ".$modificacion['fin4'].":</b> ".$modificacion['otro4']."</p>";
+                    }
+                    if ($modificacion['otro5'] != 0) {
+                      echo "<p><b>DE ".$modificacion['inicio5']." A ".$modificacion['fin5'].":</b> ".$modificacion['otro5']."</p>";
+                    }
+                    if ($modificacion['otro6'] != 0) {
+                      echo "<p><b>DE ".$modificacion['inicio6']." A ".$modificacion['fin6'].":</b> ".$modificacion['otro6']."</p>";
+                    }
+
+                    echo "</div></div>";
+                    echo "<div class='meta-date'>";
+                    //transformar la fecha y sacarla
                     $suelto=explode("-", $modificacion['suelto']);
                     $suelto=$suelto[2]."-".$suelto[1]."-".$suelto[0];
                     echo "<span class='month'>".$suelto."</span>";
