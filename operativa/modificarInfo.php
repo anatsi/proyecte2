@@ -91,6 +91,7 @@ if (isset($_SESSION['usuario'])==false) {
           </div>
           <div class="formthird">
             <p><label><i class="fa fa-question-circle"></i>Actividad</label><input type="text" value=<?=$infoservicio['descripcion']?> name="descripcion"/></p>
+            <p><label><i class="fa fa-question-circle"></i>Descripción</label><textarea name="cdo"><?=$infoservicio['com_depto']?></textarea></p>
             <p><label><i class="fa fa-question-circle"></i>Modelos (*)</label>
             <select name="sel[]" class="test" multiple="multiple" id='multiple'>
               <?php
@@ -158,7 +159,6 @@ if (isset($_SESSION['usuario'])==false) {
               <p><label><i class="fa fa-question-circle"></i>Comentario supervisor</label><textarea name="csup"><?=$infoservicio['com_supervisor']?></textarea></p>
               <p><label><i class="fa fa-question-circle"></i>Comentario RRHH</label><textarea name="crrhh"><?=$infoservicio['com_rrhh']?></textarea></p>
               <p><label><i class="fa fa-question-circle"></i>Comentario Admin. Financiero</label><textarea name="caf"><?=$infoservicio['com_admin_fin']?></textarea></p>
-              <p><label><i class="fa fa-question-circle"></i>Comentario Depto. Operativo</label><textarea name="cdo"><?=$infoservicio['com_depto']?></textarea></p>
           </div>
           <div class="submitbuttons">
               <input class="submitone" type="submit" value="Modificar" name="submit"/>

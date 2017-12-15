@@ -85,6 +85,7 @@ if (isset($_SESSION['usuario'])==false) {
         <form action="nuevoServibbdd.php" method="post" id="formulario" enctype="multipart/form-data">
           <div class="formthird">
               <p><label><i class="fa fa-question-circle"></i><?php echo __('Actividad', $lang); ?> (*)</label><input type="text" name="descripcion" required/></p>
+              <p><label><i class="fa fa-question-circle"></i>Descripción actividad</label><textarea name="cdo"></textarea></p>
               <p><label><i class="fa fa-question-circle"></i><?php echo __('Modelos', $lang); ?> (*)</label>
                 <select name="sel[]" class="test" multiple="multiple" id='multiple'>
                         <option value='MONDEO'>MONDEO</option>
@@ -144,7 +145,6 @@ if (isset($_SESSION['usuario'])==false) {
               <p><label><i class="fa fa-question-circle"></i><?php echo __('Comentario supervisor', $lang); ?></label><textarea name="csup"></textarea></p>
               <p><label><i class="fa fa-question-circle"></i><?php echo __('Comentario RRHH.', $lang); ?></label><textarea name="crrhh"></textarea></p>
               <p><label><i class="fa fa-question-circle"></i><?php echo __('Comentario Admin. Financiero', $lang); ?></label><textarea name="caf"></textarea></p>
-              <p><label><i class="fa fa-question-circle"></i><?php echo __('Comentario Depto. Operativo', $lang); ?></label><textarea name="cdo"></textarea></p>
           </div>
           <div class="submitbuttons">
               <input class="submitone" type="submit" value="<?php echo __('Enviar', $lang); ?>"/>

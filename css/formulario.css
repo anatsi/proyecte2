@@ -86,6 +86,7 @@
         }
         textarea,input[type=textarea] {
           min-height:80px;
+          resize: none;
         }
         label{
           width:46%;
