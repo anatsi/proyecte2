@@ -37,7 +37,7 @@ if(!empty($b)) {
               <td data-label='Telefono' id='tdmod'><a href='tel:".$servicio['telefono']."'>".$servicio['telefono']."</a></td>
             </tr>
 
-      ";} echo "</tbody></table></div></body></html>";
+      ";} echo "</tbody></table></div>";
 }
 
 function buscar($b) {
@@ -70,7 +70,7 @@ function buscar($b) {
                   <td data-label='Telefono' id='tdmod'><a href='tel:".$servicio['telefono']."'>".$servicio['telefono']."</a></td>
                 </tr>
 
-          ";} echo "</tbody></table></div></body></html>";
+          ";} echo "</tbody></table></div>";
 
 }
  ?>

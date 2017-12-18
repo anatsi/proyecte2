@@ -94,7 +94,6 @@ if (isset($_SESSION['usuario'])==false) {
         <a href="actividadesActuales.php?lang=<?php echo $lang; ?>"><?php echo __('Actividades actuales', $lang); ?></a>
         <a href="historicoActividades.php?lang=<?php echo $lang; ?>"><?php echo __('Historico actividades', $lang); ?></a>
         <a href="resumen.php">Resumen temporal</a>
-
       </nav>
 
     </header>
@@ -133,8 +132,9 @@ if (isset($_SESSION['usuario'])==false) {
                     <td data-label='Telefono' id='tdmod'><a href='tel:".$servicio['telefono']."'>".$servicio['telefono']."</a></td>
                   </tr>
 
-            ";} echo "</tbody></table></div></body></html>";
+            ";} echo "</tbody></table></div>";
          ?>
+         <a href="#" class="back-to-top">^</a>
       </div> <!-- END container -->
     </div> <!-- END site-content -->
   </div> <!-- END site-pusher -->
