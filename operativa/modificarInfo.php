@@ -85,7 +85,7 @@ if (isset($_SESSION['usuario'])==false) {
             <input type="hidden" value=<?=$infoservicio['id']?> name="id">
             <p><label>SELECCIONAR DIAS</label></p>
             <p><label><i class="fa fa-question-circle"></i>Dia suelto</label><input type="date" name="suelto" id="suelto"/></p>
-            <p><label>Mas de un dia</label></p>
+            <p><label>Más de un dia</label></p>
             <p><label><i class="fa fa-question-circle"></i>Inicio</label><input type="date" name="inicio" id="inicio"/></p>
             <p><label><i class="fa fa-question-circle"></i>Fin</label><input type="date" name="fin" id="fin"/></p>
           </div>

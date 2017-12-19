@@ -67,6 +67,15 @@ if (isset($_SESSION['usuario'])==false) {
         });
 
     </script>
+    <!--ordenar la tabla -->
+    <!--ORDENAR TABLA
+    <script type="text/javascript" src="../js/jquery.min.js"></script> -->
+    <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.9.1/jquery.tablesorter.min.js"></script>
+    <script>
+    $(function(){
+      $("#tablamod").tablesorter();
+    });
+</script>
 </head>
 <body>
   <head>
@@ -139,8 +148,8 @@ if (isset($_SESSION['usuario'])==false) {
   </div> <!-- END site-pusher -->
 </div> <!-- END site-container -->
 
-<!-- Scripts para que el menu en versión movil funcione -->
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<!-- Scripts para que el menu en versión movil funcione
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>-->
 <script  src="../js/menu.js"></script>
 
 </body>
