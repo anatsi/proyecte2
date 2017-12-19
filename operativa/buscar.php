@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <title></title>
     <!--ORDENAR TABLA
-    <script type="text/javascript" src="../js/jquery.min.js"></script> -->
+    <script type="text/javascript" src="../js/jquery.min.js"></script>-->
     <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.9.1/jquery.tablesorter.min.js"></script>
     <script>
     $(function(){
