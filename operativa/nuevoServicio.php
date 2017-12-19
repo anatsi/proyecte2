@@ -108,6 +108,16 @@ if (isset($_SESSION['usuario'])==false) {
               <p><label><i class="fa fa-question-circle"></i><?php echo __('Responsable', $lang); ?> (*)</label><input type="text" name="responsable" required/></p>
               <p><label><i class="fa fa-question-circle"></i><?php echo __('Tel. responsable', $lang); ?> (*)</label><input type="tel" name="telefono" required/></p>
               <p><label><i class="fa fa-question-circle"></i><?php echo __('Correo responsable', $lang); ?> (*)</label><input type="email" name="correo" required/></p>
+              <p><label><i class="fa fa-question-circle"></i><?php echo __('Relacion', $lang); ?></label>
+                <select name="relacion">
+                  <option></option>
+                  <?php
+                    $listaServicios=$servicio->listaServiciosHoy();
+                    foreach ($listaServicios as $servicio1) {
+                      echo "<option value='".$servicio1['id']."'>".$servicio1['descripcion']."</option>";
+                    }
+                   ?>
+                </select></p>
           </div>
           <div class="formthird" id='contenedor'>
             <p><label><i class="fa fa-question-circle"></i><?php echo __('Personas (aprox.)', $lang); ?></label><input type="number" min='0' id="calculo" readonly/></p>
@@ -125,23 +135,16 @@ if (isset($_SESSION['usuario'])==false) {
               <p id="enviar"></p>
           </div>
           <div class="formthird">
-            <p><label><i class="fa fa-question-circle"></i><?php echo __('Archivos', $lang); ?></label></p>
-            <div id="archivos">
+            <p><label><i class="fa fa-question-circle"></i>QPS</label></p>
               <p><input type='file' name='archivo1' value='archivo1' id='archivo1'></p>
-            </div>
-            <button type="button" name="button" id="nuevoarchivo" onclick="archivos();"><?php echo __('Añadir otro archivo', $lang); ?></button>
+              <p><input type='file' name='archivo2' value='archivo2' id='archivo2'></p>
+            <p><label><i class="fa fa-question-circle"></i>IMAGENES</label></p>
+              <p><input type='file' name='archivo3' value='archivo3' id='archivo3'></p>
+              <p><input type='file' name='archivo4' value='archivo4' id='archivo4'></p>
+            <p><label><i class="fa fa-question-circle"></i>VIDEOS</label></p>
+              <p><input type='file' name='archivo5' value='archivo5' id='archivo5'></p>
+              <p><input type='file' name='archivo6' value='archivo6' id='archivo6'></p>
 
-
-              <p><label><i class="fa fa-question-circle"></i><?php echo __('Relacion', $lang); ?></label>
-                <select name="relacion">
-                  <option></option>
-                  <?php
-                    $listaServicios=$servicio->listaServiciosHoy();
-                    foreach ($listaServicios as $servicio1) {
-                      echo "<option value='".$servicio1['id']."'>".$servicio1['descripcion']."</option>";
-                    }
-                   ?>
-                </select></p>
               <p><label><i class="fa fa-question-circle"></i><?php echo __('Comentario supervisor', $lang); ?></label><textarea name="csup"></textarea></p>
               <p><label><i class="fa fa-question-circle"></i><?php echo __('Comentario RRHH.', $lang); ?></label><textarea name="crrhh"></textarea></p>
               <p><label><i class="fa fa-question-circle"></i><?php echo __('Comentario Admin. Financiero', $lang); ?></label><textarea name="caf"></textarea></p>

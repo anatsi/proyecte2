@@ -134,7 +134,6 @@ if (isset($_SESSION['usuario'])==false) {
 
             ";} echo "</tbody></table></div>";
          ?>
-         <a href="#" class="back-to-top">^</a>
       </div> <!-- END container -->
     </div> <!-- END site-content -->
   </div> <!-- END site-pusher -->

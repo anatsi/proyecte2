@@ -97,7 +97,7 @@ function calculoPersonas() {
   document.getElementById('calculo').value=Math.ceil(resultado);
 }
 
-function archivos() {
+/*function archivos() {
   if (z>4) {
     return false;
   }else if (z==4) {
@@ -130,4 +130,4 @@ function archivos() {
     //cogemos el boton que queremos borrar
     var borrar= document.getElementById('nuevoarchivo');
   }
-}
+}*/

@@ -34,6 +34,7 @@
         $ruta3=NULL;
         $ruta4=NULL;
         $ruta5=NULL;
+        $ruta6=NULL;
         if ($_FILES['archivo1']['name']!="") {
           $ruta1="/operativa/files/".$_FILES['archivo1']['name'];
         }
@@ -49,9 +50,12 @@
         if ($_FILES['archivo5']['name']!="") {
           $ruta5="/operativa/files/".$_FILES['archivo5']['name'];
         }
+        if ($_FILES['archivo6']['name']!="") {
+          $ruta5="/operativa/files/".$_FILES['archivo6']['name'];
+        }
         //si los ha rellenado, llamamos a la función de insertar el servicio y le pasamos los datos.
         $nuevoServicio=$servicio->nuevoServicio($_POST['descripcion'], $modelos, $_POST['recursos'], $_POST['finicio'], $_POST['cliente'], $_POST['responsable'], $_POST['telefono'], $_POST['correo'], $_POST['csup'],
-         $_POST['crrhh'], $_POST['caf'], $_POST['cdo'], $_POST['relacion'], $ruta1, $ruta2, $ruta3, $ruta4, $ruta5);
+         $_POST['crrhh'], $_POST['caf'], $_POST['cdo'], $_POST['relacion'], $ruta1, $ruta2, $ruta3, $ruta4, $ruta5, $ruta6);
         //comprobamos que se haya registrado.
         if ($nuevoServicio==null) {
           //si no se ha registrado le saca un mensaje avisandole
@@ -84,9 +88,9 @@
              <?php
            }else {
 
-             if ($_FILES['archivo1']['name']!="" || $_FILES['archivo2']['name']!="" || $_FILES['archivo3']['name']!="") {
+             if ($_FILES['archivo1']['name']!="" || $_FILES['archivo2']['name']!="" || $_FILES['archivo3']['name']!="" || $_FILES['archivo4']['name']!="" || $_FILES['archivo5']['name']!="" || $_FILES['archivo6']['name']!="") {
                //por ultimo subimos los archivos al servidor
-               for ($i=1; $i < 6; $i++) {
+               for ($i=1; $i < 7; $i++) {
                    if ($_FILES['archivo'.$i]['name']!="") {
                      $nombre_archivo = $_FILES['archivo'.$i]['name'];
                      $size_archivo =  $_FILES['archivo'.$i]['size'];

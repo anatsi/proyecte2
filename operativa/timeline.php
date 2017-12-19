@@ -164,20 +164,23 @@ if (isset($_SESSION['usuario'])==false) {
           }else {
             echo "<li id='vacio'>ftgyuhjnkm</li>";
           }
-          if ($servicioId['archivo1']!=null) {
-            echo "<li><a href='".$servicioId['archivo1']."' target='_new'>Descargar archivo</a></li>";
+          if ($servicioId['qps1']!=null) {
+            echo "<li><a href='".$servicioId['qps1']."' target='_new'>Descargar QPS</a></li>";
           }
-          if ($servicioId['archivo2']!=null) {
-            echo "<li><a href='".$servicioId['archivo2']."' target='_new'>Descargar archivo</a></li>";
+          if ($servicioId['qps2']!=null) {
+            echo "<li><a href='".$servicioId['qps2']."' target='_new'>Descargar QPS</a></li>";
           }
-          if ($servicioId['archivo3']!=null) {
-            echo "<li><a href='".$servicioId['archivo3']."' target='_new'>Descargar archivo</a></li>";
+          if ($servicioId['img1']!=null) {
+            echo "<li><a href='".$servicioId['img1']."' target='_new'>Descargar imagen</a></li>";
           }
-          if ($servicioId['archivo4']!=null) {
-            echo "<li><a href='".$servicioId['archivo4']."' target='_new'>Descargar archivo</a></li>";
+          if ($servicioId['img2']!=null) {
+            echo "<li><a href='".$servicioId['img2']."' target='_new'>Descargar imagen</a></li>";
           }
-          if ($servicioId['archivo5']!=null) {
-            echo "<li><a href='".$servicioId['archivo5']."' target='_new'>Descargar archivo</a></li>";
+          if ($servicioId['video1']!=null) {
+            echo "<li><a href='".$servicioId['video1']."' target='_new'>Descargar video</a></li>";
+          }
+          if ($servicioId['video2']!=null) {
+            echo "<li><a href='".$servicioId['video2']."' target='_new'>Descargar video</a></li>";
           }
           echo "</ul>";
           echo "</div>";
