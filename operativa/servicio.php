@@ -274,9 +274,9 @@ if($resultado!=false){
 }
 
 //funcion para sacar la lista para el excel de resumen
-function listaResumen($fin){
+function listaResumen($fin, $inicio){
   //Construimos la consulta
-   $sql="SELECT * FROM servicios WHERE f_inicio<='".$fin."' AND f_fin>='".$fin."' OR f_inicio<='".$fin."' AND f_fin is null";
+   $sql="SELECT * FROM servicios WHERE f_inicio<='".$fin."' AND f_fin>='".$inicio."' OR f_inicio<='".$fin."' AND f_fin is null";
    //Realizamos la consulta
    $resultado=$this->realizarConsulta($sql);
    if($resultado!=null){

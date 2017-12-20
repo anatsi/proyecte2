@@ -46,7 +46,7 @@ $objPHPExcel->setActiveSheetIndex(0)
 ->setCellValue('T1', 'RELACION')
 ->setCellValue('U1', 'CANCELADO');
 
-  $lista=$servicio->listaResumen($_POST['fin']);
+  $lista=$servicio->listaResumen($_POST['fin'], $_POST['inicio']);
 
 
   $i=2;
