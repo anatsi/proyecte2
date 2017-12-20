@@ -16,7 +16,7 @@
           -webkit-border-radius:10px;
           border-radius:10px;
           margin:20px auto;
-          /*text-align:justify;*/
+          text-align:left;
          width:90%;
           margin-top: 0;
         }
@@ -93,7 +93,7 @@
           margin:2px 1%;
           font-size:15px;
           color:black;
-          text-align:right;
+          text-align:left;
           float:left;
           line-height:16px;
         }
@@ -158,7 +158,7 @@
             }
             input,text,email,password,input[type=text],input[type=password],
             input[type=email],input[type=textarea],textarea/*,input[type=select],select */{
-          /*    float:right;*/
+              float:left;
             }
             #in1, #in2, #in3, #in4, #in5, #in6{
               float: right;
