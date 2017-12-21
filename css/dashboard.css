@@ -39,6 +39,9 @@ a {
 	color: black;
 	text-decoration: none;
 }
+b{
+	font-weight: bold !important;
+}
 
 .main,
 .container > header {
