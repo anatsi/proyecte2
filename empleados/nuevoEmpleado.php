@@ -56,10 +56,10 @@ if (isset($_SESSION['usuario'])==false) {
         <h2>Nuevo empleado</h2>
         <form action="nuevoEmpleado.php" method="post">
           <div class="formthird">
-              <p><label><i class="fa fa-question-circle"></i>Nombre</label><input name='nombre' type="text" /></p>
+              <p><label><i class="fa fa-question-circle"></i>Nombre (*)</label><input name='nombre' type="text" required></p>
           </div>
           <div class="formthird">
-              <p><label><i class="fa fa-question-circle"></i>Apellidos</label><input name='apellidos' type="text"/></p>
+              <p><label><i class="fa fa-question-circle"></i>Apellidos (*)</label><input name='apellidos' type="text" required></p>
           </div>
           <div class="formthird">
               <p><label><i class="fa fa-question-circle"></i>Activo</label><input Name='activo' type="checkbox"/></p>
@@ -79,4 +79,27 @@ if (isset($_SESSION['usuario'])==false) {
 
 </body>
 </html>
+<?php
+  if (isset($_POST['nombre']) && isset($_POST['apellidos'])) {
+    $activo=0;
+    if (isset($_POST['activo'])) {
+      $activo=1;
+    }
+    $nuevoEmpleado= $empleado->nuevoEmpleado($_POST['nombre'], $_POST['apellidos'], $activo);
+    if ($nuevoEmpleado==null) {
+      ?>
+      <script type="text/javascript">
+        alert('Error al registrar el nuevo empleado');
+      </script>
+      <?php
+    }else {
+      ?>
+        <script type="text/javascript">
+          alert('Nuevo empleado registrado con exito.');
+          window.location='gestionEmpleados.php';
+        </script>
+      <?php
+    }
+  }
+ ?>
  <?php } ?>

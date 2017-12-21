@@ -69,6 +69,18 @@ class Empleados extends db
     }
   }
 
+  //funcion para insertar un nuevo empleado en la base de datos.
+function nuevoEmpleado($nombre, $apellidos, $activo){
+  //realizamos la consuta y la guardamos en $sql
+  $sql="INSERT INTO empleados(id, nombre, apellidos, activo) VALUES (null, '".$nombre."', '".$apellidos."', ".$activo.")";
+  //Realizamos la consulta utilizando la funcion creada en db.php
+  $resultado=$this->realizarConsulta($sql);
+  if($resultado!=false){
+    return true;
+  }else{
+    return null;
+  }
+}
 
 
 }
