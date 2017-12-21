@@ -86,84 +86,87 @@ if (isset($_SESSION['usuario'])==false) {
           //parte de la derecha
           echo "<div id='listaDerecha'>";
           echo "<ul>";
-          echo "<li>Modelos: ".$servicioId['modelos']."</li>";
+          echo "<li><b>Modelos: </b>".$servicioId['modelos']."</li>";
+          //descripcion (comentario depto)
+          if ($servicioId['com_depto']!=null) {
+            echo "<li><b>Descripción: </b>".$servicioId['com_depto']."</li>";
+          }else {
+            echo "<li id='vacio'>ftgyuhjnkm</li>";
+          }
           //tranformacion de las fechas
             $fecha=explode("-", $servicioId['f_inicio']);
             $f_inicio=$fecha[2]."-".$fecha[1]."-".$fecha[0];
-          echo "<li>Fecha inicio: ".$f_inicio."</li>";
+          echo "<li><b>Fecha inicio: </b>".$f_inicio."</li>";
           if ($servicioId['f_fin']!= null) {
             //transformacion de la fechas
             $fecha=explode("-", $servicioId['f_fin']);
             $f_fin=$fecha[2]."-".$fecha[1]."-".$fecha[0];
-            echo "<li>Fecha fin: ".$f_fin."</li>";
+            echo "<li><b>Fecha fin: </b>".$f_fin."</li>";
           }
-          echo "<li>Recursos totales: ".$servicioId['recursos']."</li>";
+          echo "<li><b>Recursos totales: </b>".$servicioId['recursos']."</li>";
           if ($recursosId['tm']!=null && $recursosId['tm']!=0) {
-            echo "<li>      Turno mañana:".$recursosId['tm']."</li>";
+            echo "<li> <b>Turno mañana: </b>".$recursosId['tm']."</li>";
           }
           if ($recursosId['tt']!=null && $recursosId['tt']!=0) {
-            echo "<li>      Turno tarde:".$recursosId['tt']."</li>";
+            echo "<li><b>Turno tarde: </b>".$recursosId['tt']."</li>";
           }
           if ($recursosId['tn']!=null && $recursosId['tn']!=0) {
-            echo "<li>      Turno noche:".$recursosId['tn']."</li>";
+            echo "<li><b>Turno noche: </b>".$recursosId['tn']."</li>";
           }
           if ($recursosId['tc']!=null && $recursosId['tc']!=0) {
-            echo "<li>      Turno central:".$recursosId['tc']."</li>";
+            echo "<li><b>Turno central: </b>".$recursosId['tc']."</li>";
           }
           if ($recursosId['otro1']!=null && $recursosId['otro1']!=0) {
-            echo "<li>De ".$recursosId['inicio1']." a ".$recursosId['fin1'].": " .$recursosId['otro1']."</li>";
+            echo "<li><b>De </b>".$recursosId['inicio1']."<b> a </b>".$recursosId['fin1'].": " .$recursosId['otro1']."</li>";
           }
           if ($recursosId['otro2']!=null && $recursosId['otro2']!=0) {
-            echo "<li>De ".$recursosId['inicio2']." a ".$recursosId['fin2'].": " .$recursosId['otro2']."</li>";
+            echo "<li><b>De </b>".$recursosId['inicio2']."<b> a </b>".$recursosId['fin2'].": " .$recursosId['otro2']."</li>";
           }
           if ($recursosId['otro3']!=null && $recursosId['otro3']!=0) {
-            echo "<li>De ".$recursosId['inicio3']." a ".$recursosId['fin3'].": " .$recursosId['otro3']."</li>";
+            echo "<li><b>De </b>".$recursosId['inicio3']."<b> a </b>".$recursosId['fin3'].": " .$recursosId['otro3']."</li>";
           }
           if ($recursosId['otro4']!=null && $recursosId['otro4']!=0) {
-            echo "<li>De ".$recursosId['inicio4']." a ".$recursosId['fin4'].": " .$recursosId['otro4']."</li>";
+            echo "<li><b>De </b>".$recursosId['inicio4']."<b> a </b>".$recursosId['fin4'].": " .$recursosId['otro4']."</li>";
           }
           if ($recursosId['otro5']!=null && $recursosId['otro5']!=0) {
-            echo "<li>De ".$recursosId['inicio5']." a ".$recursosId['fin5'].": " .$recursosId['otro5']."</li>";
+            echo "<li><b>De </b>".$recursosId['inicio5']."<b> a </b>".$recursosId['fin5'].": " .$recursosId['otro5']."</li>";
           }
           if ($recursosId['otro6']!=null && $recursosId['otro6']!=0) {
-            echo "<li>De ".$recursosId['inicio6']." a ".$recursosId['fin6'].": " .$recursosId['otro6']."</li>";
+            echo "<li><b>De </b>".$recursosId['inicio6']."<b> a </b>".$recursosId['fin6'].": " .$recursosId['otro6']."</li>";
           }
-          echo "<li>Cliente: ".$clienteId['nombre']."</li>";
+          echo "<li><b>Cliente: </b>".$clienteId['nombre']."</li>";
 
           echo "</ul>";
           echo "</div>";
           //parte de la izquierda
           echo "<div id='listaIzquierda'>";
           echo "<ul>";
-          echo "<li>Responsable: ".$servicioId['responsable']."</li>";
-          echo "<li>Tel. responsable: ".$servicioId['telefono']."</li>";
-          echo "<li>Correo responsable: ".$servicioId['correo']."</li>";
-          if ($servicioId['com_depto']!=null) {
-            echo "<li>Descripción: ".$servicioId['com_depto']."</li>";
-          }else {
-            echo "<li id='vacio'>ftgyuhjnkm</li>";
-          }
+          echo "<li><b>Responsable: </b>".$servicioId['responsable']."</li>";
+          echo "<li><b>Tel. responsable: </b>".$servicioId['telefono']."</li>";
+          echo "<li><b>Correo responsable: </b>".$servicioId['correo']."</li>";
+          //comentarios
           if ($servicioId['com_supervisor']!=null) {
-            echo "<li>Comentario Supervisor: ".$servicioId['com_supervisor']."</li>";
+            echo "<li><b>Comentario Supervisor: </b>".$servicioId['com_supervisor']."</li>";
           }else {
             echo "<li id='vacio'>ftgyuhjnkm</li>";
           }
           if ($servicioId['com_rrhh']!=null) {
-            echo "<li>Comentario RRHH: ".$servicioId['com_rrhh']."</li>";
+            echo "<li><b>Comentario RRHH: </b>".$servicioId['com_rrhh']."</li>";
           }else {
             echo "<li id='vacio'>ftgyuhjnkm</li>";
           }
           if ($servicioId['com_admin_fin']!=null) {
-            echo "<li>Comentario Admin. Financiero: ".$servicioId['com_admin_fin']."</li>";
+            echo "<li><b>Comentario Admin. Financiero: </b>".$servicioId['com_admin_fin']."</li>";
           }else {
             echo "<li id='vacio'>ftgyuhjnkm</li>";
           }
 
           if ($servicioId['com_fin']!=null) {
-            echo "<li>Comentario Final: ".$servicioId['com_fin']."</li>";
+            echo "<li><b>Comentario Final: </b>".$servicioId['com_fin']."</li>";
           }else {
             echo "<li id='vacio'>ftgyuhjnkm</li>";
           }
+          //archivos
           if ($servicioId['qps1']!=null) {
             echo "<li><a href='".$servicioId['qps1']."' target='_new'>Descargar QPS</a></li>";
           }

@@ -170,13 +170,16 @@ $objPHPExcel->setActiveSheetIndex(0)
           $inicioRec=explode("-", $mod['inicio']);
           $inicioRec=$inicioRec[2]."-".$inicioRec[1]."-".$inicioRec[0];
           if ($mod['fin']!='0000-00-00') {
-            $finRec=$mod['fin'];
+            $finRec=explode("-", $mod['fin']);
+            $finRec=$finRec[2]."-".$finRec[1]."-".$finRec[0];
           }else {
             $finRec='';
           }
         }else {
-          $inicioRec=$mod['suelto'];
-          $finRec=$mod['suelto'];
+          $inicioRec=explode("-", $mod['suelto']);
+          $inicioRec=$inicioRec[2]."-".$inicioRec[1]."-".$inicioRec[0];
+          $finRec=explode("-", $mod['suelto']);
+          $finRec=$finRec[2]."-".$finRec[1]."-".$finRec[0];
         }
         //juntamos los recursos de horarios raros
         $otros=0;
