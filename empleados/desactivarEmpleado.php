@@ -5,7 +5,7 @@
 
       $actualizar=$empleado->DesactivarEmpleado($_GET['e']);
       if ($actualizar==true) {
-        header('Location: gestionEmpleados.php');
+        header('Location: index.php');
       }else {
         echo "ERROR AL DESACTIVAR EL EMPLEADO";
       }
