@@ -221,8 +221,8 @@ if (isset($_SESSION['usuario'])==false) {
                     $inicio= $inicio[2]."-".$inicio[1]."-".$inicio[0];
                     $fin=$fin[2]."-".$fin[1]."-".$fin[0];
                     //sacamos la informacion
-                    echo "<span class='date'>".$inicio."</span>";
                     echo "<span class='date'>".$fin."</span>";
+                    echo "<span class='date'>".$inicio."</span>";
                   }else {
                     //sacamos los datos
                     echo "<div class='timeline-article'>";
@@ -297,8 +297,8 @@ if (isset($_SESSION['usuario'])==false) {
                     $inicio= $inicio[2]."-".$inicio[1]."-".$inicio[0];
                     $fin=$fin[2]."-".$fin[1]."-".$fin[0];
                     //sacamos la informacion
-                    echo "<span class='date'>".$inicio."</span>";
                     echo "<span class='date'>".$fin."</span>";
+                    echo "<span class='date'>".$inicio."</span>";
                   }else {
                     //sacamos los datos
                     echo "<div class='timeline-article'>";
