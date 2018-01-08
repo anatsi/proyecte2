@@ -102,7 +102,9 @@ if (isset($_SESSION['usuario'])==false) {
               echo "  <td data-label='".__('Opciones', $lang)."' id='tdmod'>
               <a href='modificarRecursos.php?servicio=".$lista['id']."' title='".__('Modificar recursos', $lang)."'><i class='material-icons'>people</i></a>
               <a href='modificarInfo.php?servicio=".$lista['id']."' title='".__('Modificar información', $lang)."'><i class='material-icons'>mode_edit</i></a>
-              <a href='finalizarServicio.php?servicio=".$lista['id']."' title='".__('Finalizar actividad', $lang)."'><i class='material-icons'>power_settings_new</i></a></td>";
+              <a href='excelIndividual.php' title='Exportar a excel'><img src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABoAAAAaCAYAAACpSkzOAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAALCSURBVEhLvVZLaFNBFA3+EBFRUMGVIAjS5r1XjBQEoYLuBNFFXIjgrmKheTMvCoKLuCi6FBdK0ZUIRbrWjYJFumkzk9RPVcTfRhERrAs/oGI952aSvnwsL0n1wuG9e9+Ze2bmzp0klcQydnBlb1kHnlHHfaMu+kbf96267T53Zki6Jl0Kd3tWDyHpVSQ1SPrdt3o+DohOuiHJzCtF+5DoFAaPIelTCPxqTNoKFBqYKKzwHp3ZsBj6p4bXiVCrJElAId9Ge1p9q4PRv4HcvxcCwL3SlVC6pHbh/RUB/51n9A/U9VMViH1x3O6EZO+dcXUQuuVcMfhHHbdByOiHmIkFnsXjGPCGcRyUxwsxNbl1orDaK6ptRGDVEcTuVX2B1cpx64UQ0JxJz2xhFd7fVmL6606jtrgZnotxO68REs31lYc3SdLabPQF8THDeD9RKF4jfHvPSS34UrcPeDYLSdCqUSZm42K7XrIXRAj7X8drqFFg1AFynCsG/y81YhANG0yHfSQG06pXBhSjg008CPXMDq31SvmMwKqQsZpPmOis4zYLVaDuUICWHc8uR4xbUcdh0iXoIzVSFeETs73eyKEQV+5OKfECvM8xH6dUvXbcljV6zmNLARz3vDwf5Ddjv+fqeF3VCPdSuqgHSAqsPgzRn33l3Hb6volOxrmyoplwPU7jfgHqgcRTNV9i6rzjNgldY1JuGT4+caSbjKXmC8twUIpVLoU6qhFm/01mISdIn64RuUobHqqcJDVY41OomEvj/S6BMTOIfaz6LiY3SZ1Qu6CQrNRZ232UFBTK2GijZ6OsADcIVl+q+RJTlxy3O6H/9nuUVAg9dZnNKE3VLiiUttEONPf44tBjvHylaOyHwIR7MVgDN3ha2EONyeOgkAzu1ng7BEb3AycgOirNiBZYcqFWxr9X7J2gpI9xAi6cwFKpPxzlsvQlqWiqAAAAAElFTkSuQmCC'></a>
+              <a href='finalizarServicio.php?servicio=".$lista['id']."' title='".__('Finalizar actividad', $lang)."'><i class='material-icons'>power_settings_new</i></a>
+              </td>";
             }
            ?>
         </tbody>
