@@ -104,9 +104,26 @@ if (isset($_SESSION['usuario'])==false) {
           <th>Especiales</th>
         </tr>
         <?php
+        //variables para sacar el total de recursos al final de la tabla
+        $totalRecursos=0;
+        $totalM=0;
+        $totalT=0;
+        $totalN=0;
+        $totalC=0;
+        $totalE=0;
+          //empezar a sacar la tabla
           $listahoy= $servicio->listaServiciosHoy();
           foreach ($listahoy as $servicios) {
             $recursoId=$recursos->recursosId($servicios['id']);
+
+            //sumamos los recursos de cada servicio
+            $totalRecursos=$totalRecursos + $recursoId['tm'] + $recursoId['tt'] + $recursoId['tn'] + $recursoId['tc'] + $recursoId['otro1'] + $recursoId['otro2'] + $recursoId['otro3'] + $recursoId['otro4'] + $recursoId['otro5'] + $recursoId['otro6'];
+            $totalM = $totalM + $recursoId['tm'];
+            $totalT = $totalT + $recursoId['tt'];
+            $totalN = $totalN + $recursoId['tn'];
+            $totalC = $totalC + $recursoId['tc'];
+            $totalE = $totalE + $recursoId['otro1'] + $recursoId['otro2'] + $recursoId['otro3'] + $recursoId['otro4'] + $recursoId['otro5'] + $recursoId['otro6'];
+
             echo "<tr>";
             echo "<td data-th='".__('Actividad', $lang)."'>".$servicios['descripcion']."</td>";
             echo "<td data-th='Relacion'>";
@@ -142,6 +159,16 @@ if (isset($_SESSION['usuario'])==false) {
             echo "</td>";
             echo "</tr>";
           }
+          echo "<tr id='totalRecursos'>";
+          echo "<td data-th='Actividad'>TOTAL RECURSOS</td>";
+          echo "<td data-th='Relacion'></td>";
+          echo "<td data-th='".__('Recursos', $lang)."'>".$totalRecursos."</td>";
+          echo "<td data-th='Mañana'>".$totalM."</td>";
+          echo "<td data-th='Tarde'>".$totalT."</td>";
+          echo "<td data-th='Noche'>".$totalN."</td>";
+          echo "<td data-th='Central'>".$totalC."</td>";
+          echo "<td data-th='Especiales'>".$totalE."</td>";
+          echo "</tr>";
          ?>
       </table>
     </div>
@@ -159,11 +186,29 @@ if (isset($_SESSION['usuario'])==false) {
           <th>Especiales</th>
         </tr>
         <?php
+        //variables para sacar el total de recursos al final de la tabla
+        $totalRecursos=0;
+        $totalM=0;
+        $totalT=0;
+        $totalN=0;
+        $totalC=0;
+        $totalE=0;
+        
         require_once 'servicio.php';
         $servicio=new Servicio();
           $listamanana= $servicio->ServiciosTomorrow();
           foreach ($listamanana as $servicios) {
             $recursoId=$recursos->recursosId($servicios['id']);
+
+            //sumamos los recursos de cada servicio
+            $totalRecursos=$totalRecursos + $recursoId['tm'] + $recursoId['tt'] + $recursoId['tn'] + $recursoId['tc'] + $recursoId['otro1'] + $recursoId['otro2'] + $recursoId['otro3'] + $recursoId['otro4'] + $recursoId['otro5'] + $recursoId['otro6'];
+            $totalM = $totalM + $recursoId['tm'];
+            $totalT = $totalT + $recursoId['tt'];
+            $totalN = $totalN + $recursoId['tn'];
+            $totalC = $totalC + $recursoId['tc'];
+            $totalE = $totalE + $recursoId['otro1'] + $recursoId['otro2'] + $recursoId['otro3'] + $recursoId['otro4'] + $recursoId['otro5'] + $recursoId['otro6'];
+
+
             echo "<tr>";
             echo "<td data-th='".__('Actividad', $lang)."'>".$servicios['descripcion']."</td>";
             echo "<td data-th='relacion'>";
@@ -199,6 +244,17 @@ if (isset($_SESSION['usuario'])==false) {
             echo "</td>";
             echo "</tr>";
           }
+
+          echo "<tr id='totalRecursos'>";
+          echo "<td data-th='Actividad'>TOTAL RECURSOS</td>";
+          echo "<td data-th='Relacion'></td>";
+          echo "<td data-th='".__('Recursos', $lang)."'>".$totalRecursos."</td>";
+          echo "<td data-th='Mañana'>".$totalM."</td>";
+          echo "<td data-th='Tarde'>".$totalT."</td>";
+          echo "<td data-th='Noche'>".$totalN."</td>";
+          echo "<td data-th='Central'>".$totalC."</td>";
+          echo "<td data-th='Especiales'>".$totalE."</td>";
+          echo "</tr>";
          ?>
       </table>
     </div>

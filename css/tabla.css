@@ -62,6 +62,9 @@
   border-radius: .4em;
   overflow: hidden;
 }
+#totalRecursos{
+  color: #dd5;
+}
 .rwd-table tr {
   border-color: #46637f;
 }
