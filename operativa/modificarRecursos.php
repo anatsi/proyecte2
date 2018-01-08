@@ -76,10 +76,10 @@ if (isset($_SESSION['usuario'])==false) {
           <div class="formthird" id='contenedor'>
             <input type="hidden" value=<?=$infoservicio['id']?> name="id">
             <p><label>SELECCIONAR DIAS</label></p>
-            <p><label><i class="fa fa-question-circle"></i>Dia suelto</label><input type="date" name="suelto" id="suelto"/></p>
+            <p><label><i class="fa fa-question-circle"></i>Dia suelto</label><input type="date" name="suelto" min= <?php echo date('Y-m-d');?> id="suelto"/></p>
             <p><label>Mas de un dia</label></p>
-            <p><label><i class="fa fa-question-circle"></i>Inicio</label><input type="date" name="inicio" id="inicio"/></p>
-            <p><label><i class="fa fa-question-circle"></i>Fin</label><input type="date" name="fin" id="fin"/></p>
+            <p><label><i class="fa fa-question-circle"></i>Inicio</label><input type="date" name="inicio" min= <?php echo date('Y-m-d');?> id="inicio"/></p>
+            <p><label><i class="fa fa-question-circle"></i>Fin</label><input type="date" name="fin" min= <?php echo date('Y-m-d');?> id="fin"/></p>
 
               <p><label><i class="fa fa-question-circle"></i>Recursos totales</label><input type="number" min='0' value=<?=$inforecurso['total']?> name="recursos" id="total" readonly/></p>
               <p><label><i class="fa fa-question-circle"></i>Turno mañana</label><input type="number" min='0' name="tm" id="tm" value=<?=$inforecurso['tm']?> onclick="suma();" onkeyup="suma();"/></p>
