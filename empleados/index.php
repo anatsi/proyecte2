@@ -135,6 +135,7 @@ if (isset($_SESSION['usuario'])==false) {
   </div> <!-- END site-pusher -->
 </div> <!-- END site-container -->
 
+
 <!-- Scripts para que el menu en versión movil funcione
 <script src="../js/jquery.min.js"></script>-->
 <script  src="../js/menu.js"></script>
