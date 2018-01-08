@@ -114,6 +114,8 @@ if (isset($_SESSION['usuario'])==false) {
             <thead id='theadmod'>
               <tr id='trmod'>
                 <th scope='col' id='thmod'>".__('Actividad', $lang)."</th>
+                <th scope='col' id='thmod'>Inicio</th>
+                <th scope='col' id='thmod'>Fin</th>
                 <th scope='col' id='thmod'>".__('Modelos', $lang)."</th>
                 <th scope='col' id='thmod'>".__('Cliente', $lang)."</th>
                 <th scope='col' id='thmod'>".__('Responsable', $lang)."</th>
@@ -123,9 +125,16 @@ if (isset($_SESSION['usuario'])==false) {
 
             "; foreach ($finalizados as $servicio) {
               $clientes=$cliente->ClienteId($servicio['id_cliente']);
+              //transformar fechas
+              $inicio=explode("-", $servicio['f_inicio']);
+              $inicio=$inicio[2]."-".$inicio[1]."-".$inicio[0];
+              $fin=explode("-", $servicio['f_fin']);
+              $fin=$fin[2]."-".$fin[1]."-".$fin[0];
                echo "
                   <tr id='trmod'>
                     <td data-label='".__('Actividad', $lang)."' id='tdmod'><a href='timeline.php?servicio=".$servicio['id']."'>".$servicio['descripcion']."</a></td>
+                    <td data-label='Inicio' id='tdmod'>".$inicio."</td>
+                    <td data-label='Fin' id='tdmod'>".$fin."</td>
                     <td data-label='".__('Modelos', $lang)."' id='tdmod'>".$servicio['modelos']."</td>
                     <td data-label='".__('Cliente', $lang)."' id='tdmod'>".$clientes['nombre']."</td>
                     <td data-label='".__('Responsable', $lang)."' id='tdmod'>".$servicio['responsable']."</td>
