@@ -19,7 +19,7 @@ if (isset($_SESSION['usuario'])==false) {
 <html >
 <head>
   <meta charset="UTF-8">
-  <title>Busqueda por tiempo</title>
+  <title>Búsqueda por tiempo</title>
     <link rel="stylesheet" href="../css/menu.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
     <link rel="stylesheet" href="../css/formulario.css">
@@ -54,7 +54,7 @@ if (isset($_SESSION['usuario'])==false) {
         <a href="nuevoServicio.php?lang=<?php echo $lang; ?>"><?php echo __('Nueva actividad', $lang); ?></a>
         <a href="actividadesActuales.php?lang=<?php echo $lang; ?>"><?php echo __('Actividades actuales', $lang); ?></a>
         <a href="historicoActividades.php?lang=<?php echo $lang; ?>"><?php echo __('Histórico actividades', $lang); ?></a>
-        <a href="resumen.php">Busqueda</a>
+        <a href="resumen.php">Búsqueda por tiempo</a>
 
       </nav>
 
@@ -63,7 +63,7 @@ if (isset($_SESSION['usuario'])==false) {
     <div class="site-content">
       <div class="container">
         <!-- Contenido de la pagina. -->
-        <h2>Resumen temporal</h2>
+        <h2>Búsqueda por tiempo</h2>
         <form action="resumenTabla.php" method="post" id="formulario">
           <div class="formthird">
             <p><label><i class="fa fa-question-circle"></i>INICIO (*)</label><input type="date" name="inicio" required/></p>
