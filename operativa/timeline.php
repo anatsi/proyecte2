@@ -198,7 +198,7 @@ if (isset($_SESSION['usuario'])==false) {
         <!-- Vertical Timeline -->
         <div id="timeline2" class="hidden">
           <section id="conference-timeline">
-            <div class="timeline-start">Start</div>
+            <div class="timeline-start">End</div>
             <div class="conference-center-line"></div>
             <div class="conference-timeline-content">
               <?php
@@ -241,12 +241,12 @@ if (isset($_SESSION['usuario'])==false) {
                 }
                ?>
             </div>
-            <div class="timeline-end">End</div>
+            <div class="timeline-end">Start</div>
           </section>
         </div>
         <div id="timeline1" class="shown">
           <section id="conference-timeline">
-            <div class="timeline-start">Start</div>
+            <div class="timeline-start">End</div>
             <div class="conference-center-line"></div>
             <div class="conference-timeline-content">
               <?php
@@ -347,7 +347,7 @@ if (isset($_SESSION['usuario'])==false) {
                 }
                ?>
             </div>
-            <div class="timeline-end">End</div>
+            <div class="timeline-end">Start</div>
           </section>
         </div>
         <!-- // Vertical Timeline -->
