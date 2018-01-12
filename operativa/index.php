@@ -74,22 +74,27 @@ if (isset($_SESSION['usuario'])==false) {
     <?php echo "<h2>Semana ".date('W')."</h2>"; ?>
     <div class="derecha">
       <?php
-        $dia=date('w');
-        if ($dia == 0) {
-          $hoy=date('d')+2;
-          $hoy=$hoy . date('-m-Y');
-          $manana=date('d')+3;
-          $manana=$manana . date('-m-Y');
-        }elseif ($dia == 6) {
-          $hoy=date('d')+1;
-          $hoy=$hoy . date('-m-Y');
-          $manana=date('d')+2;
-          $manana=$manana . date('-m-Y');
-        }else {
-          $hoy=date('d-m-Y');
-          $manana=date('d')+1;
-          $manana= $manana . date('-m-Y');
-        }
+      $dia=date('w');
+      $fecha = date('d-m-Y');
+      if ($dia == 0) {
+        $hoy= strtotime('+1 day', strtotime($fecha));
+        $hoy = date('d-m-Y', $hoy);
+        $manana= strtotime('+2 day', strtotime($fecha));
+        $manana = date('d-m-Y', $manana);
+      }elseif ($dia == 6) {
+        $hoy= strtotime('+2 day', strtotime($fecha));
+        $hoy = date('d-m-Y', $hoy);
+        $manana= strtotime('+3 day', strtotime($fecha));
+        $manana = date('d-m-Y', $manana);
+      }elseif ($dia == 5) {
+        $hoy= date('d-m-Y');
+        $manana= strtotime('+3 day', strtotime($fecha));
+        $manana = date('d-m-Y', $manana);
+      }else {
+        $hoy=date('d-m-Y');
+        $manana= strtotime('+1 day', strtotime($fecha));
+        $manana = date('d-m-Y', $manana);
+      }
        ?>
        <h2><?php echo $hoy; ?></h2>
       <table class="rwd-table">
