@@ -64,7 +64,7 @@ if (isset($_SESSION['usuario'])==false) {
       <div class="container">
         <!-- Contenido de la pagina. -->
         <h2>Resumen temporal</h2>
-        <form action="excelResumen.php" method="post" id="formulario">
+        <form action="resumenTabla.php" method="post" id="formulario">
           <div class="formthird">
             <p><label><i class="fa fa-question-circle"></i>INICIO (*)</label><input type="date" name="inicio" required/></p>
           </div>

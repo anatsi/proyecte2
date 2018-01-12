@@ -47,7 +47,7 @@ $objPHPExcel->setActiveSheetIndex(0)
 ->setCellValue('T1', 'RELACION')
 ->setCellValue('U1', 'CANCELADO');
 
-  $lista=$servicio->listaResumen($_POST['fin'], $_POST['inicio']);
+  $lista=$servicio->listaResumen($_GET['fin'], $_GET['inicio']);
 
 
   $i=2;
@@ -125,9 +125,9 @@ $objPHPExcel->setActiveSheetIndex(0)
     ->setCellValue('U'.$i, $cancelado);
     $i++;
     //sacar modificaciones de esa actividad
-    $modInfo=$servicio->infoResumen($serv['id'], $_POST['inicio'], $_POST['fin']);
+    $modInfo=$servicio->infoResumen($serv['id'], $_GET['inicio'], $_GET['fin']);
     $numeroInfo=count($modInfo);
-    $modRecursos=$servicio->diasRecursosResumen($serv['id'], $_POST['inicio'], $_POST['fin']);
+    $modRecursos=$servicio->diasRecursosResumen($serv['id'], $_GET['inicio'], $_GET['fin']);
     $numeroRecursos=count($modRecursos);
     //modificaciones de la informacion
     if ($numeroInfo>0) {
