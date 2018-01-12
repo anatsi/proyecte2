@@ -328,10 +328,11 @@ function listaResumen($fin, $inicio){
 //funcion para sacar las modificaciones de informacion de un servicio para el resumen
 function infoResumen($id, $inicio, $fin){
   //Construimos la consulta
-   $sql="SELECT * FROM mod_info
+   $sql="SELECT *, replace(concat(inicio, suelto), '0000-00-00', '') AS fecha FROM mod_info
           WHERE servicio=".$id." and suelto between '".$inicio."' AND '".$fin."'
           or servicio=".$id." and inicio<='".$fin."' and fin = '0000-00-00' and suelto = '0000-00-00'
-          OR servicio=".$id." and inicio<='".$fin."' and fin between '".$inicio."' and '".$fin."' and suelto = '0000-00-00'";
+          OR servicio=".$id." and inicio<='".$fin."' and fin between '".$inicio."' and '".$fin."' and suelto = '0000-00-00'
+          ORDER BY fecha ASC";
    //Realizamos la consulta
    $resultado=$this->realizarConsulta($sql);
    if($resultado!=null){
@@ -349,10 +350,11 @@ function infoResumen($id, $inicio, $fin){
 //funcion para sacar las modificaciones de recursos de un servicio para el resumen
 function diasRecursosResumen($id, $inicio, $fin){
   //Construimos la consulta
-   $sql="SELECT * FROM dias_recursos
+   $sql="SELECT *, replace(concat(inicio, suelto), '0000-00-00', '') AS fecha FROM dias_recursos
           WHERE servicio=".$id." and suelto between '".$inicio."' AND '".$fin."'
           or servicio=".$id." and inicio<='".$fin."' and fin = '0000-00-00' and suelto = '0000-00-00'
-          OR servicio=".$id." and inicio<='".$fin."' and fin between '".$inicio."' and '".$fin."' and suelto = '0000-00-00'";
+          OR servicio=".$id." and inicio<='".$fin."' and fin between '".$inicio."' and '".$fin."' and suelto = '0000-00-00'
+          ORDER BY fecha ASC";
    //Realizamos la consulta
    $resultado=$this->realizarConsulta($sql);
    if($resultado!=null){
