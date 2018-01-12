@@ -63,7 +63,7 @@ if (isset($_SESSION['usuario'])==false) {
         <a href="index.php?lang=<?php echo $lang; ?>"><?php echo __('Inicio', $lang); ?></a>
         <a href="nuevoServicio.php?lang=<?php echo $lang; ?>"><?php echo __('Nueva actividad', $lang); ?></a>
         <a href="actividadesActuales.php?lang=<?php echo $lang; ?>"><?php echo __('Actividades actuales', $lang); ?></a>
-        <a href="historicoActividades.php?lang=<?php echo $lang; ?>"><?php echo __('Historico actividades', $lang); ?></a>
+        <a href="historicoActividades.php?lang=<?php echo $lang; ?>"><?php echo __('Histórico actividades', $lang); ?></a>
         <a href="resumen.php">Busqueda</a>
       </nav>
 
@@ -193,7 +193,7 @@ if (isset($_SESSION['usuario'])==false) {
         $totalN=0;
         $totalC=0;
         $totalE=0;
-        
+
         require_once 'servicio.php';
         $servicio=new Servicio();
           $listamanana= $servicio->ServiciosTomorrow();

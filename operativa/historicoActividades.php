@@ -92,7 +92,7 @@ if (isset($_SESSION['usuario'])==false) {
         <a href="index.php?lang=<?php echo $lang; ?>"><?php echo __('Inicio', $lang); ?></a>
         <a href="nuevoServicio.php?lang=<?php echo $lang; ?>"><?php echo __('Nueva actividad', $lang); ?></a>
         <a href="actividadesActuales.php?lang=<?php echo $lang; ?>"><?php echo __('Actividades actuales', $lang); ?></a>
-        <a href="historicoActividades.php?lang=<?php echo $lang; ?>"><?php echo __('Historico actividades', $lang); ?></a>
+        <a href="historicoActividades.php?lang=<?php echo $lang; ?>"><?php echo __('Histórico actividades', $lang); ?></a>
         <a href="resumen.php">Busqueda</a>
       </nav>
 
@@ -101,7 +101,7 @@ if (isset($_SESSION['usuario'])==false) {
     <div class="site-content">
       <div class="container">
         <!-- Contenido de la pagina. -->
-        <h2><?php echo __('Historico actividades', $lang); ?></h2>
+        <h2><?php echo __('Histórico actividades', $lang); ?></h2>
        <input type="text" id="busqueda" placeholder='<?php echo __('FILTRAR', $lang); ?>'/><br /><br />
         <div id="resultado">
         <!--tabla-->
