@@ -23,7 +23,9 @@ $objPHPExcel->getProperties()
 //array para cambiar el color
 $style = array('font' => array('color' => array('rgb' => 'E72512')));
 $otherStyle = array('font' => array('color' => array('rgb' => '49678D')));
+$style_header = array('fill' => array('type' => PHPExcel_Style_Fill::FILL_SOLID, 'color' => array('rgb'=>'538DD5'),));
 // Agregar Informacion
+$objPHPExcel->getActiveSheet()->getStyle('A1:Z1')->applyFromArray($style_header);
 $objPHPExcel->setActiveSheetIndex(0)
 ->setCellValue('A1', 'ACTIVIDAD')
 ->setCellValue('B1', 'DESCRIPCION')

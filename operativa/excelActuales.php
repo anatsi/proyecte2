@@ -13,6 +13,8 @@ $recursos= new Recursos();
 // Crea un nuevo objeto PHPExcel
 $objPHPExcel = new PHPExcel();
 
+//crear arrays de estilo.
+$style_header = array('fill' => array('type' => PHPExcel_Style_Fill::FILL_SOLID, 'color' => array('rgb'=>'538DD5'),));
 // Establecer propiedades
 $objPHPExcel->getProperties()
 ->setCreator("Tomas")
@@ -21,6 +23,8 @@ $objPHPExcel->getProperties()
 ->setKeywords("Excel Office 2007 openxml php");
 
 // Agregar Informacion
+$objPHPExcel->getActiveSheet()->getStyle('A1:Z1')->applyFromArray($style_header);
+
 $objPHPExcel->setActiveSheetIndex(0)
 ->setCellValue('A1', 'ACTIVIDAD')
 ->setCellValue('B1', 'DESCRIPCION')
