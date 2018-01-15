@@ -24,6 +24,7 @@ $objPHPExcel->getProperties()
 $style = array('font' => array('color' => array('rgb' => 'E72512')));
 $otherStyle = array('font' => array('color' => array('rgb' => '49678D')));
 $style_header = array('fill' => array('type' => PHPExcel_Style_Fill::FILL_SOLID, 'color' => array('rgb'=>'538DD5'),));
+$OtherStyle_header = array('fill' => array('type' => PHPExcel_Style_Fill::FILL_SOLID, 'color' => array('rgb'=>'d9d9d9'),));
 // Agregar Informacion
 $objPHPExcel->getActiveSheet()->getStyle('A1:Z1')->applyFromArray($style_header);
 $objPHPExcel->setActiveSheetIndex(0)
@@ -103,6 +104,7 @@ $objPHPExcel->setActiveSheetIndex(0)
     }
 
     //sacar datos en el excel
+    $objPHPExcel->getActiveSheet()->getStyle('A'.$i.':Z'.$i)->applyFromArray($OtherStyle_header);
     $objPHPExcel->setActiveSheetIndex(0)
     ->setCellValue('A'.$i, $serv['descripcion'])
     ->setCellValue('B'.$i, $serv['com_depto'])
