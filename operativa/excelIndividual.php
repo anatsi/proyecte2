@@ -422,6 +422,10 @@ for($col = 'A'; $col !== 'Z'; $col++) {
 //poner el encabezado en negrita
 $objPHPExcel->getActiveSheet()->getStyle("A1:Z1")->getFont()->setBold(true);
 
+//centrar todo el texto
+$centrar = array('alignment' => array('horizontal' => PHPExcel_Style_Alignment::HORIZONTAL_CENTER,));
+$objPHPExcel->getActiveSheet()->getStyle("A1:Z100")->applyFromArray($centrar);
+
 // Se modifican los encabezados del HTTP para indicar que se envia un archivo de Excel.
 header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
 header('Content-Disposition: attachment;filename="Resumen.xlsx"');
