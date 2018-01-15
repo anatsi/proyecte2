@@ -60,10 +60,10 @@ if (isset($_GET['b'])) {
 foreach ($lista as $serv) {
   //arreglar las fechas de inicio y de fin del servicio
   $inicio=explode("-", $serv['f_inicio']);
-  $inicio=$inicio[2]."-".$inicio[1]."-".$inicio[0];
+  $inicio=$inicio[2]."/".$inicio[1]."/".$inicio[0];
   if ($serv['f_fin']!=NULL && $serv['f_fin']!='0000-00-00') {
     $fin=explode("-", $serv['f_fin']);
-    $fin=$fin[2]."-".$fin[1]."-".$fin[0];
+    $fin=$fin[2]."/".$fin[1]."/".$fin[0];
   }else {
     $fin='';
   }

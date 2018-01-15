@@ -57,10 +57,10 @@ $objPHPExcel->setActiveSheetIndex(0)
   $i=2;
     //arreglar las fechas
     $fechai=explode("-", $serv['f_inicio']);
-    $inicio=$fechai[2]."-".$fechai[1]."-".$fechai[0];
+    $inicio=$fechai[2]."/".$fechai[1]."/".$fechai[0];
     if ($serv['f_fin']!=NULL && $serv['f_fin']!='0000-00-00') {
       $fechaf=explode("-", $serv['f_fin']);
-      $fin=$fechaf[2]."-".$fechaf[1]."-".$fechaf[0];
+      $fin=$fechaf[2]."/".$fechaf[1]."/".$fechaf[0];
     }else {
       $fin='';
     }
@@ -147,7 +147,7 @@ $objPHPExcel->setActiveSheetIndex(0)
           //fecha fin del periodo (un dia antes del inicio de la modificacion).
           //restar un dia a la fecha
           $nuevoHasta= strtotime('-1 day', strtotime($info['inicio']));
-          $nuevoHasta = date('d-m-Y', $nuevoHasta);
+          $nuevoHasta = date('d/m/Y', $nuevoHasta);
           //cambiar color de la letra
           $objPHPExcel->getActiveSheet()->getStyle('A'.$i.':Z'.$i.'')->applyFromArray($style);
           //escribir la informacion en el excel
@@ -164,11 +164,11 @@ $objPHPExcel->setActiveSheetIndex(0)
           $i++;
           //acaba periodo normal y empieza modificacion
           //convertir las fechas
-          $inicioInfo = date('d-m-Y', strtotime($info['inicio']));
+          $inicioInfo = date('d/m/Y', strtotime($info['inicio']));
           if ($info['fin']!='0000-00-00') {
-            $finInfo = date('d-m-Y', strtotime($info['fin']));
+            $finInfo = date('d/m/Y', strtotime($info['fin']));
             $nuevoDesde= strtotime('+1 day', strtotime($info['fin']));
-            $nuevoDesde = date('d-m-Y', $nuevoDesde);
+            $nuevoDesde = date('d/m/Y', $nuevoDesde);
           }else {
             $finInfo='';
           }
@@ -199,7 +199,7 @@ $objPHPExcel->setActiveSheetIndex(0)
           //fecha fin del periodo (un dia antes del inicio de la modificacion).
           //restar un dia a la fecha
           $nuevoHasta= strtotime('-1 day', strtotime($info['suelto']));
-          $nuevoHasta = date('d-m-Y', $nuevoHasta);
+          $nuevoHasta = date('d/m/Y', $nuevoHasta);
           //cambiar color de la letra
           $objPHPExcel->getActiveSheet()->getStyle('A'.$i.':Z'.$i.'')->applyFromArray($style);
           //escribir la informacion en el excel
@@ -215,7 +215,7 @@ $objPHPExcel->setActiveSheetIndex(0)
           $i++;
           //periodo de modificaciones
           //convertir la fecha
-          $sueltoInfo = date('d-m-Y', strtotime($info['suelto']));
+          $sueltoInfo = date('d/m/Y', strtotime($info['suelto']));
           //cambiar color de la letra
           $objPHPExcel->getActiveSheet()->getStyle('A'.$i.':Z'.$i.'')->applyFromArray($style);
           //escribir los datos en el excel
@@ -233,7 +233,7 @@ $objPHPExcel->setActiveSheetIndex(0)
           //desde del siguiente periodo normal
           //sumar un dia al dia de la modificacion.
           $nuevoDesde= strtotime('+1 day', strtotime($info['suelto']));
-          $nuevoDesde = date('d-m-Y', $nuevoDesde);
+          $nuevoDesde = date('d/m/Y', $nuevoDesde);
           //cambiar color de la letra
           $objPHPExcel->getActiveSheet()->getStyle('A'.$i.':Z'.$i.'')->applyFromArray($style);
           //escribir el desde en el excel
@@ -296,7 +296,7 @@ $objPHPExcel->setActiveSheetIndex(0)
           //informacion  y final del primer periodo normal.
           //restar un dia a la fecha
           $nuevoHasta= strtotime('-1 day', strtotime($mod['inicio']));
-          $nuevoHasta = date('d-m-Y', $nuevoHasta);
+          $nuevoHasta = date('d/m/Y', $nuevoHasta);
           //cambiar el color a la letra
           $objPHPExcel->getActiveSheet()->getStyle('A'.$i.':Z'.$i.'')->applyFromArray($otherStyle);
           //escribir la informacion en el excel.
@@ -313,11 +313,11 @@ $objPHPExcel->setActiveSheetIndex(0)
 
           //acaba periodo normal y empieza la modificacion
           //convertir las fechas de inicio y fin de la modificacion.
-          $inicioRec = date('d-m-Y', strtotime($mod['inicio']));
+          $inicioRec = date('d/m/Y', strtotime($mod['inicio']));
           if ($mod['fin']!='0000-00-00') {
-            $finRec = date('d-m-Y', strtotime($mod['fin']));
+            $finRec = date('d/m/Y', strtotime($mod['fin']));
             $nuevoDesde= strtotime('+1 day', strtotime($mod['fin']));
-            $nuevoDesde = date('d-m-Y', $nuevoDesde);
+            $nuevoDesde = date('d/m/Y', $nuevoDesde);
           }else {
             $finRec='';
           }
@@ -348,7 +348,7 @@ $objPHPExcel->setActiveSheetIndex(0)
           //fecha fin del periodo (un dia antes del inicio de la modificacion).
           //restar un dia a la fecha
           $nuevoHasta= strtotime('-1 day', strtotime($mod['suelto']));
-          $nuevoHasta = date('d-m-Y', $nuevoHasta);
+          $nuevoHasta = date('d/m/Y', $nuevoHasta);
           //escribir la informacion del periodo normal.
           //cambiar el color a la letra
           $objPHPExcel->getActiveSheet()->getStyle('A'.$i.':Z'.$i.'')->applyFromArray($otherStyle);
@@ -365,7 +365,7 @@ $objPHPExcel->setActiveSheetIndex(0)
 
           //periodo de modificaciones
           //convertir la fecha
-          $sueltoRec = date('d-m-Y', strtotime($mod['suelto']));
+          $sueltoRec = date('d/m/Y', strtotime($mod['suelto']));
           //escribir en el excel las modificaciones
           //cambiar el color a la letra
           $objPHPExcel->getActiveSheet()->getStyle('A'.$i.':Z'.$i.'')->applyFromArray($otherStyle);
@@ -385,7 +385,7 @@ $objPHPExcel->setActiveSheetIndex(0)
           //desde del periodo normal
           //sumar un dia al dia de la modificacion.
           $nuevoDesde= strtotime('+1 day', strtotime($mod['suelto']));
-          $nuevoDesde = date('d-m-Y', $nuevoDesde);
+          $nuevoDesde = date('d/m/Y', $nuevoDesde);
           //escribir el desde en el excel
           //cambiar el color a la letra
           $objPHPExcel->getActiveSheet()->getStyle('A'.$i.':Z'.$i.'')->applyFromArray($otherStyle);

@@ -55,10 +55,10 @@ $lista=$servicio->listaServiciosHoy();
 foreach ($lista as $serv) {
   //arreglar las fechas
   $fechai=explode("-", $serv['f_inicio']);
-  $inicio=$fechai[2]."-".$fechai[1]."-".$fechai[0];
+  $inicio=$fechai[2]."/".$fechai[1]."/".$fechai[0];
   if ($serv['f_fin']!=NULL && $serv['f_fin']!='0000-00-00') {
     $fechaf=explode("-", $serv['f_fin']);
-    $fin=$fechaf[2]."-".$fechaf[1]."-".$fechaf[0];
+    $fin=$fechaf[2]."/".$fechaf[1]."/".$fechaf[0];
   }else {
     $fin='';
   }
