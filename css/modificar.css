@@ -4,6 +4,7 @@ body {
   line-height: 1.25;
   color: black;
 }
+
 #tablamod {
   border: 1px solid #ccc;
   border-collapse: collapse;
@@ -12,42 +13,49 @@ body {
   width: 100%;
   table-layout: fixed;
 }
+
 #tablamod #trmod {
   background: #f8f8f8;
   border: 1px solid #ddd;
   padding: .35em;
 }
-#tablamod #thmod,
-#tablamod #tdmod {
+
+#tablamod #thmod, #tablamod #tdmod {
   padding: .625em;
   text-align: left;
   font-size: 14px;
 }
+
 #tablamod #thmod {
   font-size: .85em;
   letter-spacing: .1em;
   text-transform: uppercase;
   font-weight: bold;
 }
-i{
+
+i {
   color: black;
   width: 15%;
   height: auto;
 }
-i:hover{
+
+i:hover {
   color: darkgrey;
 }
-#nuevoEmpleado{
+
+#nuevoEmpleado {
   font-size: 40px;
 }
-tr a{
+
+tr a {
   color: black;
   text-decoration: underline;
 }
 
-#excel{
+#excel {
   color: green;
 }
+
 @media screen and (max-width: 600px) {
   #tablamod {
     border: 0;
@@ -85,7 +93,8 @@ tr a{
     border-bottom: 0;
   }
 }
-#timeline{
-  color:black;
+
+#timeline {
+  color: black;
   text-decoration: underline;
 }

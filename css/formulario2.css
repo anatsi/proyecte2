@@ -1,171 +1,187 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto);
-        html, body {
-          font-family: 'Roboto thin';
-          font-size: 1em;
-          line-height: 1.4;
-          height: 100%;
-          margin: 0;
-          padding: 0;
-        }
-        p{
-          color: black;
-        }
-        form {
-          padding:2%;
-          -moz-border-radius:10px;
-          -webkit-border-radius:10px;
-          border-radius:10px;
-          margin:20px auto;
-          text-align:justify;
-          width:90%;
-          margin-top: 0;
-        }
-        form p {
-          width:100%;
-          display:inline-block;
-          margin:1px 0;
-          padding:0;
-        }
-        input,text,email,password,input[type=text],
-        input[type=password],input[type=email],input[type=textarea],
-        textarea,input[type=select],select {
-          -moz-border-radius:5px;
-          -webkit-border-radius:5px;
-          border-radius:5px;
-          height:25px;
-          line-height:25px;
-          float:right;
-          border:solid #ccc 1px;
-          font-size:11px;
-          color:#666;
-        }
-        input,text,email,password,input[type=text],input[type=password],
-        input[type=email],input[type=textarea],textarea {
-          width:48%;
-          padding:0px 1%;
-        }
-        input[type=select],select {
-          width:50%;
-          padding:0px 1%;
-          height:30px;
-        }
-        input[type=radio],radio,input[type=checkbox],checkbox {
-          width:auto;
-          padding:0px;
-          margin-left:2%;
-          float:left;
-        }
-        input[type=submit],submit {
-          background:blue;
-          border-color:blue;
-          color:#fff;
-          line-height:25px;
-          font-size:20px;
-          height: 50px;
-          width: 50%;
-          margin-top: 1%;
-          margin-right: 25%;
-        }
-        input[type=submit]:hover,submit:hover {
-          color: black;
-          background:lightblue;
-          border-color:lightblue;
-        }
-        input[type=file]{
-          width:275px;
-        }
-        textarea,input[type=textarea] {
-          min-height:80px;
-        }
-        label{
-          width:46%;
-          margin:2px 1%;
-          font-size:15px;
-          color:black;
-          text-align:right;
-          float:left;
-          line-height:16px;
-        }
-        button{
-          text-align: center;
-          margin-left: 140px;
-        }
-        .threeinputs{
-          margin:0 !important;
-          width:22% !important;
-        }
-        .threeinputs2{
-          margin:0 !important;
-          width:22% !important;
-        }
-        .threeinputs1{
-          margin:0 !important;
-          width:44% !important;
-          margin-left: 99% !important;
-        }
-        .threeinputs:nth-child(3){
-          margin:0 .75% !important;
-          width:14% !important;
-        }
-        .formthird {
-          float:left;
-          width:31%;
-          margin:0px 1%;
-        }
+html, body {
+  font-family: 'Roboto thin';
+  font-size: 1em;
+  line-height: 1.4;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
 
-        .fa-question-circle{
-          color:#666;
-          font-size:18px !important;
-          line-height:25px !important;
-          margin-right:5px;
-          position:relative;
-          top:2px;
-        }
-        #busqueda{
-          float: left;
-          margin-left: 10%;
-          width: 20%;
-        }
-        @media only screen and (max-width: 960px) {
-            form{
-              margin-top: 40px;
-            }
-            .threeinputs1,.threeinputs2,.threeinputs,.threeinputs:nth-child(3){
-              margin:1px 0 !important;
-              width:48% !important;
-            }
-            .threeinputs1, .threeinputs2{
-              margin-left: 52% !important;
-            }
-            input,text,email,password,input[type=text],input[type=password],
-            input[type=email],input[type=textarea],textarea,input[type=select],select {
-              float:right;
-            }
-            input[type=radio],radio,input[type=checkbox],checkbox {
-              float:left;
-            }
-            label{
-              font-size:14px;
-            }
-        }
-        @media only screen and (max-width: 767px) {
-          form{
-            margin-top: 20px;
-          }
-            .formthird {
-              float:left;
-              width:95%;
-              margin:0px 1%;
-            }
-            label{
-              font-size:14px;
-            }
-            #busqueda{
-              width: 70%;
-            }
-        }
+p {
+  color: black;
+}
 
+form {
+  padding: 2%;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+  margin: 20px auto;
+  text-align: justify;
+  width: 90%;
+  margin-top: 0;
+}
 
-        #total, #calculo{
-          background-color: rgb(212, 208, 214);
-        }
+form p {
+  width: 100%;
+  display: inline-block;
+  margin: 1px 0;
+  padding: 0;
+}
+
+input, text, email, password, input[type=text], input[type=password], input[type=email], input[type=textarea], textarea, input[type=select], select {
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  height: 25px;
+  line-height: 25px;
+  float: right;
+  border: solid #ccc 1px;
+  font-size: 11px;
+  color: #666;
+}
+
+input, text, email, password, input[type=text], input[type=password], input[type=email], input[type=textarea], textarea {
+  width: 48%;
+  padding: 0px 1%;
+}
+
+input[type=select], select {
+  width: 50%;
+  padding: 0px 1%;
+  height: 30px;
+}
+
+input[type=radio], radio, input[type=checkbox], checkbox {
+  width: auto;
+  padding: 0px;
+  margin-left: 2%;
+  float: left;
+}
+
+input[type=submit], submit {
+  background: blue;
+  border-color: blue;
+  color: #fff;
+  line-height: 25px;
+  font-size: 20px;
+  height: 50px;
+  width: 50%;
+  margin-top: 1%;
+  margin-right: 25%;
+}
+
+input[type=submit]:hover, submit:hover {
+  color: black;
+  background: lightblue;
+  border-color: lightblue;
+}
+
+input[type=file] {
+  width: 275px;
+}
+
+textarea, input[type=textarea] {
+  min-height: 80px;
+}
+
+label {
+  width: 46%;
+  margin: 2px 1%;
+  font-size: 15px;
+  color: black;
+  text-align: right;
+  float: left;
+  line-height: 16px;
+}
+
+button {
+  text-align: center;
+  margin-left: 140px;
+}
+
+.threeinputs {
+  margin: 0 !important;
+  width: 22% !important;
+}
+
+.threeinputs2 {
+  margin: 0 !important;
+  width: 22% !important;
+}
+
+.threeinputs1 {
+  margin: 0 !important;
+  width: 44% !important;
+  margin-left: 99% !important;
+}
+
+.threeinputs:nth-child(3) {
+  margin: 0 .75% !important;
+  width: 14% !important;
+}
+
+.formthird {
+  float: left;
+  width: 31%;
+  margin: 0px 1%;
+}
+
+.fa-question-circle {
+  color: #666;
+  font-size: 18px !important;
+  line-height: 25px !important;
+  margin-right: 5px;
+  position: relative;
+  top: 2px;
+}
+
+#busqueda {
+  float: left;
+  margin-left: 10%;
+  width: 20%;
+}
+
+@media only screen and (max-width: 960px) {
+  form {
+    margin-top: 40px;
+  }
+  .threeinputs1, .threeinputs2, .threeinputs, .threeinputs:nth-child(3) {
+    margin: 1px 0 !important;
+    width: 48% !important;
+  }
+  .threeinputs1, .threeinputs2 {
+    margin-left: 52% !important;
+  }
+  input, text, email, password, input[type=text], input[type=password], input[type=email], input[type=textarea], textarea, input[type=select], select {
+    float: right;
+  }
+  input[type=radio], radio, input[type=checkbox], checkbox {
+    float: left;
+  }
+  label {
+    font-size: 14px;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  form {
+    margin-top: 20px;
+  }
+  .formthird {
+    float: left;
+    width: 95%;
+    margin: 0px 1%;
+  }
+  label {
+    font-size: 14px;
+  }
+  #busqueda {
+    width: 70%;
+  }
+}
+
+#total, #calculo {
+  background-color: rgb(212, 208, 214);
+}

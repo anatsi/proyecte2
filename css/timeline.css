@@ -5,19 +5,21 @@
 }
 
 /*===== Vertical Timeline =====*/
-#relacion{
+
+#relacion {
   color: rgb(77, 83, 88);
   margin-bottom: 3%;
   font-weight: bold;
 }
+
 #conference-timeline {
   position: relative;
   max-width: 920px;
   width: 100%;
   margin: 0 auto;
 }
-#conference-timeline .timeline-start,
-#conference-timeline .timeline-end {
+
+#conference-timeline .timeline-start, #conference-timeline .timeline-end {
   display: table;
   font-family: "Roboto thin", sans-serif;
   font-size: 18px;
@@ -31,6 +33,7 @@
   text-align: center;
   margin: 0 auto;
 }
+
 #conference-timeline .conference-center-line {
   position: absolute;
   width: 3px;
@@ -41,10 +44,12 @@
   background: #00b0bd;
   z-index: -1;
 }
+
 #conference-timeline .conference-timeline-content {
   padding-top: 67px;
   padding-bottom: 67px;
 }
+
 .timeline-article {
   width: 100%;
   height: 100%;
@@ -52,11 +57,12 @@
   overflow: hidden;
   margin: 20px 0;
 }
-.timeline-article .content-left-container,
-.timeline-article .content-right-container {
+
+.timeline-article .content-left-container, .timeline-article .content-right-container {
   max-width: 44%;
   width: 100%;
 }
+
 .timeline-article .timeline-author {
   display: block;
   font-weight: 400;
@@ -65,15 +71,16 @@
   color: #242424;
   text-align: right;
 }
-.timeline-article .content-left,
-.timeline-article .content-right {
+
+.timeline-article .content-left, .timeline-article .content-right {
   position: relative;
   width: auto;
   border: 1px solid #ddd;
   background-color: #fff;
-  box-shadow: 0 1px 3px rgba(0,0,0,.03);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, .03);
   padding: 27px 25px;
 }
+
 .timeline-article p {
   margin: 0 0 0 60px;
   padding: 0;
@@ -82,6 +89,7 @@
   line-height: 24px;
   position: relative;
 }
+
 .timeline-article p span.article-number {
   position: absolute;
   font-weight: 300;
@@ -90,28 +98,33 @@
   left: -60px;
   color: #00b0bd;
 }
+
 .timeline-article .content-left-container {
   float: left;
 }
+
 .timeline-article .content-right-container {
   float: right;
 }
-.timeline-article .content-left:before,
-.timeline-article .content-right:before{
+
+.timeline-article .content-left:before, .timeline-article .content-right:before {
   position: absolute;
   top: 20px;
   font-size: 23px;
   font-family: "FontAwesome";
   color: #fff;
 }
+
 .timeline-article .content-left:before {
   content: "\f0da";
   right: -8px;
 }
+
 .timeline-article .content-right:before {
   content: "\f0d9";
   left: -8px;
 }
+
 .timeline-article .meta-date {
   position: absolute;
   top: 0;
@@ -122,78 +135,92 @@
   color: #fff;
   border-radius: 100%;
 }
-.timeline-article #meta-date-left{
+
+.timeline-article #meta-date-left {
   background: rgb(121, 2, 20);
 }
-.timeline-article #meta-date-right{
+
+.timeline-article #meta-date-right {
   background: rgb(8, 0, 98);
 }
-.timeline-article .meta-date .date,
-.timeline-article .meta-date .month {
+
+.timeline-article .meta-date .date, .timeline-article .meta-date .month {
   display: block;
   text-align: center;
   font-weight: 400;
 }
+
 .timeline-article .meta-date .date {
   font-size: 16px;
   line-height: 20px;
   margin-top: 20px;
 }
+
 .timeline-article .meta-date .month {
   font-size: 16px;
   line-height: 20px;
   margin-top: 40px;
 }
-#listaDerecha{
+
+#listaDerecha {
   display: inline-block;
   float: left;
   width: 40%;
   height: 30%;
   clear: both;
-/*  margin-bottom: 100px;*/
+  /*  margin-bottom: 100px;*/
   margin-right: 50px;
   margin-left: 50px;
 }
-#listaIzquierda{
+
+#listaIzquierda {
   display: inline-block;
   width: 48%;
   clear: both;
   margin-bottom: 100px;
   margin-left: 50px;
 }
-#listaDerecha ul, #listaIzquierda ul{
+
+#listaDerecha ul, #listaIzquierda ul {
   color: black;
 }
-#vacio{
+
+#vacio {
   visibility: hidden;
 }
-.hidden{
+
+.hidden {
   display: none;
 }
-.botones{
+
+.botones {
   margin-left: 27%;
   margin-bottom: 5%;
 }
-#general, #recursos{
+
+#general, #recursos {
   height: 50px;
   width: 100px;
   background-color: lightgrey;
   border-radius: 20px;
   outline: none;
 }
-p b{
+
+p b {
   font-weight: bold;
 }
-li a{
+
+li a {
   color: black;
   text-decoration: underline;
 }
+
 /*===== // Vertical Timeline =====*/
 
 /*===== Resonsive Vertical Timeline =====*/
+
 @media only screen and (max-width: 830px) {
-  #conference-timeline .timeline-start,
-  #conference-timeline .timeline-end {
+  #conference-timeline .timeline-start, #conference-timeline .timeline-end {
     margin: 0;
   }
   #conference-timeline .conference-center-line {
@@ -204,8 +231,7 @@ li a{
     margin-left: 0;
     left: 20px;
   }
-  .timeline-article .content-left-container,
-  .timeline-article .content-right-container {
+  .timeline-article .content-left-container, .timeline-article .content-right-container {
     max-width: 100%;
     width: auto;
     float: none;
@@ -215,8 +241,7 @@ li a{
   .timeline-article .content-left-container {
     margin-bottom: 20px;
   }
-  .timeline-article .content-left,
-  .timeline-article .content-right {
+  .timeline-article .content-left, .timeline-article .content-right {
     padding: 10px 25px;
     min-height: 65px;
   }
@@ -228,14 +253,15 @@ li a{
   .timeline-article .content-right:before {
     display: none;
   }
-  #vacio{
+  #vacio {
     display: none;
   }
-  .botones{
+  .botones {
     margin-left: 1%;
     margin-bottom: 5%;
   }
 }
+
 @media only screen and (max-width: 400px) {
   .timeline-article p {
     margin: 0;
@@ -243,12 +269,13 @@ li a{
   .timeline-article p span.article-number {
     display: none;
   }
-  #vacio{
+  #vacio {
     display: none;
   }
-  .botones{
+  .botones {
     margin-left: 1%;
     margin-bottom: 5%;
   }
 }
+
 /*===== // Resonsive Vertical Timeline =====*/
