@@ -25,7 +25,7 @@ $objPHPExcel->getProperties()
 ->setKeywords("Excel Office 2007 openxml php");
 
 // Agregar Informacion
-$objPHPExcel->getActiveSheet()->getStyle('A1:Z1')->applyFromArray($style_header);
+$objPHPExcel->getActiveSheet()->getStyle('A1:U1')->applyFromArray($style_header);
 
 $objPHPExcel->setActiveSheetIndex(0)
 ->setCellValue('A1', 'ACTIVIDAD')
@@ -100,7 +100,7 @@ foreach ($lista as $serv) {
     $cancelado='NO';
   }
   //apuntar los datos en el excel
-  $objPHPExcel->getActiveSheet()->getStyle('A'.$i.':Z'.$i)->applyFromArray($OtherStyle_header);
+  $objPHPExcel->getActiveSheet()->getStyle('A'.$i.':U'.$i)->applyFromArray($OtherStyle_header);
   $objPHPExcel->setActiveSheetIndex(0)
   ->setCellValue('A'.$i, $serv['descripcion'])
   ->setCellValue('B'.$i, $serv['com_depto'])
@@ -137,11 +137,17 @@ for($col = 'A'; $col !== 'Z'; $col++) {
 }
 
 //poner el encabezado en negrita
-$objPHPExcel->getActiveSheet()->getStyle("A1:Z1")->getFont()->setBold(true);
+$objPHPExcel->getActiveSheet()->getStyle("A1:U1")->getFont()->setBold(true);
 
 //centrar todo el texto
 $centrar = array('alignment' => array('horizontal' => PHPExcel_Style_Alignment::HORIZONTAL_CENTER,));
-$objPHPExcel->getActiveSheet()->getStyle("A1:Z100")->applyFromArray($centrar);
+$objPHPExcel->getActiveSheet()->getStyle("A1:U100")->applyFromArray($centrar);
+
+//poner los bordes
+$i2 = $i -1;
+$bordes = array('borders' => array('allborders' => array('style' => PHPExcel_Style_Border::BORDER_THIN)));
+$objPHPExcel->getActiveSheet()->getStyle("A1:U".$i2)->applyFromArray($bordes);
+
 
 // Se modifican los encabezados del HTTP para indicar que se envia un archivo de Excel.
 header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');

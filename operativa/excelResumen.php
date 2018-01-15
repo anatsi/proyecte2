@@ -26,7 +26,7 @@ $otherStyle = array('font' => array('color' => array('rgb' => '49678D')));
 $style_header = array('fill' => array('type' => PHPExcel_Style_Fill::FILL_SOLID, 'color' => array('rgb'=>'538DD5'),));
 $OtherStyle_header = array('fill' => array('type' => PHPExcel_Style_Fill::FILL_SOLID, 'color' => array('rgb'=>'d9d9d9'),));
 // Agregar Informacion
-$objPHPExcel->getActiveSheet()->getStyle('A1:Z1')->applyFromArray($style_header);
+$objPHPExcel->getActiveSheet()->getStyle('A1:U1')->applyFromArray($style_header);
 $objPHPExcel->setActiveSheetIndex(0)
 ->setCellValue('A1', 'ACTIVIDAD')
 ->setCellValue('B1', 'DESCRIPCION')
@@ -104,7 +104,7 @@ $objPHPExcel->setActiveSheetIndex(0)
     }
 
     //sacar datos en el excel
-    $objPHPExcel->getActiveSheet()->getStyle('A'.$i.':Z'.$i)->applyFromArray($OtherStyle_header);
+    $objPHPExcel->getActiveSheet()->getStyle('A'.$i.':U'.$i)->applyFromArray($OtherStyle_header);
     $objPHPExcel->setActiveSheetIndex(0)
     ->setCellValue('A'.$i, $serv['descripcion'])
     ->setCellValue('B'.$i, $serv['com_depto'])
@@ -136,7 +136,7 @@ $objPHPExcel->setActiveSheetIndex(0)
     //modificaciones de la informacion
     if ($numeroInfo>0) {
       //cambiar color de la letra
-      $objPHPExcel->getActiveSheet()->getStyle('A'.$i.':Z'.$i.'')->applyFromArray($style);
+      $objPHPExcel->getActiveSheet()->getStyle('A'.$i.':U'.$i.'')->applyFromArray($style);
       //fecha inicio periodo normal
       $objPHPExcel->setActiveSheetIndex(0)
       ->setCellValue('D'.$i, $inicio)
@@ -149,7 +149,7 @@ $objPHPExcel->setActiveSheetIndex(0)
           $nuevoHasta= strtotime('-1 day', strtotime($info['inicio']));
           $nuevoHasta = date('d/m/Y', $nuevoHasta);
           //cambiar color de la letra
-          $objPHPExcel->getActiveSheet()->getStyle('A'.$i.':Z'.$i.'')->applyFromArray($style);
+          $objPHPExcel->getActiveSheet()->getStyle('A'.$i.':U'.$i.'')->applyFromArray($style);
           //escribir la informacion en el excel
           $objPHPExcel->setActiveSheetIndex(0)
           ->setCellValue('E'.$i, $nuevoHasta)
@@ -173,7 +173,7 @@ $objPHPExcel->setActiveSheetIndex(0)
             $finInfo='';
           }
           //cambiar color de la letra
-          $objPHPExcel->getActiveSheet()->getStyle('A'.$i.':Z'.$i.'')->applyFromArray($style);
+          $objPHPExcel->getActiveSheet()->getStyle('A'.$i.':U'.$i.'')->applyFromArray($style);
           //escribir los datos en el excel
           $objPHPExcel->setActiveSheetIndex(0)
           ->setCellValue('A'.$i, $info['descripcion'])
@@ -187,7 +187,7 @@ $objPHPExcel->setActiveSheetIndex(0)
           $i++;
 
           //cambiar color de la letra
-          $objPHPExcel->getActiveSheet()->getStyle('A'.$i.':Z'.$i.'')->applyFromArray($style);
+          $objPHPExcel->getActiveSheet()->getStyle('A'.$i.':U'.$i.'')->applyFromArray($style);
           //Ponemos el desde del nuevo periodo de normalidad
           $objPHPExcel -> setActiveSheetIndex(0)
           ->setCellValue('D'.$i, $nuevoDesde)
@@ -201,7 +201,7 @@ $objPHPExcel->setActiveSheetIndex(0)
           $nuevoHasta= strtotime('-1 day', strtotime($info['suelto']));
           $nuevoHasta = date('d/m/Y', $nuevoHasta);
           //cambiar color de la letra
-          $objPHPExcel->getActiveSheet()->getStyle('A'.$i.':Z'.$i.'')->applyFromArray($style);
+          $objPHPExcel->getActiveSheet()->getStyle('A'.$i.':U'.$i.'')->applyFromArray($style);
           //escribir la informacion en el excel
           $objPHPExcel->setActiveSheetIndex(0)
           ->setCellValue('E'.$i, $nuevoHasta)
@@ -217,7 +217,7 @@ $objPHPExcel->setActiveSheetIndex(0)
           //convertir la fecha
           $sueltoInfo = date('d/m/Y', strtotime($info['suelto']));
           //cambiar color de la letra
-          $objPHPExcel->getActiveSheet()->getStyle('A'.$i.':Z'.$i.'')->applyFromArray($style);
+          $objPHPExcel->getActiveSheet()->getStyle('A'.$i.':U'.$i.'')->applyFromArray($style);
           //escribir los datos en el excel
           $objPHPExcel->setActiveSheetIndex(0)
           ->setCellValue('A'.$i, $info['descripcion'])
@@ -235,7 +235,7 @@ $objPHPExcel->setActiveSheetIndex(0)
           $nuevoDesde= strtotime('+1 day', strtotime($info['suelto']));
           $nuevoDesde = date('d/m/Y', $nuevoDesde);
           //cambiar color de la letra
-          $objPHPExcel->getActiveSheet()->getStyle('A'.$i.':Z'.$i.'')->applyFromArray($style);
+          $objPHPExcel->getActiveSheet()->getStyle('A'.$i.':U'.$i.'')->applyFromArray($style);
           //escribir el desde en el excel
           $objPHPExcel -> setActiveSheetIndex(0)
           ->setCellValue('D'.$i, $nuevoDesde)
@@ -245,7 +245,7 @@ $objPHPExcel->setActiveSheetIndex(0)
       }
       //ultima informacion y hasta del periodo normal
       //cambiar color de la letra
-      $objPHPExcel->getActiveSheet()->getStyle('A'.$i.':Z'.$i.'')->applyFromArray($style);
+      $objPHPExcel->getActiveSheet()->getStyle('A'.$i.':U'.$i.'')->applyFromArray($style);
       //escribir la informacion en el excel
       $objPHPExcel->setActiveSheetIndex(0)
       ->setCellValue('E'.$i, $fin)
@@ -263,7 +263,7 @@ $objPHPExcel->setActiveSheetIndex(0)
     //modificaciones de los recursos
     if ($numeroRecursos>0) {
       //periodo normal. primer desde.
-      $objPHPExcel->getActiveSheet()->getStyle('A'.$i.':Z'.$i.'')->applyFromArray($otherStyle);
+      $objPHPExcel->getActiveSheet()->getStyle('A'.$i.':U'.$i.'')->applyFromArray($otherStyle);
       //fecha inicio periodo normal
       $objPHPExcel->setActiveSheetIndex(0)
       ->setCellValue('D'.$i, $inicio)
@@ -298,7 +298,7 @@ $objPHPExcel->setActiveSheetIndex(0)
           $nuevoHasta= strtotime('-1 day', strtotime($mod['inicio']));
           $nuevoHasta = date('d/m/Y', $nuevoHasta);
           //cambiar el color a la letra
-          $objPHPExcel->getActiveSheet()->getStyle('A'.$i.':Z'.$i.'')->applyFromArray($otherStyle);
+          $objPHPExcel->getActiveSheet()->getStyle('A'.$i.':U'.$i.'')->applyFromArray($otherStyle);
           //escribir la informacion en el excel.
           $objPHPExcel->setActiveSheetIndex(0)
           ->setCellValue('E'.$i, $nuevoHasta)
@@ -323,7 +323,7 @@ $objPHPExcel->setActiveSheetIndex(0)
           }
           //escribir en el excel las modificaciones
           //cambiar el color a la letra
-          $objPHPExcel->getActiveSheet()->getStyle('A'.$i.':Z'.$i.'')->applyFromArray($otherStyle);
+          $objPHPExcel->getActiveSheet()->getStyle('A'.$i.':U'.$i.'')->applyFromArray($otherStyle);
           $objPHPExcel->setActiveSheetIndex(0)
           ->setCellValue('D'.$i, $inicioRec)
           ->setCellValue('E'.$i, $finRec)
@@ -339,7 +339,7 @@ $objPHPExcel->setActiveSheetIndex(0)
           //empezamos el nuevo periodo normal.
           //ponemos el desde.
           //cambiar el color a la letra
-          $objPHPExcel->getActiveSheet()->getStyle('A'.$i.':Z'.$i.'')->applyFromArray($otherStyle);
+          $objPHPExcel->getActiveSheet()->getStyle('A'.$i.':U'.$i.'')->applyFromArray($otherStyle);
           $objPHPExcel -> setActiveSheetIndex(0)
           ->setCellValue('D'.$i, $nuevoDesde)
           ;
@@ -351,7 +351,7 @@ $objPHPExcel->setActiveSheetIndex(0)
           $nuevoHasta = date('d/m/Y', $nuevoHasta);
           //escribir la informacion del periodo normal.
           //cambiar el color a la letra
-          $objPHPExcel->getActiveSheet()->getStyle('A'.$i.':Z'.$i.'')->applyFromArray($otherStyle);
+          $objPHPExcel->getActiveSheet()->getStyle('A'.$i.':U'.$i.'')->applyFromArray($otherStyle);
           $objPHPExcel->setActiveSheetIndex(0)
           ->setCellValue('E'.$i, $nuevoHasta)
           ->setCellValue('A'.$i, $serv['descripcion'])
@@ -368,7 +368,7 @@ $objPHPExcel->setActiveSheetIndex(0)
           $sueltoRec = date('d/m/Y', strtotime($mod['suelto']));
           //escribir en el excel las modificaciones
           //cambiar el color a la letra
-          $objPHPExcel->getActiveSheet()->getStyle('A'.$i.':Z'.$i.'')->applyFromArray($otherStyle);
+          $objPHPExcel->getActiveSheet()->getStyle('A'.$i.':U'.$i.'')->applyFromArray($otherStyle);
           $objPHPExcel->setActiveSheetIndex(0)
           ->setCellValue('D'.$i, $sueltoRec)
           ->setCellValue('E'.$i, $sueltoRec)
@@ -388,7 +388,7 @@ $objPHPExcel->setActiveSheetIndex(0)
           $nuevoDesde = date('d/m/Y', $nuevoDesde);
           //escribir el desde en el excel
           //cambiar el color a la letra
-          $objPHPExcel->getActiveSheet()->getStyle('A'.$i.':Z'.$i.'')->applyFromArray($otherStyle);
+          $objPHPExcel->getActiveSheet()->getStyle('A'.$i.':U'.$i.'')->applyFromArray($otherStyle);
           $objPHPExcel -> setActiveSheetIndex(0)
           ->setCellValue('D'.$i, $nuevoDesde)
           ;
@@ -396,7 +396,7 @@ $objPHPExcel->setActiveSheetIndex(0)
       }
       //escribir la informacion del periodo normal.
       //cambiar el color a la letra
-      $objPHPExcel->getActiveSheet()->getStyle('A'.$i.':Z'.$i.'')->applyFromArray($otherStyle);
+      $objPHPExcel->getActiveSheet()->getStyle('A'.$i.':U'.$i.'')->applyFromArray($otherStyle);
       $objPHPExcel->setActiveSheetIndex(0)
       ->setCellValue('E'.$i, $fin)
       ->setCellValue('A'.$i, $serv['descripcion'])
@@ -420,11 +420,16 @@ for($col = 'A'; $col !== 'Z'; $col++) {
 }
 
 //poner el encabezado en negrita
-$objPHPExcel->getActiveSheet()->getStyle("A1:Z1")->getFont()->setBold(true);
+$objPHPExcel->getActiveSheet()->getStyle("A1:U1")->getFont()->setBold(true);
 
 //centrar todo el texto
 $centrar = array('alignment' => array('horizontal' => PHPExcel_Style_Alignment::HORIZONTAL_CENTER,));
-$objPHPExcel->getActiveSheet()->getStyle("A1:Z100")->applyFromArray($centrar);
+$objPHPExcel->getActiveSheet()->getStyle("A1:U100")->applyFromArray($centrar);
+
+//poner los bordes
+$i2 = $i -1;
+$bordes = array('borders' => array('allborders' => array('style' => PHPExcel_Style_Border::BORDER_THIN)));
+$objPHPExcel->getActiveSheet()->getStyle("A1:U".$i2)->applyFromArray($bordes);
 
 // Se modifican los encabezados del HTTP para indicar que se envia un archivo de Excel.
 header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
