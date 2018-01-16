@@ -369,6 +369,17 @@ function diasRecursosResumen($id, $inicio, $fin){
    }
 }
 
+//funcion para actualizar actividad de la tabla general
+function ActualizarActividad($id, $act, $modelos, $recursos, $responsable, $tel, $correo, $desc){
+  $sql="UPDATE servicios SET descripcion='".$act."', modelos='".$modelos."', recursos=".$recursos.", responsable='".$responsable."', telefono=".$tel.", correo='".$correo."', com_depto='".$desc."' WHERE id='".$id."'";
+  $finalizarAct=$this->realizarConsulta($sql);
+  if ($finalizarAct=!false) {
+       return true;
+  }else {
+       return false;
+  }
+}
+
 }
 
 

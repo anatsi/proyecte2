@@ -4,11 +4,13 @@ require_once '../sesiones.php';
 require_once '../users.php';
 require_once 'cliente.php';
 require_once 'servicio.php';
+require_once 'recursos.php';
 
 $usuario=new User();
 $sesion=new Sesiones();
 $cliente=new Cliente();
 $servicio=new Servicio();
+$recursos=new Recursos();
 
 if (isset($_SESSION['usuario'])==false) {
   header('Location: ../index.php');
@@ -18,7 +20,7 @@ if (isset($_SESSION['usuario'])==false) {
 <html >
 <head>
   <meta charset="UTF-8">
-  <title>Modificar información actividad</title>
+  <title>Modificar actividad</title>
     <link rel="stylesheet" href="../css/menu.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
     <link rel="stylesheet" href="../css/formulario.css">
@@ -35,10 +37,6 @@ if (isset($_SESSION['usuario'])==false) {
           });
       })(jQuery);
     </script>
-</head>
-<body>
-  <head>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 </head>
 
 <div class="codrops-top clearfix">
@@ -72,23 +70,15 @@ if (isset($_SESSION['usuario'])==false) {
 
     <?php
       $infoservicio=$servicio->ServicioId($_GET['servicio']);
+      $inforecurso=$recursos->RecursosId($_GET['servicio']);
      ?>
 
     <div class="site-content">
       <div class="container">
         <!-- Contenido de la pagina. -->
-        <h2>Modificar informacion de la actividad</h2>
+        <h2>Modificar actividad</h2>
         <h3><?=$infoservicio['descripcion']?></h3>
-        <h4><a style="color: red;" href='cancelarServicio.php?servicio=<?=$infoservicio['id']?>'>Cancelar actividad</a></h4>
-        <form action="modificarInfo.php" method="post" id="formulario">
-          <div class="formthird" id='contenedor'>
-            <input type="hidden" value=<?=$infoservicio['id']?> name="id">
-            <p><label>SELECCIONAR DIAS</label></p>
-            <p><label><i class="fa fa-question-circle"></i>Dia suelto</label><input type="date" name="suelto" min= <?php echo date('Y-m-d');?> id="suelto"/></p>
-            <p><label>Más de un dia</label></p>
-            <p><label><i class="fa fa-question-circle"></i>Inicio</label><input type="date" name="inicio" min= <?php echo date('Y-m-d');?> id="inicio"/></p>
-            <p><label><i class="fa fa-question-circle"></i>Fin</label><input type="date" name="fin" min= <?php echo date('Y-m-d');?> id="fin"/></p>
-          </div>
+        <form action="modificarGeneral.php" method="post" id="formulario">
           <div class="formthird">
             <p><label><i class="fa fa-question-circle"></i>Actividad</label><input type="text" value='<?=$infoservicio['descripcion']?>' name="descripcion"/></p>
             <p><label><i class="fa fa-question-circle"></i>Descripción</label><textarea name="cdo"><?=$infoservicio['com_depto']?></textarea></p>
@@ -153,13 +143,56 @@ if (isset($_SESSION['usuario'])==false) {
                </select></p>
             <p><label><i class="fa fa-question-circle"></i>Responsable</label><input type="text" value='<?=$infoservicio['responsable']?>' name="responsable"/></p>
             <p><label><i class="fa fa-question-circle"></i>Tel. responsable</label><input type="tel" value=<?=$infoservicio['telefono']?> name="tel"/></p>
-            <p><label><i class="fa fa-question-circle"></i>Correo responsable</label><input type="email" value='<?=$infoservicio['correo']?>' name="correo"/></p>
+            <p><label><i class="fa fa-question-circle"></i>Correo responsable</label><input type="email" value='<?=$infoservicio['correo']?> 'name="correo"/></p>
+          </div>
+          <div class="formthird" id='contenedor'>
+            <input type="hidden" value=<?=$infoservicio['id']?> name="id">
+
+              <p><label><i class="fa fa-question-circle"></i>Recursos totales</label><input type="number" min='0' value=<?=$inforecurso['total']?> name="recursos" id="total" readonly/></p>
+              <p><label><i class="fa fa-question-circle"></i>Turno mañana</label><input type="number" min='0' name="tm" id="tm" value=<?=$inforecurso['tm']?> onclick="suma();" onkeyup="suma();"/></p>
+              <p><label><i class="fa fa-question-circle"></i>Turno tarde</label><input type="number" min='0' name="tt" id="tt" value=<?=$inforecurso['tt']?> onclick="suma();" onkeyup="suma();"/></p>
+              <p><label><i class="fa fa-question-circle"></i>Turno noche</label><input type="number" min='0'name="tn" id="tn" value=<?=$inforecurso['tn']?> onclick="suma();" onkeyup="suma();"/></p>
+              <p><label><i class="fa fa-question-circle"></i>Turno central</label><input type="number" min='0'name="tc" id="tc" value=<?=$inforecurso['tc']?> onclick="suma();" onkeyup="suma();"/></p>
           </div>
           <div class="formthird">
-              <p><label><i class="fa fa-question-circle"></i>Comentario supervisor</label><textarea name="csup"><?=$infoservicio['com_supervisor']?></textarea></p>
-              <p><label><i class="fa fa-question-circle"></i>Comentario RRHH</label><textarea name="crrhh"><?=$infoservicio['com_rrhh']?></textarea></p>
-              <p><label><i class="fa fa-question-circle"></i>Comentario Admin. Financiero</label><textarea name="caf"><?=$infoservicio['com_admin_fin']?></textarea></p>
+            <p>
+              <label><i class='fa fa-qestion-circle'></i>Otro turno</label>
+              <input class='threeinputs' type='time' name='i1'value='<?=$inforecurso['inicio1']?>'/>
+              <input class='threeinputs2' type='time' name='f1' id="f1" value='<?=$inforecurso['fin1']?>'/>
+              <input class='threeinputs1' type='number' value=<?=$inforecurso['otro1']?> min='0' id='in1' onclick='suma();' onkeyup='suma();' name='o1'/>
+            </p>
+            <p>
+              <label><i class='fa fa-qestion-circle'></i>Otro turno</label>
+              <input class='threeinputs' type='time' name='i2'value='<?=$inforecurso['inicio2']?>'/>
+              <input class='threeinputs2' type='time' name='f2'id="f2" value='<?=$inforecurso['fin2']?>'/>
+              <input class='threeinputs1' type='number' value=<?=$inforecurso['otro2']?> min='0' id='in2' onclick='suma();' onkeyup='suma();' name='o2'/>
+            </p>
+            <p>
+              <label><i class='fa fa-qestion-circle'></i>Otro turno</label>
+              <input class='threeinputs' type='time' name='i3'value='<?=$inforecurso['inicio3']?>'/>
+              <input class='threeinputs2' type='time' name='f3' id="f3"value='<?=$inforecurso['fin3']?>'/>
+              <input class='threeinputs1' type='number' value=<?=$inforecurso['otro3']?> min='0' id='in3' onclick='suma();' onkeyup='suma();' name='o3'/>
+            </p>
+            <p>
+              <label><i class='fa fa-qestion-circle'></i>Otro turno</label>
+              <input class='threeinputs' type='time' name='i4' value="<?=$inforecurso['inicio4']?>"/>
+              <input class='threeinputs2' type='time' name='f4' id="f4"value='<?=$inforecurso['fin4']?>'/>
+              <input class='threeinputs1' type='number' value=<?=$inforecurso['otro4']?> min='0' id='in4' onclick='suma();' onkeyup='suma();' name='o4'/>
+            </p>
+            <p>
+              <label><i class='fa fa-qestion-circle'></i>Otro turno</label>
+              <input class='threeinputs' type='time' name='i5' value="<?=$inforecurso['inicio5']?>"/>
+              <input class='threeinputs2' type='time' name='f5' id="f5"value="<?=$inforecurso['fin5']?>"/>
+              <input class='threeinputs1' type='number' value=<?=$inforecurso['otro5']?> min='0' id='in5' onclick='suma();' onkeyup='suma();' name='o5'/>
+            </p>
+            <p>
+              <label><i class='fa fa-qestion-circle'></i>Otro turno</label>
+              <input class='threeinputs' type='time' name='i6' value="<?=$inforecurso['inicio6']?>"/>
+              <input class='threeinputs2' type='time' name='f6' id="f6" value="<?=$inforecurso['fin6']?>"/>
+              <input class='threeinputs1' type='number' value=<?=$inforecurso['otro6']?> min='0' id='in6' onclick='suma();' onkeyup='suma();' name='o6'/>
+            </p>
           </div>
+
           <div class="submitbuttons">
               <input class="submitone" type="submit" value="Modificar" name="submit"/>
           </div>
@@ -177,26 +210,64 @@ if (isset($_SESSION['usuario'])==false) {
 </body>
 </html>
 <?php
-
-if (isset($_POST['submit'])) {
-  if (isset($_POST['id']) && empty($_POST['inicio'])==false || isset($_POST['id']) && empty($_POST['suelto'])==false) {
-    //juntamos los modelos en una variable
-    $modelos="";
-    $arrayModelos=$_POST['sel'];
-    for ($i=0; $i < count($arrayModelos); $i++) {
-      if ($i==0) {
-        $modelos=$arrayModelos[$i];
-      }else {
-        $modelos= $modelos .", ".$arrayModelos[$i];
-      }
+if (isset($_POST['submit']) && isset($_POST['id']) && isset($_POST['recursos'])) {
+  //juntamos los modelos en una variable
+  $modelos="";
+  $arrayModelos=$_POST['sel'];
+  for ($i=0; $i < count($arrayModelos); $i++) {
+    if ($i==0) {
+      $modelos=$arrayModelos[$i];
+    }else {
+      $modelos= $modelos .", ".$arrayModelos[$i];
     }
-    //llamamos a la funcion de modificar la informacion
-    $modificacion=$servicio->modificarInfo($_POST['id'], $_POST['inicio'], $_POST['fin'], $_POST['suelto'], $_POST['descripcion'], $modelos, $_POST['responsable'], $_POST['tel'], $_POST['correo']);
-    $modComentarios= $servicio->ActualizarComentarios($_POST['id'], $_POST['csup'], $_POST['crrhh'], $_POST['caf'], $_POST['cdo']);
-      if ($modificacion==null || $modComentarios==null) {
+  }
+  //arreglamos los inicios y los finales
+  if (empty($_POST['i1'])) {
+    $_POST['i1']='';
+  }
+  if (empty($_POST['f1'])) {
+    $_POST['f1']='';
+  }
+  if (empty($_POST['i2'])) {
+    $_POST['i2']='';
+  }
+  if (empty($_POST['f2'])) {
+    $_POST['f2']='';
+  }
+  if (empty($_POST['i3'])) {
+    $_POST['i3']='';
+  }
+  if (empty($_POST['f3'])) {
+    $_POST['f3']='';
+  }
+  if (empty($_POST['i4'])) {
+    $_POST['i4']='';
+  }
+  if (empty($_POST['f4'])) {
+    $_POST['f4']='';
+  }
+  if (empty($_POST['i5'])) {
+    $_POST['i5']='';
+  }
+  if (empty($_POST['f5'])) {
+    $_POST['f5']='';
+  }
+  if (empty($_POST['i6'])) {
+    $_POST['i6']='';
+  }
+  if (empty($_POST['f6'])) {
+    $_POST['f6']='';
+  }
+  //consultas para guardar los datos
+  $modificacion=$servicio->ActualizarActividad($_POST['id'], $_POST['descripcion'], $modelos, $_POST['recursos'], $_POST['responsable'], $_POST['tel'], $_POST['correo'], $_POST['cdo']);
+    $nuevorecurso=$recursos->ActualizarRecursosActividad($_POST['id'], $_POST['recursos'], $_POST['tm'], $_POST['tt'], $_POST['tn'], $_POST['tc'], $_POST['o1'], $_POST['i1'], $_POST['f1'],
+     $_POST['o2'], $_POST['i2'],
+     $_POST['f2'], $_POST['o3'], $_POST['i3'], $_POST['f3'], $_POST['o4'], $_POST['i4'], $_POST['f4'], $_POST['o5'], $_POST['i5'], $_POST['f5'],
+      $_POST['o6'], $_POST['i6'], $_POST['f6']);
+      if ($nuevorecurso==null || $modificacion==null) {
         ?>
           <script type="text/javascript">
-            alert('ERROR AL ACTUALIZAR LA ACTIVIDAD. INTENTELO DE NUEVO.');
+            alert('ERROR AL ACTUALIZAR LA ACTIVIDAD. INTENTELO DE NUEVO');
             window.location='actividadesActuales.php';
           </script>
         <?php
@@ -208,16 +279,8 @@ if (isset($_POST['submit'])) {
           </script>
         <?php
       }
-  }else {
-    ?>
-      <script type="text/javascript">
-        alert('ERROR AL ACTUALIZAR LA ACTIVIDAD. INTENTELO DE NUEVO.');
-        window.location='actividadesActuales.php';
-      </script>
-    <?php
-  }
-}
 
+}
 
  ?>
  <?php } ?>

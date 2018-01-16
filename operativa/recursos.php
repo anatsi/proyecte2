@@ -61,6 +61,21 @@ function modundia($servicio, $dia, $inicio, $fin, $total, $tm, $tt, $tn, $tc, $o
   }
 }
 
+//funcion para actualizar actividad de la tabla general
+function ActualizarRecursosActividad($id, $total, $tm, $tt, $tn, $tc, $o1, $i1, $f1, $o2, $i2, $f2, $o3, $i3, $f3, $o4, $i4, $f4, $o5, $i5, $f5,
+ $o6, $i6, $f6){
+  $sql="UPDATE recursos SET total=".$total.", tm=".$tm.", tt=".$tt.", tn=".$tn.", tc=".$tc.",
+  otro1=".$o1.", inicio1='".$i1."', fin1='".$f1."', otro2=".$o2.", inicio2='".$i2."', fin2='".$f2."',
+  otro3=".$o3.", inicio3='".$i3."', fin3='".$f3."', otro4=".$o4.", inicio4='".$i4."', fin4='".$f4."',
+  otro5=".$o5.", inicio5='".$i5."', fin5='".$f5."', otro6=".$o6.", inicio6='".$i6."', fin6='".$f6."' WHERE servicio=".$id;
+  $finalizarAct=$this->realizarConsulta($sql);
+  if ($finalizarAct=!false) {
+       return true;
+  }else {
+       return false;
+  }
+}
+
 }
 
  ?>

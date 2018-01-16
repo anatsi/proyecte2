@@ -70,6 +70,8 @@ if (isset($_SESSION['usuario'])==false) {
           $recursosId= $recursos->recursosId($servicioId['id']);
           //sacar el nombre del servicio que describimos
           echo "<h2>".$servicioId['descripcion']."</h2>";
+          echo "<h4><a style='color:red;' href='modificarGeneral.php?servicio=".$servicioId['id']."'>Modificar actividad</a></h4>";
+          echo "<br>";
           //si tiene alguna relacion, sacar la infor de la relacion
           if ($servicioId['relacion']!=null && $servicioId['relacion']!=0) {
             $relacion=$servicio->ServicioRelacion($servicioId['id']);
