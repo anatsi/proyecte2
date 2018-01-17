@@ -104,6 +104,7 @@ if (isset($_SESSION['usuario'])==false) {
           <tr id="trmod">
             <th scope="col" id="thmod">Nombre</th>
             <th scope="col" id="thmod">Apellidos</th>
+            <th scope="col" id="thmod">Telefono</th>
             <th scope="col" id="thmod">Activo</th>
             <th scope="col" id="thmod">Opciones</th>
           </tr>
@@ -115,6 +116,7 @@ if (isset($_SESSION['usuario'])==false) {
               echo "<tr id='trmod'>";
               echo "<td scope='row' data-label='Nombre' id='tdmod'>".$empleados['nombre']."</td>";
               echo "<td data-label='Apellidos' id='tdmod'>".$empleados['apellidos']."</td>";
+              echo "<td data-label='Telefono' id='tdmod'>".$empleados['telefono']."</td>";
               if ($empleados['activo']==1) {
                 echo "<td data-label='Activo' id='tdmod'><i class='material-icons'>done</i></td>";
                 echo "<td data-label='Opciones' id='tdmod'>";
@@ -124,7 +126,7 @@ if (isset($_SESSION['usuario'])==false) {
                 echo "<td data-label='Opciones' id='tdmod'>";
                 echo"<a href='activarEmpleado.php?e=".$empleados['id']."' title='Activar empleado'><i class='material-icons'>check_circle</i></a>";
               }
-              echo "<a href='' title='Editar información del empleado'><i class='material-icons'>mode_edit</i></a></td></tr>";
+              echo "<a href='editarEmpleado.php?e=".$empleados['id']."' title='Editar información del empleado'><i class='material-icons'>mode_edit</i></a></td></tr>";
             }
            ?>
         </tbody>

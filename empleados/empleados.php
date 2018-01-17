@@ -70,9 +70,9 @@ class Empleados extends db
   }
 
   //funcion para insertar un nuevo empleado en la base de datos.
-function nuevoEmpleado($nombre, $apellidos, $activo){
+function nuevoEmpleado($nombre, $apellidos, $activo, $tel){
   //realizamos la consuta y la guardamos en $sql
-  $sql="INSERT INTO empleados(id, nombre, apellidos, activo) VALUES (null, '".$nombre."', '".$apellidos."', ".$activo.")";
+  $sql="INSERT INTO empleados(id, nombre, apellidos, activo, telefono) VALUES (null, '".$nombre."', '".$apellidos."', ".$activo.", ".$tel.")";
   //Realizamos la consulta utilizando la funcion creada en db.php
   $resultado=$this->realizarConsulta($sql);
   if($resultado!=false){
@@ -82,6 +82,33 @@ function nuevoEmpleado($nombre, $apellidos, $activo){
   }
 }
 
+//sacar empleado dependiendo del id
+function EmpleadoId($id){
+//Construimos la consulta
+$sql="SELECT * from empleados WHERE id=".$id;
+//Realizamos la consulta
+$resultado=$this->realizarConsulta($sql);
+if($resultado!=false){
+  if($resultado!=false){
+    return $resultado->fetch_assoc();
+  }else{
+    return null;
+  }
+}else{
+  return null;
+}
+}
+
+//funcion para editar la informacion del empleado.
+function editarEmpleado($id, $nombre, $apellidos, $tel){
+  $sql="UPDATE empleados SET nombre='".$nombre."', apellidos='".$apellidos."', telefono=".$tel." WHERE id=".$id;
+  $finalizarAct=$this->realizarConsulta($sql);
+  if ($finalizarAct=!false) {
+       return true;
+  }else {
+       return false;
+  }
+}
 
 }
 

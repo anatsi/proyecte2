@@ -49,24 +49,26 @@ if (isset($_SESSION['usuario'])==false) {
       </nav>
 
     </header>
-
+    <?php
+      $seleccionado=$empleado->EmpleadoId($_GET['e']);
+     ?>
     <div class="site-content">
       <div class="container">
         <!-- Contenido de la pagina. -->
-        <h2>Nuevo empleado</h2>
-        <form action="nuevoEmpleado.php" method="post">
+        <h2>Editar empleado</h2>
+        <form action="editarEmpleado.php" method="post">
+          <input type="hidden" name="e" value="<?=$seleccionado['id']?>">
           <div class="formthird">
-              <p><label><i class="fa fa-question-circle"></i>Nombre (*)</label><input name='nombre' type="text" required></p>
-              <p><label><i class="fa fa-question-circle"></i>Apellidos (*)</label><input name='apellidos' type="text" required></p>
+              <p><label><i class="fa fa-question-circle"></i>Nombre</label><input name='nombre' value='<?=$seleccionado['nombre']?>' type="text" required></p>
           </div>
           <div class="formthird">
-              <p><label><i class="fa fa-question-circle"></i>Telefono</label><input name='tel' type="tel"></p>
+              <p><label><i class="fa fa-question-circle"></i>Apellidos</label><input name='apellidos' value='<?=$seleccionado['apellidos']?>' type="text" required></p>
           </div>
           <div class="formthird">
-              <p><label><i class="fa fa-question-circle"></i>Activo</label><input Name='activo' type="checkbox"/></p>
+              <p><label><i class="fa fa-question-circle"></i>Telefono</label><input name='tel' value='<?=$seleccionado['telefono']?>' type="tel"></p>
           </div>
           <div class="submitbuttons">
-              <input class="submitone" type="submit" />
+              <input class="submitone" type="submit"/>
           </div>
   </form>
       </div> <!-- END container -->
@@ -86,8 +88,8 @@ if (isset($_SESSION['usuario'])==false) {
     if (isset($_POST['activo'])) {
       $activo=1;
     }
-    $nuevoEmpleado= $empleado->nuevoEmpleado($_POST['nombre'], $_POST['apellidos'], $activo, $_POST['tel']);
-    if ($nuevoEmpleado==null) {
+    $editarEmpleado= $empleado->editarEmpleado($_POST['e'], $_POST['nombre'], $_POST['apellidos'], $_POST['tel']);
+    if ($editarEmpleado==null) {
       ?>
       <script type="text/javascript">
         alert('Error al registrar el nuevo empleado');
@@ -96,7 +98,7 @@ if (isset($_SESSION['usuario'])==false) {
     }else {
       ?>
         <script type="text/javascript">
-          alert('Nuevo empleado registrado con exito.');
+          alert('Información editada con exito.');
           window.location='index.php';
         </script>
       <?php
