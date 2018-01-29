@@ -28,8 +28,8 @@
               <th scope='col' id='thmod'>FECHA ORIGEN</th>
               <th scope='col' id='thmod'>HORA ORIGEN</th>
               <th scope='col' id='thmod'>DESTINO</th>
-              <th scope='col' id='thmod'>HORA DESTINO</th>
               <th scope='col' id='thmod'>FECHA DESTINO</th>
+              <th scope='col' id='thmod'>HORA DESTINO</th>
               <th scope='col' id='thmod'>USUARIO</th>
             </tr>
           </thead><tbody id='tbodymod'>
@@ -70,8 +70,8 @@
                   <th scope='col' id='thmod'>FECHA ORIGEN</th>
                   <th scope='col' id='thmod'>HORA ORIGEN</th>
                   <th scope='col' id='thmod'>DESTINO</th>
-                  <th scope='col' id='thmod'>HORA DESTINO</th>
                   <th scope='col' id='thmod'>FECHA DESTINO</th>
+                  <th scope='col' id='thmod'>HORA DESTINO</th>
                   <th scope='col' id='thmod'>USUARIO</th>
                 </tr>
               </thead><tbody id='tbodymod'>
