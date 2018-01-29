@@ -3,7 +3,7 @@
   require('./languages/languages.php');
   	$lang = "es";
   if ( isset($_GET['lang']) ){
-  	$lang = $_GET['lang'];	
+  	$lang = $_GET['lang'];
   }
   //incluimos el archivo encargado de las sesiones y creamos el objeto.
   include 'sesiones.php';
