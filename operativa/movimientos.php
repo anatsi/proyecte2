@@ -31,5 +31,23 @@ class Movimientos extends dbJockeys
     }
   }
 
+  //SACAR TODOS LOS MOVIMIENTOS FILTRADOS
+  function listaMovimientosFiltrados($b){
+    //Construimos la consulta
+    $sql="SELECT * from movimientos WHERE concat(bastidor, origen, fecha_origen, hora_origen, destino, fecha_destino, hora_destino, usuario) LIKE '%".$b."%' ORDER BY id desc";
+    //Realizamos la consulta
+    $resultado=$this->realizarConsulta($sql);
+    if($resultado!=null){
+      //Montamos la tabla de resultados
+      $tabla=[];
+      while($fila=$resultado->fetch_assoc()){
+        $tabla[]=$fila;
+      }
+      return $tabla;
+    }else{
+      return null;
+    }
+  }
+
 }
  ?>

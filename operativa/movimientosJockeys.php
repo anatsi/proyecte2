@@ -34,12 +34,12 @@ if (isset($_SESSION['usuario'])==false) {
             $("#busqueda").focus();
             //comprobamos si se pulsa una tecla
             $("#busqueda").keyup(function(e){
-              //obtenemos el texto introducido en el campo de bÃºsqueda
+              //obtenemos el texto introducido en el campo de busqueda
               consulta = $("#busqueda").val();
                //hace la bÃºsqueda
                  $.ajax({
                      type: "POST",
-                     url: "buscar.php",
+                     url: "buscarJockeys.php",
                      data: "b="+consulta,
                      dataType: "html",
                     /* beforeSend: function(){
@@ -69,7 +69,7 @@ if (isset($_SESSION['usuario'])==false) {
     //llamamos a la función para devolver el nombre de usuario.
     $nombreuser=$usuario->nombreUsuario($_SESSION['usuario']);
     //sacamos el nombre de usuario por su id
-    echo "<a><strong>Bienvenido".$nombreuser['name']."</strong></a>";
+    echo "<a><strong>Bienvenido ".$nombreuser['name']."</strong></a>";
    ?>
   <span class="right"><a href="../logout.php" id="logout">Cerrar Sesion</a></span>
 </div><!--/ Codrops top bar -->
@@ -100,10 +100,10 @@ if (isset($_SESSION['usuario'])==false) {
             <table id='tablamod'>
             <thead id='theadmod'>
               <tr id='trmod'>
+                <th scope='col' id='thmod'>BASTIDOR</th>
                 <th scope='col' id='thmod'>ORIGEN</th>
                 <th scope='col' id='thmod'>FECHA ORIGEN</th>
                 <th scope='col' id='thmod'>HORA ORIGEN</th>
-                <th scope='col' id='thmod'>BASTIDOR</th>
                 <th scope='col' id='thmod'>DESTINO</th>
                 <th scope='col' id='thmod'>HORA DESTINO</th>
                 <th scope='col' id='thmod'>FECHA DESTINO</th>
@@ -119,10 +119,10 @@ if (isset($_SESSION['usuario'])==false) {
               $fin=$fin[2]."-".$fin[1]."-".$fin[0];
                echo "
                   <tr id='trmod'>
+                    <td data-label='BASTIDOR' id='tdmod'>".$movimiento['bastidor']."</td>
                     <td data-label='ORIGEN' id='tdmod'>".$movimiento['origen']."</td>
                     <td data-label='FECHA ORIGEN' id='tdmod'>".$inicio."</td>
                     <td data-label='HORA ORIGEN' id='tdmod'>".$movimiento['hora_origen']."</td>
-                    <td data-label='BASTIDOR' id='tdmod'>".$movimiento['bastidor']."</td>
                     <td data-label='DESTINO' id='tdmod'>".$movimiento['destino']."</td>
                     <td data-label='FECHA DESTINO' id='tdmod'>".$fin."</td>
                     <td data-label='HORA DESTIO' id='tdmod'>".$movimiento['hora_destino']."</td>
