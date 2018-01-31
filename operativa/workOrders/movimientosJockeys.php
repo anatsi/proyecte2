@@ -1,7 +1,7 @@
 <?php
 //incluimos todas las clases necesarias e iniciamos sus objetos.
-require_once '../sesiones.php';
-require_once '../users.php';
+require_once '../../sesiones.php';
+require_once '../../users.php';
 require_once 'movimientos.php';
 
 $usuario=new User();
@@ -10,7 +10,7 @@ $movimientos = new Movimientos();
 
 
 if (isset($_SESSION['usuario'])==false) {
-  header('Location: ../index.php');
+  header('Location: ../../index.php');
 }else {
  ?>
 <!DOCTYPE html>
@@ -18,12 +18,12 @@ if (isset($_SESSION['usuario'])==false) {
 <head>
   <meta charset="UTF-8">
   <title>WORK ORDERS</title>
-    <link rel="stylesheet" href="../css/menu.css">
+    <link rel="stylesheet" href="../../css/menu.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
-    <link rel="stylesheet" href="../css/formulario.css">
-    <link rel="shortcut icon" href="../imagenes/favicon.ico">
-		<link rel="stylesheet" type="text/css" href="../css/dashboard.css" />
-    <link rel="stylesheet" href="../css/modificar.css">
+    <link rel="stylesheet" href="../../css/formulario.css">
+    <link rel="shortcut icon" href="../../imagenes/favicon.ico">
+		<link rel="stylesheet" type="text/css" href="../../css/dashboard.css" />
+    <link rel="stylesheet" href="../../css/modificar.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!--  script para el filtrado en la tabla  -->
     <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
@@ -78,7 +78,7 @@ if (isset($_SESSION['usuario'])==false) {
   <div class="site-pusher">
     <header class="header">
       <a href="#" class="header__icon" id="header__icon"></a>
-      <a href="../dashboard.php" class="header__logo"><img src="../imagenes/logo.png" alt=""></a>
+      <a href="../../dashboard.php" class="header__logo"><img src="../../imagenes/logo.png" alt=""></a>
       <nav class="menu">
         <a href="movimientosJockeys.php">Inicio</a>
       </nav>
@@ -147,7 +147,7 @@ $(function(){
 
 <!-- Scripts para que el menu en versión movil funcione
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>-->
-<script  src="../js/menu.js"></script>
+<script  src="../../js/menu.js"></script>
 
 </body>
 </html>

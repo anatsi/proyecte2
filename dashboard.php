@@ -53,7 +53,7 @@
 						if ($menu['menu']==1) {
               if ($menu['admin']==1) {
                 echo "<a href='operativa/index.php?lang=".$lang."'>".__('Gestión actividades', $lang)."</a>";
-                echo "<a href='operativa/movimientosJockeys.php'>Work orders</a>";
+                echo "<a href='operativa/WorkOrders/movimientosJockeys.php'>Work orders</a>";
               }
               if ($menu['admin']==2) {
                 echo "<a href='operativa/indexRRHH.php?lang=".$lang."'>".__('Gestión actividades', $lang)."</a>";
