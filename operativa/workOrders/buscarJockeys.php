@@ -23,18 +23,20 @@
           <table id='tablamod'>
           <thead id='theadmod'>
             <tr id='trmod'>
-              <th scope='col' id='thmod'>BASTIDOR</th>
+              <th scope='col' id='thmod' class='bastidor'>BASTIDOR</th>
               <th scope='col' id='thmod'>ORIGEN</th>
               <th scope='col' id='thmod'>FECHA ORIGEN</th>
               <th scope='col' id='thmod'>HORA ORIGEN</th>
               <th scope='col' id='thmod'>DESTINO</th>
               <th scope='col' id='thmod'>FECHA DESTINO</th>
               <th scope='col' id='thmod'>HORA DESTINO</th>
+              <th scope='col' id='thmod'>TIEMPO MOVIMIENTO</th>
               <th scope='col' id='thmod'>USUARIO</th>
             </tr>
           </thead><tbody id='tbodymod'>
 
           "; foreach ($lista as $movimiento) {
+            $diferencia = $movimientos -> RestarHoras($movimiento['hora_origen'], $movimiento['hora_destino']);
             //transformar fechas
             $inicio=explode("-", $movimiento['fecha_origen']);
             $inicio=$inicio[2]."-".$inicio[1]."-".$inicio[0];
@@ -42,13 +44,14 @@
             $fin=$fin[2]."-".$fin[1]."-".$fin[0];
              echo "
                 <tr id='trmod'>
-                  <td data-label='BASTIDOR' id='tdmod'>".$movimiento['bastidor']."</td>
+                  <td data-label='BASTIDOR' id='tdmod' class='bastidor'>".$movimiento['bastidor']."</td>
                   <td data-label='ORIGEN' id='tdmod'>".$movimiento['origen']."</td>
                   <td data-label='FECHA ORIGEN' id='tdmod'>".$inicio."</td>
                   <td data-label='HORA ORIGEN' id='tdmod'>".$movimiento['hora_origen']."</td>
                   <td data-label='DESTINO' id='tdmod'>".$movimiento['destino']."</td>
                   <td data-label='FECHA DESTINO' id='tdmod'>".$fin."</td>
                   <td data-label='HORA DESTIO' id='tdmod'>".$movimiento['hora_destino']."</td>
+                  <td data-label='TIEMPO MOVIMIENTO' id='tdmod'>".$diferencia."</td>
                   <td data-label='USUARIO' id='tdmod'>".$movimiento['usuario']."</td>
                 </tr>
 
@@ -65,18 +68,20 @@
               <table id='tablamod'>
               <thead id='theadmod'>
                 <tr id='trmod'>
-                  <th scope='col' id='thmod'>BASTIDOR</th>
+                  <th scope='col' id='thmod' class='bastidor'>BASTIDOR</th>
                   <th scope='col' id='thmod'>ORIGEN</th>
                   <th scope='col' id='thmod'>FECHA ORIGEN</th>
                   <th scope='col' id='thmod'>HORA ORIGEN</th>
                   <th scope='col' id='thmod'>DESTINO</th>
                   <th scope='col' id='thmod'>FECHA DESTINO</th>
                   <th scope='col' id='thmod'>HORA DESTINO</th>
+                  <th scope='col' id='thmod'>TIEMPO MOVIMIENTO</th>
                   <th scope='col' id='thmod'>USUARIO</th>
                 </tr>
               </thead><tbody id='tbodymod'>
 
               "; foreach ($filtrados as $movimiento) {
+                $diferencia = $movimientos -> RestarHoras($movimiento['hora_origen'], $movimiento['hora_destino']);
                 //transformar fechas
                 $inicio=explode("-", $movimiento['fecha_origen']);
                 $inicio=$inicio[2]."-".$inicio[1]."-".$inicio[0];
@@ -84,13 +89,14 @@
                 $fin=$fin[2]."-".$fin[1]."-".$fin[0];
                  echo "
                     <tr id='trmod'>
-                      <td data-label='BASTIDOR' id='tdmod'>".$movimiento['bastidor']."</td>
+                      <td data-label='BASTIDOR' id='tdmod' class='bastidor'>".$movimiento['bastidor']."</td>
                       <td data-label='ORIGEN' id='tdmod'>".$movimiento['origen']."</td>
                       <td data-label='FECHA ORIGEN' id='tdmod'>".$inicio."</td>
                       <td data-label='HORA ORIGEN' id='tdmod'>".$movimiento['hora_origen']."</td>
                       <td data-label='DESTINO' id='tdmod'>".$movimiento['destino']."</td>
                       <td data-label='FECHA DESTINO' id='tdmod'>".$fin."</td>
                       <td data-label='HORA DESTIO' id='tdmod'>".$movimiento['hora_destino']."</td>
+                      <td data-label='TIEMPO MOVIMIENTO' id='tdmod'>".$diferencia."</td>
                       <td data-label='USUARIO' id='tdmod'>".$movimiento['usuario']."</td>
                     </tr>
 

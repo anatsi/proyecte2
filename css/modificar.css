@@ -4,7 +4,9 @@ body {
   line-height: 1.25;
   color: black;
 }
-
+.bastidor{
+  width: 175px;
+}
 #tablamod {
   border: 1px solid #ccc;
   border-collapse: collapse;
@@ -13,7 +15,6 @@ body {
   width: 100%;
   table-layout: fixed;
 }
-
 #tablamod #trmod {
   background: #f8f8f8;
   border: 1px solid #ddd;
@@ -25,6 +26,7 @@ body {
   text-align: left;
   font-size: 14px;
 }
+
 
 #tablamod #thmod {
   font-size: .85em;
@@ -70,6 +72,9 @@ tr a {
     padding: 0;
     position: absolute;
     width: 1px;
+  }
+  .bastidor{
+    width: inherit;
   }
   #tablamod #trmod {
     border-bottom: 3px solid #ddd;

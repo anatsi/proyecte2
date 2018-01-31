@@ -20,7 +20,7 @@ $objPHPExcel->getProperties()
 $style_header = array('fill' => array('type' => PHPExcel_Style_Fill::FILL_SOLID, 'color' => array('rgb'=>'538DD5'),));
 
 // Agregar Informacion
-$objPHPExcel->getActiveSheet()->getStyle('A1:H1')->applyFromArray($style_header);
+$objPHPExcel->getActiveSheet()->getStyle('A1:I1')->applyFromArray($style_header);
 $objPHPExcel->setActiveSheetIndex(0)
 ->setCellValue('A1', 'BASTIDOR')
 ->setCellValue('B1', 'ORIGEN')
@@ -29,7 +29,8 @@ $objPHPExcel->setActiveSheetIndex(0)
 ->setCellValue('E1', 'DESTINO')
 ->setCellValue('F1', 'FECHA DESTINO')
 ->setCellValue('G1', 'HORA DESTINO')
-->setCellValue('H1', 'USUARIO')
+->setCellValue('H1', 'TIEMPO MOVIMIENTO')
+->setCellValue('I1', 'USUARIO')
 ;
 
 if (isset($_GET['b'])) {
@@ -41,6 +42,7 @@ if (isset($_GET['b'])) {
 
   $i=2;
 foreach ($lista as $movimiento) {
+  $diferencia = $movimientos ->RestarHoras($movimiento['hora_origen'], $movimiento['hora_destino']);
   $fecha_origen = str_replace("-", "/", $movimiento['fecha_origen']);
   $fecha_destino = str_replace("-", "/", $movimiento['fecha_destino']);
   $objPHPExcel->setActiveSheetIndex(0)
@@ -51,7 +53,8 @@ foreach ($lista as $movimiento) {
   ->setCellValue('E'.$i, $movimiento['destino'])
   ->setCellValue('F'.$i, $fecha_destino)
   ->setCellValue('G'.$i, $movimiento['hora_destino'])
-  ->setCellValue('H'.$i, $movimiento['usuario'])
+  ->setCellValue('H'.$i, $diferencia)
+  ->setCellValue('I'.$i, $movimiento['usuario'])
   ;
   $i++;
 }
@@ -65,16 +68,16 @@ for($col = 'A'; $col !== 'Z'; $col++) {
         ->setAutoSize(true);
 }
 //poner el encabezado en negrita
-$objPHPExcel->getActiveSheet()->getStyle("A1:H1")->getFont()->setBold(true);
+$objPHPExcel->getActiveSheet()->getStyle("A1:I1")->getFont()->setBold(true);
 
 //centrar todo el texto
 $centrar = array('alignment' => array('horizontal' => PHPExcel_Style_Alignment::HORIZONTAL_CENTER,));
-$objPHPExcel->getActiveSheet()->getStyle("A1:H100")->applyFromArray($centrar);
+$objPHPExcel->getActiveSheet()->getStyle("A1:I100")->applyFromArray($centrar);
 
 //poner los bordes
 $i2 = $i -1;
 $bordes = array('borders' => array('allborders' => array('style' => PHPExcel_Style_Border::BORDER_THIN)));
-$objPHPExcel->getActiveSheet()->getStyle("A1:H".$i2)->applyFromArray($bordes);
+$objPHPExcel->getActiveSheet()->getStyle("A1:I".$i2)->applyFromArray($bordes);
 
 // Se modifican los encabezados del HTTP para indicar que se envia un archivo de Excel.
 header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
