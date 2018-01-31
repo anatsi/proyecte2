@@ -107,11 +107,13 @@ if (isset($_SESSION['usuario'])==false) {
                 <th scope='col' id='thmod'>DESTINO</th>
                 <th scope='col' id='thmod'>FECHA DESTINO</th>
                 <th scope='col' id='thmod'>HORA DESTINO</th>
+                <th scope='col' id='thmod'>TIEMPO</th>
                 <th scope='col' id='thmod'>USUARIO</th>
               </tr>
             </thead><tbody id='tbodymod'>
 
             "; foreach ($lista as $movimiento) {
+              $diferencia = $movimientos -> RestarHoras($movimiento['hora_origen'], $movimiento['hora_destino']);
               //transformar fechas
               $inicio=explode("-", $movimiento['fecha_origen']);
               $inicio=$inicio[2]."-".$inicio[1]."-".$inicio[0];
@@ -126,6 +128,7 @@ if (isset($_SESSION['usuario'])==false) {
                     <td data-label='DESTINO' id='tdmod'>".$movimiento['destino']."</td>
                     <td data-label='FECHA DESTINO' id='tdmod'>".$fin."</td>
                     <td data-label='HORA DESTIO' id='tdmod'>".$movimiento['hora_destino']."</td>
+                    <td data-label='TIEMPO' id='tdmod'>".$diferencia."</td>
                     <td data-label='USUARIO' id='tdmod'>".$movimiento['usuario']."</td>
                   </tr>
 
