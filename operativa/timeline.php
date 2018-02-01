@@ -145,7 +145,7 @@ if (isset($_SESSION['usuario'])==false) {
           echo "<ul>";
           echo "<li><b>Responsable: </b>".$servicioId['responsable']."</li>";
           echo "<li><b>Tel. responsable: </b>".$servicioId['telefono']."</li>";
-          echo "<li><b>Correo responsable: </b>".$servicioId['correo']."</li>";
+          echo "<li><b>Correo responsable: </b><a href='mailto: ".$servicioId['correo']."'>".$servicioId['correo']."</a></li>";
           //comentarios
           if ($servicioId['com_supervisor']!=null) {
             echo "<li><b>Comentario Supervisor: </b>".$servicioId['com_supervisor']."</li>";
