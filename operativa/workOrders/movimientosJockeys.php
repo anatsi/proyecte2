@@ -109,6 +109,7 @@ if (isset($_SESSION['usuario'])==false) {
                 <th scope='col' id='thmod'>HORA DESTINO</th>
                 <th scope='col' id='thmod'>TIEMPO MOVIMIENTO</th>
                 <th scope='col' id='thmod'>USUARIO</th>
+                <th scope='col' id='thmod'>ERROR</th>
               </tr>
             </thead><tbody id='tbodymod'>
 
@@ -119,6 +120,12 @@ if (isset($_SESSION['usuario'])==false) {
               $inicio=$inicio[2]."-".$inicio[1]."-".$inicio[0];
               $fin=explode("-", $movimiento['fecha_destino']);
               $fin=$fin[2]."-".$fin[1]."-".$fin[0];
+              //sacar si hay error o no
+              if ($movimiento['error']==1) {
+                $error = 'SI';
+              }else {
+                $error = 'NO';
+              }
                echo "
                   <tr id='trmod'>
                     <td data-label='BASTIDOR' id='tdmod' class='bastidor'>".$movimiento['bastidor']."</td>
@@ -130,6 +137,7 @@ if (isset($_SESSION['usuario'])==false) {
                     <td data-label='HORA DESTIO' id='tdmod'>".$movimiento['hora_destino']."</td>
                     <td data-label='TIEMPO MOVIMIENTO' id='tdmod'>".$diferencia."</td>
                     <td data-label='USUARIO' id='tdmod'>".$movimiento['usuario']."</td>
+                    <td data-label='ERROR' id='tdmod'>".$error."</td>
                   </tr>
 
             ";} echo "</tbody></table></div>";

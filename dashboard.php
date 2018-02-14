@@ -59,19 +59,19 @@
                 echo "<a href='operativa/indexRRHH.php?lang=".$lang."'>".__('Gestión actividades', $lang)."</a>";
                 echo "<a href='empleados/index.php'>Gestión de empleados</a>";
               }
-							echo "<a href='#'>".__('Portal nóminas', $lang)."</a>";
+							//echo "<a href='#'>".__('Portal nóminas', $lang)."</a>";
 							echo "<a href='directorio/index.php'>".__('Directorio empleados', $lang)."</a>";
-							echo "<a href='files/Peticion_vacaciones.pdf'>".__('Solicitar vacaciones', $lang)."</a>";
+							//echo "<a href='files/Peticion_vacaciones.pdf'>".__('Solicitar vacaciones', $lang)."</a>";
 						}elseif ($menu['menu']==2) {
 							echo "<a href='operativa/index.php?lang=".$lang."'>".__('Gestión actividades', $lang)."</a>";
 							echo "<a href='directorio/index.php'>".__('Directorio empleados', $lang)."</a>";
-							echo "<a href='#'>".__('Portal nóminas', $lang)."</a>";
+							//echo "<a href='#'>".__('Portal nóminas', $lang)."</a>";
 							echo "<a href='files/Plan_Trabajo_Supervisores_2017.pdf'>".__('Plan de trabajo', $lang)."</a>";
-							echo "<a href='files/Peticion_vacaciones.pdf'>".__('Solicitar vacaciones', $lang)."</a>";
+							//echo "<a href='files/Peticion_vacaciones.pdf'>".__('Solicitar vacaciones', $lang)."</a>";
 						}elseif ($menu['menu']==3) {
-							echo "<a href='#'>Nóminas</a>";
+							//echo "<a href='#'>Nóminas</a>";
 							echo "<a href='directorio/index.php'>".__('Directorio empleados', $lang)."</a>";
-							echo "<a href='files/Peticion_vacaciones.pdf'>".__('Solicitar vacaciones', $lang)."</a>";
+							//echo "<a href='files/Peticion_vacaciones.pdf'>".__('Solicitar vacaciones', $lang)."</a>";
 						}else {
 							//si el numero de permisos no es correcto, sacara un aviso.
 						?>
