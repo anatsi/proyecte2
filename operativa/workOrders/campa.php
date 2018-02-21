@@ -6,7 +6,7 @@
  //Llamamos a la clase db, encargada de la conexion.
  require_once 'dbJockeys.php';
 
-class Movimientos extends dbJockeys
+class Campa extends dbJockeys
 {
   //la funcion construct llama al construct de db, encargada de la conexión.
   function __construct()
@@ -14,9 +14,9 @@ class Movimientos extends dbJockeys
     parent::__construct();
   }
   //SACAR TODOS LOS MOVIMIENTOS
-  function listaMovimientos(){
+  function listaCampa(){
     //Construimos la consulta
-    $sql="SELECT * from movimientos ORDER BY id desc";
+    $sql="SELECT * from campa ORDER BY id desc";
     //Realizamos la consulta
     $resultado=$this->realizarConsulta($sql);
     if($resultado!=null){
@@ -32,9 +32,9 @@ class Movimientos extends dbJockeys
   }
 
   //SACAR TODOS LOS MOVIMIENTOS FILTRADOS
-  function listaMovimientosFiltrados($b){
+  function listaCampaFiltro($b){
     //Construimos la consulta
-    $sql="SELECT * from movimientos WHERE concat(bastidor, origen, fecha_origen, hora_origen, destino, fecha_destino, hora_destino, usuario, error) LIKE '%".$b."%' ORDER BY id desc";
+    $sql="SELECT * from campa WHERE concat(bastidor, fecha, hora, usuario) LIKE '%".$b."%' ORDER BY id desc";
     //Realizamos la consulta
     $resultado=$this->realizarConsulta($sql);
     if($resultado!=null){
@@ -47,27 +47,6 @@ class Movimientos extends dbJockeys
     }else{
       return null;
     }
-  }
-
-  function RestarHoras($horaini,$horafin)
-  {
-    $horai=substr($horaini,0,2);
-    $mini=substr($horaini,3,2);
-    $segi=substr($horaini,6,2);
-
-    $horaf=substr($horafin,0,2);
-    $minf=substr($horafin,3,2);
-    $segf=substr($horafin,6,2);
-
-    $ini=((($horai*60)*60)+($mini*60)+$segi);
-    $fin=((($horaf*60)*60)+($minf*60)+$segf);
-
-    $dif=$fin-$ini;
-
-    $difh=floor($dif/3600);
-    $difm=floor(($dif-($difh*3600))/60);
-    $difs=$dif-($difm*60)-($difh*3600);
-    return date("H:i:s",mktime($difh,$difm,$difs));
   }
 
 }
