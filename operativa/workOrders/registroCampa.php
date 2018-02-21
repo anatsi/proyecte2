@@ -17,7 +17,7 @@ if (isset($_SESSION['usuario'])==false) {
 <html >
 <head>
   <meta charset="UTF-8">
-  <title>WORK ORDERS</title>
+  <title>CAMPA</title>
     <link rel="stylesheet" href="../../css/menu.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
     <link rel="stylesheet" href="../../css/formulario.css">
@@ -89,7 +89,7 @@ if (isset($_SESSION['usuario'])==false) {
     <div class="site-content">
       <div class="container">
         <!-- Contenido de la pagina. -->
-        <h2>WORK ORDERS</h2>
+        <h2>CAMPA</h2>
        <input type="text" id="busqueda" placeholder='FILTRAR'/><br/><br/>
         <div id="resultado">
         <!--tabla-->
