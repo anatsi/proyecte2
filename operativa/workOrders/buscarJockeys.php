@@ -32,6 +32,7 @@
               <th scope='col' id='thmod'>HORA DESTINO</th>
               <th scope='col' id='thmod'>TIEMPO MOVIMIENTO</th>
               <th scope='col' id='thmod'>USUARIO</th>
+              <th scope='col' id='thmod'>ROL</th>
               <th scope='col' id='thmod'>ERROR</th>
             </tr>
           </thead><tbody id='tbodymod'>
@@ -60,6 +61,7 @@
                   <td data-label='HORA DESTIO' id='tdmod'>".$movimiento['hora_destino']."</td>
                   <td data-label='TIEMPO MOVIMIENTO' id='tdmod'>".$diferencia."</td>
                   <td data-label='USUARIO' id='tdmod'>".$movimiento['usuario']."</td>
+                  <td data-label='ROL' id='tdmod'>".$movimiento['rol']."</td>
                   <td data-label='ERROR' id='tdmod'>".$error."</td>
                 </tr>
 
@@ -85,6 +87,7 @@
                   <th scope='col' id='thmod'>HORA DESTINO</th>
                   <th scope='col' id='thmod'>TIEMPO MOVIMIENTO</th>
                   <th scope='col' id='thmod'>USUARIO</th>
+                  <th scope='col' id='thmod'>ROL</th>
                   <th scope='col' id='thmod'>ERROR</th>
                 </tr>
               </thead><tbody id='tbodymod'>
@@ -113,6 +116,7 @@
                       <td data-label='HORA DESTIO' id='tdmod'>".$movimiento['hora_destino']."</td>
                       <td data-label='TIEMPO MOVIMIENTO' id='tdmod'>".$diferencia."</td>
                       <td data-label='USUARIO' id='tdmod'>".$movimiento['usuario']."</td>
+                      <td data-label='ROL' id='tdmod'>".$movimiento['rol']."</td>
                       <td data-label='ERROR' id='tdmod'>".$error."</td>
                     </tr>
 
