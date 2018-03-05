@@ -89,7 +89,7 @@ if (isset($_SESSION['usuario'])==false) {
       <a href="#" class="header__icon" id="header__icon"></a>
       <a href="../../dashboard.php" class="header__logo"><img src="../../imagenes/logo.png" alt=""></a>
       <nav class="menu">
-        <a href="movimientosJockeys.php">Inicio</a>
+        <a href="movimientosJockeys.php">Work order</a>
         <a href="registroCampa.php">Campa</a>
       </nav>
 

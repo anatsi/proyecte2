@@ -25,12 +25,12 @@
             <tr id='trmod'>
               <th scope='col' id='thmod' class='bastidor'>BASTIDOR</th>
               <th scope='col' id='thmod'>ORIGEN</th>
-              <th scope='col' id='thmod'>FECHA ORIGEN</th>
-              <th scope='col' id='thmod'>HORA ORIGEN</th>
+              <th scope='col' id='thmod'>F.ORIGEN</th>
+              <th scope='col' id='thmod'>H.ORIGEN</th>
               <th scope='col' id='thmod'>DESTINO</th>
-              <th scope='col' id='thmod'>FECHA DESTINO</th>
-              <th scope='col' id='thmod'>HORA DESTINO</th>
-              <th scope='col' id='thmod'>TIEMPO MOVIMIENTO</th>
+              <th scope='col' id='thmod'>F.DESTINO</th>
+              <th scope='col' id='thmod'>H.DESTINO</th>
+              <th scope='col' id='thmod'>TIEMPO</th>
               <th scope='col' id='thmod'>USUARIO</th>
               <th scope='col' id='thmod'>ROL</th>
               <th scope='col' id='thmod'>ERROR</th>
@@ -80,12 +80,12 @@
                 <tr id='trmod'>
                   <th scope='col' id='thmod' class='bastidor'>BASTIDOR</th>
                   <th scope='col' id='thmod'>ORIGEN</th>
-                  <th scope='col' id='thmod'>FECHA ORIGEN</th>
-                  <th scope='col' id='thmod'>HORA ORIGEN</th>
+                  <th scope='col' id='thmod'>F.ORIGEN</th>
+                  <th scope='col' id='thmod'>H.ORIGEN</th>
                   <th scope='col' id='thmod'>DESTINO</th>
-                  <th scope='col' id='thmod'>FECHA DESTINO</th>
-                  <th scope='col' id='thmod'>HORA DESTINO</th>
-                  <th scope='col' id='thmod'>TIEMPO MOVIMIENTO</th>
+                  <th scope='col' id='thmod'>F.DESTINO</th>
+                  <th scope='col' id='thmod'>H.DESTINO</th>
+                  <th scope='col' id='thmod'>TIEMPO</th>
                   <th scope='col' id='thmod'>USUARIO</th>
                   <th scope='col' id='thmod'>ROL</th>
                   <th scope='col' id='thmod'>ERROR</th>

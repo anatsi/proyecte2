@@ -90,7 +90,7 @@ if (isset($_SESSION['usuario'])==false) {
       <a href="#" class="header__icon" id="header__icon"></a>
       <a href="../../dashboard.php" class="header__logo"><img src="../../imagenes/logo.png" alt=""></a>
       <nav class="menu">
-        <a href="movimientosJockeys.php">Inicio</a>
+        <a href="movimientosJockeys.php">Work order</a>
         <a href="registroCampa.php">Campa</a>
       </nav>
 
@@ -113,12 +113,12 @@ if (isset($_SESSION['usuario'])==false) {
               <tr id='trmod'>
                 <th scope='col' id='thmod' class='bastidor'>BASTIDOR</th>
                 <th scope='col' id='thmod'>ORIGEN</th>
-                <th scope='col' id='thmod'>FECHA ORIGEN</th>
-                <th scope='col' id='thmod'>HORA ORIGEN</th>
+                <th scope='col' id='thmod'>F.ORIGEN</th>
+                <th scope='col' id='thmod'>H.ORIGEN</th>
                 <th scope='col' id='thmod'>DESTINO</th>
-                <th scope='col' id='thmod'>FECHA DESTINO</th>
-                <th scope='col' id='thmod'>HORA DESTINO</th>
-                <th scope='col' id='thmod'>TIEMPO MOVIMIENTO</th>
+                <th scope='col' id='thmod'>F.DESTINO</th>
+                <th scope='col' id='thmod'>H.DESTINO</th>
+                <th scope='col' id='thmod'>TIEMPO</th>
                 <th scope='col' id='thmod'>USUARIO</th>
                 <th scope='col' id ='thmod'>ROL</th>
                 <th scope='col' id='thmod'>ERROR</th>
