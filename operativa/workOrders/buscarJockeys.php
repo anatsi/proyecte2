@@ -29,7 +29,7 @@
           <table id='tablamod'>
           <thead id='theadmod'>
             <tr id='trmod'>
-              <th scope='col' id='thmod' class='bastidor'>BASTIDOR</th>
+              <th scope='col' id='thmod' class='bastidor'>VIN</th>
               <th scope='col' id='thmod'>ORIGEN</th>
               <th scope='col' id='thmod'>F.ORIGEN</th>
               <th scope='col' id='thmod'>H.ORIGEN</th>
@@ -58,7 +58,7 @@
             }
              echo "
                 <tr id='trmod'>
-                  <td data-label='BASTIDOR' id='tdmod' class='bastidor'>".$movimiento['bastidor']."</td>
+                  <td data-label='VIN' id='tdmod' class='bastidor'>".$movimiento['bastidor']."</td>
                   <td data-label='ORIGEN' id='tdmod'>".$movimiento['origen']."</td>
                   <td data-label='FECHA ORIGEN' id='tdmod'>".$inicio."</td>
                   <td data-label='HORA ORIGEN' id='tdmod'>".$movimiento['hora_origen']."</td>
@@ -89,7 +89,7 @@
               <table id='tablamod'>
               <thead id='theadmod'>
                 <tr id='trmod'>
-                  <th scope='col' id='thmod' class='bastidor'>BASTIDOR</th>
+                  <th scope='col' id='thmod' class='bastidor'>VIN</th>
                   <th scope='col' id='thmod'>ORIGEN</th>
                   <th scope='col' id='thmod'>F.ORIGEN</th>
                   <th scope='col' id='thmod'>H.ORIGEN</th>
@@ -118,7 +118,7 @@
                 }
                  echo "
                     <tr id='trmod'>
-                      <td data-label='BASTIDOR' id='tdmod' class='bastidor'>".$movimiento['bastidor']."</td>
+                      <td data-label='VIN' id='tdmod' class='bastidor'>".$movimiento['bastidor']."</td>
                       <td data-label='ORIGEN' id='tdmod'>".$movimiento['origen']."</td>
                       <td data-label='FECHA ORIGEN' id='tdmod'>".$inicio."</td>
                       <td data-label='HORA ORIGEN' id='tdmod'>".$movimiento['hora_origen']."</td>

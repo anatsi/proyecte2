@@ -23,7 +23,7 @@
           <table id='tablamod'>
           <thead id='theadmod'>
             <tr id='trmod'>
-              <th scope='col' id='thmod' class='bastidor'>BASTIDOR</th>
+              <th scope='col' id='thmod' class='bastidor'>VIN</th>
               <th scope='col' id='thmod'>FECHA</th>
               <th scope='col' id='thmod'>HORA</th>
               <th scope='col' id='thmod'>USUARIO</th>
@@ -36,7 +36,7 @@
             $inicio=$inicio[2]."-".$inicio[1]."-".$inicio[0];
              echo "
                 <tr id='trmod'>
-                  <td data-label='BASTIDOR' id='tdmod' class='bastidor'>".$campas['bastidor']."</td>
+                  <td data-label='VIN' id='tdmod' class='bastidor'>".$campas['bastidor']."</td>
                   <td data-label='FECHA ORIGEN' id='tdmod'>".$inicio."</td>
                   <td data-label='HORA ORIGEN' id='tdmod'>".$campas['hora']."</td>
                   <td data-label='USUARIO' id='tdmod'>".$campas['usuario']."</td>
@@ -55,7 +55,7 @@
               <table id='tablamod'>
               <thead id='theadmod'>
                 <tr id='trmod'>
-                  <th scope='col' id='thmod'>BASTIDOR</th>
+                  <th scope='col' id='thmod'>VIN</th>
                   <th scope='col' id='thmod'>FECHA</th>
                   <th scope='col' id='thmod'>HORA</th>
                   <th scope='col' id='thmod'>USUARIO</th>
@@ -67,7 +67,7 @@
                 $inicio=$inicio[2]."-".$inicio[1]."-".$inicio[0];
                  echo "
                     <tr id='trmod'>
-                      <td data-label='BASTIDOR' id='tdmod'>".$campas['bastidor']."</td>
+                      <td data-label='VIN' id='tdmod'>".$campas['bastidor']."</td>
                       <td data-label='FECHA ORIGEN' id='tdmod'>".$inicio."</td>
                       <td data-label='HORA ORIGEN' id='tdmod'>".$campas['hora']."</td>
                       <td data-label='USUARIO' id='tdmod'>".$campas['usuario']."</td>

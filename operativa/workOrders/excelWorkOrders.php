@@ -22,7 +22,7 @@ $style_header = array('fill' => array('type' => PHPExcel_Style_Fill::FILL_SOLID,
 // Agregar Informacion
 $objPHPExcel->getActiveSheet()->getStyle('A1:K1')->applyFromArray($style_header);
 $objPHPExcel->setActiveSheetIndex(0)
-->setCellValue('A1', 'BASTIDOR')
+->setCellValue('A1', 'VIN')
 ->setCellValue('B1', 'ORIGEN')
 ->setCellValue('C1', 'FECHA ORIGEN')
 ->setCellValue('D1', 'HORA ORIGEN')
