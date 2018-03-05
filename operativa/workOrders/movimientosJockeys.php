@@ -1,4 +1,6 @@
 <?php
+header("Refresh: 30; URL='movimientosJockeys.php'");
+
 //incluimos todas las clases necesarias e iniciamos sus objetos.
 require_once '../../sesiones.php';
 require_once '../../users.php';
@@ -7,6 +9,7 @@ require_once 'movimientos.php';
 $usuario=new User();
 $sesion=new Sesiones();
 $movimientos = new Movimientos();
+
 
 
 if (isset($_SESSION['usuario'])==false) {
