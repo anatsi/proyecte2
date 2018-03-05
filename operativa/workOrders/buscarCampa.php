@@ -86,5 +86,11 @@
        $("#tablamod").tablesorter();
      });
    </script>
+   <script type="text/javascript">
+   $(document).ready(function(){
+     $("tr:odd").css("background-color", "#CAC6C5"); // filas pares
+     $("tr:even").css("background-color", "#f8f8f8"); // filas impares
+   });
+   </script>
   </body>
 </html>

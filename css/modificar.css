@@ -16,7 +16,7 @@ body {
   table-layout: fixed;
 }
 #tablamod #trmod {
-  background: #f8f8f8;
+  /*background: #f8f8f8;*/
   border: 1px solid #ddd;
   padding: .35em;
 }
