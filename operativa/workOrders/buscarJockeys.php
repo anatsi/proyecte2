@@ -129,15 +129,16 @@
      <script type="text/javascript" src="../js/jquery.min.js"></script>-->
      <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.9.1/jquery.tablesorter.min.js"></script>
      <script>
-     $(function(){
-       $("#tablamod").tablesorter();
-     });
-   </script>
-   <script type="text/javascript">
-   $(document).ready(function(){
-     $("tr:odd").css("background-color", "#CAC6C5"); // filas pares
-     $("tr:even").css("background-color", "#f8f8f8"); // filas impares
-   });
-   </script>
+       $(function(){
+         $("#tablamod").tablesorter();
+       });
+     </script>
+     <!-- jquery para alternar el color de las filas de la tabla -->
+     <script type="text/javascript">
+       $(document).ready(function(){
+         $("tr:odd").css("background-color", "#CAC6C5"); // filas pares
+         $("tr:even").css("background-color", "#f8f8f8"); // filas impares
+       });
+     </script>
   </body>
 </html>

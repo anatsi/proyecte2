@@ -61,6 +61,7 @@ if (isset($_SESSION['usuario'])==false) {
         });
 
     </script>
+    <!-- jquery para alternar el color de las filas de la tabla -->
     <script type="text/javascript">
     $(document).ready(function(){
       $("tr:odd").css("background-color", "#CAC6C5"); // filas pares
