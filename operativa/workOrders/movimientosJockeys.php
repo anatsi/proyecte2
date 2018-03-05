@@ -1,5 +1,5 @@
 <?php
-header("Refresh: 30; URL='movimientosJockeys.php'");
+//header("Refresh: 30; URL='movimientosJockeys.php'");
 
 //incluimos todas las clases necesarias e iniciamos sus objetos.
 require_once '../../sesiones.php';
@@ -101,7 +101,12 @@ if (isset($_SESSION['usuario'])==false) {
         <!-- Contenido de la pagina. -->
         <h2>WORK ORDERS</h2>
        <input type="text" id="busqueda" placeholder='FILTRAR'/><br/><br/>
+
         <div id="resultado">
+          <h4><?php $recuentos= $movimientos -> cuentaListaMovimientos();
+             echo "TOTAL MOVIMIENTOS: " .$recuentos[0]['recuento'];
+          ?></h4>
+          <br>
         <!--tabla-->
         <?php
         $lista= $movimientos->listaMovimientos();

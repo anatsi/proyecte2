@@ -1,5 +1,5 @@
 <?php
-header("Refresh: 30; URL='movimientosJockeys.php'");
+//header("Refresh: 30; URL='movimientosJockeys.php'");
 
 //incluimos todas las clases necesarias e iniciamos sus objetos.
 require_once '../../sesiones.php';
