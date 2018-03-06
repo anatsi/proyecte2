@@ -1,6 +1,6 @@
 <?php
 /* Incluir la libreria PHPExcel */
-require_once '../Classes/PHPExcel.php';
+require_once '../operativa/Classes/PHPExcel.php';
 
 /*Incluir los archivos necesarios para la db*/
 require_once 'movimientos.php';

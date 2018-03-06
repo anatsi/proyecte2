@@ -25,7 +25,7 @@
           <table id='tablamod'>
           <thead id='theadmod'>
             <tr id='trmod'>
-              <th scope='col' id='thmod' class='bastidor'>VIN</th>
+              <th scope='col' id='thmod'>VIN</th>
               <th scope='col' id='thmod'>FECHA</th>
               <th scope='col' id='thmod'>HORA</th>
               <th scope='col' id='thmod'>USUARIO</th>
