@@ -31,10 +31,46 @@ class Campa extends dbJockeys
     }
   }
 
+  //SACAR TODOS LOS MOVIMIENTOS
+  function cuentaListaCampa(){
+    //Construimos la consulta
+    $sql="SELECT count(*) as 'recuento' from campa";
+    //Realizamos la consulta
+    $resultado=$this->realizarConsulta($sql);
+    if($resultado!=null){
+      //Montamos la tabla de resultados
+      $tabla=[];
+      while($fila=$resultado->fetch_assoc()){
+        $tabla[]=$fila;
+      }
+      return $tabla;
+    }else{
+      return null;
+    }
+  }
+
   //SACAR TODOS LOS MOVIMIENTOS FILTRADOS
   function listaCampaFiltro($b){
     //Construimos la consulta
     $sql="SELECT * from campa WHERE concat(bastidor, fecha, hora, usuario) LIKE '%".$b."%' ORDER BY id desc";
+    //Realizamos la consulta
+    $resultado=$this->realizarConsulta($sql);
+    if($resultado!=null){
+      //Montamos la tabla de resultados
+      $tabla=[];
+      while($fila=$resultado->fetch_assoc()){
+        $tabla[]=$fila;
+      }
+      return $tabla;
+    }else{
+      return null;
+    }
+  }
+
+  //SACAR TODOS LOS MOVIMIENTOS FILTRADOS
+  function cuentaListaCampaFiltro($b){
+    //Construimos la consulta
+    $sql="SELECT count(*) as 'recuento' from campa WHERE concat(bastidor, fecha, hora, usuario) LIKE '%".$b."%'";
     //Realizamos la consulta
     $resultado=$this->realizarConsulta($sql);
     if($resultado!=null){
