@@ -90,8 +90,9 @@ if (isset($_SESSION['usuario'])==false) {
       <a href="#" class="header__icon" id="header__icon"></a>
       <a href="../dashboard.php" class="header__logo"><img src="../imagenes/logo.png" alt=""></a>
       <nav class="menu">
-        <a href="movimientosJockeys.php">Work order</a>
+        <a href="movimientosJockeys.php">Movimientos</a>
         <a href="registroCampa.php">Campa</a>
+        <a href="registroWrap.php">Wrap Guard</a>
       </nav>
 
     </header>
@@ -99,7 +100,7 @@ if (isset($_SESSION['usuario'])==false) {
     <div class="site-content">
       <div class="container">
         <!-- Contenido de la pagina. -->
-        <h2>WORK ORDERS</h2>
+        <h2>MOVIMIENTOS</h2>
        <input type="text" id="busqueda" placeholder='FILTRAR'/><br/><br/>
 
         <div id="resultado">
@@ -123,9 +124,9 @@ if (isset($_SESSION['usuario'])==false) {
                 <th scope='col' id='thmod'>F.DESTINO</th>
                 <th scope='col' id='thmod'>H.DESTINO</th>
                 <th scope='col' id='thmod'>TIEMPO</th>
-                <th scope='col' id='thmod'>USUARIO</th>
+                <th scope='col' id='thmod'>USER</th>
                 <th scope='col' id ='thmod'>ROL</th>
-                <th scope='col' id='thmod'>ERROR</th>
+                <th scope='col' id='thmod'>ER</th>
               </tr>
             </thead><tbody id='tbodymod'>
 
