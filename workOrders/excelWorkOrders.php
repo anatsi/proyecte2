@@ -20,7 +20,7 @@ $objPHPExcel->getProperties()
 $style_header = array('fill' => array('type' => PHPExcel_Style_Fill::FILL_SOLID, 'color' => array('rgb'=>'538DD5'),));
 
 // Agregar Informacion
-$objPHPExcel->getActiveSheet()->getStyle('A1:K1')->applyFromArray($style_header);
+$objPHPExcel->getActiveSheet()->getStyle('A1:M1')->applyFromArray($style_header);
 $objPHPExcel->setActiveSheetIndex(0)
 ->setCellValue('A1', 'VIN')
 ->setCellValue('B1', 'ORIGEN')
@@ -29,10 +29,12 @@ $objPHPExcel->setActiveSheetIndex(0)
 ->setCellValue('E1', 'DESTINO')
 ->setCellValue('F1', 'FECHA DESTINO')
 ->setCellValue('G1', 'HORA DESTINO')
-->setCellValue('H1', 'TIEMPO MOVIMIENTO')
-->setCellValue('I1', 'USUARIO')
-->setCellValue('J1', 'ROL')
-->setCellValue('K1', 'ERROR')
+->setCellValue('H1', 'TIEMPO PRODUCTIVO')
+->setCellValue('I1', 'TIEMPO NO PRODUCTIVO')
+->setCellValue('J1', 'TIEMPO CICLO')
+->setCellValue('K1', 'USUARIO')
+->setCellValue('L1', 'ROL')
+->setCellValue('M1', 'ERROR')
 ;
 
 if (isset($_GET['b'])) {
@@ -45,6 +47,18 @@ if (isset($_GET['b'])) {
   $i=2;
 foreach ($lista as $movimiento) {
   $diferencia = $movimientos ->RestarHoras($movimiento['hora_origen'], $movimiento['hora_destino']);
+  $siguienteMovimiento = $movimientos -> UltimoMovimiento($movimiento['usuario'], $movimiento['id']);
+  if ($siguienteMovimiento != null && $siguienteMovimiento != false && $movimiento['error'] == 0) {
+    $noproductivo = $movimientos -> RestarHoras($movimiento['hora_destino'], $siguienteMovimiento['hora_origen']);
+    $ciclo = $movimientos -> SumarHoras($diferencia, $noproductivo);
+    if ($noproductivo > '01:00:00') {
+      $noproductivo = '00:00:00';
+      $ciclo = '00:00:00';
+    }
+  }else {
+    $noproductivo = "";
+    $ciclo = "";
+  }
   $fecha_origen = str_replace("-", "/", $movimiento['fecha_origen']);
   $fecha_destino = str_replace("-", "/", $movimiento['fecha_destino']);
   //sacar si hay error o no
@@ -62,9 +76,11 @@ foreach ($lista as $movimiento) {
   ->setCellValue('F'.$i, $fecha_destino)
   ->setCellValue('G'.$i, $movimiento['hora_destino'])
   ->setCellValue('H'.$i, $diferencia)
-  ->setCellValue('I'.$i, $movimiento['usuario'])
-  ->setCellValue('J'.$i, $movimiento['rol'])
-  ->setCellValue('K'.$i, $error)
+  ->setCellValue('I'.$i, $noproductivo)
+  ->setCellValue('J'.$i, $ciclo)
+  ->setCellValue('K'.$i, $movimiento['usuario'])
+  ->setCellValue('L'.$i, $movimiento['rol'])
+  ->setCellValue('M'.$i, $error)
   ;
   $i++;
 }
@@ -78,16 +94,16 @@ for($col = 'A'; $col !== 'Z'; $col++) {
         ->setAutoSize(true);
 }
 //poner el encabezado en negrita
-$objPHPExcel->getActiveSheet()->getStyle("A1:K1")->getFont()->setBold(true);
+$objPHPExcel->getActiveSheet()->getStyle("A1:M1")->getFont()->setBold(true);
 
 //centrar todo el texto
 $centrar = array('alignment' => array('horizontal' => PHPExcel_Style_Alignment::HORIZONTAL_CENTER,));
-$objPHPExcel->getActiveSheet()->getStyle("A1:K100")->applyFromArray($centrar);
+$objPHPExcel->getActiveSheet()->getStyle("A1:M999")->applyFromArray($centrar);
 
 //poner los bordes
 $i2 = $i -1;
 $bordes = array('borders' => array('allborders' => array('style' => PHPExcel_Style_Border::BORDER_THIN)));
-$objPHPExcel->getActiveSheet()->getStyle("A1:K".$i2)->applyFromArray($bordes);
+$objPHPExcel->getActiveSheet()->getStyle("A1:M".$i2)->applyFromArray($bordes);
 
 // Se modifican los encabezados del HTTP para indicar que se envia un archivo de Excel.
 header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');

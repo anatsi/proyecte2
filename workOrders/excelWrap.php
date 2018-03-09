@@ -69,7 +69,7 @@ $objPHPExcel->getActiveSheet()->getStyle("A1:H1")->getFont()->setBold(true);
 
 //centrar todo el texto
 $centrar = array('alignment' => array('horizontal' => PHPExcel_Style_Alignment::HORIZONTAL_CENTER,));
-$objPHPExcel->getActiveSheet()->getStyle("A1:H100")->applyFromArray($centrar);
+$objPHPExcel->getActiveSheet()->getStyle("A1:H999")->applyFromArray($centrar);
 
 //poner los bordes
 $i2 = $i -1;
@@ -78,7 +78,7 @@ $objPHPExcel->getActiveSheet()->getStyle("A1:H".$i2)->applyFromArray($bordes);
 
 // Se modifican los encabezados del HTTP para indicar que se envia un archivo de Excel.
 header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
-header('Content-Disposition: attachment;filename="WorkOrders.xlsx"');
+header('Content-Disposition: attachment;filename="WrapGuard.xlsx"');
 header('Cache-Control: max-age=0');
 $objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel2007');
 $objWriter->save('php://output');

@@ -123,7 +123,9 @@ if (isset($_SESSION['usuario'])==false) {
                 <th scope='col' id='thmod'>DESTINO</th>
                 <th scope='col' id='thmod'>F.DESTINO</th>
                 <th scope='col' id='thmod'>H.DESTINO</th>
-                <th scope='col' id='thmod'>TIEMPO</th>
+                <th scope='col' id='thmod'>PROD.</th>
+                <th scope='col' id='thmod'>NO PROD.</th>
+                <th scope='col' id='thmod'>CICLO</th>
                 <th scope='col' id='thmod'>USER</th>
                 <th scope='col' id ='thmod'>ROL</th>
                 <th scope='col' id='thmod'>ER</th>
@@ -132,6 +134,19 @@ if (isset($_SESSION['usuario'])==false) {
 
             "; foreach ($lista as $movimiento) {
               $diferencia = $movimientos -> RestarHoras($movimiento['hora_origen'], $movimiento['hora_destino']);
+              $siguienteMovimiento = $movimientos -> UltimoMovimiento($movimiento['usuario'], $movimiento['id']);
+              if ($siguienteMovimiento != null && $siguienteMovimiento != false && $movimiento['error'] == 0) {
+                $noproductivo = $movimientos -> RestarHoras($movimiento['hora_destino'], $siguienteMovimiento['hora_origen']);
+                $ciclo = $movimientos -> SumarHoras($diferencia, $noproductivo);
+                if ($noproductivo > '01:00:00') {
+                  $noproductivo = '00:00:00';
+                  $ciclo = '00:00:00';
+                }
+              }else {
+                $noproductivo = "";
+                $ciclo = "";
+              }
+
               //transformar fechas
               $inicio=explode("-", $movimiento['fecha_origen']);
               $inicio=$inicio[2]."-".$inicio[1]."-".$inicio[0];
@@ -152,7 +167,10 @@ if (isset($_SESSION['usuario'])==false) {
                     <td data-label='DESTINO' id='tdmod'>".$movimiento['destino']."</td>
                     <td data-label='FECHA DESTINO' id='tdmod'>".$fin."</td>
                     <td data-label='HORA DESTIO' id='tdmod'>".$movimiento['hora_destino']."</td>
-                    <td data-label='TIEMPO MOVIMIENTO' id='tdmod'>".$diferencia."</td>
+                    <td data-label='PRODUCTIVO' id='tdmod'>".$diferencia."</td>
+                    <td data-label='NO PORDUCTIVO' id='tdmod'>".$noproductivo."</td>
+                    <td data-label='CICLO' id='tdmod'>".$ciclo."</td>
+
                     <td data-label='USUARIO' id='tdmod'>".$movimiento['usuario']."</td>
                     <td data-label='ROL' id='tdmod'>".$movimiento['rol']."</td>
                     <td data-label='ERROR' id='tdmod'>".$error."</td>
