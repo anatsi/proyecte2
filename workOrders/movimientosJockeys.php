@@ -93,6 +93,7 @@ if (isset($_SESSION['usuario'])==false) {
         <a href="movimientosJockeys.php">Movimientos</a>
         <a href="registroCampa.php">Campa</a>
         <a href="registroWrap.php">Wrap Guard</a>
+        <a href="filtroRoles.php">Roles</a>
       </nav>
 
     </header>
@@ -138,7 +139,7 @@ if (isset($_SESSION['usuario'])==false) {
               if ($siguienteMovimiento != null && $siguienteMovimiento != false && $movimiento['error'] == 0) {
                 $noproductivo = $movimientos -> RestarHoras($movimiento['hora_destino'], $siguienteMovimiento['hora_origen']);
                 $ciclo = $movimientos -> SumarHoras($diferencia, $noproductivo);
-                if ($noproductivo > '01:00:00') {
+                if ($noproductivo > '05:00:00') {
                   $noproductivo = '00:00:00';
                   $ciclo = '00:00:00';
                 }

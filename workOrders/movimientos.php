@@ -51,7 +51,7 @@ class Movimientos extends dbJockeys
   //SACAR TODOS LOS MOVIMIENTOS FILTRADOS
   function listaMovimientosFiltrados($b){
     //Construimos la consulta
-    $sql="SELECT * from movimientos WHERE concat(bastidor, origen, fecha_origen, hora_origen, destino, fecha_destino, hora_destino, usuario, error) LIKE '%".$b."%' ORDER BY id desc";
+    $sql="SELECT * from movimientos WHERE concat(bastidor, origen, fecha_origen, hora_origen, destino, fecha_destino, hora_destino, usuario, rol, error) LIKE '%".$b."%' ORDER BY id desc";
     //Realizamos la consulta
     $resultado=$this->realizarConsulta($sql);
     if($resultado!=null){
@@ -68,7 +68,7 @@ class Movimientos extends dbJockeys
 
   function cuentalistaMovimientosFiltrados($b){
     //Construimos la consulta
-    $sql="SELECT count(*) as 'recuento' from movimientos WHERE concat(bastidor, origen, fecha_origen, hora_origen, destino, fecha_destino, hora_destino, usuario, error) LIKE '%".$b."%'";
+    $sql="SELECT count(*) as 'recuento' from movimientos WHERE concat(bastidor, origen, fecha_origen, hora_origen, destino, fecha_destino, hora_destino, usuario, rol, error) LIKE '%".$b."%'";
     //Realizamos la consulta
     $resultado=$this->realizarConsulta($sql);
     if($resultado!=null){

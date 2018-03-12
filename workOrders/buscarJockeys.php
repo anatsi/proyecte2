@@ -119,7 +119,7 @@
                   if ($siguienteMovimiento != null && $siguienteMovimiento != false && $movimiento['error'] == 0) {
                     $noproductivo = $movimientos -> RestarHoras($movimiento['hora_destino'], $siguienteMovimiento['hora_origen']);
                     $ciclo = $movimientos -> SumarHoras($diferencia, $noproductivo);
-                    if ($noproductivo > '01:00:00') {
+                    if ($noproductivo > '05:00:00') {
                       $noproductivo = '00:00:00';
                       $ciclo = '00:00:00';
                     }

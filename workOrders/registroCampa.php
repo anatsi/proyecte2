@@ -92,7 +92,7 @@ if (isset($_SESSION['usuario'])==false) {
         <a href="movimientosJockeys.php">Movimientos</a>
         <a href="registroCampa.php">Campa</a>
         <a href="registroWrap.php">Wrap Guard</a>
-
+        <a href="filtroRoles.php">Roles</a>
       </nav>
 
     </header>

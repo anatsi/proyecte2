@@ -1,10 +1,4 @@
 <?php
-//Reconocimiento idioma
-require('./languages/languages.php');
-  $lang = "es";
-if ( isset($_GET['lang']) ){
-  $lang = $_GET['lang'];
-}
 //incluimos todas las clases necesarias e iniciamos sus objetos.
 require_once '../sesiones.php';
 require_once '../users.php';
@@ -24,7 +18,9 @@ if (isset($_SESSION['usuario'])==false) {
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
     <link rel="stylesheet" href="../css/formulario.css">
     <link rel="shortcut icon" href="../imagenes/favicon.ico">
-		<link rel="stylesheet" type="text/css" href="../css/dashboard.css" />
+    <link rel="stylesheet" type="text/css" href="../css/dashboard.css" />
+    <link rel="stylesheet" href="../css/modificar.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 <body>
   <head>
@@ -36,9 +32,9 @@ if (isset($_SESSION['usuario'])==false) {
     //llamamos a la función para devolver el nombre de usuario.
     $nombreuser=$usuario->nombreUsuario($_SESSION['usuario']);
     //sacamos el nombre de usuario por su id
-    echo "<a><strong>".__('Bienvenido ', $lang).$nombreuser['name']."</strong></a>";
+    echo "<a><strong>Bienvenido ".$nombreuser['name']."</strong></a>";
    ?>
-  <span class="right"><a href="../logout.php" id="logout"><?php echo __('Cerrar Sesion', $lang); ?></a></span>
+  <span class="right"><a href="../logout.php" id="logout">Cerrar Sesion</a></span>
 </div><!--/ Codrops top bar -->
 
 <div class="site-container">
@@ -47,15 +43,13 @@ if (isset($_SESSION['usuario'])==false) {
     <header class="header">
 
       <a href="#" class="header__icon" id="header__icon"></a>
-      <a href="../dashboard.php?lang=<?php echo $lang; ?>" class="header__logo"><img src="../imagenes/logo.png" alt=""></a>
+      <a href="../dashboard.php" class="header__logo"><img src="../imagenes/logo.png" alt=""></a>
 
       <nav class="menu">
-        <a href="index.php?lang=<?php echo $lang; ?>"><?php echo __('Inicio', $lang); ?></a>
-        <a href="nuevoServicio.php?lang=<?php echo $lang; ?>"><?php echo __('Nueva actividad', $lang); ?></a>
-        <a href="actividadesActuales.php?lang=<?php echo $lang; ?>"><?php echo __('Actividades actuales', $lang); ?></a>
-        <a href="historicoActividades.php?lang=<?php echo $lang; ?>"><?php echo __('Histórico actividades', $lang); ?></a>
-        <a href="resumen.php">Búsqueda por fechas</a>
-
+        <a href="movimientosJockeys.php">Movimientos</a>
+        <a href="registroCampa.php">Campa</a>
+        <a href="registroWrap.php">Wrap Guard</a>
+        <a href="filtroRoles">Roles</a>
       </nav>
 
     </header>
@@ -63,16 +57,19 @@ if (isset($_SESSION['usuario'])==false) {
     <div class="site-content">
       <div class="container">
         <!-- Contenido de la pagina. -->
-        <h2>Búsqueda por fechas</h2>
-        <form action="resumenTabla.php" method="post" id="formulario">
+        <h2>Filtro cambios de rol</h2>
+        <form action="registroRoles.php" method="post" id="formulario">
           <div class="formthird">
-            <p><label><i class="fa fa-question-circle"></i>INICIO (*)</label><input type="date" name="inicio" required/></p>
+            <p><label><i class="fa fa-question-circle"></i>INICIO</label><input type="date" name="inicio"/></p>
           </div>
           <div class="formthird">
-            <p><label><i class="fa fa-question-circle"></i>FIN (*)</label><input type="date" name="fin" required/></p>
+            <p><label><i class="fa fa-question-circle"></i>FIN</label><input type="date" name="fin"/></p>
+          </div>
+          <div class="formthird">
+            <p><label><i class="fa fa-question-circle"></i>USUARIO</label><input type="text" name="usuario"/></p>
           </div>
           <div class="submitbuttons">
-              <input id="exportarResumen" type="submit" value="EXPORTAR"/>
+              <input id="exportarResumen" type="submit" value="BUSCAR"/>
           </div>
   </form>
 
