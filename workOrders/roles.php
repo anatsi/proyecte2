@@ -14,9 +14,9 @@ class Roles extends dbJockeys
     parent::__construct();
   }
 
-  function listaRolesFiltrados($inicio, $fin, $usuario){
+  function listaRolesFiltrados($inicio, $fin, $usuario, $rol){
     //Construimos la consulta
-    $sql="SELECT * FROM roles WHERE fecha_inicio<='".$fin."' AND fecha_fin>='".$inicio."' AND usuario LIKE '".$usuario."' OR fecha_inicio<='".$fin."' AND usuario LIKE '".$usuario."' AND fecha_fin is null";
+    $sql="SELECT * FROM roles WHERE fecha_inicio<='".$fin."' AND fecha_fin>='".$inicio."' AND usuario LIKE '".$usuario."' AND rol LIKE '".$rol."' OR fecha_inicio<='".$fin."' AND usuario LIKE '".$usuario."' AND rol LIKE '".$rol."' AND fecha_fin is null ORDER BY id DESC";
     //Realizamos la consulta
     $resultado=$this->realizarConsulta($sql);
     if($resultado!=null){

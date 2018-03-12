@@ -61,12 +61,11 @@ if (isset($_SESSION['usuario'])==false) {
         <form action="registroRoles.php" method="post" id="formulario">
           <div class="formthird">
             <p><label><i class="fa fa-question-circle"></i>INICIO</label><input type="date" name="inicio"/></p>
+            <p><label><i class="fa fa-question-circle"></i>USUARIO</label><input type="text" name="usuario"/></p>
           </div>
           <div class="formthird">
             <p><label><i class="fa fa-question-circle"></i>FIN</label><input type="date" name="fin"/></p>
-          </div>
-          <div class="formthird">
-            <p><label><i class="fa fa-question-circle"></i>USUARIO</label><input type="text" name="usuario"/></p>
+            <p><label><i class="fa fa-question-circle"></i>ROL</label><input type="text" name="rol"/></p>
           </div>
           <div class="submitbuttons">
               <input id="exportarResumen" type="submit" value="BUSCAR"/>
