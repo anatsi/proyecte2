@@ -25,14 +25,11 @@ if (isset($_SESSION['usuario'])==false) {
     <link rel="stylesheet" href="../css/modificar.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
-
-    <!-- jquery para alternar el color de las filas de la tabla -->
-    <script type="text/javascript">
-    $(document).ready(function(){
-      $("tr:odd").css("background-color", "#CAC6C5"); // filas pares
-      $("tr:even").css("background-color", "#f8f8f8"); // filas impares
-    });
-    </script>
+    <style media="screen">
+      tr:nth-child(even) {
+        background-color: #CAC6C5;
+      }
+    </style>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 </head>
 <body>

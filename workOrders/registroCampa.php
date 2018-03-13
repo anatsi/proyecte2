@@ -27,6 +27,11 @@ if (isset($_SESSION['usuario'])==false) {
 		<link rel="stylesheet" type="text/css" href="../css/dashboard.css" />
     <link rel="stylesheet" href="../css/modificar.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <style media="screen">
+      tr:nth-child(even) {
+        background-color: #CAC6C5;
+      }
+    </style>
     <!--  script para el filtrado en la tabla  -->
     <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
     <script>
@@ -59,13 +64,6 @@ if (isset($_SESSION['usuario'])==false) {
             });
         });
 
-    </script>
-    <!-- jquery para alternar el color de las filas de la tabla -->
-    <script type="text/javascript">
-      $(document).ready(function(){
-        $("tr:odd").css("background-color", "#CAC6C5"); // filas pares
-        $("tr:even").css("background-color", "#f8f8f8"); // filas impares
-      });
     </script>
 </head>
 <body>

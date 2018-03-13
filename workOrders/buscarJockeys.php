@@ -3,6 +3,11 @@
   <head>
     <meta charset="utf-8">
     <title></title>
+    <style media="screen">
+    tr:nth-child(even) {
+      background-color: #CAC6C5;
+    }
+    </style>
 
   </head>
   <body>
@@ -167,13 +172,6 @@
      <script>
        $(function(){
          $("#tablamod").tablesorter();
-       });
-     </script>
-     <!-- jquery para alternar el color de las filas de la tabla -->
-     <script type="text/javascript">
-       $(document).ready(function(){
-         $("tr:odd").css("background-color", "#CAC6C5"); // filas pares
-         $("tr:even").css("background-color", "#f8f8f8"); // filas impares
        });
      </script>
   </body>
