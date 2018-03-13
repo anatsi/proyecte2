@@ -64,6 +64,8 @@ foreach ($lista as $movimiento) {
   //sacar si hay error o no
   if ($movimiento['error']==1) {
     $error = 'SI';
+    $noproductivo = '00:00:00';
+    $ciclo = '00:00:00';
   }else {
     $error = 'NO';
   }

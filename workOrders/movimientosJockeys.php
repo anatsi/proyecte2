@@ -154,6 +154,8 @@ if (isset($_SESSION['usuario'])==false) {
               //sacar si hay error o no
               if ($movimiento['error']==1) {
                 $error = 'SI';
+                $noproductivo = '00:00:00';
+                $ciclo = '00:00:00';
               }else {
                 $error = 'NO';
               }
