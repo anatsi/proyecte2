@@ -127,7 +127,7 @@ if (isset($_SESSION['usuario'])==false) {
                 <th scope='col' id='thmod'>CICLO</th>
                 <th scope='col' id='thmod'>USER</th>
                 <th scope='col' id ='thmod'>ROL</th>
-                <th scope='col' id='thmod'>ER</th>
+                <th scope='col' id='thmod'>ERROR</th>
               </tr>
             </thead><tbody id='tbodymod'>
 

@@ -43,8 +43,11 @@ if ($_POST['fin']<$_POST['inicio']) {
       <link rel="stylesheet" href="../css/modificar.css">
       <script type="text/javascript" src="../js/servicioForm.js"></script>
       <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-
-
+      <style media="screen">
+        tr:nth-child(even) {
+          background-color: #CAC6C5;
+        }
+      </style>
   </head>
   <body>
     <head>

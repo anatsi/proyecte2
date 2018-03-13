@@ -42,7 +42,7 @@
             <th scope='col' id='thmod'>CICLO</th>
             <th scope='col' id='thmod'>USER</th>
             <th scope='col' id ='thmod'>ROL</th>
-            <th scope='col' id='thmod'>ER</th>
+            <th scope='col' id='thmod'>ERROR</th>
             </tr>
           </thead><tbody id='tbodymod'>
 
@@ -116,7 +116,7 @@
                 <th scope='col' id='thmod'>CICLO</th>
                 <th scope='col' id='thmod'>USER</th>
                 <th scope='col' id ='thmod'>ROL</th>
-                <th scope='col' id='thmod'>ER</th>
+                <th scope='col' id='thmod'>ERROR</th>
                 </tr>
               </thead><tbody id='tbodymod'>
 
@@ -142,6 +142,8 @@
                 //sacar si hay error o no
                 if ($movimiento['error']==1) {
                   $error = 'SI';
+                  $noproductivo = '00:00:00';
+                  $ciclo = '00:00:00';
                 }else {
                   $error = 'NO';
                 }

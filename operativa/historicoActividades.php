@@ -34,6 +34,11 @@ if (isset($_SESSION['usuario'])==false) {
 		<link rel="stylesheet" type="text/css" href="../css/dashboard.css" />
     <link rel="stylesheet" href="../css/modificar.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <style media="screen">
+      tr:nth-child(even) {
+        background-color: #CAC6C5;
+      }
+    </style>
     <!--  script para el filtrado en la tabla  -->
     <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
     <script>
