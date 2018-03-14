@@ -8,6 +8,13 @@
       background-color: #CAC6C5;
     }
     </style>
+    <!--Script para fijar la cabecera de las tablas -->
+    <script type="text/javascript" src="../js/jquery.stickytableheaders.min.js"></script>
+    <script type="text/javascript">
+      $(function() {
+        $("table").stickyTableHeaders();
+      });
+    </script>
 
   </head>
   <body>
@@ -44,14 +51,36 @@
             <th scope='col' id ='thmod'>ROL</th>
             <th scope='col' id='thmod'>ERROR</th>
             </tr>
-          </thead><tbody id='tbodymod'>
-
-          "; foreach ($lista as $movimiento) {
+          </thead><tbody id='tbodymod'>";
+          $cicloTotal = '00:00:00';
+          $noprodTotal = '00:00:00';
+          $prodTotal = '00:00:00';
+          foreach ($lista as $movimiento) {
             $diferencia = $movimientos -> RestarHoras($movimiento['hora_origen'], $movimiento['hora_destino']);
             $siguienteMovimiento = $movimientos -> UltimoMovimiento($movimiento['usuario'], $movimiento['id']);
             if ($siguienteMovimiento != null && $siguienteMovimiento != false && $movimiento['error'] == 0) {
               $noproductivo = $movimientos -> RestarHoras($movimiento['hora_destino'], $siguienteMovimiento['hora_origen']);
               $ciclo = $movimientos -> SumarHoras($diferencia, $noproductivo);
+              if ($noproductivo > '05:00:00') {
+                $noproductivo = '00:00:00';
+                $ciclo = '00:00:00';
+              }else {
+                if ($cicloTotal != '00:00:00') {
+                  $cicloTotal = $movimientos -> SumarHoras($ciclo, $cicloTotal);
+                }else {
+                  $cicloTotal = $ciclo;
+                }
+                if ($prodTotal != '00:00:00') {
+                  $prodTotal = $movimientos -> SumarHoras($prodTotal, $diferencia);
+                }else {
+                  $prodTotal = $diferencia;
+                }
+                if ($noprodTotal != '00:00:00') {
+                  $noprodTotal = $movimientos -> SumarHoras($noprodTotal, $noproductivo);
+                }else {
+                  $noprodTotal = $noproductivo;
+                }
+              }
             }else {
               $noproductivo = "";
               $ciclo = "";
@@ -87,7 +116,25 @@
                 <td data-label='ERROR' id='tdmod'>".$error."</td>
                 </tr>
 
-          ";} echo "</tbody></table></div>";
+          ";}
+          echo "<tfoot>
+          <tr id='trmod'>
+          <th scope='col' id='thmod' class='bastidor'>TOTALES</th>
+          <th scope='col' id='thmod'></th>
+          <th scope='col' id='thmod'></th>
+          <th scope='col' id='thmod'></th>
+          <th scope='col' id='thmod'></th>
+          <th scope='col' id='thmod'></th>
+          <th scope='col' id='thmod'></th>
+          <th scope='col' id='thmod'>".$prodTotal."</th>
+          <th scope='col' id='thmod'>".$noprodTotal."</th>
+          <th scope='col' id='thmod'>".$cicloTotal."</th>
+          <th scope='col' id='thmod'></th>
+          <th scope='col' id='thmod'></th>
+          <th scope='col' id='thmod'></th>
+          </tr>
+          </tfoot>";
+          echo "</tbody></table></div>";
     }
 
     function buscar($b) {
@@ -118,9 +165,11 @@
                 <th scope='col' id ='thmod'>ROL</th>
                 <th scope='col' id='thmod'>ERROR</th>
                 </tr>
-              </thead><tbody id='tbodymod'>
-
-              "; foreach ($filtrados as $movimiento) {
+              </thead><tbody id='tbodymod'>";
+              $cicloTotal = '00:00:00';
+              $noprodTotal = '00:00:00';
+              $prodTotal = '00:00:00';
+              foreach ($filtrados as $movimiento) {
                   $diferencia = $movimientos -> RestarHoras($movimiento['hora_origen'], $movimiento['hora_destino']);
                   $siguienteMovimiento = $movimientos -> UltimoMovimiento($movimiento['usuario'], $movimiento['id']);
                   if ($siguienteMovimiento != null && $siguienteMovimiento != false && $movimiento['error'] == 0) {
@@ -129,6 +178,22 @@
                     if ($noproductivo > '05:00:00') {
                       $noproductivo = '00:00:00';
                       $ciclo = '00:00:00';
+                    }else {
+                      if ($cicloTotal != '00:00:00') {
+                        $cicloTotal = $movimientos -> SumarHoras($ciclo, $cicloTotal);
+                      }else {
+                        $cicloTotal = $ciclo;
+                      }
+                      if ($prodTotal != '00:00:00') {
+                        $prodTotal = $movimientos -> SumarHoras($prodTotal, $diferencia);
+                      }else {
+                        $prodTotal = $diferencia;
+                      }
+                      if ($noprodTotal != '00:00:00') {
+                        $noprodTotal = $movimientos -> SumarHoras($noprodTotal, $noproductivo);
+                      }else {
+                        $noprodTotal = $noproductivo;
+                      }
                     }
                   }else {
                     $noproductivo = "";
@@ -165,7 +230,25 @@
                     <td data-label='ERROR' id='tdmod'>".$error."</td>
                     </tr>
 
-              ";} echo "</tbody></table></div>";
+              ";}
+              echo "<tfoot>
+              <tr id='trmod'>
+              <th scope='col' id='thmod' class='bastidor'>TOTALES</th>
+              <th scope='col' id='thmod'></th>
+              <th scope='col' id='thmod'></th>
+              <th scope='col' id='thmod'></th>
+              <th scope='col' id='thmod'></th>
+              <th scope='col' id='thmod'></th>
+              <th scope='col' id='thmod'></th>
+              <th scope='col' id='thmod'>".$prodTotal."</th>
+              <th scope='col' id='thmod'>".$noprodTotal."</th>
+              <th scope='col' id='thmod'>".$cicloTotal."</th>
+              <th scope='col' id='thmod'></th>
+              <th scope='col' id='thmod'></th>
+              <th scope='col' id='thmod'></th>
+              </tr>
+              </tfoot>";
+              echo "</tbody></table></div>";
 
     }
      ?>

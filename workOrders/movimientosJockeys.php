@@ -33,7 +33,7 @@ if (isset($_SESSION['usuario'])==false) {
         background-color: #CAC6C5;
       }
     </style>
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+    <script src="../js/jquery.min.js"></script>
     <!--  script para el filtrado en la tabla  -->
     <script>
         $(document).ready(function(){
@@ -44,7 +44,7 @@ if (isset($_SESSION['usuario'])==false) {
             $("#busqueda").keyup(function(e){
               //obtenemos el texto introducido en el campo de busqueda
               consulta = $("#busqueda").val();
-               //hace la bÃºsqueda
+               //hace la busqueda
                  $.ajax({
                      type: "POST",
                      url: "buscarJockeys.php",
@@ -66,6 +66,20 @@ if (isset($_SESSION['usuario'])==false) {
         });
 
     </script>
+    <!--Script para fijar la cabecera de las tablas-->
+    <script type="text/javascript" src="../js/jquery.stickytableheaders.min.js"></script>
+    <script type="text/javascript">
+      $(function() {
+        $("table").stickyTableHeaders();
+      });
+    </script>
+    <!--Script para fijar la cabecera de las tablas
+    <script type="text/javascript" src="../js/jquery.stickytablefooter.min.js"></script>
+    <script type="text/javascript">
+      $(function() {
+        $("table").stickyTableFooter();
+      });
+    </script>-->
 </head>
 <body>
   <head>
@@ -100,7 +114,7 @@ if (isset($_SESSION['usuario'])==false) {
       <div class="container">
         <!-- Contenido de la pagina. -->
         <h2>MOVIMIENTOS</h2>
-       <input type="text" id="busqueda" placeholder='FILTRAR'/><br/><br/>
+       <input type="search" id="busqueda" placeholder='FILTRAR'/><br/><br/>
 
         <div id="resultado">
         <!--tabla-->
@@ -129,9 +143,14 @@ if (isset($_SESSION['usuario'])==false) {
                 <th scope='col' id ='thmod'>ROL</th>
                 <th scope='col' id='thmod'>ERROR</th>
               </tr>
+
             </thead><tbody id='tbodymod'>
 
-            "; foreach ($lista as $movimiento) {
+            ";
+              $cicloTotal = '00:00:00';
+              $noprodTotal = '00:00:00';
+              $prodTotal = '00:00:00';
+            foreach ($lista as $movimiento) {
               $diferencia = $movimientos -> RestarHoras($movimiento['hora_origen'], $movimiento['hora_destino']);
               $siguienteMovimiento = $movimientos -> UltimoMovimiento($movimiento['usuario'], $movimiento['id']);
               if ($siguienteMovimiento != null && $siguienteMovimiento != false && $movimiento['error'] == 0) {
@@ -140,6 +159,22 @@ if (isset($_SESSION['usuario'])==false) {
                 if ($noproductivo > '05:00:00') {
                   $noproductivo = '00:00:00';
                   $ciclo = '00:00:00';
+                }else {
+                  if ($cicloTotal != '00:00:00') {
+                    $cicloTotal = $movimientos -> SumarHoras($ciclo, $cicloTotal);
+                  }else {
+                    $cicloTotal = $ciclo;
+                  }
+                  if ($prodTotal != '00:00:00') {
+                    $prodTotal = $movimientos -> SumarHoras($prodTotal, $diferencia);
+                  }else {
+                    $prodTotal = $diferencia;
+                  }
+                  if ($noprodTotal != '00:00:00') {
+                    $noprodTotal = $movimientos -> SumarHoras($noprodTotal, $noproductivo);
+                  }else {
+                    $noprodTotal = $noproductivo;
+                  }
                 }
               }else {
                 $noproductivo = "";
@@ -175,9 +210,27 @@ if (isset($_SESSION['usuario'])==false) {
                     <td data-label='USUARIO' id='tdmod'>".$movimiento['usuario']."</td>
                     <td data-label='ROL' id='tdmod'>".$movimiento['rol']."</td>
                     <td data-label='ERROR' id='tdmod'>".$error."</td>
-                  </tr>
+                  </tr>";
 
-            ";} echo "</tbody></table></div>";
+                }
+                echo "<tfoot>
+                <tr id='trmod'>
+                <th scope='col' id='thmod' class='bastidor'>TOTALES</th>
+                <th scope='col' id='thmod'></th>
+                <th scope='col' id='thmod'></th>
+                <th scope='col' id='thmod'></th>
+                <th scope='col' id='thmod'></th>
+                <th scope='col' id='thmod'></th>
+                <th scope='col' id='thmod'></th>
+                <th scope='col' id='thmod'>".$prodTotal."</th>
+                <th scope='col' id='thmod'>".$noprodTotal."</th>
+                <th scope='col' id='thmod'>".$cicloTotal."</th>
+                <th scope='col' id='thmod'></th>
+                <th scope='col' id='thmod'></th>
+                <th scope='col' id='thmod'></th>
+                </tr>
+                </tfoot>";
+                echo "</tbody></table></div>";
          ?>
       </div> <!-- END container -->
     </div> <!-- END site-content -->
