@@ -211,7 +211,7 @@ if (isset($_POST['submit'])) {
   }else {
     ?>
       <script type="text/javascript">
-        alert('ERROR AL ACTUALIZAR LA ACTIVIDAD. INTENTELO DE NUEVO.');
+        alert('ELEGIR LAS FECHAS ANTES DE CONTINUAR.');
         window.location='actividadesActuales.php';
       </script>
     <?php

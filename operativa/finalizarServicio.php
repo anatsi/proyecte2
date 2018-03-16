@@ -125,7 +125,7 @@ textarea::placeholder{
         </script>
       <?php
     }else {
-      echo "Error";
+      echo "Error al finalizar el movimiento";
     }
   }
 
