@@ -97,6 +97,8 @@ textarea::placeholder{
         <h2>Finalizar servicio</h2>
         <form id="contactForm" action="finalizarServicio.php" method="post">
           <input type="hidden" name="fin" value="<?=$_GET['servicio']?>">
+          <input type="date" name="fecha" value="">
+          <br>
          <textarea class="formInput" name="comentario" id="message" placeholder="Ultimo comentario"></textarea>
           <br>
           <input class="submitForm" type="submit" value="Finalizar Servicio"/>
@@ -114,20 +116,26 @@ textarea::placeholder{
 </body>
 </html>
 <?php
-  echo $_GET['servicio'];
-  $fecha= date('Y-m-d');
-  if (isset($_POST['fin'])) {
-    $finalizado=$servicio->FinalizarActividad($_POST['fin'], $fecha, $_POST['comentario']);
-    if ($finalizado == true) {
+  if (isset($_POST['fin']) && isset($_POST['fecha'])) {
+    if (isset($_POST['fecha'])==false || $_POST['fecha'] == '0000-00-00' || $_POST['fecha'] == '') {
       ?>
         <script type="text/javascript">
-          window.location='actividadesActuales.php';
+          alert('ERROR. Elegir una fecha antes de continuar.');
+          window.location = 'actividadesActuales.php'
         </script>
       <?php
     }else {
-      echo "Error al finalizar el movimiento";
+      $finalizado=$servicio->FinalizarActividad($_POST['fin'], $_POST['fecha'], $_POST['comentario']);
+      if ($finalizado == true) {
+        ?>
+          <script type="text/javascript">
+            window.location='actividadesActuales.php';
+          </script>
+        <?php
+      }else {
+        echo "Error al finalizar el movimiento";
+      }
     }
   }
-
 ?>
 <?php } ?>
