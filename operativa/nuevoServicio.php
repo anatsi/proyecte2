@@ -125,7 +125,7 @@ if (isset($_SESSION['usuario'])==false) {
             <p><label><i class="fa fa-question-circle"></i><?php echo __('Nº coches', $lang); ?></label><input type="number" min='0'id="coches"/></p>
             <button type="button" name="button" onclick="calculoPersonas();"><?php echo __('Calcular', $lang); ?></button>
 
-              <p><label><i class="fa fa-question-circle"></i><?php echo __('Recursos totales', $lang); ?> (*)</label><input type="number" min='0' name="recursos" id="total" readonly/></p>
+              <p><label><i class="fa fa-question-circle"></i><?php echo __('Recursos totales', $lang); ?> (*)</label><input type="number" min='0' name="recursos" id="total" value=0 readonly/></p>
               <p><label><i class="fa fa-question-circle"></i><?php echo __('Turno mañana', $lang); ?></label><input type="number" min='0' name="tm" id="tm" value='0' onclick="suma();" onkeyup="suma();"/></p>
               <p><label><i class="fa fa-question-circle"></i><?php echo __('Turno tarde', $lang); ?></label><input type="number" min='0' name="tt" id="tt" value='0' onclick="suma();" onkeyup="suma();"/></p>
               <p><label><i class="fa fa-question-circle"></i><?php echo __('Turno noche', $lang); ?></label><input type="number" min='0'name="tn" id="tn" value='0' onclick="suma();" onkeyup="suma();"/></p>
