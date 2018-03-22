@@ -46,6 +46,19 @@ class Cliente extends db
   }
 }
 
+//funcion para insertar un nuevo servicio en la base de datos.
+function nuevoCliente($nombre){
+//realizamos la consuta y la guardamos en $sql
+$sql="INSERT INTO cliente(id, nombre)VALUES (NULL, '".$nombre."')";
+//Realizamos la consulta utilizando la funcion creada en db.php
+$resultado=$this->realizarConsulta($sql);
+if($resultado!=false){
+  return true;
+}else{
+  return null;
+}
+}
+
 }
 
  ?>

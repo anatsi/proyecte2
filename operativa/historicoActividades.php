@@ -99,6 +99,7 @@ if (isset($_SESSION['usuario'])==false) {
         <a href="actividadesActuales.php?lang=<?php echo $lang; ?>"><?php echo __('Actividades actuales', $lang); ?></a>
         <a href="historicoActividades.php?lang=<?php echo $lang; ?>"><?php echo __('Histórico actividades', $lang); ?></a>
         <a href="resumen.php">Búsqueda por fechas</a>
+        <a href="nuevoCliente.php">Nuevo cliente</a>
       </nav>
 
     </header>
