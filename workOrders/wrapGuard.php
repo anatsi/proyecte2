@@ -13,7 +13,7 @@ class WrapGuard extends dbJockeys
   {
     parent::__construct();
   }
-  //SACAR TODOS LOS MOVIMIENTOS
+  //SACAR TODOS LOS VINS
   function listaWrapGuard(){
     //Construimos la consulta
     $sql="SELECT * from wrap_guard ORDER BY id desc";
@@ -31,6 +31,7 @@ class WrapGuard extends dbJockeys
     }
   }
 
+  //SACAR EL NUMERO TOTAL DE VINS ESCANEADOSS
   function cuentaListaWrapGuard(){
     //Construimos la consulta
     $sql="SELECT count(*) as 'recuento' from wrap_guard";
@@ -67,6 +68,7 @@ class WrapGuard extends dbJockeys
     }
   }
 
+  //SACAR EL NUMERO TOTAL DE VINS FILTRADOS
   function cuentaListaWrapFiltrados($b){
     //Construimos la consulta
     $sql="SELECT count(*) as 'recuento' from movimientos WHERE concat(bastidor, usuario1, usuario2, modelo, destino, fecha, hora, repetido) LIKE '%".$b."%'";

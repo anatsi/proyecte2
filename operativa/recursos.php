@@ -27,6 +27,7 @@ class Recursos extends db
     }
   }
 
+  //funcion para sacar los recursos de un servicio determinado
   function RecursosId($id){
   //Construimos la consulta
   $sql="SELECT * FROM recursos WHERE servicio=".$id;
@@ -61,7 +62,7 @@ function modundia($servicio, $dia, $inicio, $fin, $total, $tm, $tt, $tn, $tc, $o
   }
 }
 
-//funcion para actualizar actividad de la tabla general
+//funcion para actualizar los recursos de la actividad de la tabla general
 function ActualizarRecursosActividad($id, $total, $tm, $tt, $tn, $tc, $o1, $i1, $f1, $o2, $i2, $f2, $o3, $i3, $f3, $o4, $i4, $f4, $o5, $i5, $f5,
  $o6, $i6, $f6){
   $sql="UPDATE recursos SET total=".$total.", tm=".$tm.", tt=".$tt.", tn=".$tn.", tc=".$tc.",

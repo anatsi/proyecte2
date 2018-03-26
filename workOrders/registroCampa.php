@@ -120,6 +120,8 @@ if (isset($_SESSION['usuario'])==false) {
                 <th scope='col' id='thmod'>FECHA </th>
                 <th scope='col' id='thmod'>HORA </th>
                 <th scope='col' id='thmod'>USUARIO</th>
+                <th scope='col' id='thmod'>PROVEEDOR</th>
+                <th scope='col' id='thmod'>INSPECCION</th>
               </tr>
             </thead><tbody id='tbodymod'>
 
@@ -133,6 +135,8 @@ if (isset($_SESSION['usuario'])==false) {
                     <td data-label='FECHA ORIGEN' id='tdmod'>".$inicio."</td>
                     <td data-label='HORA ORIGEN' id='tdmod'>".$campas['hora']."</td>
                     <td data-label='USUARIO' id='tdmod'>".$campas['usuario']."</td>
+                    <td data-label='PROVEEDOR' id='tdmod'>".$campas['proveedor']."</td>
+                    <td data-label='INSPECCION' id='tdmod'>".$campas['inspeccion']."</td>
                   </tr>
 
             ";} echo "</tbody></table></div>";

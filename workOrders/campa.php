@@ -13,6 +13,7 @@ class Campa extends dbJockeys
   {
     parent::__construct();
   }
+
   //SACAR TODOS LOS MOVIMIENTOS
   function listaCampa(){
     //Construimos la consulta
@@ -31,7 +32,7 @@ class Campa extends dbJockeys
     }
   }
 
-  //SACAR TODOS LOS MOVIMIENTOS
+  //SACAR EL NUMERO TOTAL DE MOVIMIENTOS
   function cuentaListaCampa(){
     //Construimos la consulta
     $sql="SELECT count(*) as 'recuento' from campa";
@@ -67,7 +68,7 @@ class Campa extends dbJockeys
     }
   }
 
-  //SACAR TODOS LOS MOVIMIENTOS FILTRADOS
+  //SACAR EL NUMERO TOTAL DE MOVIMIENTOS FILTRADOS
   function cuentaListaCampaFiltro($b){
     //Construimos la consulta
     $sql="SELECT count(*) as 'recuento' from campa WHERE concat(bastidor, fecha, hora, usuario) LIKE '%".$b."%'";
