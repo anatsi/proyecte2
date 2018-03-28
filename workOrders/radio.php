@@ -49,5 +49,40 @@ class Radio extends dbJockeys
     }
   }
 
+
+  function cuentaListaRadio(){
+    //Construimos la consulta
+    $sql="SELECT count(*) as recuento FROM radio";
+    //Realizamos la consulta
+    $resultado=$this->realizarConsulta($sql);
+    if($resultado!=null){
+      //Montamos la tabla de resultados
+      $tabla=[];
+      while($fila=$resultado->fetch_assoc()){
+        $tabla[]=$fila;
+      }
+      return $tabla;
+    }else{
+      return null;
+    }
+  }
+
+  function cuentaListaRadioFiltrados($b)
+  {
+    //Contruimos la consulta.
+    $sql = "SELECT count(*) as recuento FROM radio WHERE concat(bastidor, radio, clima, fecha, hora, usuario) LIKE '%".$b."%'";
+    //realizamos la consulta.
+    $resultado=$this->realizarConsulta($sql);
+    if ($resultado!=null) {
+      //Montamos la tabla de resultados
+      $tabla=[];
+      while ($fila=$resultado->fetch_assoc()) {
+        $tabla[]=$fila;
+      }
+      return $tabla;
+    }else {
+      return null;
+    }
+  }
 }
  ?>
