@@ -61,7 +61,7 @@ $objPHPExcel->getActiveSheet()->getStyle("A1:F1")->getFont()->setBold(true);
 
 //centrar todo el texto
 $centrar = array('alignment' => array('horizontal' => PHPExcel_Style_Alignment::HORIZONTAL_CENTER,));
-$objPHPExcel->getActiveSheet()->getStyle("A1:F999")->applyFromArray($centrar);
+$objPHPExcel->getActiveSheet()->getStyle("A1:F".$i)->applyFromArray($centrar);
 
 //poner los bordes
 $i2 = $i -1;

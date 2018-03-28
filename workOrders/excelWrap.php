@@ -69,7 +69,7 @@ $objPHPExcel->getActiveSheet()->getStyle("A1:H1")->getFont()->setBold(true);
 
 //centrar todo el texto
 $centrar = array('alignment' => array('horizontal' => PHPExcel_Style_Alignment::HORIZONTAL_CENTER,));
-$objPHPExcel->getActiveSheet()->getStyle("A1:H999")->applyFromArray($centrar);
+$objPHPExcel->getActiveSheet()->getStyle("A1:H".$i)->applyFromArray($centrar);
 
 //poner los bordes
 $i2 = $i -1;
