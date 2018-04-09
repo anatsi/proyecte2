@@ -73,13 +73,6 @@ if (isset($_SESSION['usuario'])==false) {
         $("table").stickyTableHeaders();
       });
     </script>
-    <!--Script para fijar la cabecera de las tablas
-    <script type="text/javascript" src="../js/jquery.stickytablefooter.min.js"></script>
-    <script type="text/javascript">
-      $(function() {
-        $("table").stickyTableFooter();
-      });
-    </script>-->
 </head>
 <body>
   <head>
@@ -115,7 +108,7 @@ if (isset($_SESSION['usuario'])==false) {
       <div class="container">
         <!-- Contenido de la pagina. -->
         <h2>MOVIMIENTOS</h2>
-       <input type="search" id="busqueda" placeholder='FILTRAR'/><br/><br/>
+       <input type="text" id="busqueda" placeholder='FILTRAR'/><br/><br/>
 
         <div id="resultado">
         <!--tabla-->

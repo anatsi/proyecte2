@@ -71,7 +71,7 @@ class WrapGuard extends dbJockeys
   //SACAR EL NUMERO TOTAL DE VINS FILTRADOS
   function cuentaListaWrapFiltrados($b){
     //Construimos la consulta
-    $sql="SELECT count(*) as 'recuento' from movimientos WHERE concat(bastidor, usuario1, usuario2, modelo, destino, fecha, hora, repetido) LIKE '%".$b."%'";
+    $sql="SELECT count(*) as 'recuento' from wrap_guard WHERE concat(bastidor, usuario1, usuario2, modelo, destino, fecha, hora, repetido) LIKE '%".$b."%'";
     //Realizamos la consulta
     $resultado=$this->realizarConsulta($sql);
     if($resultado!=null){

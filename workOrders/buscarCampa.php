@@ -8,6 +8,13 @@
         background-color: #CAC6C5;
       }
     </style>
+    <!--Script para fijar la cabecera de las tablas-->
+    <script type="text/javascript" src="../js/jquery.stickytableheaders.min.js"></script>
+    <script type="text/javascript">
+      $(function() {
+        $("table").stickyTableHeaders();
+      });
+    </script>
   </head>
   <body>
     <?php
