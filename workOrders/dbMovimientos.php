@@ -2,13 +2,13 @@
 /**
  * Permitir la conexion contra la base de datos de acceso
  */
-class dbJockeys
+class dbMovimientos
 {
   //Atributos necesarios para la conexion
   private $host="localhost";
   private $user="root";
   private $pass="";
-  private $db_name="registros";
+  private $db_name="work_orders";
   //Conector
   private $conexion;
   //Propiedades para controlar errores
