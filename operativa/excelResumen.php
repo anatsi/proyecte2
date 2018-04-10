@@ -56,11 +56,9 @@ $objPHPExcel->setActiveSheetIndex(0)
   $i=2;
   foreach ($lista as $serv) {
     //arreglar las fechas
-    $fechai=explode("-", $serv['f_inicio']);
-    $inicio=$fechai[2]."/".$fechai[1]."/".$fechai[0];
+    $inicio=$serv['f_inicio'];
     if ($serv['f_fin']!=NULL && $serv['f_fin']!='0000-00-00') {
-      $fechaf=explode("-", $serv['f_fin']);
-      $fin=$fechaf[2]."/".$fechaf[1]."/".$fechaf[0];
+      $fin=$serv['f_fin'];
     }else {
       $fin='';
     }
@@ -109,8 +107,8 @@ $objPHPExcel->setActiveSheetIndex(0)
     ->setCellValue('A'.$i, $serv['descripcion'])
     ->setCellValue('B'.$i, $serv['com_depto'])
     ->setCellValue('C'.$i, $serv['modelos'])
-    ->setCellValue('D'.$i, $inicio)
-    ->setCellValue('E'.$i, $fin)
+    ->setCellValue('D'.$i, PHPExcel_Shared_Date::PHPToExcel( $inicio ))
+    ->setCellValue('E'.$i, PHPExcel_Shared_Date::PHPToExcel( $fin ))
     ->setCellValue('F'.$i, $serv['recursos'])
     ->setCellValue('G'.$i, $recurso['tm'])
     ->setCellValue('H'.$i, $recurso['tt'])
@@ -139,7 +137,7 @@ $objPHPExcel->setActiveSheetIndex(0)
       $objPHPExcel->getActiveSheet()->getStyle('A'.$i.':U'.$i.'')->applyFromArray($style);
       //fecha inicio periodo normal
       $objPHPExcel->setActiveSheetIndex(0)
-      ->setCellValue('D'.$i, $inicio)
+      ->setCellValue('D'.$i, PHPExcel_Shared_Date::PHPToExcel( $inicio ))
       ;
       foreach ($modInfo as $info) {
         //comrpobacion de las fechas y cambio de formato de las fechas
@@ -147,12 +145,12 @@ $objPHPExcel->setActiveSheetIndex(0)
           //fecha fin del periodo (un dia antes del inicio de la modificacion).
           //restar un dia a la fecha
           $nuevoHasta= strtotime('-1 day', strtotime($info['inicio']));
-          $nuevoHasta = date('d/m/Y', $nuevoHasta);
+          $nuevoHasta = date('Y-m-d', $nuevoHasta);
           //cambiar color de la letra
           $objPHPExcel->getActiveSheet()->getStyle('A'.$i.':U'.$i.'')->applyFromArray($style);
           //escribir la informacion en el excel
           $objPHPExcel->setActiveSheetIndex(0)
-          ->setCellValue('E'.$i, $nuevoHasta)
+          ->setCellValue('E'.$i, PHPExcel_Shared_Date::PHPToExcel( $nuevoHasta ))
           ->setCellValue('A'.$i, $serv['descripcion'])
           ->setCellValue('C'.$i, $serv['modelos'])
           ->setCellValue('F'.$i, $serv['recursos'])
@@ -164,11 +162,11 @@ $objPHPExcel->setActiveSheetIndex(0)
           $i++;
           //acaba periodo normal y empieza modificacion
           //convertir las fechas
-          $inicioInfo = date('d/m/Y', strtotime($info['inicio']));
+          $inicioInfo = date('Y-m-d', strtotime($info['inicio']));
           if ($info['fin']!='0000-00-00') {
-            $finInfo = date('d/m/Y', strtotime($info['fin']));
+            $finInfo = date('Y-m-d', strtotime($info['fin']));
             $nuevoDesde= strtotime('+1 day', strtotime($info['fin']));
-            $nuevoDesde = date('d/m/Y', $nuevoDesde);
+            $nuevoDesde = date('Y-m-d', $nuevoDesde);
           }else {
             $finInfo='';
           }
@@ -178,8 +176,8 @@ $objPHPExcel->setActiveSheetIndex(0)
           $objPHPExcel->setActiveSheetIndex(0)
           ->setCellValue('A'.$i, $info['descripcion'])
           ->setCellValue('C'.$i, $info['modelos'])
-          ->setCellValue('D'.$i, $inicioInfo)
-          ->setCellValue('E'.$i, $finInfo)
+          ->setCellValue('D'.$i, PHPExcel_Shared_Date::PHPToExcel( $inicioInfo ))
+          ->setCellValue('E'.$i, PHPExcel_Shared_Date::PHPToExcel( $finInfo ))
           ->setCellValue('F'.$i, $serv['recursos'])
           ->setCellValue('M'.$i, $info['responsable'])
           ->setCellValue('N'.$i, $info['telefono'])
@@ -190,7 +188,7 @@ $objPHPExcel->setActiveSheetIndex(0)
           $objPHPExcel->getActiveSheet()->getStyle('A'.$i.':U'.$i.'')->applyFromArray($style);
           //Ponemos el desde del nuevo periodo de normalidad
           $objPHPExcel -> setActiveSheetIndex(0)
-          ->setCellValue('D'.$i, $nuevoDesde)
+          ->setCellValue('D'.$i, PHPExcel_Shared_Date::PHPToExcel( $nuevoDesde ))
           ;
 
         }else {
@@ -199,12 +197,12 @@ $objPHPExcel->setActiveSheetIndex(0)
           //fecha fin del periodo (un dia antes del inicio de la modificacion).
           //restar un dia a la fecha
           $nuevoHasta= strtotime('-1 day', strtotime($info['suelto']));
-          $nuevoHasta = date('d/m/Y', $nuevoHasta);
+          $nuevoHasta = date('Y-m-d', $nuevoHasta);
           //cambiar color de la letra
           $objPHPExcel->getActiveSheet()->getStyle('A'.$i.':U'.$i.'')->applyFromArray($style);
           //escribir la informacion en el excel
           $objPHPExcel->setActiveSheetIndex(0)
-          ->setCellValue('E'.$i, $nuevoHasta)
+          ->setCellValue('E'.$i, PHPExcel_Shared_Date::PHPToExcel( $nuevoHasta ))
           ->setCellValue('A'.$i, $serv['descripcion'])
           ->setCellValue('C'.$i, $serv['modelos'])
           ->setCellValue('F'.$i, $serv['recursos'])
@@ -215,15 +213,15 @@ $objPHPExcel->setActiveSheetIndex(0)
           $i++;
           //periodo de modificaciones
           //convertir la fecha
-          $sueltoInfo = date('d/m/Y', strtotime($info['suelto']));
+          $sueltoInfo = date('Y-m-d', strtotime($info['suelto']));
           //cambiar color de la letra
           $objPHPExcel->getActiveSheet()->getStyle('A'.$i.':U'.$i.'')->applyFromArray($style);
           //escribir los datos en el excel
           $objPHPExcel->setActiveSheetIndex(0)
           ->setCellValue('A'.$i, $info['descripcion'])
           ->setCellValue('C'.$i, $info['modelos'])
-          ->setCellValue('D'.$i, $sueltoInfo)
-          ->setCellValue('E'.$i, $sueltoInfo)
+          ->setCellValue('D'.$i, PHPExcel_Shared_Date::PHPToExcel( $sueltoInfo ))
+          ->setCellValue('E'.$i, PHPExcel_Shared_Date::PHPToExcel( $sueltoInfo ))
           ->setCellValue('F'.$i, $serv['recursos'])
           ->setCellValue('M'.$i, $info['responsable'])
           ->setCellValue('N'.$i, $info['telefono'])
@@ -233,12 +231,12 @@ $objPHPExcel->setActiveSheetIndex(0)
           //desde del siguiente periodo normal
           //sumar un dia al dia de la modificacion.
           $nuevoDesde= strtotime('+1 day', strtotime($info['suelto']));
-          $nuevoDesde = date('d/m/Y', $nuevoDesde);
+          $nuevoDesde = date('Y-m-d', $nuevoDesde);
           //cambiar color de la letra
           $objPHPExcel->getActiveSheet()->getStyle('A'.$i.':U'.$i.'')->applyFromArray($style);
           //escribir el desde en el excel
           $objPHPExcel -> setActiveSheetIndex(0)
-          ->setCellValue('D'.$i, $nuevoDesde)
+          ->setCellValue('D'.$i, PHPExcel_Shared_Date::PHPToExcel( $nuevoDesde ))
           ;
 
         }
@@ -248,7 +246,7 @@ $objPHPExcel->setActiveSheetIndex(0)
       $objPHPExcel->getActiveSheet()->getStyle('A'.$i.':U'.$i.'')->applyFromArray($style);
       //escribir la informacion en el excel
       $objPHPExcel->setActiveSheetIndex(0)
-      ->setCellValue('E'.$i, $fin)
+      ->setCellValue('E'.$i, PHPExcel_Shared_Date::PHPToExcel( $fin ))
       ->setCellValue('A'.$i, $serv['descripcion'])
       ->setCellValue('C'.$i, $serv['modelos'])
       ->setCellValue('F'.$i, $serv['recursos'])
@@ -266,7 +264,7 @@ $objPHPExcel->setActiveSheetIndex(0)
       $objPHPExcel->getActiveSheet()->getStyle('A'.$i.':U'.$i.'')->applyFromArray($otherStyle);
       //fecha inicio periodo normal
       $objPHPExcel->setActiveSheetIndex(0)
-      ->setCellValue('D'.$i, $inicio)
+      ->setCellValue('D'.$i, PHPExcel_Shared_Date::PHPToExcel( $inicio ))
       ;
       foreach ($modRecursos as $mod) {
         //arreglamos los turnos especiales.
@@ -296,12 +294,12 @@ $objPHPExcel->setActiveSheetIndex(0)
           //informacion  y final del primer periodo normal.
           //restar un dia a la fecha
           $nuevoHasta= strtotime('-1 day', strtotime($mod['inicio']));
-          $nuevoHasta = date('d/m/Y', $nuevoHasta);
+          $nuevoHasta = date('Y-m-d', $nuevoHasta);
           //cambiar el color a la letra
           $objPHPExcel->getActiveSheet()->getStyle('A'.$i.':U'.$i.'')->applyFromArray($otherStyle);
           //escribir la informacion en el excel.
           $objPHPExcel->setActiveSheetIndex(0)
-          ->setCellValue('E'.$i, $nuevoHasta)
+          ->setCellValue('E'.$i, PHPExcel_Shared_Date::PHPToExcel( $nuevoHasta ))
           ->setCellValue('A'.$i, $serv['descripcion'])
           ->setCellValue('F'.$i, $serv['recursos'])
           ->setCellValue('G'.$i, $recurso['tm'])
@@ -313,11 +311,11 @@ $objPHPExcel->setActiveSheetIndex(0)
 
           //acaba periodo normal y empieza la modificacion
           //convertir las fechas de inicio y fin de la modificacion.
-          $inicioRec = date('d/m/Y', strtotime($mod['inicio']));
+          $inicioRec = date('Y-m-d', strtotime($mod['inicio']));
           if ($mod['fin']!='0000-00-00') {
-            $finRec = date('d/m/Y', strtotime($mod['fin']));
+            $finRec = date('Y-m-d', strtotime($mod['fin']));
             $nuevoDesde= strtotime('+1 day', strtotime($mod['fin']));
-            $nuevoDesde = date('d/m/Y', $nuevoDesde);
+            $nuevoDesde = date('Y-m-d', $nuevoDesde);
           }else {
             $finRec='';
           }
@@ -325,8 +323,8 @@ $objPHPExcel->setActiveSheetIndex(0)
           //cambiar el color a la letra
           $objPHPExcel->getActiveSheet()->getStyle('A'.$i.':U'.$i.'')->applyFromArray($otherStyle);
           $objPHPExcel->setActiveSheetIndex(0)
-          ->setCellValue('D'.$i, $inicioRec)
-          ->setCellValue('E'.$i, $finRec)
+          ->setCellValue('D'.$i, PHPExcel_Shared_Date::PHPToExcel( $inicioRec ))
+          ->setCellValue('E'.$i, PHPExcel_Shared_Date::PHPToExcel( $finRec ))
           ->setCellValue('A'.$i, $serv['descripcion'])
           ->setCellValue('F'.$i, $mod['total'])
           ->setCellValue('G'.$i, $mod['tm'])
@@ -341,19 +339,19 @@ $objPHPExcel->setActiveSheetIndex(0)
           //cambiar el color a la letra
           $objPHPExcel->getActiveSheet()->getStyle('A'.$i.':U'.$i.'')->applyFromArray($otherStyle);
           $objPHPExcel -> setActiveSheetIndex(0)
-          ->setCellValue('D'.$i, $nuevoDesde)
+          ->setCellValue('D'.$i, PHPExcel_Shared_Date::PHPToExcel( $nuevoDesde ))
           ;
         }else {
           //hasta del periodo normal
           //fecha fin del periodo (un dia antes del inicio de la modificacion).
           //restar un dia a la fecha
           $nuevoHasta= strtotime('-1 day', strtotime($mod['suelto']));
-          $nuevoHasta = date('d/m/Y', $nuevoHasta);
+          $nuevoHasta = date('Y-m-d', $nuevoHasta);
           //escribir la informacion del periodo normal.
           //cambiar el color a la letra
           $objPHPExcel->getActiveSheet()->getStyle('A'.$i.':U'.$i.'')->applyFromArray($otherStyle);
           $objPHPExcel->setActiveSheetIndex(0)
-          ->setCellValue('E'.$i, $nuevoHasta)
+          ->setCellValue('E'.$i, PHPExcel_Shared_Date::PHPToExcel( $nuevoHasta ))
           ->setCellValue('A'.$i, $serv['descripcion'])
           ->setCellValue('F'.$i, $serv['recursos'])
           ->setCellValue('G'.$i, $recurso['tm'])
@@ -365,13 +363,13 @@ $objPHPExcel->setActiveSheetIndex(0)
 
           //periodo de modificaciones
           //convertir la fecha
-          $sueltoRec = date('d/m/Y', strtotime($mod['suelto']));
+          $sueltoRec = date('Y-m-d', strtotime($mod['suelto']));
           //escribir en el excel las modificaciones
           //cambiar el color a la letra
           $objPHPExcel->getActiveSheet()->getStyle('A'.$i.':U'.$i.'')->applyFromArray($otherStyle);
           $objPHPExcel->setActiveSheetIndex(0)
-          ->setCellValue('D'.$i, $sueltoRec)
-          ->setCellValue('E'.$i, $sueltoRec)
+          ->setCellValue('D'.$i, PHPExcel_Shared_Date::PHPToExcel( $sueltoRec ))
+          ->setCellValue('E'.$i, PHPExcel_Shared_Date::PHPToExcel( $sueltoRec ))
           ->setCellValue('A'.$i, $serv['descripcion'])
           ->setCellValue('F'.$i, $mod['total'])
           ->setCellValue('G'.$i, $mod['tm'])
@@ -385,12 +383,12 @@ $objPHPExcel->setActiveSheetIndex(0)
           //desde del periodo normal
           //sumar un dia al dia de la modificacion.
           $nuevoDesde= strtotime('+1 day', strtotime($mod['suelto']));
-          $nuevoDesde = date('d/m/Y', $nuevoDesde);
+          $nuevoDesde = date('Y-m-d', $nuevoDesde);
           //escribir el desde en el excel
           //cambiar el color a la letra
           $objPHPExcel->getActiveSheet()->getStyle('A'.$i.':U'.$i.'')->applyFromArray($otherStyle);
           $objPHPExcel -> setActiveSheetIndex(0)
-          ->setCellValue('D'.$i, $nuevoDesde)
+          ->setCellValue('D'.$i, PHPExcel_Shared_Date::PHPToExcel( $nuevoDesde ))
           ;
         }
       }
@@ -398,7 +396,7 @@ $objPHPExcel->setActiveSheetIndex(0)
       //cambiar el color a la letra
       $objPHPExcel->getActiveSheet()->getStyle('A'.$i.':U'.$i.'')->applyFromArray($otherStyle);
       $objPHPExcel->setActiveSheetIndex(0)
-      ->setCellValue('E'.$i, $fin)
+      ->setCellValue('E'.$i, PHPExcel_Shared_Date::PHPToExcel( $fin ))
       ->setCellValue('A'.$i, $serv['descripcion'])
       ->setCellValue('F'.$i, $serv['recursos'])
       ->setCellValue('G'.$i, $recurso['tm'])
@@ -430,6 +428,11 @@ $objPHPExcel->getActiveSheet()->getStyle("A1:U100")->applyFromArray($centrar);
 $i2 = $i -1;
 $bordes = array('borders' => array('allborders' => array('style' => PHPExcel_Style_Border::BORDER_THIN)));
 $objPHPExcel->getActiveSheet()->getStyle("A1:U".$i2)->applyFromArray($bordes);
+
+//dar formato de fecha a las celdas de fechas.
+$formatoFecha = 'dd/mm/yyyy';
+$objPHPExcel->getActiveSheet()->getStyle('D2:D'.$i)->getNumberFormat()->setFormatCode($formatoFecha);
+$objPHPExcel->getActiveSheet()->getStyle('E2:E'.$i)->getNumberFormat()->setFormatCode($formatoFecha);
 
 // Se modifican los encabezados del HTTP para indicar que se envia un archivo de Excel.
 header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');

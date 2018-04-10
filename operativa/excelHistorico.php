@@ -59,11 +59,9 @@ if (isset($_GET['b'])) {
   $i=2;
 foreach ($lista as $serv) {
   //arreglar las fechas de inicio y de fin del servicio
-  $inicio=explode("-", $serv['f_inicio']);
-  $inicio=$inicio[2]."/".$inicio[1]."/".$inicio[0];
+  $inicio=$serv['f_inicio'];
   if ($serv['f_fin']!=NULL && $serv['f_fin']!='0000-00-00') {
-    $fin=explode("-", $serv['f_fin']);
-    $fin=$fin[2]."/".$fin[1]."/".$fin[0];
+    $fin=$serv['f_fin'];
   }else {
     $fin='';
   }
@@ -109,8 +107,8 @@ foreach ($lista as $serv) {
   ->setCellValue('A'.$i, $serv['descripcion'])
   ->setCellValue('B'.$i, $serv['com_depto'])
   ->setCellValue('C'.$i, $serv['modelos'])
-  ->setCellValue('D'.$i, $inicio)
-  ->setCellValue('E'.$i, $fin)
+  ->setCellValue('D'.$i, PHPExcel_Shared_Date::PHPToExcel( $inicio ))
+  ->setCellValue('E'.$i, PHPExcel_Shared_Date::PHPToExcel( $fin ))
   ->setCellValue('F'.$i, $serv['recursos'])
   ->setCellValue('G'.$i, $recurso['tm'])
   ->setCellValue('H'.$i, $recurso['tt'])
@@ -149,6 +147,11 @@ $objPHPExcel->getActiveSheet()->getStyle("A1:U100")->applyFromArray($centrar);
 $i2 = $i -1;
 $bordes = array('borders' => array('allborders' => array('style' => PHPExcel_Style_Border::BORDER_THIN)));
 $objPHPExcel->getActiveSheet()->getStyle("A1:U".$i2)->applyFromArray($bordes);
+
+//dar formato de fecha a las celdas de fechas.
+$formatoFecha = 'dd/mm/yyyy';
+$objPHPExcel->getActiveSheet()->getStyle('D2:D'.$i)->getNumberFormat()->setFormatCode($formatoFecha);
+$objPHPExcel->getActiveSheet()->getStyle('E2:E'.$i)->getNumberFormat()->setFormatCode($formatoFecha);
 
 // Se modifican los encabezados del HTTP para indicar que se envia un archivo de Excel.
 header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
