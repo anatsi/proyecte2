@@ -39,16 +39,15 @@ if (isset($_GET['b'])) {
 
   $i=2;
 foreach ($lista as $radio) {
-  $fecha = str_replace("-", "/", $radio['fecha']);
-
   $objPHPExcel->setActiveSheetIndex(0)
   ->setCellValue('A'.$i, $radio['bastidor'])
   ->setCellValue('B'.$i, $radio['radio'])
   ->setCellValue('C'.$i, $radio['clima'])
-  ->setCellValue('D'.$i, $fecha)
+  ->setCellValue('D'.$i, PHPExcel_Shared_Date::PHPToExcel( $radio['fecha'] ))
   ->setCellValue('E'.$i, $radio['hora'])
   ->setCellValue('F'.$i, $radio['usuario'])
   ;
+
   $i++;
 }
 
@@ -71,6 +70,10 @@ $objPHPExcel->getActiveSheet()->getStyle("A1:F".$i)->applyFromArray($centrar);
 $i2 = $i -1;
 $bordes = array('borders' => array('allborders' => array('style' => PHPExcel_Style_Border::BORDER_THIN)));
 $objPHPExcel->getActiveSheet()->getStyle("A1:F".$i2)->applyFromArray($bordes);
+
+//dar formato de fecha a las celdas de fechas.
+$formatoFecha = 'dd/mm/yyyy';
+$objPHPExcel->getActiveSheet()->getStyle('D2:D'.$i)->getNumberFormat()->setFormatCode($formatoFecha);
 
 // Se modifican los encabezados del HTTP para indicar que se envia un archivo de Excel.
 header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');

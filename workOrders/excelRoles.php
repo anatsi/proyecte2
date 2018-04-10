@@ -34,15 +34,12 @@ $objPHPExcel->setActiveSheetIndex(0)
 
   $i=2;
 foreach ($lista as $rol) {
-  $fechai = str_replace("-", "/", $rol['fecha_inicio']);
-  $fechaf = str_replace("-", "/", $rol['fecha_fin']);
-
   $objPHPExcel->setActiveSheetIndex(0)
   ->setCellValue('A'.$i, $rol['usuario'])
   ->setCellValue('B'.$i, $rol['rol'])
-  ->setCellValue('C'.$i, $fechai)
+  ->setCellValue('C'.$i, PHPExcel_Shared_Date::PHPToExcel( $rol['fecha_inicio'] ))
   ->setCellValue('D'.$i, $rol['hora_inicio'])
-  ->setCellValue('E'.$i, $fechaf)
+  ->setCellValue('E'.$i, PHPExcel_Shared_Date::PHPToExcel( $rol['fecha_fin'] ))
   ->setCellValue('F'.$i, $rol['hora_fin'])
   ;
   $i++;
@@ -67,6 +64,11 @@ $objPHPExcel->getActiveSheet()->getStyle("A1:F".$i)->applyFromArray($centrar);
 $i2 = $i -1;
 $bordes = array('borders' => array('allborders' => array('style' => PHPExcel_Style_Border::BORDER_THIN)));
 $objPHPExcel->getActiveSheet()->getStyle("A1:F".$i2)->applyFromArray($bordes);
+
+//dar formato de fecha a las celdas de fechas.
+$formatoFecha = 'dd/mm/yyyy';
+$objPHPExcel->getActiveSheet()->getStyle('C2:C'.$i)->getNumberFormat()->setFormatCode($formatoFecha);
+$objPHPExcel->getActiveSheet()->getStyle('E2:E'.$i)->getNumberFormat()->setFormatCode($formatoFecha);
 
 // Se modifican los encabezados del HTTP para indicar que se envia un archivo de Excel.
 header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');

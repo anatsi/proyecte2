@@ -59,8 +59,6 @@ foreach ($lista as $movimiento) {
     $noproductivo = "";
     $ciclo = "";
   }
-  $fecha_origen = str_replace("-", "/", $movimiento['fecha_origen']);
-  $fecha_destino = str_replace("-", "/", $movimiento['fecha_destino']);
   //sacar si hay error o no
   if ($movimiento['error']==1) {
     $error = 'SI';
@@ -72,10 +70,10 @@ foreach ($lista as $movimiento) {
   $objPHPExcel->setActiveSheetIndex(0)
   ->setCellValue('A'.$i, $movimiento['bastidor'])
   ->setCellValue('B'.$i, $movimiento['origen'])
-  ->setCellValue('C'.$i, $fecha_origen)
+  ->setCellValue('C'.$i, PHPExcel_Shared_Date::PHPToExcel( $movimiento['fecha_origen'] ))
   ->setCellValue('D'.$i, $movimiento['hora_origen'])
   ->setCellValue('E'.$i, $movimiento['destino'])
-  ->setCellValue('F'.$i, $fecha_destino)
+  ->setCellValue('F'.$i, PHPExcel_Shared_Date::PHPToExcel( $movimiento['fecha_destino'] ))
   ->setCellValue('G'.$i, $movimiento['hora_destino'])
   ->setCellValue('H'.$i, $diferencia)
   ->setCellValue('I'.$i, $noproductivo)
@@ -106,6 +104,11 @@ $objPHPExcel->getActiveSheet()->getStyle("A1:M".$i)->applyFromArray($centrar);
 $i2 = $i -1;
 $bordes = array('borders' => array('allborders' => array('style' => PHPExcel_Style_Border::BORDER_THIN)));
 $objPHPExcel->getActiveSheet()->getStyle("A1:M".$i2)->applyFromArray($bordes);
+
+//dar formato de fecha a las celdas de fechas.
+$formatoFecha = 'dd/mm/yyyy';
+$objPHPExcel->getActiveSheet()->getStyle('C2:C'.$i)->getNumberFormat()->setFormatCode($formatoFecha);
+$objPHPExcel->getActiveSheet()->getStyle('F2:F'.$i)->getNumberFormat()->setFormatCode($formatoFecha);
 
 // Se modifican los encabezados del HTTP para indicar que se envia un archivo de Excel.
 header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
