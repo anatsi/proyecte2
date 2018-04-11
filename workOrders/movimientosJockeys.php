@@ -100,6 +100,7 @@ if (isset($_SESSION['usuario'])==false) {
         <a href="registroWrap.php">Wrap Guard</a>
         <a href="filtroRoles.php">Roles</a>
         <a href="registroRadio.php">Inspección radio/climatizador</a>
+        <a href="registroReallocation.php">Reallocation</a>
       </nav>
 
     </header>
