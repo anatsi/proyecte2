@@ -10,15 +10,6 @@ if (isset($_SESSION['usuario'])==false) {
 }else {
  ?>
 <!DOCTYPE html>
-<!--
-#######################################################
-#         TSI - Employment Directory. Version 1       #
-#                                                     #
-# Author: Vicente Catala                              #
-# Date: 06/11/2017                                    #
-#                                                     #
-#######################################################
--->
 <html lang="es">
 <head>
   <meta charset="UTF-8">

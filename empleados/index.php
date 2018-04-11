@@ -8,7 +8,9 @@ $usuario=new User();
 $sesion=new Sesiones();
 $empleado= new Empleados();
 
+//comprobamos si la sesion esta iniciada
 if (isset($_SESSION['usuario'])==false) {
+  //si no esta iniciada, llevamos al usuario a la pagina de inicio de sesion
   header('Location: ../index.php');
 }else {
  ?>
@@ -111,7 +113,9 @@ if (isset($_SESSION['usuario'])==false) {
         </thead>
         <tbody id="tbodymod">
           <?php
+          //llamamos a la consulta de listar todos los empleados
             $listaempleados=$empleado->listaEmpleados();
+            //sacamos los empleados por pantalla en una tabla
             foreach ($listaempleados as $empleados) {
               echo "<tr id='trmod'>";
               echo "<td scope='row' data-label='Nombre' id='tdmod'>".$empleados['nombre']."</td>";

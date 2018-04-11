@@ -18,7 +18,9 @@ $cliente=new Cliente();
 $servicio=new Servicio();
 $recursos=new Recursos();
 
+//comprobamos si hay una sesion iniciada
 if (isset($_SESSION['usuario'])==false) {
+  //si no se ha iniciado sesion, lo devolvemos a la pagina de inicio de sesion
   header('Location: ../index.php');
 }else {
  ?>
@@ -35,6 +37,7 @@ if (isset($_SESSION['usuario'])==false) {
     <link rel="stylesheet" href="../css/modificar.css">
     <script type="text/javascript" src="../js/servicioForm.js"></script>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- CSS para alternar los colores de la tabla -->
     <style media="screen">
       tr:nth-child(even) {
         background-color: #CAC6C5;
@@ -93,11 +96,13 @@ if (isset($_SESSION['usuario'])==false) {
         </thead>
         <tbody id="tbodymod">
           <?php
+          //sacamos la lista de los servicios de hoy
             $listamodificar=$servicio->listaServiciosHoy();
             foreach ($listamodificar as $lista) {
               //transformamos la fecha
               $fecha=explode("-", $lista['f_inicio']);
               $fechaHoy=$fecha[2]."-".$fecha[1]."-".$fecha[0];
+              //sacamos el nombre del cliente por su id
               $clientes=$cliente->ClienteId($lista['id_cliente']);
               echo "<tr id='trmod'>";
               echo "<td scope='row' data-label='".__('Actividad', $lang)."' id='tdmod'><a id='timeline' href='timeline.php?servicio=".$lista['id']."'>".$lista['descripcion']."</a></td>";

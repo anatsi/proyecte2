@@ -7,8 +7,9 @@ require_once 'empleados.php';
 $usuario=new User();
 $sesion=new Sesiones();
 $empleado= new Empleados();
-
+//comprobamos si se ha iniciado la sesion
 if (isset($_SESSION['usuario'])==false) {
+  //si no se ha iniciado, devolvemos al usuario a la pantalla de iniciar sesion
   header('Location: ../index.php');
 }else {
  ?>
@@ -81,19 +82,26 @@ if (isset($_SESSION['usuario'])==false) {
 </body>
 </html>
 <?php
+//comprobamos si se ha rellenado el nombre y el apellido
   if (isset($_POST['nombre']) && isset($_POST['apellidos'])) {
+    //incializamos la variable activo a 0
     $activo=0;
+    //si se ha marcado la casilla de empleado activo, marcamos la variable activo como 1
     if (isset($_POST['activo'])) {
       $activo=1;
     }
+    //llamamos a la funcion de insertar un nuevo usuario en la bbdd
     $nuevoEmpleado= $empleado->nuevoEmpleado($_POST['nombre'], $_POST['apellidos'], $activo, $_POST['tel']);
     if ($nuevoEmpleado==null) {
+      //si no se ha podido insertar, sacamos un mensaje avisando
       ?>
       <script type="text/javascript">
         alert('Error al registrar el nuevo empleado');
+        window.location = 'index.php';
       </script>
       <?php
     }else {
+      //si se inserta con exito, avisamos al usuario y lo devolvemos a inicio
       ?>
         <script type="text/javascript">
           alert('Nuevo empleado registrado con exito.');

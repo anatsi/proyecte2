@@ -3,8 +3,8 @@
   <head>
     <meta charset="utf-8">
     <title></title>
-    <!--ORDENAR TABLA
-    <script type="text/javascript" src="../js/jquery.min.js"></script>-->
+    <!--ORDENAR TABLA-->
+    <!--<script type="text/javascript" src="../js/jquery.min.js"></script>-->
     <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.9.1/jquery.tablesorter.min.js"></script>
     <script>
       $(function(){
@@ -14,16 +14,19 @@
   </head>
   <body>
     <?php
+    //incluimos los archivos necesarios e inicializamos sus objetos
     require_once 'empleados.php';
     $empleado=new Empleados();
 
+    //guardamos lo que se quiere buscar en una variable
     $buscar = $_POST['b'];
 
     if(!empty($buscar)) {
+        //si se ha enviado algo para buscar, llamamos a la funcion de abajo
           buscar($buscar);
     }else{
-
-
+      //si no se ha enviado nada, sacamos toda la informacion
+      //llamamos a la funcion de listar todos los empleados
       $listaEmpleados= $empleado->listaEmpleados();
 
         echo "
@@ -56,9 +59,12 @@
           ;} echo "</tbody></table></div>";
     }
 
+    //funcion para sacar por pantalla los datos a buscar
     function buscar($b) {
+      //incluimos los archivos necesarios e inicializamos sus objetos
       require_once 'empleados.php';
       $empleado=new Empleados();
+      //sacamos la lista de empleados que coinciden con el filtro
         $filtrados= $empleado->listaFiltrados($b);
         $filtro=base64_encode($b);
         echo "

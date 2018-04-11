@@ -2,7 +2,7 @@
 //llamamos a la clase db encargada de la conexion contra la base de datos.
 require_once '../operativa/db.php';
 /**
- * Clase cliente encargada de hacer las consultas contra esta tabla de la db
+ * Clase empleados encargada de hacer las consultas contra esta tabla de la db
  */
 class Empleados extends db
 {

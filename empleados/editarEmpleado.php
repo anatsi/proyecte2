@@ -8,6 +8,7 @@ $usuario=new User();
 $sesion=new Sesiones();
 $empleado= new Empleados();
 
+//si la sesion no esta iniciada, devolvemos al usuario a la pagina de inicio de sesion
 if (isset($_SESSION['usuario'])==false) {
   header('Location: ../index.php');
 }else {
@@ -50,6 +51,7 @@ if (isset($_SESSION['usuario'])==false) {
 
     </header>
     <?php
+    //sacamos el empleado que se quiere editar por su id
       $seleccionado=$empleado->EmpleadoId($_GET['e']);
      ?>
     <div class="site-content">
@@ -83,19 +85,26 @@ if (isset($_SESSION['usuario'])==false) {
 </body>
 </html>
 <?php
+//comprobamos que se ha rellenado el nombre y los apellidos
   if (isset($_POST['nombre']) && isset($_POST['apellidos'])) {
+    //inicializamos activo a 0
     $activo=0;
+    //si se ha pulsado en la casilla de activo, ponemos la variable a 1
     if (isset($_POST['activo'])) {
       $activo=1;
     }
+    //llamamos a la consulta de editar el empleado
     $editarEmpleado= $empleado->editarEmpleado($_POST['e'], $_POST['nombre'], $_POST['apellidos'], $_POST['tel']);
     if ($editarEmpleado==null) {
+      //si no se ha podido actualizar, avisamos al usaurio
       ?>
       <script type="text/javascript">
         alert('Error al registrar el nuevo empleado');
+        window.location='index.php';
       </script>
       <?php
     }else {
+      //si se ha editado correctamente, devolvemos el usuario a inicio
       ?>
         <script type="text/javascript">
           alert('Información editada con exito.');
