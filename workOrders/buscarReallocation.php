@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <title></title>
-    <style media="screen">
+    <style media="screen" type="text/css">
       tr:nth-child(even) {
         background-color: #CAC6C5;
       }

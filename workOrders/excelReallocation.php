@@ -20,13 +20,14 @@ $objPHPExcel->getProperties()
 $style_header = array('fill' => array('type' => PHPExcel_Style_Fill::FILL_SOLID, 'color' => array('rgb'=>'538DD5'),));
 
 // Agregar Informacion
-$objPHPExcel->getActiveSheet()->getStyle('A1:E1')->applyFromArray($style_header);
+$objPHPExcel->getActiveSheet()->getStyle('A1:F1')->applyFromArray($style_header);
 $objPHPExcel->setActiveSheetIndex(0)
 ->setCellValue('A1', 'VIN')
 ->setCellValue('B1', 'FECHA')
 ->setCellValue('C1', 'HORA')
 ->setCellValue('D1', 'DESTINO')
 ->setCellValue('E1', 'USUARIO')
+->setCellValue('F1', 'SCRIPT')
 ;
 
 if (isset($_GET['b'])) {
@@ -44,6 +45,7 @@ foreach ($lista as $reallocation) {
   ->setCellValue('C'.$i, $reallocation['hora'])
   ->setCellValue('D'.$i, $reallocation['destino'])
   ->setCellValue('E'.$i, $reallocation['usuario'])
+  ->setCellValue('F'.$i, '=CONCATENATE("RaiseWorkscheme WORKSCHEME RebookVin ,CheckPositionSlotGUIConstraint 1,vin ",A'.$i.',", position ",D'.$i.',", slot ","1")')
   ;
 
   $i++;
@@ -58,16 +60,16 @@ for($col = 'A'; $col !== 'Z'; $col++) {
         ->setAutoSize(true);
 }
 //poner el encabezado en negrita
-$objPHPExcel->getActiveSheet()->getStyle("A1:E1")->getFont()->setBold(true);
+$objPHPExcel->getActiveSheet()->getStyle("A1:F1")->getFont()->setBold(true);
 
 //centrar todo el texto
 $centrar = array('alignment' => array('horizontal' => PHPExcel_Style_Alignment::HORIZONTAL_CENTER,));
-$objPHPExcel->getActiveSheet()->getStyle("A1:E".$i)->applyFromArray($centrar);
+$objPHPExcel->getActiveSheet()->getStyle("A1:F".$i)->applyFromArray($centrar);
 
 //poner los bordes
 $i2 = $i -1;
 $bordes = array('borders' => array('allborders' => array('style' => PHPExcel_Style_Border::BORDER_THIN)));
-$objPHPExcel->getActiveSheet()->getStyle("A1:E".$i2)->applyFromArray($bordes);
+$objPHPExcel->getActiveSheet()->getStyle("A1:F".$i2)->applyFromArray($bordes);
 
 //dar formato de fecha a las celdas de fechas.
 $formatoFecha = 'dd/mm/yyyy';
