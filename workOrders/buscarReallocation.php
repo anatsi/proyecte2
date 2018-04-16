@@ -19,7 +19,7 @@
   <body>
 
     <?php
-    require_once 'reallocation.php';
+    require_once './bbdd/reallocation.php';
     $reallocations= new Reallocation();
 
     $b = str_replace(" ", "%", $_POST['b']);
@@ -64,7 +64,7 @@
     }
 
     function buscar($b) {
-      require_once 'reallocation.php';
+      require_once './bbdd/reallocation.php';
       $reallocations= new Reallocation();
         $filtrados= $reallocations->listaReallocationFiltrados($b);
         $recuentos = $reallocations->cuentaListaReallocationFiltrados($b);

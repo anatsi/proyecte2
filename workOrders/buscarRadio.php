@@ -19,7 +19,7 @@
   <body>
 
     <?php
-    require_once 'radio.php';
+    require_once './bbdd/radio.php';
     $radios= new Radio();
 
     $b = str_replace(" ", "%", $_POST['b']);
@@ -66,7 +66,7 @@
     }
 
     function buscar($b) {
-      require_once 'radio.php';
+      require_once './bbdd/radio.php';
       $radios= new Radio();
         $filtrados= $radios->listaRadioFiltrados($b);
         $recuentos = $radios->cuentaListaRadioFiltrados($b);

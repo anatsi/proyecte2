@@ -2,7 +2,7 @@
 //comprobamos si se ha enviado el empleado que se quiere activar
   if (isset($_GET['e'])) {
     //incluimos los archivos necesarios e inicializamos sus objetos
-      require_once 'empleados.php';
+      require_once './bbdd/empleados.php';
       $empleado= new Empleados();
       //llamamos a la consulta de activar el empleado
       $actualizar=$empleado->ActivarEmpleado($_GET['e']);

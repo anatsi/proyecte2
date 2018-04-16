@@ -1,8 +1,8 @@
 <?php
 
 //incluimos los archivos necesarios
-require_once '../sesiones.php';
-require_once '../users.php';
+require_once '../ddbb/sesiones.php';
+require_once '../ddbb/users.php';
 $sesion= new Sesiones();
 $usuario= new User();
 
@@ -13,7 +13,7 @@ if(!empty($buscar)) {
 }else{
 
 
-  require_once '../db2.php';
+  require_once '../ddbb/db2.php';
   $db= new db2();
 
     $consulta = "SELECT name, surname, email, tlf, movil, extMovil FROM users";
@@ -51,12 +51,12 @@ if(!empty($buscar)) {
 }
 
 function buscar($b) {
-  require_once '../sesiones.php';
-  require_once '../users.php';
+  require_once '../ddbb/sesiones.php';
+  require_once '../ddbb/users.php';
   $sesion= new Sesiones();
   $usuario= new User();
 
-  require_once '../db2.php';
+  require_once '../ddbb/db2.php';
   $db= new db2();
 
   $consulta = "SELECT name, surname, email, tlf, movil, extMovil FROM users WHERE name LIKE '%".$b."%' OR surname LIKE '%".$b."%'";

@@ -19,7 +19,7 @@
   <body>
 
     <?php
-    require_once 'wrapGuard.php';
+    require_once './bbdd/wrapGuard.php';
     $wraps= new WrapGuard();
 
     $b = str_replace(" ", "%", $_POST['b']);
@@ -70,7 +70,7 @@
     }
 
     function buscar($b) {
-      require_once 'wrapGuard.php';
+      require_once './bbdd/wrapGuard.php';
       $wraps= new WrapGuard();
         $filtrados= $wraps->listaWrapFiltrados($b);
         $filtro=base64_encode($b);

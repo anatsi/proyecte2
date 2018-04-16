@@ -14,11 +14,11 @@ if ($_POST['fin']<$_POST['inicio']) {
     $lang = $_GET['lang'];
   }
   //incluimos todas las clases necesarias e iniciamos sus objetos.
-  require_once '../sesiones.php';
-  require_once '../users.php';
-  require_once 'cliente.php';
-  require_once 'servicio.php';
-  require_once 'recursos.php';
+  require_once '../ddbb/sesiones.php';
+  require_once '../ddbb/users.php';
+  require_once './bbdd/cliente.php';
+  require_once './bbdd/servicio.php';
+  require_once './bbdd/recursos.php';
 
   $usuario=new User();
   $sesion=new Sesiones();
@@ -76,7 +76,7 @@ if ($_POST['fin']<$_POST['inicio']) {
           <a href="historicoActividades.php?lang=<?php echo $lang; ?>"><?php echo __('Histórico actividades', $lang); ?></a>
           <a href="resumen.php">Búsqueda por fechas</a>
           <a href="nuevoCliente.php">Nuevo cliente</a>
-          
+
         </nav>
 
       </header>

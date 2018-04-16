@@ -11,8 +11,8 @@
   </head>
   <body>
     <?php
-    require_once 'servicio.php';
-    require_once 'recursos.php';
+    require_once './bbdd/servicio.php';
+    require_once './bbdd/recursos.php';
     $servicio=new Servicio();
     $recursos= new Recursos();
     //comprbamos que realmente haya rellenado algunos campos

@@ -1,7 +1,7 @@
 <?php
 //incluimos todas las clases necesarias e iniciamos sus objetos.
-require_once '../sesiones.php';
-require_once '../users.php';
+require_once '../ddbb/sesiones.php';
+require_once '../ddbb/users.php';
 $sesion= new Sesiones();
 $usuario= new User();
 
@@ -89,7 +89,7 @@ if (isset($_SESSION['usuario'])==false) {
         <div id="resultado">
         <!--tabla-->
         <?php
-        require_once '../db2.php';
+        require_once '../ddbb/db2.php';
         $db= new db2();
 
           $consulta = "SELECT name, surname, email, tlf, movil, extMovil FROM users";

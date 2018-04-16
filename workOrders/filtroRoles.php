@@ -1,7 +1,7 @@
 <?php
 //incluimos todas las clases necesarias e iniciamos sus objetos.
-require_once '../sesiones.php';
-require_once '../users.php';
+require_once '../ddbb/sesiones.php';
+require_once '../ddbb/users.php';
 
 $usuario=new User();
 $sesion=new Sesiones();

@@ -6,8 +6,8 @@
   </head>
   <body>
     <?php
-    require_once 'servicio.php';
-    require_once 'cliente.php';
+    require_once './bbdd/servicio.php';
+    require_once './bbdd/cliente.php';
     $servicio= new Servicio();
     $cliente= new Cliente();
 
@@ -47,8 +47,8 @@
     }
 
     function buscar($b) {
-      require_once 'servicio.php';
-      require_once 'cliente.php';
+      require_once './bbdd/servicio.php';
+      require_once './bbdd/cliente.php';
       $servicio= new Servicio();
       $cliente= new Cliente();
         $filtrados= $servicio->listaFiltrados($b);

@@ -6,8 +6,8 @@
     	$lang = $_GET['lang'];
     }
 	//incluimos los archivos de sesiones y de usuarios y creamos los objetos.
-	require_once 'sesiones.php';
-	require_once 'users.php';
+	require_once './ddbb/sesiones.php';
+	require_once './ddbb/users.php';
 
 	$sesion= new Sesiones();
 	$usuario= new User();
@@ -69,6 +69,9 @@
 							echo "<a href='files/Plan_Trabajo_Supervisores_2017.pdf'>".__('Plan de trabajo', $lang)."</a>";
 							//echo "<a href='files/Peticion_vacaciones.pdf'>".__('Solicitar vacaciones', $lang)."</a>";
 						}elseif ($menu['menu']==3) {
+              if ($menu['admin']==1) {
+                echo "<a href='tickets/index.php'>Tickets</a>";
+              }
 							//echo "<a href='#'>Nóminas</a>";
 							echo "<a href='directorio/index.php'>".__('Directorio empleados', $lang)."</a>";
 							//echo "<a href='files/Peticion_vacaciones.pdf'>".__('Solicitar vacaciones', $lang)."</a>";

@@ -3,7 +3,7 @@
 require_once '../operativa/Classes/PHPExcel.php';
 
 /*Incluir los archivos necesarios para la db*/
-require_once 'wrapGuard.php';
+require_once './bbdd/wrapGuard.php';
 $wraps=new WrapGuard();
 
 // Crea un nuevo objeto PHPExcel

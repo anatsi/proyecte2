@@ -2,9 +2,9 @@
 //header("Refresh: 30; URL='movimientosJockeys.php'");
 
 //incluimos todas las clases necesarias e iniciamos sus objetos.
-require_once '../sesiones.php';
-require_once '../users.php';
-require_once 'radio.php';
+require_once '../ddbb/sesiones.php';
+require_once '../ddbb/users.php';
+require_once './bbdd/radio.php';
 
 $usuario=new User();
 $sesion=new Sesiones();
@@ -101,7 +101,7 @@ if (isset($_SESSION['usuario'])==false) {
         <a href="filtroRoles.php">Roles</a>
         <a href="registroRadio.php">Inspección radio/climatizador</a>
         <a href="registroReallocation.php">Reallocation</a>
-        
+
       </nav>
 
     </header>

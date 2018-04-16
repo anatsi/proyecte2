@@ -6,7 +6,7 @@
         $lang = $_GET['lang'];
     }
 
-  require_once 'sesiones.php';
+  require_once './ddbb/sesiones.php';
   $sesion= new Sesiones();
 
   if (isset($_SESSION['usuario'])) {

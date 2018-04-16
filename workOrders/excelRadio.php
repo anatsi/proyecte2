@@ -3,7 +3,7 @@
 require_once '../operativa/Classes/PHPExcel.php';
 
 /*Incluir los archivos necesarios para la db*/
-require_once 'radio.php';
+require_once './bbdd/radio.php';
 $radios=new Radio();
 
 // Crea un nuevo objeto PHPExcel

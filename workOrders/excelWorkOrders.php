@@ -3,7 +3,7 @@
 require_once '../operativa/Classes/PHPExcel.php';
 
 /*Incluir los archivos necesarios para la db*/
-require_once 'movimientos.php';
+require_once './bbdd/movimientos.php';
 $movimientos=new Movimientos();
 
 // Crea un nuevo objeto PHPExcel

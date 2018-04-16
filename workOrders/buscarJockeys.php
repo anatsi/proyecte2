@@ -20,7 +20,7 @@
   <body>
 
     <?php
-    require_once 'movimientos.php';
+    require_once './bbdd/movimientos.php';
     $movimientos= new Movimientos();
 
     $b = str_replace(" ", "%", $_POST['b']);
@@ -141,7 +141,7 @@
     }
 
     function buscar($b) {
-      require_once 'movimientos.php';
+      require_once './bbdd/movimientos.php';
       $movimientos= new Movimientos();
         $filtrados= $movimientos->listaMovimientosFiltrados($b);
         $filtro=base64_encode($b);

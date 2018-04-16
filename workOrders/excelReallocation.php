@@ -3,7 +3,7 @@
 require_once '../operativa/Classes/PHPExcel.php';
 
 /*Incluir los archivos necesarios para la db*/
-require_once 'reallocation.php';
+require_once './bbdd/reallocation.php';
 $reallocations=new Reallocation();
 
 // Crea un nuevo objeto PHPExcel

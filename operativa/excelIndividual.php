@@ -3,9 +3,9 @@
 require_once './Classes/PHPExcel.php';
 
 /*Incluir los archivos necesarios para la db*/
-require_once 'servicio.php';
-require_once 'cliente.php';
-require_once 'recursos.php';
+require_once './bbdd/servicio.php';
+require_once './bbdd/cliente.php';
+require_once './bbdd/recursos.php';
 $cliente= new Cliente();
 $servicio= new Servicio();
 $recursos= new Recursos();

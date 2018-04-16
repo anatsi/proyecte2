@@ -15,7 +15,7 @@
   <body>
     <?php
     //incluimos los archivos necesarios e inicializamos sus objetos
-    require_once 'empleados.php';
+    require_once './bbdd/empleados.php';
     $empleado=new Empleados();
 
     //guardamos lo que se quiere buscar en una variable
@@ -62,7 +62,7 @@
     //funcion para sacar por pantalla los datos a buscar
     function buscar($b) {
       //incluimos los archivos necesarios e inicializamos sus objetos
-      require_once 'empleados.php';
+      require_once './bbdd/empleados.php';
       $empleado=new Empleados();
       //sacamos la lista de empleados que coinciden con el filtro
         $filtrados= $empleado->listaFiltrados($b);

@@ -18,7 +18,7 @@
   </head>
   <body>
     <?php
-    require_once 'campa.php';
+    require_once './bbdd/campa.php';
     $campa= new Campa();
 
     $b = str_replace(" ", "%", $_POST['b']);
@@ -66,7 +66,7 @@
     }
 
     function buscar($b) {
-      require_once 'campa.php';
+      require_once './bbdd/campa.php';
       $campa= new Campa();
         $filtrados= $campa->listaCampaFiltro($b);
         $filtro=base64_encode($b);

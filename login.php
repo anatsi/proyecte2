@@ -1,6 +1,6 @@
 <?php
 //incluimos el archivo encargado de las sesiones y creamos el objeto.
-  include 'sesiones.php';
+  include './ddbb/sesiones.php';
   $sesion= new Sesiones();
  ?>
 
@@ -19,7 +19,7 @@
           $lang = $_GET['lang'];
       }
     //incluimos el archivo encargado de la tabla de usuarios de la db y creamos el objeto.
-      include 'users.php';
+      include './ddbb/users.php';
       $user= new User();
 
       //llamamos a la funcion de loguear el usuario creada en users.php
