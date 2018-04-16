@@ -75,13 +75,6 @@
 							//echo "<a href='#'>Nóminas</a>";
 							echo "<a href='directorio/index.php'>".__('Directorio empleados', $lang)."</a>";
 							//echo "<a href='files/Peticion_vacaciones.pdf'>".__('Solicitar vacaciones', $lang)."</a>";
-						}else {
-							//si el numero de permisos no es correcto, sacara un aviso.
-						?>
-							<script type="text/javascript">
-								alert('Ups, algo salio mal. Hable con el responsable.');
-							</script>
-						<?php
 						}
 					 ?>
 				</nav>
