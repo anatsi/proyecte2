@@ -39,6 +39,7 @@ if (isset($_GET['b'])) {
 
   $i=2;
 foreach ($lista as $radio) {
+
   $objPHPExcel->setActiveSheetIndex(0)
   ->setCellValue('A'.$i, $radio['bastidor'])
   ->setCellValue('B'.$i, $radio['radio'])

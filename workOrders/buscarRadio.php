@@ -94,6 +94,7 @@
                 //transformar fechas
                 $fecha=explode("-", $radio['fecha']);
                 $fecha=$fecha[2]."-".$fecha[1]."-".$fecha[0];
+
                  echo "
                  <tr id='trmod'>
                    <td data-label='VIN' id='tdmod'>".$radio['bastidor']."</td>
