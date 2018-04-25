@@ -49,7 +49,9 @@ if (isset($_SESSION['usuario'])==false) {
         <a href="movimientosJockeys.php">Movimientos</a>
         <a href="registroCampa.php">Campa</a>
         <a href="registroWrap.php">Wrap Guard</a>
-        <a href="filtroRoles">Roles</a>
+        <a href="filtroRoles.php">Roles</a>
+        <a href="registroRadio.php">Inspección radio/climatizador</a>
+        <a href="registroReallocation.php">Reallocation</a>
       </nav>
 
     </header>
