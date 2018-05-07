@@ -20,7 +20,7 @@ $objPHPExcel->getProperties()
 $style_header = array('fill' => array('type' => PHPExcel_Style_Fill::FILL_SOLID, 'color' => array('rgb'=>'538DD5'),));
 
 // Agregar Informacion
-$objPHPExcel->getActiveSheet()->getStyle('A1:M1')->applyFromArray($style_header);
+$objPHPExcel->getActiveSheet()->getStyle('A1:N1')->applyFromArray($style_header);
 $objPHPExcel->setActiveSheetIndex(0)
 ->setCellValue('A1', 'VIN')
 ->setCellValue('B1', 'ORIGEN')
@@ -35,6 +35,7 @@ $objPHPExcel->setActiveSheetIndex(0)
 ->setCellValue('K1', 'USUARIO')
 ->setCellValue('L1', 'ROL')
 ->setCellValue('M1', 'ERROR')
+->setCellValue('N1', 'LANZAMIENTO')
 ;
 
 if (isset($_GET['b'])) {
@@ -81,6 +82,7 @@ foreach ($lista as $movimiento) {
   ->setCellValue('K'.$i, $movimiento['usuario'])
   ->setCellValue('L'.$i, $movimiento['rol'])
   ->setCellValue('M'.$i, $error)
+  ->setCellValue('N'.$i, $movimiento['lanzamiento'])
   ;
   $i++;
 }
@@ -94,16 +96,16 @@ for($col = 'A'; $col !== 'Z'; $col++) {
         ->setAutoSize(true);
 }
 //poner el encabezado en negrita
-$objPHPExcel->getActiveSheet()->getStyle("A1:M1")->getFont()->setBold(true);
+$objPHPExcel->getActiveSheet()->getStyle("A1:N1")->getFont()->setBold(true);
 
 //centrar todo el texto
 $centrar = array('alignment' => array('horizontal' => PHPExcel_Style_Alignment::HORIZONTAL_CENTER,));
-$objPHPExcel->getActiveSheet()->getStyle("A1:M".$i)->applyFromArray($centrar);
+$objPHPExcel->getActiveSheet()->getStyle("A1:N".$i)->applyFromArray($centrar);
 
 //poner los bordes
 $i2 = $i -1;
 $bordes = array('borders' => array('allborders' => array('style' => PHPExcel_Style_Border::BORDER_THIN)));
-$objPHPExcel->getActiveSheet()->getStyle("A1:M".$i2)->applyFromArray($bordes);
+$objPHPExcel->getActiveSheet()->getStyle("A1:N".$i2)->applyFromArray($bordes);
 
 //dar formato de fecha a las celdas de fechas.
 $formatoFecha = 'dd/mm/yyyy';

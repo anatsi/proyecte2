@@ -53,6 +53,7 @@
             <th scope='col' id='thmod'>USER</th>
             <th scope='col' id ='thmod'>ROL</th>
             <th scope='col' id='thmod'>ERROR</th>
+            <th scope='col' id='thmod'>LAUNCH</th>
             </tr>
           </thead><tbody id='tbodymod'>";
           $cicloTotal = '00:00:00';
@@ -117,6 +118,7 @@
                 <td data-label='USUARIO' id='tdmod'>".$movimiento['usuario']."</td>
                 <td data-label='ROL' id='tdmod'>".$movimiento['rol']."</td>
                 <td data-label='ERROR' id='tdmod'>".$error."</td>
+                <td data-label='LANZAMIENTO' id='tdmod'>".$movimiento['lanzamiento']."</td>
                 </tr>
 
           ";}
@@ -170,6 +172,7 @@
                 <th scope='col' id='thmod'>USER</th>
                 <th scope='col' id ='thmod'>ROL</th>
                 <th scope='col' id='thmod'>ERROR</th>
+                <th scope='col' id='thmod'>LAUNCH</th>
                 </tr>
               </thead><tbody id='tbodymod'>";
               $cicloTotal = '00:00:00';
@@ -234,6 +237,7 @@
                     <td data-label='USUARIO' id='tdmod'>".$movimiento['usuario']."</td>
                     <td data-label='ROL' id='tdmod'>".$movimiento['rol']."</td>
                     <td data-label='ERROR' id='tdmod'>".$error."</td>
+                    <td data-label='LANZAMIENTO' id='tdmod'>".$movimiento['lanzamiento']."</td>
                     </tr>
 
               ";}
