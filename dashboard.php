@@ -73,7 +73,8 @@
                 echo "<a href='tickets/index.php'>Tickets</a>";
               }
 							//echo "<a href='#'>Nóminas</a>";
-							echo "<a href='directorio/index.php'>".__('Directorio empleados', $lang)."</a>";
+              echo "<a href='WorkOrders/movimientosJockeys.php'>Work orders</a>";
+              echo "<a href='directorio/index.php'>".__('Directorio empleados', $lang)."</a>";
 							//echo "<a href='files/Peticion_vacaciones.pdf'>".__('Solicitar vacaciones', $lang)."</a>";
 						}
 					 ?>
