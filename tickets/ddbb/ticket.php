@@ -34,7 +34,7 @@ class Ticket extends dbJockeys
 
   //funcion para resolver un ticket
   function Resolver($id, $resuelto, $comentario){
-    $sql="UPDATE ticket SET resuelto='".$resuelto."', comentario='".$comentario."' WHERE id=".$id;
+    $sql='UPDATE ticket SET resuelto="'.$resuelto.'", comentario="'.$comentario.'" WHERE id ='.$id;
     $finalizarAct=$this->realizarConsulta($sql);
     if ($finalizarAct=!false) {
          return true;

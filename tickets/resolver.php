@@ -73,7 +73,7 @@ if (isset($_SESSION['usuario'])==false) {
           </div>
           <br><br><br><br><br><br><br><br><br>
           <div class="submitbuttons">
-              <input class="submitone" type="submit"/>
+              <input class="submitone" type="submit" name="enviar"/>
           </div>
   </form>
       </div> <!-- END container -->
@@ -88,22 +88,32 @@ if (isset($_SESSION['usuario'])==false) {
 </body>
 </html>
 <?php
-  if (isset($_POST['resuelto'])) {
-    $ticketResuelto = $ticket -> Resolver($_POST['id'], $_POST['resuelto'], $_POST['comentario']);
-    if ($ticketResuelto == false || $ticketResuelto == null) {
+  if (isset($_POST['enviar'])) {
+    if (isset($_POST['resuelto']) && isset($_POST['comentario'])) {
+      $ticketResuelto = $ticket -> Resolver($_POST['id'], $_POST['resuelto'], $_POST['comentario']);
+      if ($ticketResuelto == false || $ticketResuelto == null) {
+        ?>
+          <script type="text/javascript">
+            alert('No se pudo resolver el ticket');
+            window.location = 'index.php';
+          </script>
+        <?php
+      }else {
+        ?>
+        <script type="text/javascript">
+          window.location= 'index.php';
+        </script>
+        <?php
+      }
+    }else {
       ?>
         <script type="text/javascript">
           alert('No se pudo resolver el ticket');
           window.location = 'index.php';
         </script>
       <?php
-    }else {
-      ?>
-      <script type="text/javascript">
-        window.location= 'index.php';
-      </script>
-      <?php
     }
+
   }
 ?>
 
