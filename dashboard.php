@@ -71,9 +71,10 @@
 						}elseif ($menu['menu']==3) {
               if ($menu['admin']==1) {
                 echo "<a href='tickets/index.php'>Tickets</a>";
+              }elseif (condition) {
+                echo "<a href='workOrders/registroDisengagement.php'>Disengagement</a>";
               }
 							//echo "<a href='#'>Nóminas</a>";
-              echo "<a href='WorkOrders/movimientosJockeys.php'>Work orders</a>";
               echo "<a href='directorio/index.php'>".__('Directorio empleados', $lang)."</a>";
 							//echo "<a href='files/Peticion_vacaciones.pdf'>".__('Solicitar vacaciones', $lang)."</a>";
 						}

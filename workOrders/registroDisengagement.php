@@ -55,7 +55,7 @@ if (isset($_SESSION['usuario'])==false) {
                          $("#resultado").html("<p align='center'><img src='ajax-loader.gif' /></p>");
                      },*/
                      error: function(){
-                         alert("Error en peticion");
+                         console.log("Error en peticion");
                      },
                     success: function(data){
                       $("#resultado").empty();
@@ -95,14 +95,7 @@ if (isset($_SESSION['usuario'])==false) {
       <a href="#" class="header__icon" id="header__icon"></a>
       <a href="../dashboard.php" class="header__logo"><img src="../imagenes/logo.png" alt=""></a>
       <nav class="menu">
-        <a href="movimientosJockeys.php">Movimientos</a>
-        <a href="registroCampa.php">Campa</a>
-        <a href="registroWrap.php">Wrap Guard</a>
-        <a href="filtroRoles.php">Roles</a>
-        <a href="registroReallocation.php">Reallocation</a>
-        <a href="registroDisengagement.php">Disengagement</a>
-        <a href="registroPuerta.php">Inspección puertas</a>
-        
+
       </nav>
 
     </header>
