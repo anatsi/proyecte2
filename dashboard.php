@@ -54,6 +54,8 @@
               if ($menu['admin']==1) {
                 echo "<a href='operativa/index.php?lang=".$lang."'>".__('Gestión actividades', $lang)."</a>";
                 echo "<a href='WorkOrders/movimientosJockeys.php'>Work orders</a>";
+                echo "<a href='workOrders/registroDisengagement.php'>Disengagement</a>";
+                
               }
               if ($menu['admin']==2) {
                 echo "<a href='operativa/indexRRHH.php?lang=".$lang."'>".__('Gestión actividades', $lang)."</a>";
@@ -71,7 +73,10 @@
 						}elseif ($menu['menu']==3) {
               if ($menu['admin']==1) {
                 echo "<a href='tickets/index.php'>Tickets</a>";
-              }elseif (condition) {
+                echo "<a href='workOrders/registroDisengagement.php'>Disengagement</a>";
+                echo "<a href='operativa/index.php?lang=".$lang."'>".__('Gestión actividades', $lang)."</a>";
+                echo "<a href='WorkOrders/movimientosJockeys.php'>Work orders</a>";
+              }elseif ($menu['admin']==2) {
                 echo "<a href='workOrders/registroDisengagement.php'>Disengagement</a>";
               }
 							//echo "<a href='#'>Nóminas</a>";

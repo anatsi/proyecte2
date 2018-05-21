@@ -47,7 +47,7 @@ if (isset($_GET['b'])) {
 foreach ($lista as $disengagement) {
   $objPHPExcel->setActiveSheetIndex(0)
   ->setCellValue('A'.$i, $disengagement['bastidor'])
-  ->setCellValue('B'.$i, $disengagement['construccion'])
+  ->setCellValue('B'.$i, PHPExcel_Shared_Date::PHPToExcel($disengagement['construccion']))
   ->setCellValue('C'.$i, PHPExcel_Shared_Date::PHPToExcel( $disengagement['fecha'] ))
   ->setCellValue('D'.$i, $disengagement['hora'])
   ->setCellValue('E'.$i, $disengagement['tamano'])
@@ -84,8 +84,8 @@ $objPHPExcel->getActiveSheet()->getStyle("A1:L".$i2)->applyFromArray($bordes);
 
 //dar formato de fecha a las celdas de fechas.
 $formatoFecha = 'dd/mm/yyyy';
+$objPHPExcel->getActiveSheet()->getStyle('B2:B'.$i)->getNumberFormat()->setFormatCode($formatoFecha);
 $objPHPExcel->getActiveSheet()->getStyle('C2:C'.$i)->getNumberFormat()->setFormatCode($formatoFecha);
-$objPHPExcel->getActiveSheet()->getStyle('F2:F'.$i)->getNumberFormat()->setFormatCode($formatoFecha);
 
 // Se modifican los encabezados del HTTP para indicar que se envia un archivo de Excel.
 header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
