@@ -40,9 +40,9 @@ $objPHPExcel->setActiveSheetIndex(0)
 
 if (isset($_GET['b'])) {
   $filtro=base64_decode($_GET['b']);
-  $lista=$movimientos->listaMovimientosFiltrados($filtro);
+  $lista=$movimientos->listaMovimientosFiltradosExcel($filtro);
 }else {
-  $lista=$movimientos->listaMovimientos();
+  $lista=$movimientos->listaMovimientosExcel();
 }
 
   $i=2;

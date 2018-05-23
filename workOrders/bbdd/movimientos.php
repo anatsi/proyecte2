@@ -31,6 +31,23 @@ class Movimientos extends dbMovimientos
     }
   }
 
+  function listaMovimientosExcel(){
+    //Construimos la consulta
+    $sql="SELECT * from movimientos ORDER BY id desc LIMIT 12000";
+    //Realizamos la consulta
+    $resultado=$this->realizarConsulta($sql);
+    if($resultado!=null){
+      //Montamos la tabla de resultados
+      $tabla=[];
+      while($fila=$resultado->fetch_assoc()){
+        $tabla[]=$fila;
+      }
+      return $tabla;
+    }else{
+      return null;
+    }
+  }
+
   function cuentaListaMovimientos(){
     //Construimos la consulta
     $sql="SELECT count(*) as 'recuento' from movimientos";
@@ -52,6 +69,24 @@ class Movimientos extends dbMovimientos
   function listaMovimientosFiltrados($b){
     //Construimos la consulta
     $sql="SELECT * from movimientos WHERE concat(bastidor, origen, fecha_origen, hora_origen, destino, fecha_destino, hora_destino, usuario, rol, lanzamiento) LIKE '%".$b."%' ORDER BY id desc";
+    //Realizamos la consulta
+    $resultado=$this->realizarConsulta($sql);
+    if($resultado!=null){
+      //Montamos la tabla de resultados
+      $tabla=[];
+      while($fila=$resultado->fetch_assoc()){
+        $tabla[]=$fila;
+      }
+      return $tabla;
+    }else{
+      return null;
+    }
+  }
+
+  //SACAR TODOS LOS MOVIMIENTOS FILTRADOS
+  function listaMovimientosFiltradosExcel($b){
+    //Construimos la consulta
+    $sql="SELECT * from movimientos WHERE concat(bastidor, origen, fecha_origen, hora_origen, destino, fecha_destino, hora_destino, usuario, rol, lanzamiento) LIKE '%".$b."%' ORDER BY id desc LIMIT 12000";
     //Realizamos la consulta
     $resultado=$this->realizarConsulta($sql);
     if($resultado!=null){

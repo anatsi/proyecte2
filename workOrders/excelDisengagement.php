@@ -38,7 +38,7 @@ $objPHPExcel->setActiveSheetIndex(0)
 
 if (isset($_GET['b'])) {
   $filtro=base64_decode($_GET['b']);
-  $lista=$disengagements->listaDisengagementFiltrados($filtro);
+  $lista=$disengagements->listaDisengagementFiltro($filtro);
 }else {
   $lista=$disengagements->listaDisengagement();
 }
