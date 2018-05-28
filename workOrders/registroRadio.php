@@ -96,7 +96,6 @@ if (isset($_SESSION['usuario'])==false) {
       <a href="../dashboard.php" class="header__logo"><img src="../imagenes/logo.png" alt=""></a>
       <nav class="menu">
         <a href="movimientosJockeys.php">Movimientos</a>
-        <a href="registroCampa.php">Campa</a>
         <a href="registroWrap.php">Wrap Guard</a>
         <a href="filtroRoles.php">Roles</a>
         <a href="registroReallocation.php">Reallocation</a>

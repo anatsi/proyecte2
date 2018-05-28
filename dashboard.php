@@ -55,7 +55,7 @@
                 echo "<a href='operativa/index.php?lang=".$lang."'>".__('Gestión actividades', $lang)."</a>";
                 echo "<a href='WorkOrders/movimientosJockeys.php'>Work orders</a>";
                 echo "<a href='workOrders/registroDisengagement.php'>Disengagement</a>";
-                
+                echo "<a href='WorkOrders/registroCampa.php'>Circuito</a>";
               }
               if ($menu['admin']==2) {
                 echo "<a href='operativa/indexRRHH.php?lang=".$lang."'>".__('Gestión actividades', $lang)."</a>";
@@ -76,8 +76,12 @@
                 echo "<a href='workOrders/registroDisengagement.php'>Disengagement</a>";
                 echo "<a href='operativa/index.php?lang=".$lang."'>".__('Gestión actividades', $lang)."</a>";
                 echo "<a href='WorkOrders/movimientosJockeys.php'>Work orders</a>";
+                echo "<a href='WorkOrders/registroCampa.php'>Circuito</a>";
+
               }elseif ($menu['admin']==2) {
                 echo "<a href='workOrders/registroDisengagement.php'>Disengagement</a>";
+              }elseif ($menu['admin']==3) {
+                echo "<a href='workOrders/registroCampa.php'>Circuito</a>";
               }
 							//echo "<a href='#'>Nóminas</a>";
               echo "<a href='directorio/index.php'>".__('Directorio empleados', $lang)."</a>";
