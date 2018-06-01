@@ -47,7 +47,6 @@ if (isset($_SESSION['usuario'])==false) {
 
       <nav class="menu">
         <a href="filtroMovimientos.php">Movimientos</a>
-        <a href="registroCampa.php">Campa</a>
         <a href="registroWrap.php">Wrap Guard</a>
         <a href="filtroRoles.php">Roles</a>
         <a href="registroReallocation.php">Reallocation</a>
@@ -61,15 +60,20 @@ if (isset($_SESSION['usuario'])==false) {
     <div class="site-content">
       <div class="container">
         <!-- Contenido de la pagina. -->
-        <h2>Filtro cambios de rol</h2>
-        <form action="registroRoles.php" method="post" id="formulario">
+        <h2>Filtro movimientos</h2>
+        <form action="movimientosFiltrados.php" method="post" id="formulario">
           <div class="formthird">
-            <p><label><i class="fa fa-question-circle"></i>INICIO</label><input type="date" name="inicio"/></p>
+            <p><label><i class="fa fa-question-circle"></i>FECHA INICIO</label><input type="date" name="inicio"/></p>
+            <p><label><i class="fa fa-question-circle"></i>HORA INICIO</label><input type="time" name="hora_ini"/></p>
             <p><label><i class="fa fa-question-circle"></i>USUARIO</label><input type="text" name="usuario"/></p>
+            <p><label><i class="fa fa-question-circle"></i>ORIGEN</label><input type="text" name="origen"/></p>
           </div>
           <div class="formthird">
-            <p><label><i class="fa fa-question-circle"></i>FIN</label><input type="date" name="fin"/></p>
-            <p><label><i class="fa fa-question-circle"></i>ROL</label><input type="text" name="rol"/></p>
+            <p><label><i class="fa fa-question-circle"></i>FECHA FIN</label><input type="date" name="fin"/></p>
+            <p><label><i class="fa fa-question-circle"></i>HORA FIN</label><input type="time" name="hora_fin"/></p>
+            <p><label><i class="fa fa-question-circle"></i>BASTIDOR</label><input type="text" name="bastidor"/></p>
+            <p><label><i class="fa fa-question-circle"></i>DESTINO</label><input type="text" name="destino"/></p>
+
           </div>
           <div class="submitbuttons">
               <input id="exportarResumen" type="submit" value="BUSCAR"/>

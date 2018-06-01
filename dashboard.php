@@ -53,7 +53,7 @@
 						if ($menu['menu']==1) {
               if ($menu['admin']==1) {
                 echo "<a href='operativa/index.php?lang=".$lang."'>".__('Gestión actividades', $lang)."</a>";
-                echo "<a href='WorkOrders/movimientosJockeys.php'>Work orders</a>";
+                echo "<a href='WorkOrders/filtroMovimientos.php'>Work orders</a>";
                 echo "<a href='workOrders/registroDisengagement.php'>Disengagement</a>";
                 echo "<a href='WorkOrders/registroCampa.php'>Circuito</a>";
               }
@@ -75,11 +75,12 @@
                 echo "<a href='tickets/index.php'>Tickets</a>";
                 echo "<a href='workOrders/registroDisengagement.php'>Disengagement</a>";
                 echo "<a href='operativa/index.php?lang=".$lang."'>".__('Gestión actividades', $lang)."</a>";
-                echo "<a href='WorkOrders/movimientosJockeys.php'>Work orders</a>";
+                echo "<a href='WorkOrders/filtroMovimientos.php'>Work orders</a>";
                 echo "<a href='WorkOrders/registroCampa.php'>Circuito</a>";
 
               }elseif ($menu['admin']==2) {
                 echo "<a href='workOrders/registroDisengagement.php'>Disengagement</a>";
+                echo "<a href='workOrders/registroCampa.php'>Circuito</a>";
               }elseif ($menu['admin']==3) {
                 echo "<a href='workOrders/registroCampa.php'>Circuito</a>";
               }

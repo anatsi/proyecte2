@@ -16,7 +16,7 @@ class Movimientos extends dbMovimientos
   //SACAR TODOS LOS MOVIMIENTOS
   function listaMovimientos(){
     //Construimos la consulta
-    $sql="SELECT * from movimientos ORDER BY id desc";
+    $sql="SELECT * from movimientos ORDER BY id desc LIMIT 15000";
     //Realizamos la consulta
     $resultado=$this->realizarConsulta($sql);
     if($resultado!=null){
@@ -68,7 +68,7 @@ class Movimientos extends dbMovimientos
   //SACAR TODOS LOS MOVIMIENTOS FILTRADOS
   function listaMovimientosFiltrados($b){
     //Construimos la consulta
-    $sql="SELECT * from movimientos WHERE concat(bastidor, origen, fecha_origen, hora_origen, destino, fecha_destino, hora_destino, usuario, rol, lanzamiento) LIKE '%".$b."%' ORDER BY id desc";
+    $sql="SELECT * from movimientos WHERE concat(bastidor, origen, fecha_origen, hora_origen, destino, fecha_destino, hora_destino, usuario, rol, lanzamiento) LIKE '%".$b."%' ORDER BY id desc LIMIT 10000";
     //Realizamos la consulta
     $resultado=$this->realizarConsulta($sql);
     if($resultado!=null){
@@ -175,6 +175,54 @@ class Movimientos extends dbMovimientos
     $difm=floor(($dif-($difh*3600))/60);
     $difs=$dif-($difm*60)-($difh*3600);
     return date("H:i:s",mktime($difh,$difm,$difs));
+  }
+
+  function listaMovimientosForm($inicio, $fin, $usuario, $hora_ini, $hora_fin, $bastidor, $origen, $destino){
+    //Construimos la consulta
+    $sql="SELECT * FROM movimientos
+WHERE fecha_origen between '".$inicio."' AND '".$fin."'
+AND hora_origen between '".$hora_ini."' AND '".$hora_fin."'
+AND usuario LIKE '".$usuario."'
+AND bastidor LIKE '%".$bastidor."%'
+AND origen LIKE '%".$origen."%'
+AND destino LIKE '%".$destino."%'
+ORDER BY id DESC LIMIT 17000";
+    //Realizamos la consulta
+    $resultado=$this->realizarConsulta($sql);
+    if($resultado!=null){
+      //Montamos la tabla de resultados
+      $tabla=[];
+      while($fila=$resultado->fetch_assoc()){
+        $tabla[]=$fila;
+      }
+      return $tabla;
+    }else{
+      return null;
+    }
+  }
+
+  function listaMovimientosFormExcel($inicio, $fin, $usuario, $hora_ini, $hora_fin, $bastidor, $origen, $destino){
+    //Construimos la consulta
+    $sql="SELECT * FROM movimientos
+WHERE fecha_origen between '".$inicio."' AND '".$fin."'
+AND hora_origen between '".$hora_ini."' AND '".$hora_fin."'
+AND usuario LIKE '".$usuario."'
+AND bastidor LIKE '%".$bastidor."%'
+AND origen LIKE '%".$origen."%'
+AND destino LIKE '%".$destino."%'
+ORDER BY id DESC LIMIT 12000";
+    //Realizamos la consulta
+    $resultado=$this->realizarConsulta($sql);
+    if($resultado!=null){
+      //Montamos la tabla de resultados
+      $tabla=[];
+      while($fila=$resultado->fetch_assoc()){
+        $tabla[]=$fila;
+      }
+      return $tabla;
+    }else{
+      return null;
+    }
   }
 }
  ?>
