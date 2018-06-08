@@ -50,8 +50,9 @@ if (isset($_SESSION['usuario'])==false) {
         <a href="registroWrap.php">Wrap Guard</a>
         <a href="filtroRoles.php">Roles</a>
         <a href="registroReallocation.php">Reallocation</a>
-        <a href="registroPuerta.php">Inspección puertas</a>
+        <a href="registroRadio.php">Llaves</a>
         <a href="movimientosJockeys.php">Work orders</a>
+
 
       </nav>
 

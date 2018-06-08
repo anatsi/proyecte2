@@ -20,14 +20,13 @@ $objPHPExcel->getProperties()
 $style_header = array('fill' => array('type' => PHPExcel_Style_Fill::FILL_SOLID, 'color' => array('rgb'=>'538DD5'),));
 
 // Agregar Informacion
-$objPHPExcel->getActiveSheet()->getStyle('A1:F1')->applyFromArray($style_header);
+$objPHPExcel->getActiveSheet()->getStyle('A1:E1')->applyFromArray($style_header);
 $objPHPExcel->setActiveSheetIndex(0)
 ->setCellValue('A1', 'VIN')
-->setCellValue('B1', 'RADIO')
-->setCellValue('C1', 'CLIMA')
-->setCellValue('D1', 'FECHA')
-->setCellValue('E1', 'HORA')
-->setCellValue('F1', 'USUARIO')
+->setCellValue('B1', 'LLAVES')
+->setCellValue('C1', 'FECHA')
+->setCellValue('D1', 'HORA')
+->setCellValue('E1', 'USUARIO')
 ;
 
 if (isset($_GET['b'])) {
@@ -43,10 +42,9 @@ foreach ($lista as $radio) {
   $objPHPExcel->setActiveSheetIndex(0)
   ->setCellValue('A'.$i, $radio['bastidor'])
   ->setCellValue('B'.$i, $radio['radio'])
-  ->setCellValue('C'.$i, $radio['clima'])
-  ->setCellValue('D'.$i, PHPExcel_Shared_Date::PHPToExcel( $radio['fecha'] ))
-  ->setCellValue('E'.$i, $radio['hora'])
-  ->setCellValue('F'.$i, $radio['usuario'])
+  ->setCellValue('C'.$i, PHPExcel_Shared_Date::PHPToExcel( $radio['fecha'] ))
+  ->setCellValue('D'.$i, $radio['hora'])
+  ->setCellValue('E'.$i, $radio['usuario'])
   ;
 
   $i++;
@@ -61,20 +59,20 @@ for($col = 'A'; $col !== 'Z'; $col++) {
         ->setAutoSize(true);
 }
 //poner el encabezado en negrita
-$objPHPExcel->getActiveSheet()->getStyle("A1:F1")->getFont()->setBold(true);
+$objPHPExcel->getActiveSheet()->getStyle("A1:E1")->getFont()->setBold(true);
 
 //centrar todo el texto
 $centrar = array('alignment' => array('horizontal' => PHPExcel_Style_Alignment::HORIZONTAL_CENTER,));
-$objPHPExcel->getActiveSheet()->getStyle("A1:F".$i)->applyFromArray($centrar);
+$objPHPExcel->getActiveSheet()->getStyle("A1:E".$i)->applyFromArray($centrar);
 
 //poner los bordes
 $i2 = $i -1;
 $bordes = array('borders' => array('allborders' => array('style' => PHPExcel_Style_Border::BORDER_THIN)));
-$objPHPExcel->getActiveSheet()->getStyle("A1:F".$i2)->applyFromArray($bordes);
+$objPHPExcel->getActiveSheet()->getStyle("A1:E".$i2)->applyFromArray($bordes);
 
 //dar formato de fecha a las celdas de fechas.
 $formatoFecha = 'dd/mm/yyyy';
-$objPHPExcel->getActiveSheet()->getStyle('D2:D'.$i)->getNumberFormat()->setFormatCode($formatoFecha);
+$objPHPExcel->getActiveSheet()->getStyle('C2:C'.$i)->getNumberFormat()->setFormatCode($formatoFecha);
 
 // Se modifican los encabezados del HTTP para indicar que se envia un archivo de Excel.
 header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');

@@ -99,8 +99,9 @@ if (isset($_SESSION['usuario'])==false) {
         <a href="registroWrap.php">Wrap Guard</a>
         <a href="filtroRoles.php">Roles</a>
         <a href="registroReallocation.php">Reallocation</a>
-        <a href="registroPuerta.php">Inspección puertas</a>
+        <a href="registroRadio.php">Llaves</a>
         <a href="movimientosJockeys.php">Work orders</a>
+
 
       </nav>
 
@@ -109,7 +110,7 @@ if (isset($_SESSION['usuario'])==false) {
     <div class="site-content">
       <div class="container">
         <!-- Contenido de la pagina. -->
-        <h2>INSPECCIÓN RADIO / CLIMATIZADOR</h2>
+        <h2>INSPECCIÓN LLAVES</h2>
        <input type="text" id="busqueda" placeholder='FILTRAR'/><br/><br/>
 
         <div id="resultado">
@@ -128,8 +129,7 @@ if (isset($_SESSION['usuario'])==false) {
             <thead id='theadmod'>
               <tr id='trmod'>
                 <th scope='col' id='thmod'>VIN</th>
-                <th scope='col' id='thmod'>RADIO</th>
-                <th scope='col' id='thmod'>CLIMA</th>
+                <th scope='col' id='thmod'>LLAVES</th>
                 <th scope='col' id='thmod'>FECHA</th>
                 <th scope='col' id='thmod'>HORA</th>
                 <th scope='col' id='thmod'>USUARIO</th>
@@ -145,7 +145,6 @@ if (isset($_SESSION['usuario'])==false) {
                   <tr id='trmod'>
                     <td data-label='VIN' id='tdmod'>".$registro['bastidor']."</td>
                     <td data-label='RADIO' id='tdmod'>".$registro['radio']."</td>
-                    <td data-label='CLIMA' id='tdmod'>".$registro['clima']."</td>
                     <td data-label='FECHA' id='tdmod'>".$fecha."</td>
                     <td data-label='HORA' id='tdmod'>".$registro['hora']."</td>
                     <td data-label='USUARIO' id='tdmod'>".$registro['usuario']."</td>

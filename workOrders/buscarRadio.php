@@ -40,8 +40,7 @@
           <thead id='theadmod'>
             <tr id='trmod'>
               <th scope='col' id='thmod'>VIN</th>
-              <th scope='col' id='thmod'>RADIO</th>
-              <th scope='col' id='thmod'>CLIMA</th>
+              <th scope='col' id='thmod'>LLAVES</th>
               <th scope='col' id='thmod'>FECHA</th>
               <th scope='col' id='thmod'>HORA</th>
               <th scope='col' id='thmod'>USUARIO</th>
@@ -55,8 +54,7 @@
              echo "
              <tr id='trmod'>
                <td data-label='VIN' id='tdmod'>".$radio['bastidor']."</td>
-               <td data-label='RADIO' id='tdmod'>".$radio['radio']."</td>
-               <td data-label='CLIMA' id='tdmod'>".$radio['clima']."</td>
+               <td data-label='LLAVES' id='tdmod'>".$radio['radio']."</td>
                <td data-label='FECHA' id='tdmod'>".$fecha."</td>
                <td data-label='HORA' id='tdmod'>".$radio['hora']."</td>
                <td data-label='USUARIO' id='tdmod'>".$radio['usuario']."</td>
@@ -82,8 +80,7 @@
               <thead id='theadmod'>
               <tr id='trmod'>
                 <th scope='col' id='thmod'>VIN</th>
-                <th scope='col' id='thmod'>RADIO</th>
-                <th scope='col' id='thmod'>CLIMA</th>
+                <th scope='col' id='thmod'>LLAVES</th>
                 <th scope='col' id='thmod'>FECHA</th>
                 <th scope='col' id='thmod'>HORA</th>
                 <th scope='col' id='thmod'>USUARIO</th>
@@ -98,8 +95,7 @@
                  echo "
                  <tr id='trmod'>
                    <td data-label='VIN' id='tdmod'>".$radio['bastidor']."</td>
-                   <td data-label='RADIO' id='tdmod'>".$radio['radio']."</td>
-                   <td data-label='CLIMA' id='tdmod'>".$radio['clima']."</td>
+                   <td data-label='LLAVES' id='tdmod'>".$radio['radio']."</td>
                    <td data-label='FECHA' id='tdmod'>".$fecha."</td>
                    <td data-label='HORA' id='tdmod'>".$radio['hora']."</td>
                    <td data-label='USUARIO' id='tdmod'>".$radio['usuario']."</td>
