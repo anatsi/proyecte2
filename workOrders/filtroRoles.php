@@ -51,6 +51,8 @@ if (isset($_SESSION['usuario'])==false) {
         <a href="filtroRoles.php">Roles</a>
         <a href="registroReallocation.php">Reallocation</a>
         <a href="registroRadio.php">Llaves</a>
+        <a href="registroAullido.php">Aullido</a>
+        <a href="registroClatter.php">Clatter</a>
         <a href="movimientosJockeys.php">Work orders</a>
 
 
