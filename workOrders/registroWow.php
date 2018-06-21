@@ -47,7 +47,7 @@ if (isset($_SESSION['usuario'])==false) {
                //hace la bÃºsqueda
                  $.ajax({
                      type: "POST",
-                     url: "buscarAullido.php",
+                     url: "buscarWow.php",
                      data: "b="+consulta,
                      dataType: "html",
                     /* beforeSend: function(){
@@ -100,8 +100,7 @@ if (isset($_SESSION['usuario'])==false) {
         <a href="filtroRoles.php">Roles</a>
         <a href="registroReallocation.php">Reallocation</a>
         <a href="registroRadio.php">Llaves</a>
-        <a href="registroAullido.php">Aullido</a>
-        <a href="registroWow.php">Aullido + WOW</a>
+        <a href="registroWow.php">Howling</a>
         <a href="registroClatter.php">Clatter</a>
         <a href="movimientosJockeys.php">Work orders</a>
       </nav>
@@ -111,7 +110,7 @@ if (isset($_SESSION['usuario'])==false) {
     <div class="site-content">
       <div class="container">
         <!-- Contenido de la pagina. -->
-        <h2>INSPECCIÓN AULLIDO + WOW</h2>
+        <h2>HOWLING</h2>
        <input type="text" id="busqueda" placeholder='FILTRAR'/><br/><br/>
 
         <div id="resultado">
