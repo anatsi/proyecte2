@@ -99,7 +99,7 @@ if (isset($_SESSION['usuario'])==false) {
         <a href="registroWrap.php">Wrap Guard</a>
         <a href="filtroRoles.php">Roles</a>
         <a href="registroReallocation.php">Reallocation</a>
-        <a href="registroRadio.php">Llaves</a>
+        <a href="registroRadio.php">Bridas</a>
         <a href="registroWow.php">Howling</a>
 
         <a href="registroClatter.php">Clatter</a>

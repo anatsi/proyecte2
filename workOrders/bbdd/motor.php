@@ -6,7 +6,7 @@
  //Llamamos a la clase db, encargada de la conexion.
  require_once 'dbJockeys.php';
 
-class Disengagement extends dbJockeys
+class Motor extends dbJockeys
 {
   //la funcion construct llama al construct de db, encargada de la conexión.
   function __construct()
@@ -15,9 +15,9 @@ class Disengagement extends dbJockeys
   }
 
   //SACAR TODOS LOS MOVIMIENTOS
-  function listaDisengagement(){
+  function listaMotor(){
     //Construimos la consulta
-    $sql="SELECT * from disengagement ORDER BY id desc LIMIT 6500";
+    $sql="SELECT * from motor WHERE leido = 1 ORDER BY id desc";
     //Realizamos la consulta
     $resultado=$this->realizarConsulta($sql);
     if($resultado!=null){
@@ -33,9 +33,9 @@ class Disengagement extends dbJockeys
   }
 
   //SACAR EL NUMERO TOTAL DE MOVIMIENTOS
-  function cuentaListaDisengagement(){
+  function cuentaListaMotor(){
     //Construimos la consulta
-    $sql="SELECT count(*) as 'recuento' from disengagement";
+    $sql="SELECT count(*) as 'recuento' from motor WHERE leido = 1 ";
     //Realizamos la consulta
     $resultado=$this->realizarConsulta($sql);
     if($resultado!=null){
@@ -51,9 +51,9 @@ class Disengagement extends dbJockeys
   }
 
   //SACAR TODOS LOS MOVIMIENTOS FILTRADOS
-  function listaDisengagementFiltro($b){
+  function listaMotorFiltro($b){
     //Construimos la consulta
-    $sql="SELECT * from disengagement WHERE concat(bastidor, construccion, fecha, hora, tamano, tipo, ruido, derecha, izquierda, derechaR, izquierdaR, usuario) LIKE '%".$b."%' ORDER BY id desc LIMIT 6500";
+    $sql="SELECT * from motor WHERE leido = 1 AND concat(bastidor, motor) LIKE '%".$b."%' ORDER BY id desc";
     //Realizamos la consulta
     $resultado=$this->realizarConsulta($sql);
     if($resultado!=null){
@@ -69,9 +69,9 @@ class Disengagement extends dbJockeys
   }
 
   //SACAR EL NUMERO TOTAL DE MOVIMIENTOS FILTRADOS
-  function cuentaListaDisengagementFiltro($b){
+  function cuentaListaMotorFiltro($b){
     //Construimos la consulta
-    $sql="SELECT count(*) as 'recuento' from disengagement WHERE concat(bastidor, construccion, fecha, hora, tamano, tipo, ruido, derecha, izquierda, derechaR, izquierdaR, usuario) LIKE '%".$b."%'";
+    $sql="SELECT count(*) as 'recuento' from motor WHERE leido = 1 AND concat(bastidor, motor) LIKE '%".$b."%'";
     //Realizamos la consulta
     $resultado=$this->realizarConsulta($sql);
     if($resultado!=null){
