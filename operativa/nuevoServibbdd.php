@@ -19,14 +19,24 @@
       if (isset($_POST['descripcion'])) {
         //juntamos todos los modelos en una variable
         $modelos="";
-        $arrayModelos=$_POST['sel'];
-        for ($i=0; $i < count($arrayModelos); $i++) {
-          if ($i==0) {
-            $modelos=$arrayModelos[$i];
-          }else {
-            $modelos= $modelos .", ".$arrayModelos[$i];
+        if (isset($_POST['sel'])) {
+          $arrayModelos=$_POST['sel'];
+          for ($i=0; $i < count($arrayModelos); $i++) {
+            if ($i==0) {
+              $modelos=$arrayModelos[$i];
+            }else {
+              $modelos= $modelos .", ".$arrayModelos[$i];
+            }
           }
+        }else {
+          $modelos = NULL;
         }
+
+        //telefono
+        if (isset($_POST['telefono'])==false || $_POST['telefono'] == '') {
+          $_POST['telefono'] = 0;
+        }
+
 
         //guardamos las rutas de los archivos.
         $ruta1=NULL;
@@ -55,23 +65,25 @@
         }
         //si los ha rellenado, llamamos a la función de insertar el servicio y le pasamos los datos.
         $nuevoServicio=$servicio->nuevoServicio($_POST['descripcion'], $modelos, $_POST['recursos'], $_POST['finicio'], $_POST['cliente'], $_POST['responsable'], $_POST['telefono'], $_POST['correo'], $_POST['csup'],
-         $_POST['crrhh'], $_POST['caf'], $_POST['cdo'], $_POST['relacion'], $ruta1, $ruta2, $ruta3, $ruta4, $ruta5, $ruta6);
+         $_POST['crrhh'], $_POST['caf'], $_POST['cdo'], $ruta1, $ruta2, $ruta3, $ruta4, $ruta5, $ruta6);
         //comprobamos que se haya registrado.
         if ($nuevoServicio==null) {
           //si no se ha registrado le saca un mensaje avisandole
           ?>
             <script type="text/javascript">
               alert("Error al registrar la actividad.");
+              window.location='nuevoServicio.php';
+
             </script>
           <?php
         }else {
-          //actualizamos la actividad con la que lo vamos a relacionar para hacer la relacion tmbn
+          /*actualizamos la actividad con la que lo vamos a relacionar para hacer la relacion tmbn
           if ($_POST['relacion']!=0) {
             $ultimoid=$servicio->ultimoServicio();
             foreach ($ultimoid as $lastid) {
               $relacionServicio=$servicio->RelacionActividad($_POST['relacion'], $lastid['id']);
             }
-          }
+          }*/
           //si se ha registrado el servicio cogemos su id para regstrar los recursos
           $ultimo= $servicio-> ultimoServicio();
           foreach ($ultimo as $servicio) {
@@ -84,6 +96,8 @@
              ?>
                <script type="text/javascript">
                  alert("Error al registrar la actividad.");
+                 window.location='nuevoServicio.php';
+                 
                </script>
              <?php
            }else {
@@ -112,6 +126,8 @@
                        ?>
                          <script type="text/javascript">
                            alert("Error al registrar la actividad.");
+                           window.location='nuevoServicio.php';
+
                          </script>
                        <?php
                      }

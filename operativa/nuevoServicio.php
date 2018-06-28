@@ -87,7 +87,7 @@ if (isset($_SESSION['usuario'])==false) {
           <div class="formthird">
               <p><label><i class="fa fa-question-circle"></i><?php echo __('Actividad', $lang); ?> (*)</label><input type="text" name="descripcion" required/></p>
               <p><label><i class="fa fa-question-circle"></i>Descripción actividad</label><textarea name="cdo"></textarea></p>
-              <p><label><i class="fa fa-question-circle"></i><?php echo __('Modelos', $lang); ?> (*)</label>
+              <p><label><i class="fa fa-question-circle"></i><?php echo __('Modelos', $lang); ?></label>
                 <select name="sel[]" class="test" multiple="multiple" id='multiple'>
                         <option value='MONDEO'>MONDEO</option>
                         <option value='KUGA'>KUGA</option>
@@ -96,9 +96,8 @@ if (isset($_SESSION['usuario'])==false) {
                         <option value='S-MAX'>S-MAX</option>
                 </select></p>
               <p><label><i class="fa fa-question-circle"></i><?php echo __('Fecha inicio', $lang); ?> (*)</label><input type="date" name="finicio" required/></p>
-              <p><label><i class="fa fa-question-circle"></i><?php echo __('Cliente', $lang); ?> (*)</label>
-                <select name="cliente" required>
-                  <option> </option>
+              <p><label><i class="fa fa-question-circle"></i><?php echo __('Cliente', $lang); ?></label>
+                <select name="cliente">
                   <?php
                     $clientes= $cliente->listaClientes();
                     foreach ($clientes as $cliente) {
@@ -106,19 +105,9 @@ if (isset($_SESSION['usuario'])==false) {
                     }
                    ?>
                 </select></p>
-              <p><label><i class="fa fa-question-circle"></i><?php echo __('Responsable', $lang); ?> (*)</label><input type="text" name="responsable" required/></p>
-              <p><label><i class="fa fa-question-circle"></i><?php echo __('Tel. responsable', $lang); ?> (*)</label><input type="tel" name="telefono" required/></p>
-              <p><label><i class="fa fa-question-circle"></i><?php echo __('Correo responsable', $lang); ?> (*)</label><input type="email" name="correo" required/></p>
-              <p><label><i class="fa fa-question-circle"></i><?php echo __('Relacion', $lang); ?></label>
-                <select name="relacion">
-                  <option></option>
-                  <?php
-                    $listaServicios=$servicio->listaServiciosHoy();
-                    foreach ($listaServicios as $servicio1) {
-                      echo "<option value='".$servicio1['id']."'>".$servicio1['descripcion']."</option>";
-                    }
-                   ?>
-                </select></p>
+              <p><label><i class="fa fa-question-circle"></i><?php echo __('Responsable', $lang); ?></label><input type="text" name="responsable"/></p>
+              <p><label><i class="fa fa-question-circle"></i><?php echo __('Tel. responsable', $lang); ?></label><input type="tel" name="telefono"/></p>
+              <p><label><i class="fa fa-question-circle"></i><?php echo __('Correo responsable', $lang); ?></label><input type="email" name="correo"/></p>
           </div>
           <div class="formthird" id='contenedor'>
             <p><label><i class="fa fa-question-circle"></i><?php echo __('Personas (aprox.)', $lang); ?></label><input type="number" min='0' id="calculo" readonly/></p>
