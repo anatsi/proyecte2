@@ -55,7 +55,24 @@ if (isset($_SESSION['usuario'])==false) {
       <a href="../dashboard.php?lang=<?php echo $lang; ?>" class="header__logo"><img src="../imagenes/logo.png" alt=""></a>
 
       <nav class="menu">
-        <a href="indexRRHH.php">Inicio</a>
+        <a href="index.php?lang=<?php echo $lang; ?>"><?php echo __('Inicio', $lang); ?></a>
+        <?php
+        $menu=$usuario->menuDash($_SESSION['usuario']);
+        $opciones = explode(",", $menu['menu']);
+        foreach ($opciones as $opcion) {
+          if ($opcion == 51) {
+            echo '<a href="nuevoServicio.php>Nueva actividad </a>"';
+            echo "<a href='actividadesActuales.php'>Actividades actuales</a>";
+            echo "<a href='historicoActividades.php'>Histórico actividades</a>";
+            echo "<a href='resumen.php'>Búsqueda por fechas</a>";
+            echo "<a href='nuevoCliente.php'>Nuevo cliente</a>";
+          }elseif ($opcion == 52) {
+
+          }elseif ($opcion == 53) {
+
+          }
+        }
+         ?>
       </nav>
 
     </header>

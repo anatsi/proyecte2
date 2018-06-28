@@ -69,12 +69,23 @@ if (isset($_SESSION['usuario'])==false) {
 
       <nav class="menu">
         <a href="index.php?lang=<?php echo $lang; ?>"><?php echo __('Inicio', $lang); ?></a>
-        <a href="nuevoServicio.php?lang=<?php echo $lang; ?>"><?php echo __('Nueva actividad', $lang); ?></a>
-        <a href="actividadesActuales.php?lang=<?php echo $lang; ?>"><?php echo __('Actividades actuales', $lang); ?></a>
-        <a href="historicoActividades.php?lang=<?php echo $lang; ?>"><?php echo __('Histórico actividades', $lang); ?></a>
-        <a href="resumen.php">Búsqueda por fechas</a>
-        <a href="nuevoCliente.php">Nuevo cliente</a>
+        <?php
+        $menu=$usuario->menuDash($_SESSION['usuario']);
+        $opciones = explode(",", $menu['menu']);
+        foreach ($opciones as $opcion) {
+          if ($opcion == 51) {
+            echo '<a href="nuevoServicio.php>Nueva actividad </a>"';
+            echo "<a href='actividadesActuales.php'>Actividades actuales</a>";
+            echo "<a href='historicoActividades.php'>Histórico actividades</a>";
+            echo "<a href='resumen.php'>Búsqueda por fechas</a>";
+            echo "<a href='nuevoCliente.php'>Nuevo cliente</a>";
+          }elseif ($opcion == 52) {
 
+          }elseif ($opcion == 53) {
+
+          }
+        }
+         ?>
       </nav>
 
     </header>
