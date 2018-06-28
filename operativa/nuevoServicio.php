@@ -74,7 +74,7 @@ if (isset($_SESSION['usuario'])==false) {
         $opciones = explode(",", $menu['menu']);
         foreach ($opciones as $opcion) {
           if ($opcion == 21) {
-            echo '<a href="nuevoServicio.php>Nueva actividad </a>"';
+            echo '<a href="nuevoServicio.php">Nueva actividad </a>';
             echo "<a href='actividadesActuales.php'>Actividades actuales</a>";
             echo "<a href='historicoActividades.php'>Histórico actividades</a>";
             echo "<a href='resumen.php'>Búsqueda por fechas</a>";
