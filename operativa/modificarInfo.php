@@ -65,16 +65,22 @@ if (isset($_SESSION['usuario'])==false) {
         $menu=$usuario->menuDash($_SESSION['usuario']);
         $opciones = explode(",", $menu['menu']);
         foreach ($opciones as $opcion) {
-          if ($opcion == 51) {
+          if ($opcion == 21) {
             echo '<a href="nuevoServicio.php>Nueva actividad </a>"';
             echo "<a href='actividadesActuales.php'>Actividades actuales</a>";
             echo "<a href='historicoActividades.php'>Histórico actividades</a>";
             echo "<a href='resumen.php'>Búsqueda por fechas</a>";
             echo "<a href='nuevoCliente.php'>Nuevo cliente</a>";
-          }elseif ($opcion == 52) {
+          }elseif ($opcion == 22) {
 
-          }elseif ($opcion == 53) {
+          }elseif ($opcion == 23) {
 
+          }elseif ($opcion == 0) {
+            echo '<a href="nuevoServicio.php>Nueva actividad </a>"';
+            echo "<a href='actividadesActuales.php'>Actividades actuales</a>";
+            echo "<a href='historicoActividades.php'>Histórico actividades</a>";
+            echo "<a href='resumen.php'>Búsqueda por fechas</a>";
+            echo "<a href='nuevoCliente.php'>Nuevo cliente</a>";
           }
         }
          ?>
