@@ -50,7 +50,7 @@ if (isset($_SESSION['usuario'])==false) {
       <a href="../dashboard.php" class="header__logo"><img src="../imagenes/logo.png" alt=""></a>
 
       <nav class="menu">
-        <a href="index.php?lang=<?php echo $lang; ?>"><?php echo __('Inicio', $lang); ?></a>
+        <a href="index.php">Inicio</a>
         <?php
         $menu=$usuario->menuDash($_SESSION['usuario']);
         $opciones = explode(",", $menu['menu']);
@@ -66,7 +66,7 @@ if (isset($_SESSION['usuario'])==false) {
           }elseif ($opcion == 23) {
 
           }elseif ($opcion == 0) {
-            echo '<a href="nuevoServicio.php>Nueva actividad </a>"';
+            echo '<a href="nuevoServicio.php">Nueva actividad </a>';
             echo "<a href='actividadesActuales.php'>Actividades actuales</a>";
             echo "<a href='historicoActividades.php'>Histórico actividades</a>";
             echo "<a href='resumen.php'>Búsqueda por fechas</a>";

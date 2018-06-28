@@ -97,7 +97,7 @@ textarea::placeholder{
           }elseif ($opcion == 23) {
 
           }elseif ($opcion == 0) {
-            echo '<a href="nuevoServicio.php>Nueva actividad </a>"';
+            echo '<a href="nuevoServicio.php">Nueva actividad </a>';
             echo "<a href='actividadesActuales.php'>Actividades actuales</a>";
             echo "<a href='historicoActividades.php'>Histórico actividades</a>";
             echo "<a href='resumen.php'>Búsqueda por fechas</a>";
