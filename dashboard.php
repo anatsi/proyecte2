@@ -50,48 +50,26 @@
 					<?php
 						//llamamos a la funcion que nos devuelve el numero para el menu.
 						$menu=$usuario->menuDash($_SESSION['usuario']);
-						if ($menu['menu']==1) {
-              if ($menu['admin']==1) {
-                echo "<a href='operativa/index.php?lang=".$lang."'>".__('Gestión actividades', $lang)."</a>";
-                echo "<a href='WorkOrders/filtroMovimientos.php'>Work orders</a>";
-                echo "<a href='workOrders/registroDisengagement.php'>Disengagement</a>";
-                echo "<a href='WorkOrders/registroCampa.php'>Circuito</a>";
-                echo "<a href='workOrders/registroMotor.php'>Weekend 25</a>";
-
+            $opciones = explode(",", $menu['menu']);
+            foreach ($opciones as $opcion) {
+              if ($opcion == 1) {
+                echo "<a href='./tickets/index.php'>Tickets</a>";
+              }elseif ($opcion == 2) {
+                echo "<a href='./operativa/index.php'>Gestión actividades</a>";
+              }elseif ($opcion == 3) {
+                echo "<a href='./empleados/index.php'>Directorio empleados</a>";
+              }elseif ($opcion == 4) {
+                echo "<a href='./workOrders/movimientos/filtroMovimientos.php'>Registro movimientos</a>";
+              }elseif ($opcion == 5) {
+                echo "<a href='./workOrders/actividades/index.php'>Registro actividades</a>";
+              }elseif ($opcion == 0) {
+                echo "<a href='./tickets/index.php'>Tickets</a>";
+                echo "<a href='./operativa/index.php'>Gestión actividades</a>";
+                echo "<a href='./empleados/index.php'>Directorio empleados</a>";
+                echo "<a href='./workOrders/movimientos/filtroMovimientos.php'>Registro movimientos</a>";
+                echo "<a href='./workOrders/actividades/index.php'>Registro actividades</a>";
               }
-              if ($menu['admin']==2) {
-                echo "<a href='operativa/indexRRHH.php?lang=".$lang."'>".__('Gestión actividades', $lang)."</a>";
-                echo "<a href='empleados/index.php'>Gestión de empleados</a>";
-              }
-							//echo "<a href='#'>".__('Portal nóminas', $lang)."</a>";
-							echo "<a href='directorio/index.php'>".__('Directorio empleados', $lang)."</a>";
-							//echo "<a href='files/Peticion_vacaciones.pdf'>".__('Solicitar vacaciones', $lang)."</a>";
-						}elseif ($menu['menu']==2) {
-							echo "<a href='operativa/index.php?lang=".$lang."'>".__('Gestión actividades', $lang)."</a>";
-							echo "<a href='directorio/index.php'>".__('Directorio empleados', $lang)."</a>";
-							//echo "<a href='#'>".__('Portal nóminas', $lang)."</a>";
-							echo "<a href='files/Plan_Trabajo_Supervisores_2017.pdf'>".__('Plan de trabajo', $lang)."</a>";
-							//echo "<a href='files/Peticion_vacaciones.pdf'>".__('Solicitar vacaciones', $lang)."</a>";
-						}elseif ($menu['menu']==3) {
-              if ($menu['admin']==1) {
-                echo "<a href='tickets/index.php'>Tickets</a>";
-                echo "<a href='workOrders/registroDisengagement.php'>Disengagement</a>";
-                echo "<a href='operativa/index.php?lang=".$lang."'>".__('Gestión actividades', $lang)."</a>";
-                echo "<a href='WorkOrders/filtroMovimientos.php'>Work orders</a>";
-                echo "<a href='WorkOrders/registroCampa.php'>Circuito</a>";
-                echo "<a href='workOrders/registroMotor.php'>Weekend 25</a>";
-                
-
-              }elseif ($menu['admin']==2) {
-                echo "<a href='workOrders/registroDisengagement.php'>Disengagement</a>";
-                echo "<a href='workOrders/registroCampa.php'>Circuito</a>";
-              }elseif ($menu['admin']==3) {
-                echo "<a href='workOrders/registroMotor.php'>Weekend 25</a>";
-              }
-							//echo "<a href='#'>Nóminas</a>";
-              echo "<a href='directorio/index.php'>".__('Directorio empleados', $lang)."</a>";
-							//echo "<a href='files/Peticion_vacaciones.pdf'>".__('Solicitar vacaciones', $lang)."</a>";
-						}
+            }
 					 ?>
 				</nav>
 			</header>
