@@ -57,7 +57,7 @@
               }elseif ($opcion == 2) {
                 echo "<a href='./operativa/index.php'>Gestión actividades</a>";
               }elseif ($opcion == 3) {
-                echo "<a href='./empleados/index.php'>Directorio empleados</a>";
+                echo "<a href='./directorio/index.php'>Directorio empleados</a>";
               }elseif ($opcion == 4) {
                 echo "<a href='./workOrders/movimientos/filtroMovimientos.php'>Registro movimientos</a>";
               }elseif ($opcion == 5) {
@@ -65,7 +65,7 @@
               }elseif ($opcion == 0) {
                 echo "<a href='./tickets/index.php'>Tickets</a>";
                 echo "<a href='./operativa/index.php'>Gestión actividades</a>";
-                echo "<a href='./empleados/index.php'>Directorio empleados</a>";
+                echo "<a href='./directorio/index.php'>Directorio empleados</a>";
                 echo "<a href='./workOrders/movimientos/filtroMovimientos.php'>Registro movimientos</a>";
                 echo "<a href='./workOrders/actividades/index.php'>Registro actividades</a>";
               }

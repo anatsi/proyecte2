@@ -2,7 +2,7 @@
 //comprobamos si se ha enviado el empleado que se quiere desactivar
   if (isset($_GET['e'])) {
     //incluimos los archivos necesarios e inicializamos sus objetos
-      require_once './bbdd/empleados.php';
+      require_once './ddbb/empleados.php';
       $empleado= new Empleados();
       //llamamos a la funcion de desactivar el empleado
       $actualizar=$empleado->DesactivarEmpleado($_GET['e']);

@@ -44,6 +44,54 @@ class Recursos extends db
   }
 }
 
+function ModificacionId($id, $fecha){
+  //Construimos la consulta
+  $sql="SELECT * FROM dias_recursos WHERE servicio=".$id." AND inicio <= '".$fecha."' AND fin>='".$fecha."' OR servicio=".$id." AND suelto = '".$fecha."'";
+  //Realizamos la consulta
+  $resultado=$this->realizarConsulta($sql);
+  if($resultado!=false){
+    if($resultado!=false){
+      return $resultado->fetch_assoc();
+    }else{
+      return null;
+    }
+  }else{
+    return null;
+  }
+}
+
+function ModSupervisores($id, $fecha, $turno){
+  //Construimos la consulta
+  $sql="SELECT * FROM dias_recursos WHERE servicio=".$id." AND inicio <= '".$fecha."' AND fin>='".$fecha."' AND ".$turno." > 0 OR servicio=".$id." AND suelto = '".$fecha."' AND ".$turno." > 0";
+  //Realizamos la consulta
+  $resultado=$this->realizarConsulta($sql);
+  if($resultado!=false){
+    if($resultado!=false){
+      return $resultado->fetch_assoc();
+    }else{
+      return null;
+    }
+  }else{
+    return null;
+  }
+}
+
+function RecursosSupervisores($id, $turno){
+  //Construimos la consulta
+  $sql="SELECT * FROM recursos WHERE servicio=".$id." AND ".$turno." > 0";
+  //Realizamos la consulta
+  $resultado=$this->realizarConsulta($sql);
+  if($resultado!=false){
+    if($resultado!=false){
+      return $resultado->fetch_assoc();
+    }else{
+      return null;
+    }
+  }else{
+    return null;
+  }
+}
+
 //funcion encargada de insertar los recuros modificados para un dia en concreto
 function modundia($servicio, $dia, $inicio, $fin, $total, $tm, $tt, $tn, $tc, $o1, $i1, $f1, $o2, $i2, $f2, $o3, $i3, $f3, $o4, $i4, $f4, $o5, $i5, $f5,
  $o6, $i6, $f6){

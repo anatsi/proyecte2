@@ -62,8 +62,10 @@ if (isset($_SESSION['usuario'])==false) {
             echo "<a href='resumen.php'>Búsqueda por fechas</a>";
             echo "<a href='nuevoCliente.php'>Nuevo cliente</a>";
           }elseif ($opcion == 22) {
+            echo '<a href="filtroRRHH.php">Selección personal</a>';
 
           }elseif ($opcion == 23) {
+            echo '<a href="filtroSupervisores.php">Supervisores</a>';
 
           }elseif ($opcion == 0) {
             echo '<a href="nuevoServicio.php">Nueva actividad </a>';
@@ -71,6 +73,8 @@ if (isset($_SESSION['usuario'])==false) {
             echo "<a href='historicoActividades.php'>Histórico actividades</a>";
             echo "<a href='resumen.php'>Búsqueda por fechas</a>";
             echo "<a href='nuevoCliente.php'>Nuevo cliente</a>";
+            echo '<a href="filtroRRHH.php">Selección personal</a>';
+            echo '<a href="filtroSupervisores.php">Supervisores</a>';
           }
         }
          ?>

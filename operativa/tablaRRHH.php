@@ -11,12 +11,14 @@ require_once '../ddbb/users.php';
 require_once './bbdd/cliente.php';
 require_once './bbdd/servicio.php';
 require_once './bbdd/recursos.php';
+require_once './bbdd/empleados.php';
 
 $usuario=new User();
 $sesion=new Sesiones();
 $cliente=new Cliente();
 $servicio=new Servicio();
 $recursos=new Recursos();
+$empleados = new Empleados();
 
 //comprobamos si hay una sesion iniciada
 if (isset($_SESSION['usuario'])==false) {
@@ -82,6 +84,7 @@ if (isset($_SESSION['usuario'])==false) {
             echo '<a href="filtroRRHH.php">Selección personal</a>';
           }elseif ($opcion == 23) {
             echo '<a href="filtroSupervisores.php">Supervisores</a>';
+
           }elseif ($opcion == 0) {
             echo '<a href="nuevoServicio.php">Nueva actividad </a>';
             echo "<a href='actividadesActuales.php'>Actividades actuales</a>";
@@ -99,47 +102,80 @@ if (isset($_SESSION['usuario'])==false) {
 
     <div class="site-content">
       <div class="container">
+        <?php
+          //recogemos la fecha sea por get o por post.
+          if (isset($_GET['fecha'])) {
+            $fecha = $_GET['fecha'];
+          }else {
+            $fecha = $_POST['fecha'];
+          }
+
+         ?>
         <!-- Contenido de la pagina. -->
-        <h2><?php echo __('Actividades actuales', $lang); ?></h2>
-        <h3><a href="excelActuales.php" title="Exportar todo a excel"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAALbSURBVEhL1VZLaBRBEB1FUEHUgwpCNLiZn6viUQ+iHsSLJyEeNOt0T5SoAcGbB8EFvxdBBQ+KARFEkt3t2URCPC74ARX1oIecFAQ/Nz+gxB/GVz09s7uzEza7afwUPGaquqped1Vt7xitij2SW2UJb6ct2Ekn4KPA60yhb5FanrlsqeTnuKJ3rR34OTvg52zBK47gH0A0mUTbxB1D3fOtYX8DEh+wA3bZEewBEk4kCaZCW8Qgeo6y/UhLOF0QMfIcR1WuNAP8L1G7jGSSdiCJBXuWtpYGbODUXyFGS89qI3YCNoiTPCYg8UvoHyM9tsMmY3QSq5GR4pT4HthHlRoL2WTMv0Ms+ENj0phFTtmRfWbdtAs+IKMh9LuujQtLze+hnO8VPmPKv9foIWBTuRpP7AacqfwGiG+GjuxrtrB3JdlWF701cQIFLcOFBG+yhf4FROKU+To4/YLtAulUDey8kowhYjfwtuN9Vwh2FZt7UtVDKFs6MQFEZyQRBM7FjMgto3fVuwb/ZI9xzR6Cva3hmpC3C8S+1beEnuZYz0L09m2Kr74Th2CDRBgJgk6n+2nqcQT0sl9xSrFK3mbqd5ovEeNZM9XsCzba2lQTEHjfyOdnE6Eb+LslMwRr15O+BC09Rh+/mcN+lhy7ynwF7d4S/nrSzSF/Ke08GaNruE4oPwMOA8oWJ1FJ62LCUlfvamz+Fd3Lsa5ANhmTQjxujh2eSwR0aug/ozUQbpLMaAESPIrshBkPF5pfxM6OEnBb3a1dA55GazjRjdo1NVy91Vhehj4e+0d22GTMVMPVKnT1uGUQsSvYRqvkbyOgIhfpuy3SI6hvOb3E2i6QVvD/EAfsIG4mzqCcR/3vYCefGp2ag4hNsb8Dfcw0Q/S/Xi/4vzUDr8sRfjeVA0lvY1DeJYmSIGKVQa+4ome5JdgOlOgY/dbxfPFHiNOks8wWO2W2Fb090nmNzVPmaYph/AbQ+I/d0UElTgAAAABJRU5ErkJggg=="></a></h3>
+        <h2>Actividades para el <?php echo $fecha; ?></h2>
+
         <br>
         <table id="tablamod" class="tablesorter">
         <thead id="theadmod">
           <tr id="trmod">
             <th scope="col" id="thmod"><?php echo __('Actividad', $lang); ?></th>
-            <th scope="col" id="thmod"><?php echo __('Modelos', $lang); ?></th>
-            <th scope="col" id="thmod"><?php echo __('Fecha inicio', $lang); ?></th>
-            <th scope="col" id="thmod"><?php echo __('Cliente', $lang); ?></th>
-            <th scope="col" id="thmod">Telefono</th>
+            <th scope="col" id="thmod"><?php echo __('Recursos', $lang); ?></th>
+            <th scope="col" id="thmod">Asignados</th>
+            <th scope="col" id="thmod">Estado</th>
             <th scope="col" id="thmod"><?php echo __('Opciones', $lang); ?></th>
           </tr>
         </thead>
         <tbody id="tbodymod">
           <?php
           //sacamos la lista de los servicios de hoy
-            $listamodificar=$servicio->listaServiciosHoy();
+            $listamodificar=$servicio->listaRRHH($fecha);
             foreach ($listamodificar as $lista) {
-              //transformamos la fecha
-              $fecha=explode("-", $lista['f_inicio']);
-              $fechaHoy=$fecha[2]."-".$fecha[1]."-".$fecha[0];
-              //sacamos el nombre del cliente por su id
-              $clientes=$cliente->ClienteId($lista['id_cliente']);
-              echo "<tr id='trmod'>";
-              echo "<td scope='row' data-label='".__('Actividad', $lang)."' id='tdmod'><a id='timeline' href='timeline.php?servicio=".$lista['id']."'>".$lista['descripcion']."</a></td>";
-              echo "<td data-label='".__('Modelos', $lang)."' id='tdmod'>".$lista['modelos']."</td>";
-              echo "<td data-label='".__('Fecha inicio', $lang)."' id='tdmod'>".$fechaHoy."</td>";
-              echo "<td data-label='".__('Cliente', $lang)."' id='tdmod'>".$clientes['nombre']."</td>";
-              echo "<td data-label='Telefono' id='tdmod'><a href='tel:".$lista['telefono']."'>".$lista['telefono']."</a></td>";
-              echo "  <td data-label='".__('Opciones', $lang)."' id='tdmod'>
-              <a href='modificarRecursos.php?servicio=".$lista['id']."' title='".__('Modificar recursos', $lang)."'><i class='material-icons'>people</i></a>
-              <a href='modificarInfo.php?servicio=".$lista['id']."' title='".__('Modificar información', $lang)."'><i class='material-icons'>mode_edit</i></a>
-              <a href='excelIndividual.php?id=".$lista['id']."' title='Exportar a excel'><img src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABoAAAAaCAYAAACpSkzOAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAALCSURBVEhLvVZLaFNBFA3+EBFRUMGVIAjS5r1XjBQEoYLuBNFFXIjgrmKheTMvCoKLuCi6FBdK0ZUIRbrWjYJFumkzk9RPVcTfRhERrAs/oGI952aSvnwsL0n1wuG9e9+Ze2bmzp0klcQydnBlb1kHnlHHfaMu+kbf96267T53Zki6Jl0Kd3tWDyHpVSQ1SPrdt3o+DohOuiHJzCtF+5DoFAaPIelTCPxqTNoKFBqYKKzwHp3ZsBj6p4bXiVCrJElAId9Ge1p9q4PRv4HcvxcCwL3SlVC6pHbh/RUB/51n9A/U9VMViH1x3O6EZO+dcXUQuuVcMfhHHbdByOiHmIkFnsXjGPCGcRyUxwsxNbl1orDaK6ptRGDVEcTuVX2B1cpx64UQ0JxJz2xhFd7fVmL6606jtrgZnotxO68REs31lYc3SdLabPQF8THDeD9RKF4jfHvPSS34UrcPeDYLSdCqUSZm42K7XrIXRAj7X8drqFFg1AFynCsG/y81YhANG0yHfSQG06pXBhSjg008CPXMDq31SvmMwKqQsZpPmOis4zYLVaDuUICWHc8uR4xbUcdh0iXoIzVSFeETs73eyKEQV+5OKfECvM8xH6dUvXbcljV6zmNLARz3vDwf5Ddjv+fqeF3VCPdSuqgHSAqsPgzRn33l3Hb6volOxrmyoplwPU7jfgHqgcRTNV9i6rzjNgldY1JuGT4+caSbjKXmC8twUIpVLoU6qhFm/01mISdIn64RuUobHqqcJDVY41OomEvj/S6BMTOIfaz6LiY3SZ1Qu6CQrNRZ232UFBTK2GijZ6OsADcIVl+q+RJTlxy3O6H/9nuUVAg9dZnNKE3VLiiUttEONPf44tBjvHylaOyHwIR7MVgDN3ha2EONyeOgkAzu1ng7BEb3AycgOirNiBZYcqFWxr9X7J2gpI9xAi6cwFKpPxzlsvQlqWiqAAAAAElFTkSuQmCC'></a>
-              <a href='finalizarServicio.php?servicio=".$lista['id']."' title='".__('Finalizar actividad', $lang)."'><i class='material-icons'>power_settings_new</i></a>
-              </td>";
+              //sacar si hay alguna modificacion en los recursos de ese dia.
+              $modRecursos = $recursos -> ModificacionId($lista['id'], $fecha);
+              if ($modRecursos == null || $modRecursos == false) {
+                $recursosTotal = $lista['recursos'];
+              }else {
+                $recursosTotal = $modRecursos['total'];
+              }
+              //sacamos el personal que hay asociado a esa actividad ese dia(si lo hay)
+              $asignados = $empleados -> personalAsignado($lista['id'], $fecha);
+
+              //sacamos solo las actividades que no tengan 0 recursos.
+              if ($recursosTotal > 0) {
+                echo "<tr id='trmod'>";
+                echo "<td scope='row' data-label='".__('Actividad', $lang)."' id='tdmod'>".$lista['descripcion']."</td>";
+                echo "<td data-label='Recursos' id='tdmod'>".$recursosTotal."</td>";
+                echo "<td data-label='Asignados' id='tdmod'>".$asignados['total']."</td>";
+
+                if ($asignados['total']==0) {
+                  echo "<td data-label='Estado' id='tdmod'><i class='material-icons' style='color:red;'>clear</i></td>";
+                  echo "  <td data-label='".__('Opciones', $lang)."' id='tdmod'>
+                  <a href='seleccionPersonal.php?id=".$lista['id']."&fecha=".$fecha."' title='Seleccionar personal'><i class='material-icons'>people</i></a>
+                  </td>";
+                }else {
+                  if ($asignados['total'] == $recursosTotal) {
+                    echo "<td data-label='Estado' id='tdmod'><i class='material-icons' style='color:green;'>done</i></td>";
+                  }else {
+                    echo "<td data-label='Estado' id='tdmod'><i class='material-icons' style='color:red;'>clear</i></td>";
+                  }
+                  echo "  <td data-label='".__('Opciones', $lang)."' id='tdmod'>
+                  <a href='editarPersonal.php?id=".$lista['id']."&fecha=".$fecha."' title='Modificar personal'><i class='material-icons'>mode_edit</i></a>
+                  </td>";
+                }
+              }
+
             }
            ?>
         </tbody>
       </table>
+      <form class="" action="correoSupervisores.php" method="post">
+        <?php
+          echo "<input type='hidden' name='fecha' value='".$fecha."'>";
+         ?>
+        <div class="submitbuttons">
+            <input class="submitone" type="submit" value="CONFRIMAR"/>
+        </div>
+      </form>
       </div> <!-- END container -->
     </div> <!-- END site-content -->
   </div> <!-- END site-pusher -->

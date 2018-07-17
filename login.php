@@ -31,11 +31,19 @@
         if ($registrado['pass']==sha1(md5($salt . $_POST['form-password']))) {
           //si el usuario existe y la contraseña es correcta, iniciamos la sesion.
           $sesion->addUsuario($registrado['id_user']);
-          ?>
-            <script type="text/javascript">
-              window.location="dashboard.php?lang=<?php echo $lang; ?>";
-            </script>
-          <?php
+          if ($registrado['primera_vez']==0) {
+            ?>
+              <script type="text/javascript">
+                window.location='cambiarContraFormulario.php';
+              </script>
+            <?php
+          }else {
+            ?>
+              <script type="text/javascript">
+                window.location="dashboard.php?lang=<?php echo $lang; ?>";
+              </script>
+            <?php
+          }
         }else {
           //si la contraseña no coincide, sacamos un mensaje y lo reenviamos al formulario.
           ?>

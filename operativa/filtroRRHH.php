@@ -23,7 +23,7 @@ if (isset($_SESSION['usuario'])==false) {
 <html >
 <head>
   <meta charset="UTF-8">
-  <title><?php echo __('Inicio', $lang); ?></title>
+  <title>Elegir dia</title>
     <link rel="stylesheet" href="../css/menu.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
     <link rel="stylesheet" href="../css/formulario.css">
@@ -67,8 +67,9 @@ if (isset($_SESSION['usuario'])==false) {
             echo "<a href='resumen.php'>Búsqueda por fechas</a>";
             echo "<a href='nuevoCliente.php'>Nuevo cliente</a>";
           }elseif ($opcion == 22) {
-
+            echo '<a href="filtroRRHH.php">Selección personal</a>';
           }elseif ($opcion == 23) {
+            echo '<a href="filtroSupervisores.php">Supervisores</a>';
 
           }elseif ($opcion == 0) {
             echo '<a href="nuevoServicio.php">Nueva actividad </a>';
@@ -76,6 +77,8 @@ if (isset($_SESSION['usuario'])==false) {
             echo "<a href='historicoActividades.php'>Histórico actividades</a>";
             echo "<a href='resumen.php'>Búsqueda por fechas</a>";
             echo "<a href='nuevoCliente.php'>Nuevo cliente</a>";
+            echo '<a href="filtroRRHH.php">Selección personal</a>';
+            echo '<a href="filtroSupervisores.php">Supervisores</a>';
           }
         }
          ?>
@@ -85,7 +88,17 @@ if (isset($_SESSION['usuario'])==false) {
 
 <div class="site-content">
   <div class="container">
-    <!--Contenido de la pagina -->
+    <!-- Contenido de la pagina. -->
+    <h2>Elegir dia</h2>
+    <form action="tablaRRHH.php" method="post" id="formulario">
+      <div class="formthird">
+        <p><label><i class="fa fa-question-circle"></i>FECHA</label><input type="date" name="fecha"/></p>
+      </div>
+      <div class="formthird">
+      </div>
+      <div class="submitbuttons">
+          <input id="exportarResumen" type="submit" value="ACEPTAR"/>
+      </div>
   </div>
 </div>
 </div>

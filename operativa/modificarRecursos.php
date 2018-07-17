@@ -52,7 +52,7 @@ if (isset($_SESSION['usuario'])==false) {
       <a href="../dashboard.php" class="header__logo"><img src="../imagenes/logo.png" alt=""></a>
 
       <nav class="menu">
-        <a href="index.php?lang=<?php echo $lang; ?>"><?php echo __('Inicio', $lang); ?></a>
+        <a href="index.php">Inicio</a>
         <?php
         $menu=$usuario->menuDash($_SESSION['usuario']);
         $opciones = explode(",", $menu['menu']);
@@ -64,8 +64,10 @@ if (isset($_SESSION['usuario'])==false) {
             echo "<a href='resumen.php'>Búsqueda por fechas</a>";
             echo "<a href='nuevoCliente.php'>Nuevo cliente</a>";
           }elseif ($opcion == 22) {
+            echo '<a href="filtroRRHH.php">Selección personal</a>';
 
           }elseif ($opcion == 23) {
+            echo '<a href="filtroSupervisores.php">Supervisores</a>';
 
           }elseif ($opcion == 0) {
             echo '<a href="nuevoServicio.php">Nueva actividad </a>';
@@ -73,6 +75,8 @@ if (isset($_SESSION['usuario'])==false) {
             echo "<a href='historicoActividades.php'>Histórico actividades</a>";
             echo "<a href='resumen.php'>Búsqueda por fechas</a>";
             echo "<a href='nuevoCliente.php'>Nuevo cliente</a>";
+            echo '<a href="filtroRRHH.php">Selección personal</a>';
+            echo '<a href="filtroSupervisores.php">Supervisores</a>';
           }
         }
          ?>
@@ -93,6 +97,8 @@ if (isset($_SESSION['usuario'])==false) {
         <form action="modificarRecursos.php" method="post" id="formulario">
           <div class="formthird" id='contenedor'>
             <input type="hidden" value=<?=$infoservicio['id']?> name="id">
+            <input type="hidden" value="<?=$infoservicio['descripcion']?>" name="descripcion">
+
             <p><label>SELECCIONAR DIAS</label></p>
             <p><label><i class="fa fa-question-circle"></i>Dia suelto</label><input type="date" name="suelto" min= <?php echo date('Y-m-d');?> id="suelto"/></p>
             <p><label>Mas de un dia</label></p>
@@ -181,6 +187,46 @@ if (isset($_POST['id']) && isset($_POST['recursos'])) {
           </script>
         <?php
       }else {
+        //sacar dias de la modificacion.
+        if (empty($_POST['suelto'])==false) {
+          $dias = $_POST['suelto'];
+        }else {
+          $dias = 'De '.$_POST['inicio'].' a '.$_POST['fin'];
+        }
+        //ENVIAR CORREO A RRHH
+        // Enviar el email
+          $mail = "robot@tsiberia.es";
+
+          $header = 'From: ' . $mail . " \r\n";
+          $header .= "X-Mailer: PHP/" . phpversion() . " \r\n";
+          $header .= "Mime-Version: 1.0 \r\n";
+          //$header .= "Content-Type: text/plain";
+          $header .= "Content-Type: text/html; charset=utf-8";
+
+          $mensaje = '<html>' . '<head><title>Email</title>
+          <style type="text/css">
+          h2 {
+              color: black;
+              font-family: Impact;
+            }
+          </style>
+          </head>' .
+          '<body>
+            <h2>
+              <b>Nueva modificacion en servicio</b>
+            </h2><br />' .
+            '<b>SERVICIO: </b>'.$_POST['descripcion']. '<br />
+            <b> DIAS: </b>'.$dias.' <br>
+            <b> RECURSOS TOTALES: </b>'.$_POST['recursos'].' <br>
+            <hr>'.
+            'Por favor, no responda a este correo lo envia un robot automáticamente.'.
+            '<br />Enviado el ' . date('d/m/Y', time()) .
+          '</body></html>';
+
+          $para = 'aasins@tsiberia.es';
+          $asunto = 'MODIFICACIÓN EN SERVICIO';
+
+          mail($para, $asunto, $mensaje, $header);
         ?>
           <script type="text/javascript">
             alert('Actividad actualizada con exito');

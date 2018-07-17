@@ -7,7 +7,7 @@
         }
         else {
             var settings = $.extend({
-                placeholder: 'Seleccione modelos',
+                placeholder: 'Seleccionar',
                 numDisplayed: 3,
                 overflowText: '{n} modelos',
                 searchText: 'Buscar...',

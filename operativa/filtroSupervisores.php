@@ -1,13 +1,17 @@
 <?php
+//Reconocimiento idioma
+require('./languages/languages.php');
+  $lang = "es";
+if ( isset($_GET['lang']) ){
+  $lang = $_GET['lang'];
+}
 
 //incluimos todas las clases necesarias e iniciamos sus objetos.
 require_once '../ddbb/sesiones.php';
 require_once '../ddbb/users.php';
-require_once './bbdd/cliente.php';
 
 $usuario=new User();
 $sesion=new Sesiones();
-$cliente=new Cliente();
 
 if (isset($_SESSION['usuario'])==false) {
   header('Location: ../index.php');
@@ -17,14 +21,12 @@ if (isset($_SESSION['usuario'])==false) {
 <html >
 <head>
   <meta charset="UTF-8">
-  <title>Nuevo cliente</title>
+  <title>Elegir dia</title>
     <link rel="stylesheet" href="../css/menu.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
     <link rel="stylesheet" href="../css/formulario.css">
     <link rel="shortcut icon" href="../imagenes/favicon.ico">
 		<link rel="stylesheet" type="text/css" href="../css/dashboard.css" />
-    <script type="text/javascript" src="../js/servicioForm.js"></script>
-    <script src="../js/jquery.min.js"></script>
 </head>
 <body>
   <head>
@@ -36,9 +38,9 @@ if (isset($_SESSION['usuario'])==false) {
     //llamamos a la función para devolver el nombre de usuario.
     $nombreuser=$usuario->nombreUsuario($_SESSION['usuario']);
     //sacamos el nombre de usuario por su id
-    echo "<a><strong>Bienvenido".$nombreuser['name']."</strong></a>";
+    echo "<a><strong>".__('Bienvenido ', $lang).$nombreuser['name']."</strong></a>";
    ?>
-  <span class="right"><a href="../logout.php" id="logout">Cerrar Sesion</a></span>
+  <span class="right"><a href="../logout.php" id="logout"><?php echo __('Cerrar Sesion', $lang); ?></a></span>
 </div><!--/ Codrops top bar -->
 
 <div class="site-container">
@@ -47,10 +49,11 @@ if (isset($_SESSION['usuario'])==false) {
     <header class="header">
 
       <a href="#" class="header__icon" id="header__icon"></a>
-      <a href="../dashboard.php" class="header__logo"><img src="../imagenes/logo.png" alt=""></a>
+
+      <a href="../dashboard.php?lang=<?php echo $lang; ?>" class="header__logo"><img src="../imagenes/logo.png" alt=""></a>
 
       <nav class="menu">
-        <a href="index.php">Inicio</a>
+        <a href="index.php?lang=<?php echo $lang; ?>"><?php echo __('Inicio', $lang); ?></a>
         <?php
         $menu=$usuario->menuDash($_SESSION['usuario']);
         $opciones = explode(",", $menu['menu']);
@@ -63,7 +66,6 @@ if (isset($_SESSION['usuario'])==false) {
             echo "<a href='nuevoCliente.php'>Nuevo cliente</a>";
           }elseif ($opcion == 22) {
             echo '<a href="filtroRRHH.php">Selección personal</a>';
-
           }elseif ($opcion == 23) {
             echo '<a href="filtroSupervisores.php">Supervisores</a>';
 
@@ -82,56 +84,36 @@ if (isset($_SESSION['usuario'])==false) {
 
     </header>
 
-    <div class="site-content">
-      <div class="container">
-        <!-- Contenido de la pagina. -->
-        <h2>Nuevo cliente</h2>
-        <form action="nuevoCliente.php" method="post" id="formulario" enctype="multipart/form-data">
-          <div class="formthird">
-              <p><label><i class="fa fa-question-circle"></i>Nombre cliente: (*)</label><input type="text" name="nombre" required/></p>
-          </div>
-          <div class="submitbuttons">
-              <input class="submitone" type="submit"  name="Enviar" value="Enviar"/>
-          </div>
-        </form>
-
-      </div> <!-- END container -->
-    </div> <!-- END site-content -->
-  </div> <!-- END site-pusher -->
-</div> <!-- END site-container -->
-
+<div class="site-content">
+  <div class="container">
+    <!-- Contenido de la pagina. -->
+    <h2>Elegir dia y turno</h2>
+    <form action="excelSupervisores.php" method="post" id="formulario">
+      <div class="formthird">
+        <p><label><i class="fa fa-question-circle"></i>FECHA</label><input type="date" name="fecha"/></p>
+      </div>
+      <div class="formthird">
+        <p><label><i class="fa fa-question-circle"></i>TURNO</label>
+          <select name="turno">
+            <option value="Mañana">Mañana</option>
+            <option value="Tarde">Tarde</option>
+            <option value="Noche">Noche</option>
+          </select>
+        </p>
+      </div>
+      <div class="formthird">
+      </div>
+      <div class="submitbuttons">
+          <input id="exportarResumen" type="submit" value="ACEPTAR"/>
+      </div>
+  </div>
+</div>
+</div>
+</div>
 <!-- Scripts para que el menu en versión movil funcione -->
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script  src="../js/menu.js"></script>
 
 </body>
 </html>
-
-<?php
-  if (isset($_POST['Enviar'])) {
-    if (isset($_POST['nombre'])) {
-      $nuevoCliente = $cliente -> nuevoCliente($_POST['nombre']);
-      if ($nuevoCliente == null || $nuevoCliente == false) {
-        ?>
-          <script type="text/javascript">
-            alert('Algo salio mal');
-          </script>
-        <?php
-      }else {
-        ?>
-        <script type="text/javascript">
-          alert('Nuevo cliente registrado');
-        </script>
-        <?php
-      }
-    }else {
-      ?>
-      <script type="text/javascript">
-        alert('Rellenar el nombre antes de continuar');
-        window.location = 'nuevoCliente.php';
-      </script>
-      <?php
-    }
-  }
- ?>
- <?php } ?>
+<?php } ?>

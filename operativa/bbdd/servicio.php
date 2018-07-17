@@ -184,6 +184,24 @@ class Servicio extends db
       }
     }
 
+    //funcion para listar las actividades para RRHH
+    function listaRRHH($fecha){
+      //Construimos la consulta
+      $sql="SELECT * from servicios WHERE f_inicio<='".$fecha."' AND f_fin>='".$fecha."' OR f_inicio<='".$fecha."' AND f_fin IS NULL";
+      //Realizamos la consulta
+      $resultado=$this->realizarConsulta($sql);
+      if($resultado!=null){
+        //Montamos la tabla de resultados
+        $tabla=[];
+        while($fila=$resultado->fetch_assoc()){
+          $tabla[]=$fila;
+        }
+        return $tabla;
+      }else{
+        return null;
+      }
+    }
+
     //funcion para listar los servicios finalizados filtrados
     function listaFiltrados($filtro){
       //cogemos la fecha de hoy para compararla con lo que vamos a sacar.

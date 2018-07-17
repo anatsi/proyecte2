@@ -65,6 +65,16 @@ class User extends db2
     }
   }
 
+  //funcion para actualizar la contraseña del usuario la primera vez que entra
+    function cambiarContra($contra, $user){
+      $sql="UPDATE users SET pass = '".$contra."', primera_vez = 1 WHERE id_user = ".$user;
+      $consulta=$this->realizarConsulta($sql);
+      if ($consulta=!false) {
+           return true;
+      }else {
+           return false;
+      }
+    }
 
 }
  ?>

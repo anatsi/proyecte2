@@ -2,7 +2,7 @@
 //incluimos todas las clases necesarias e iniciamos sus objetos.
 require_once '../ddbb/sesiones.php';
 require_once '../ddbb/users.php';
-require_once './bbdd/empleados.php';
+require_once './ddbb/empleados.php';
 
 $usuario=new User();
 $sesion=new Sesiones();
@@ -90,7 +90,7 @@ if (isset($_SESSION['usuario'])==false) {
     if (isset($_POST['activo'])) {
       $activo=1;
     }
-    //llamamos a la funcion de insertar un nuevo usuario en la bbdd
+    //llamamos a la funcion de insertar un nuevo usuario en la ddbb
     $nuevoEmpleado= $empleado->nuevoEmpleado($_POST['nombre'], $_POST['apellidos'], $activo, $_POST['tel']);
     if ($nuevoEmpleado==null) {
       //si no se ha podido insertar, sacamos un mensaje avisando
