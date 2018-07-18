@@ -65,14 +65,22 @@ foreach ($listaHoy as $actividad) {
       ->setCellValue('B'.$Bi, $actividad['descripcion'] ." - " .$recursosTotal[$turno]);
       $Bi++;
       //sacar la lista de empleados para esa actividad, dia y turno.
-      foreach ($listaEmpleados as $empleado) {
-        //SI EL EMPLEADO ESTA VACIO, LO CAMBIAMOS POR 'SIN ASIGNAR'
-        if ($empleado['empleado'] == '') {
-          $empleado['empleado'] = 'SIN ASIGNAR';
+      if ($listaEmpleados == null || $listaEmpleados == '') {
+        for ($gente=0; $gente < $recursosTotal[$turno] ; $gente++) {
+          $objPHPExcel->setActiveSheetIndex(0)
+          ->setCellValue('B'.$Bi, 'SIN ASIGNAR');
+          $Bi++;
         }
-        $objPHPExcel->setActiveSheetIndex(0)
-        ->setCellValue('B'.$Bi, $empleado['empleado']);
-        $Bi++;
+      }else {
+        foreach ($listaEmpleados as $empleado) {
+          //SI EL EMPLEADO ESTA VACIO, LO CAMBIAMOS POR 'SIN ASIGNAR'
+          if ($empleado['empleado'] == '') {
+            $empleado['empleado'] = 'SIN ASIGNAR';
+          }
+          $objPHPExcel->setActiveSheetIndex(0)
+          ->setCellValue('B'.$Bi, $empleado['empleado']);
+          $Bi++;
+        }
       }
     }else {
       $objPHPExcel->getActiveSheet()->getStyle('A'.$Ai)->applyFromArray($OtherStyle_header);
@@ -80,14 +88,22 @@ foreach ($listaHoy as $actividad) {
       ->setCellValue('A'.$Ai, $actividad['descripcion']." - " .$recursosTotal[$turno]);
       $Ai++;
       //sacar la lista de empleados para esa actividad, dia y turno.
-      foreach ($listaEmpleados as $empleado) {
-        //SI EL EMPLEADO ESTA VACIO, LO CAMBIAMOS POR 'SIN ASIGNAR'
-        if ($empleado['empleado'] == '') {
-          $empleado['empleado'] = 'SIN ASIGNAR';
+      if ($listaEmpleados == null || $listaEmpleados == '') {
+        for ($gente=0; $gente < $recursosTotal[$turno] ; $gente++) {
+          $objPHPExcel->setActiveSheetIndex(0)
+          ->setCellValue('A'.$Ai, 'SIN ASIGNAR');
+          $Ai++;
         }
-        $objPHPExcel->setActiveSheetIndex(0)
-        ->setCellValue('A'.$Ai, $empleado['empleado']);
-        $Ai++;
+      }else {
+        foreach ($listaEmpleados as $empleado) {
+          //SI EL EMPLEADO ESTA VACIO, LO CAMBIAMOS POR 'SIN ASIGNAR'
+          if ($empleado['empleado'] == '') {
+            $empleado['empleado'] = 'SIN ASIGNAR';
+          }
+          $objPHPExcel->setActiveSheetIndex(0)
+          ->setCellValue('A'.$Ai, $empleado['empleado']);
+          $Ai++;
+        }
       }
     }
   }
