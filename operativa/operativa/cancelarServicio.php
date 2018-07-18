@@ -8,7 +8,7 @@
     <?php
     $fecha=date('Y-m-d');
 
-      include './bbdd/servicio.php';
+      include '../bbdd/servicio.php';
       $servicio= new Servicio();
       $cancelarServicio= $servicio->CancelarActividad($_GET['servicio'], $fecha);
       if ($cancelarServicio==true) {

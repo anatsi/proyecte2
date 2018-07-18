@@ -66,26 +66,26 @@ if (isset($_SESSION['usuario'])==false) {
         $opciones = explode(",", $menu['menu']);
         foreach ($opciones as $opcion) {
           if ($opcion == 21) {
-            echo '<a href="nuevoServicio.php">Nueva actividad </a>';
-            echo "<a href='actividadesActuales.php'>Actividades actuales</a>";
-            echo "<a href='historicoActividades.php'>Histórico actividades</a>";
-            echo "<a href='resumen.php'>Búsqueda por fechas</a>";
-            echo "<a href='nuevoCliente.php'>Nuevo cliente</a>";
+            echo '<a href="./operativa/nuevoServicio.php">Nueva actividad </a>';
+            echo "<a href='./operativa/actividadesActuales.php'>Actividades actuales</a>";
+            echo "<a href='./operativa/historicoActividades.php'>Histórico actividades</a>";
+            echo "<a href='./operativa/resumen.php'>Búsqueda por fechas</a>";
+            echo "<a href='./operativa/nuevoCliente.php'>Nuevo cliente</a>";
           }elseif ($opcion == 22) {
-            echo '<a href="filtroRRHH.php">Selección personal</a>';
+            echo '<a href="./rrhh/filtroRRHH.php">Selección personal</a>';
 
           }elseif ($opcion == 23) {
-            echo '<a href="filtroSupervisores.php">Supervisores</a>';
+            echo '<a href="./supervisores/filtroSupervisores.php">Supervisores</a>';
 
           }elseif ($opcion == 0) {
-            echo '<a href="nuevoServicio.php">Nueva actividad </a>';
-            echo "<a href='actividadesActuales.php'>Actividades actuales</a>";
-            echo "<a href='historicoActividades.php'>Histórico actividades</a>";
-            echo "<a href='resumen.php'>Búsqueda por fechas</a>";
-            echo "<a href='nuevoCliente.php'>Nuevo cliente</a>";
-            echo '<a href="filtroRRHH.php">Selección personal</a>';
-            echo '<a href="filtroSupervisores.php">Supervisores</a>';
-            
+            echo '<a href="./operativa/nuevoServicio.php">Nueva actividad </a>';
+            echo "<a href='./operativa/actividadesActuales.php'>Actividades actuales</a>";
+            echo "<a href='./operativa/historicoActividades.php'>Histórico actividades</a>";
+            echo "<a href='./operativa/resumen.php'>Búsqueda por fechas</a>";
+            echo "<a href='./operativa/nuevoCliente.php'>Nuevo cliente</a>";
+            echo '<a href="./rrhh/filtroRRHH.php">Selección personal</a>';
+            echo '<a href="./supervisores/filtroSupervisores.php">Supervisores</a>';
+
           }
         }
          ?>

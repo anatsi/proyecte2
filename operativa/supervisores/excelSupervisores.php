@@ -1,12 +1,12 @@
 <?php
 /* Incluir la libreria PHPExcel */
-require_once './Classes/PHPExcel.php';
+require_once '../Classes/PHPExcel.php';
 
 /*Incluir los archivos necesarios para la db*/
-require_once './bbdd/servicio.php';
-require_once './bbdd/cliente.php';
-require_once './bbdd/recursos.php';
-require_once './bbdd/empleados.php';
+require_once '../bbdd/servicio.php';
+require_once '../bbdd/cliente.php';
+require_once '../bbdd/recursos.php';
+require_once '../bbdd/empleados.php';
 $cliente= new Cliente();
 $servicio= new Servicio();
 $recursos= new Recursos();

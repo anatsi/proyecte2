@@ -11,8 +11,8 @@
   </head>
   <body>
     <?php
-    require_once './bbdd/servicio.php';
-    require_once './bbdd/recursos.php';
+    require_once '../bbdd/servicio.php';
+    require_once '../bbdd/recursos.php';
     $servicio=new Servicio();
     $recursos= new Recursos();
     //comprbamos que realmente haya rellenado algunos campos
@@ -97,7 +97,7 @@
                <script type="text/javascript">
                  alert("Error al registrar la actividad.");
                  window.location='nuevoServicio.php';
-                 
+
                </script>
              <?php
            }else {

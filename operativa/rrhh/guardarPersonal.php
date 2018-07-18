@@ -1,6 +1,6 @@
 <?php
 //incluimos los archivos necesarios e inicializamos los objetos
-  require_once './bbdd/empleados.php';
+  require_once '../bbdd/empleados.php';
   $empleados = new Empleados();
 
   //comprobamos si la variable e existe, para saber si viene del archivo de editar o de insertar
