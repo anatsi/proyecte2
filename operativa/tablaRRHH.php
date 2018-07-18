@@ -173,7 +173,7 @@ if (isset($_SESSION['usuario'])==false) {
           echo "<input type='hidden' name='fecha' value='".$fecha."'>";
          ?>
         <div class="submitbuttons">
-            <input class="submitone" type="submit" value="CONFRIMAR"/>
+            <input class="submitone" type="submit" value="CONFIRMAR"/>
         </div>
       </form>
       </div> <!-- END container -->
