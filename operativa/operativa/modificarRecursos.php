@@ -189,9 +189,17 @@ if (isset($_POST['id']) && isset($_POST['recursos'])) {
       }else {
         //sacar dias de la modificacion.
         if (empty($_POST['suelto'])==false) {
-          $dias = $_POST['suelto'];
+          //transformamos la fecha
+          $suelto=explode("-", $_POST['suelto']);
+          $suelto=$suelto[2]."-".$suelto[1]."-".$suelto[0];
+          $dias = $suelto;
         }else {
-          $dias = 'De '.$_POST['inicio'].' a '.$_POST['fin'];
+          //transformamos la fecha
+          $inicio=explode("-", $_POST['inicio']);
+          $inicio=$inicio[2]."-".$inicio[1]."-".$inicio[0];
+          $fin=explode("-", $_POST['fin']);
+          $fin=$fin[2]."-".$fin[1]."-".$fin[0];
+          $dias = 'De '.$inicio.' a '.$fin;
         }
         //ENVIAR CORREO A RRHH
         // Enviar el email
