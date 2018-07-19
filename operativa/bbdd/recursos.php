@@ -76,9 +76,25 @@ function ModSupervisores($id, $fecha, $turno){
   }
 }
 
-function RecursosSupervisores($id, $turno){
+function ModSupervisoresRaros($id, $fecha){
   //Construimos la consulta
-  $sql="SELECT * FROM recursos WHERE servicio=".$id." AND ".$turno." > 0";
+  $sql="SELECT * FROM dias_recursos WHERE servicio=".$id." AND inicio <= '".$fecha."' AND fin>='".$fecha."' OR servicio=".$id." AND suelto = '".$fecha."'";
+  //Realizamos la consulta
+  $resultado=$this->realizarConsulta($sql);
+  if($resultado!=false){
+    if($resultado!=false){
+      return $resultado->fetch_assoc();
+    }else{
+      return null;
+    }
+  }else{
+    return null;
+  }
+}
+
+function RecursosSupervisores($id){
+  //Construimos la consulta
+  $sql="SELECT * FROM recursos WHERE servicio=".$id;
   //Realizamos la consulta
   $resultado=$this->realizarConsulta($sql);
   if($resultado!=false){
