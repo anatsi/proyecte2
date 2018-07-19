@@ -101,6 +101,39 @@
                </script>
              <?php
            }else {
+             //si se ha registrado correctamente, enviamos un correo a Pilar y a RRHH.
+             // Enviar el email
+               $mail = "robot@tsiberia.es";
+
+               $header = 'From: ' . $mail . " \r\n";
+               $header .= "X-Mailer: PHP/" . phpversion() . " \r\n";
+               $header .= "Mime-Version: 1.0 \r\n";
+               //$header .= "Content-Type: text/plain";
+               $header .= "Content-Type: text/html; charset=utf-8";
+
+               $mensaje = '<html>' . '<head><title>Email</title>
+               <style type="text/css">
+               h2 {
+                   color: black;
+                   font-family: Impact;
+                 }
+               </style>
+               </head>' .
+               '<body>
+                 <h2>
+                   <b>Nueva actividad creada.</b>
+                 </h2><br />' .
+                 'Accede a <a href="acceso.tsiberia.es">acceso.tsiberia.es</a> para más información.
+                 <hr>'.
+                 'Por favor, no responda a este correo lo envia un robot automáticamente.'.
+                 '<br />Enviado el ' . date('d/m/Y', time()) .
+               '</body></html>';
+
+               $para = 'aasins@tsiberia.es';
+               $asunto = 'NUEVA ACTIVIDAD';
+
+               mail($para, $asunto, $mensaje, $header);
+             //fin correo.
 
              if ($_FILES['archivo1']['name']!="" || $_FILES['archivo2']['name']!="" || $_FILES['archivo3']['name']!="" || $_FILES['archivo4']['name']!="" || $_FILES['archivo5']['name']!="" || $_FILES['archivo6']['name']!="") {
                //por ultimo subimos los archivos al servidor
