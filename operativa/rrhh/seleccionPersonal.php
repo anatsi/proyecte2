@@ -104,9 +104,13 @@ if (isset($_SESSION['usuario'])==false) {
       <div class="container">
         <!-- Contenido de la pagina. -->
         <?php
+          //transformamos la fecha
+          $fechaMostrar=explode("-", $_GET['fecha']);
+          $fechaMostrar=$fechaMostrar[2]."-".$fechaMostrar[1]."-".$fechaMostrar[0];
+
           //sacamos el nombre del servicio para ponerlo de titulo
           $nombre = $servicio -> ServicioId($_GET['id']);
-          echo "<h2>".$nombre['descripcion']."</h2>";
+          echo "<h2>".$nombre['descripcion']." </h2><h3> ".$fechaMostrar."</h3>";
          ?>
         <form action="guardarPersonal.php" method="post" id="formulario" enctype="multipart/form-data">
           <?php

@@ -110,10 +110,13 @@ if (isset($_SESSION['usuario'])==false) {
           }else {
             $fecha = $_POST['fecha'];
           }
+          //transformamos la fecha
+          $fechaMostrar=explode("-", $fecha);
+          $fechaMostrar=$fechaMostrar[2]."-".$fechaMostrar[1]."-".$fechaMostrar[0];
 
          ?>
         <!-- Contenido de la pagina. -->
-        <h2>Actividades para el <?php echo $fecha; ?></h2>
+        <h2>Actividades para el <?php echo $fechaMostrar; ?></h2>
 
         <br>
         <table id="tablamod" class="tablesorter">
