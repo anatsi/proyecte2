@@ -2,6 +2,8 @@
 //incluimos los archivos necesarios e inicializamos los objetos
   require_once '../bbdd/empleados.php';
   $empleados = new Empleados();
+  require_once '../bbdd/servicio.php';
+  $servicio = new Servicio();
 
   //comprobamos si la variable e existe, para saber si viene del archivo de editar o de insertar
   if ($_GET['e'] && $_GET['e'] == 1) {
@@ -15,6 +17,42 @@
           window.location = 'filtroRRHH.php';
         </script>
       <?php
+    }else {
+      //transformamos la fecha
+      $fecha=explode("-", $_POST['dia']);
+      $fecha=$fecha[2]."-".$fecha[1]."-".$fecha[0];
+      //sacar la información de la actividad
+      $actividad = $servicio -> ServicioId($_POST['id']);
+      //si sale bien, enviamos un correo a los responsables para avisarles.
+      // Enviar el email
+      $mail = "robot@tsiberia.es";
+
+      $header = 'From: ' . $mail . " \r\n";
+      $header .= "X-Mailer: PHP/" . phpversion() . " \r\n";
+      $header .= "Mime-Version: 1.0 \r\n";
+      //$header .= "Content-Type: text/plain";
+      $header .= "Content-Type: text/html; charset=utf-8";
+
+      $mensaje = '<html>' . '<head><title>Email</title>
+      <style type="text/css">
+      h2 {
+          color: black;
+          font-family: Impact;
+        }
+      </style>
+      </head>' .
+      '<body>
+        <h4>
+          <b>Se ha actualizado el personal asignado para la actividad "'.$actividad['descripcion'].'" para el dia '.$fecha.'</b>
+        </h4><br />' .
+        'Por favor, no responda a este correo lo envia un robot automáticamente.'.
+        '<br />Enviado el ' . date('d/m/Y', time()) .
+      '</body></html>';
+
+      $para = 'aasins@tsiberia.es';
+      $asunto = 'Personal asignado para el ' .$fecha;
+
+      mail($para, $asunto, $mensaje, $header);
     }
   }
 

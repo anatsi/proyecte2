@@ -22,14 +22,14 @@
     </head>' .
     '<body>
       <h4>
-        <b>Se ha actualizado el personal para el '.$_POST["fecha"].'</b>
+        <b>Se ha actualizado el personal para el '.$fecha.'</b>
       </h4><br />' .
       'Por favor, no responda a este correo lo envia un robot automáticamente.'.
       '<br />Enviado el ' . date('d/m/Y', time()) .
     '</body></html>';
 
     $para = 'aasins@tsiberia.es';
-    $asunto = 'Personal para el ' .$_POST['fecha'];
+    $asunto = 'Personal para el ' .$fecha;
 
     mail($para, $asunto, $mensaje, $header);
 
