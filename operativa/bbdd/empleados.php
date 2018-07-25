@@ -30,6 +30,24 @@ class Empleados extends db
     }
   }
 
+  //funcion para listar todos los empleados de la bbdd
+  function listaEmpleadosActivos(){
+    //Construimos la consulta
+    $sql="SELECT * from empleados where activo = 1";
+    //Realizamos la consulta
+    $resultado=$this->realizarConsulta($sql);
+    if($resultado!=null){
+      //Montamos la tabla de resultados
+      $tabla=[];
+      while($fila=$resultado->fetch_assoc()){
+        $tabla[]=$fila;
+      }
+      return $tabla;
+    }else{
+      return null;
+    }
+  }
+
 
 //sacar empleado dependiendo del id
 function EmpleadoId($id){

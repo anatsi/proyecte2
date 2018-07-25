@@ -125,7 +125,7 @@ if (isset($_SESSION['usuario'])==false) {
               $recurso = $recursos -> RecursosId($_GET['id']);
             }
             //sacar los nombres de todos los empleados de la empresa.
-            $empleados = $empleado -> listaEmpleados();
+            $empleados = $empleado -> listaEmpleadosActivos();
            ?>
            <?php
             if ($recurso['tn']>0) {
