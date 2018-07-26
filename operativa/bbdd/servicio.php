@@ -67,7 +67,7 @@ class Servicio extends db
     $fecha=date("Y-m-d");
     //Construimos la consulta
     $sql="SELECT * from servicios WHERE f_inicio<='".$fecha."' AND f_fin>='".$fecha."'
-    OR f_inicio<='".$fecha."' AND f_fin IS NULL  
+    OR f_inicio<='".$fecha."' AND f_fin IS NULL
     ORDER BY f_inicio desc";
     //Realizamos la consulta
     $resultado=$this->realizarConsulta($sql);
