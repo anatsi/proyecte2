@@ -53,6 +53,11 @@ input, text, email, password, input[type=text], input[type=password], input[type
   padding: 0px 1%;
 }
 
+input[type=checkbox]{
+  width: 10%;
+  height: 20px;
+}
+
 /*input[type=select],select {
           width:50%;
           padding:0px 1%;

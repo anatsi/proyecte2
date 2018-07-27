@@ -113,6 +113,10 @@ if (isset($_SESSION['usuario'])==false) {
 
          ?>
         <form action="guardarPersonal.php?e=1" method="post" id="formulario" enctype="multipart/form-data">
+          <div class="formthird">
+            <p><input Name='avisar' type="checkbox"/>Avisar de la modificación</p>
+          </div>
+          <br><br><br>
           <?php
             //ponemos la fecha y el servicio en un input hidden pra pasarlos a la siguiente pantalla
             echo "<input type='hidden' name='id' value='".$_GET['id']."'>";
