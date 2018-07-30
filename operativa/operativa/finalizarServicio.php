@@ -113,13 +113,18 @@ textarea::placeholder{
 
     </header>
 
+    <?php
+      //sacamos la informacion del servicio para no dejar finalizarlo antes de empezarlo.
+      $info = $servicio -> ServicioId($_GET['servicio']);
+     ?>
+
     <div class="site-content">
       <div class="container">
         <!-- Contenido de la pagina. -->
         <h2>Finalizar servicio</h2>
         <form id="contactForm" action="finalizarServicio.php" method="post">
           <input type="hidden" name="fin" value="<?=$_GET['servicio']?>">
-          <input type="date" name="fecha" value="">
+          <input type="date" name="fecha" value=""  min="<?=$info['f_inicio']?>">
           <br>
          <textarea class="formInput" name="comentario" id="message" placeholder="Ultimo comentario"></textarea>
           <br>
