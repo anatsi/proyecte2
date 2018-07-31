@@ -139,9 +139,11 @@ if (isset($_SESSION['usuario'])==false) {
                 //guardamos en dos variables los recursos y el comentario
               if ($modRecursos == null || $modRecursos == false) {
                 $recursosTotal = $lista['recursos'];
+                $recursosMostrar =  $lista['recursos'];
                 $comentario = $lista['com_rrhh'];
               }else {
                 $recursosTotal = $modRecursos['total'];
+                $recursosMostrar = "<span style='color:red'>".$modRecursos['total']."</span>";
                 $comentario = $modRecursos['com_rrhh'];
               }
               //sacamos el personal que hay asociado a esa actividad ese dia(si lo hay)
@@ -167,7 +169,7 @@ if (isset($_SESSION['usuario'])==false) {
                 echo "<tr id='trmod'>";
                 echo "<td scope='row' data-label='".__('Actividad', $lang)."' id='tdmod'>".$lista['descripcion']."</td>";
                 echo "<td data-label='Comentario' id='tdmod'>".$comentario."</td>";
-                echo "<td data-label='Recursos' id='tdmod'>".$recursosTotal."</td>";
+                echo "<td data-label='Recursos' id='tdmod'>".$recursosMostrar."</td>";
                 echo "<td data-label='Asignados' id='tdmod'>".$asignados['total']."</td>";
 
                 if ($asignados['total']==0) {
