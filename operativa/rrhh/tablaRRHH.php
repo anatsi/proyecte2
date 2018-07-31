@@ -147,6 +147,21 @@ if (isset($_SESSION['usuario'])==false) {
               //sacamos el personal que hay asociado a esa actividad ese dia(si lo hay)
               $asignados = $empleados -> personalAsignado($lista['id'], $fecha);
 
+              //sacamos los recursos del dia anterior para el boton de recuperar
+              //restar un dia a la fecha elegida
+              $nuevafecha = strtotime ( '-1 day' , strtotime ( $fecha ) ) ;
+              $nuevafecha = date ( 'Y-m-d' , $nuevafecha );
+              //llamamos a la consulta para sacar los recursos de la tabla modificaciones.
+              $modRecursosAyer = $recursos -> ModificacionId($lista['id'], $nuevafecha);
+                //si no hay modificaciones sacamos los recursos normales
+              if ($modRecursosAyer == null || $modRecursosAyer == false) {
+                $recursosAyer = $lista['recursos'];
+              }else {
+                $recursosAyer = $modRecursosAyer['total'];
+              }
+              //sacamos el personal asignado para el dia anterior.
+              $asignadosAyer = $empleados -> personalAsignado($lista['id'], $nuevafecha);
+
               //sacamos solo las actividades que no tengan 0 recursos.
               if ($recursosTotal > 0) {
                 echo "<tr id='trmod'>";
@@ -158,8 +173,11 @@ if (isset($_SESSION['usuario'])==false) {
                 if ($asignados['total']==0) {
                   echo "<td data-label='Estado' id='tdmod'><i class='material-icons' style='color:red;'>clear</i></td>";
                   echo "  <td data-label='".__('Opciones', $lang)."' id='tdmod'>
-                  <a href='seleccionPersonal.php?id=".$lista['id']."&fecha=".$fecha."' title='Seleccionar personal'><i class='material-icons'>people</i></a>
-                  </td>";
+                  <a href='seleccionPersonal.php?id=".$lista['id']."&fecha=".$fecha."' title='Seleccionar personal'><i class='material-icons'>people</i></a>";
+                  //si los recursos de ayer son iguales a los del dia seleccionado y estan asignados, sacamos el boton de recuperar personal.
+                  if ($recursosAyer == $recursosTotal && $asignadosAyer['total'] == $recursosAyer) {
+                    echo "<a href='recuperarPersonal.php?id=".$lista['id']."&fecha=".$fecha."' title='Recuperar personal del dia anterior.'><i class='material-icons'>repeat</i></a>";
+                  }
                 }else {
                   if ($asignados['total'] == $recursosTotal) {
                     echo "<td data-label='Estado' id='tdmod'><i class='material-icons' style='color:green;'>done</i></td>";
@@ -167,9 +185,10 @@ if (isset($_SESSION['usuario'])==false) {
                     echo "<td data-label='Estado' id='tdmod'><i class='material-icons' style='color:red;'>clear</i></td>";
                   }
                   echo "  <td data-label='".__('Opciones', $lang)."' id='tdmod'>
-                  <a href='editarPersonal.php?id=".$lista['id']."&fecha=".$fecha."' title='Modificar personal'><i class='material-icons'>mode_edit</i></a>
-                  </td>";
+                  <a href='editarPersonal.php?id=".$lista['id']."&fecha=".$fecha."' title='Modificar personal'><i class='material-icons'>mode_edit</i></a>";
                 }
+
+                echo "</td>";
               }
 
             }
