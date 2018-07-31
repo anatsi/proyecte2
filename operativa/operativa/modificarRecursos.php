@@ -177,9 +177,8 @@ if (isset($_POST['id']) && isset($_POST['recursos'])) {
     $nuevorecurso=$recursos->modundia($_POST['id'], $_POST['suelto'], $_POST['inicio'], $_POST['fin'], $_POST['recursos'], $_POST['tm'], $_POST['tt'], $_POST['tn'], $_POST['tc'], $_POST['o1'], $_POST['i1'], $_POST['f1'],
      $_POST['o2'], $_POST['i2'],
      $_POST['f2'], $_POST['o3'], $_POST['i3'], $_POST['f3'], $_POST['o4'], $_POST['i4'], $_POST['f4'], $_POST['o5'], $_POST['i5'], $_POST['f5'],
-      $_POST['o6'], $_POST['i6'], $_POST['f6']);
-      $modComentarios=$servicio->ActualizarComentarios($_POST['id'], $_POST['csup'], $_POST['crrhh'], $_POST['caf'], $_POST['cdo']);
-      if ($nuevorecurso==null || $modComentarios==null) {
+      $_POST['o6'], $_POST['i6'], $_POST['f6'], $_POST['csup'], $_POST['crrhh'], $_POST['caf'], $_POST['cdo']);
+      if ($nuevorecurso==null) {
         ?>
           <script type="text/javascript">
             alert('ERROR AL ACTUALIZAR LA ACTIVIDAD. INTENTELO DE NUEVO');

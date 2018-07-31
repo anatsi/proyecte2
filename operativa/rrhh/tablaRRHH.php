@@ -98,7 +98,6 @@ if (isset($_SESSION['usuario'])==false) {
         }
          ?>
       </nav>
-
     </header>
 
     <div class="site-content">
@@ -123,6 +122,7 @@ if (isset($_SESSION['usuario'])==false) {
         <thead id="theadmod">
           <tr id="trmod">
             <th scope="col" id="thmod"><?php echo __('Actividad', $lang); ?></th>
+            <th scope="col" id="thmod">Comentario</th>
             <th scope="col" id="thmod"><?php echo __('Recursos', $lang); ?></th>
             <th scope="col" id="thmod">Asignados</th>
             <th scope="col" id="thmod">Estado</th>
@@ -136,10 +136,13 @@ if (isset($_SESSION['usuario'])==false) {
             foreach ($listamodificar as $lista) {
               //sacar si hay alguna modificacion en los recursos de ese dia.
               $modRecursos = $recursos -> ModificacionId($lista['id'], $fecha);
+                //guardamos en dos variables los recursos y el comentario
               if ($modRecursos == null || $modRecursos == false) {
                 $recursosTotal = $lista['recursos'];
+                $comentario = $lista['com_rrhh'];
               }else {
                 $recursosTotal = $modRecursos['total'];
+                $comentario = $modRecursos['com_rrhh'];
               }
               //sacamos el personal que hay asociado a esa actividad ese dia(si lo hay)
               $asignados = $empleados -> personalAsignado($lista['id'], $fecha);
@@ -148,6 +151,7 @@ if (isset($_SESSION['usuario'])==false) {
               if ($recursosTotal > 0) {
                 echo "<tr id='trmod'>";
                 echo "<td scope='row' data-label='".__('Actividad', $lang)."' id='tdmod'>".$lista['descripcion']."</td>";
+                echo "<td data-label='Comentario' id='tdmod'>".$comentario."</td>";
                 echo "<td data-label='Recursos' id='tdmod'>".$recursosTotal."</td>";
                 echo "<td data-label='Asignados' id='tdmod'>".$asignados['total']."</td>";
 

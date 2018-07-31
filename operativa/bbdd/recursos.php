@@ -110,12 +110,12 @@ function RecursosSupervisores($id){
 
 //funcion encargada de insertar los recuros modificados para un dia en concreto
 function modundia($servicio, $dia, $inicio, $fin, $total, $tm, $tt, $tn, $tc, $o1, $i1, $f1, $o2, $i2, $f2, $o3, $i3, $f3, $o4, $i4, $f4, $o5, $i5, $f5,
- $o6, $i6, $f6){
+ $o6, $i6, $f6, $csup, $crrhh, $caf, $cdo){
   //realizamos la consuta y la guardamos en $sql
-  $sql="INSERT INTO dias_recursos(id, servicio, inicio, fin, suelto, total, tm, tt, tn, tc, otro1, inicio1, fin1, otro2, inicio2, fin2, otro3, inicio3, fin3, otro4, inicio4, fin4, otro5, inicio5, fin5, otro6, inicio6, fin6)
+  $sql="INSERT INTO dias_recursos(id, servicio, inicio, fin, suelto, total, tm, tt, tn, tc, otro1, inicio1, fin1, otro2, inicio2, fin2, otro3, inicio3, fin3, otro4, inicio4, fin4, otro5, inicio5, fin5, otro6, inicio6, fin6, com_supervisor, com_rrhh, com_admin_fin, com_depto)
   VALUES(NULL, ".$servicio.", '".$inicio."', '".$fin."','".$dia."' , '".$total."', '".$tm."', '".$tt."', '".$tn."', '".$tc."', '".$o1."', '".$i1."', '".$f1."',
    '".$o2."', '".$i2."', '".$f2."', '".$o3."', '".$i3."', '".$f3."', '".$o4."', '".$i4."', '".$f4."', '".$o5."',
-    '".$i5."', '".$f5."', '".$o6."', '".$i6."', '".$f6."')";
+    '".$i5."', '".$f5."', '".$o6."', '".$i6."', '".$f6."', '".$csup."', '".$crrhh."', '".$caf."', '".$cdo."')";
     var_dump($sql);
   //Realizamos la consulta utilizando la funcion creada en db.php
   $resultado=$this->realizarConsulta($sql);

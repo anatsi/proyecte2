@@ -110,7 +110,8 @@ if (isset($_SESSION['usuario'])==false) {
 
           //sacamos el nombre del servicio para ponerlo de titulo
           $nombre = $servicio -> ServicioId($_GET['id']);
-          echo "<h2>".$nombre['descripcion']." </h2><h3> ".$fechaMostrar."</h3>";
+          echo "<h2>".$nombre['descripcion']." </h2>
+          <h3> ".$fechaMostrar."</h3>";
          ?>
         <form action="guardarPersonal.php" method="post" id="formulario" enctype="multipart/form-data">
           <?php
