@@ -121,8 +121,11 @@
                </head>' .
                '<body>
                  <h2>
-                   <b>Nueva actividad creada.</b>
-                 </h2><br />' .
+                   Nueva actividad.
+                 </h2>' .
+                 '<h3>'.$_POST['descripcion'].'</h3>'.
+                 '<h4>INICIO: '.$_POST['inicio'].'</h4>'.
+                 '<h4>RECURSOS: '.$_POST['recursos'].'</h4>'.
                  'Accede a <a href="acceso.tsiberia.es">acceso.tsiberia.es</a> para más información.
                  <hr>'.
                  'Por favor, no responda a este correo lo envia un robot automáticamente.'.

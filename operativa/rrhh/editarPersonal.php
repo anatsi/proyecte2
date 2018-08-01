@@ -302,6 +302,8 @@ if (isset($_SESSION['usuario'])==false) {
                   <div class="formthird">
                   <?php
                   echo "<p><label><i class='fa fa-question-circle'>De ".$recurso['inicio1']." a ".$recurso['fin1']."</i></label></p>";
+                  //ponemos los horarios en un input hidden para utilizarlos despues
+                  echo "<input type='hidden' name='hora1' value='DE ".$recurso['inicio1']." A ".$recurso['fin1']."'>";
                   //por cada persona asignada sacaremos un select con el listado de trabajadores
                     foreach ($personal1 as $personalE1) {
                       echo "<p><select name='otro1[]' class='test' id='multiple'>";
@@ -342,6 +344,8 @@ if (isset($_SESSION['usuario'])==false) {
                    <div class="formthird">
                    <?php
                    echo "<p><label><i class='fa fa-question-circle'>De ".$recurso['inicio2']." a ".$recurso['fin2']."</i></label></p>";
+                   //ponemos los horarios en un input hidden para utilizarlos despues
+                   echo "<input type='hidden' name='hora2' value='DE ".$recurso['inicio2']." A ".$recurso['fin2']."'>";
                    //por cada persona asignada sacaremos un select con el listado de trabajadores
                      foreach ($personal2 as $personalE2) {
                        echo "<p><select name='otro2[]' class='test' id='multiple'>";
@@ -382,6 +386,8 @@ if (isset($_SESSION['usuario'])==false) {
                     <div class="formthird">
                     <?php
                     echo "<p><label><i class='fa fa-question-circle'>De ".$recurso['inicio3']." a ".$recurso['fin3']."</i></label></p>";
+                    //ponemos los horarios en un input hidden para utilizarlos despues
+                    echo "<input type='hidden' name='hora3' value='DE ".$recurso['inicio3']." A ".$recurso['fin3']."'>";
                     //por cada persona asignada sacaremos un select con el listado de trabajadores
                       foreach ($personal3 as $personalE3) {
                         echo "<p><select name='otro3[]' class='test' id='multiple'>";
@@ -422,6 +428,8 @@ if (isset($_SESSION['usuario'])==false) {
                      <div class="formthird">
                      <?php
                      echo "<p><label><i class='fa fa-question-circle'>De ".$recurso['inicio4']." a ".$recurso['fin4']."</i></label></p>";
+                     //ponemos los horarios en un input hidden para utilizarlos despues
+                     echo "<input type='hidden' name='hora4' value='DE ".$recurso['inicio4']." A ".$recurso['fin4']."'>";
                      //por cada persona asignada sacaremos un select con el listado de trabajadores
                        foreach ($personal4 as $personalE4) {
                          echo "<p><select name='otro4[]' class='test' id='multiple'>";
@@ -462,6 +470,8 @@ if (isset($_SESSION['usuario'])==false) {
                       <div class="formthird">
                       <?php
                       echo "<p><label><i class='fa fa-question-circle'>De ".$recurso['inicio5']." a ".$recurso['fin5']."</i></label></p>";
+                      //ponemos los horarios en un input hidden para utilizarlos despues
+                      echo "<input type='hidden' name='hora5' value='DE ".$recurso['inicio5']." A ".$recurso['fin5']."'>";
                       //por cada persona asignada sacaremos un select con el listado de trabajadores
                         foreach ($personal5 as $personalE5) {
                           echo "<p><select name='otro5[]' class='test' id='multiple'>";
@@ -502,6 +512,8 @@ if (isset($_SESSION['usuario'])==false) {
                        <div class="formthird">
                        <?php
                        echo "<p><label><i class='fa fa-question-circle'>De ".$recurso['inicio6']." a ".$recurso['fin6']."</i></label></p>";
+                       //ponemos los horarios en un input hidden para utilizarlos despues
+                       echo "<input type='hidden' name='hora6' value='DE ".$recurso['inicio6']." A ".$recurso['fin6']."'>";
                        //por cada persona asignada sacaremos un select con el listado de trabajadores
                          foreach ($personal6 as $personalE6) {
                            echo "<p><select name='otro6[]' class='test' id='multiple'>";
