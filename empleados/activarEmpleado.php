@@ -11,10 +11,19 @@
         header('Location: index.php');
       }else {
         //si se activa mal, le avisamos
-        echo "ERROR AL ACTIVAR EL EMPLEADO";
+        ?>
+          <script type="text/javascript">
+            alert('Error al activar el empleado!');
+            window.location='index.php';
+          </script>
+        <?php
       }
   }else {
-    //si no se ha enviado el empleado que se quiere activar, avisamos
-    echo "ERROR";
+    //si no se ha enviado el empleado que se quiere activar, lo devolvemos a index.
+    ?>
+      <script type="text/javascript">
+        window.location='index.php';
+      </script>
+    <?php
   }
  ?>

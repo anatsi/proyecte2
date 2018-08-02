@@ -1,18 +1,19 @@
-
 <?php
 //incluimos todas las clases necesarias e iniciamos sus objetos.
 require_once '../ddbb/sesiones.php';
 require_once '../ddbb/users.php';
 require_once './ddbb/empleados.php';
+require_once './ddbb/incapacidad.php';
 
 $usuario=new User();
 $sesion=new Sesiones();
 $empleado= new Empleados();
+$incapacidad = new Incapacidad();
 
 //si la sesion no esta iniciada, devolvemos al usuario a la pagina de inicio de sesion
 if (isset($_SESSION['usuario'])==false){
   header('Location: ../index.php');
-}else {
+}else{
  ?>
 <!DOCTYPE html>
 <html >
@@ -23,7 +24,7 @@ if (isset($_SESSION['usuario'])==false){
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
     <link rel="stylesheet" href="../css/formulario.css">
     <link rel="shortcut icon" href="../imagenes/favicon.ico">
-    <link rel="stylesheet" type="text/css" href="../css/dashboard.css" />
+		<link rel="stylesheet" type="text/css" href="../css/dashboard.css" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 <body>
@@ -36,7 +37,7 @@ if (isset($_SESSION['usuario'])==false){
     //llamamos a la función para devolver el nombre de usuario.
     $nombreuser=$usuario->nombreUsuario($_SESSION['usuario']);
     //sacamos el nombre de usuario por su id
-    echo "<a><strong>Bienvenido ".$nombreuser['name']."</strong></a>";
+echo "<a><strong>Bienvenido ".$nombreuser['name']."</strong></a>";
    ?>
   <span class="right"><a href="../logout.php" id='logout'>Cerrar sesion</a></span>
 </div><!--/ Codrops top bar -->
@@ -55,30 +56,38 @@ if (isset($_SESSION['usuario'])==false){
     //sacamos el empleado que se quiere editar por su id
       $seleccionado=$empleado->EmpleadoId($_GET['e']);
      ?>
-    <div class="site-content">
+
+      <div class="site-content">
       <div class="container">
         <!-- Contenido de la pagina. -->
-        <h2>Editar empleado</h2>
-        <form action="editarEmpleado.php" method="post">
-          <input type="hidden" name="e" value="<?=$seleccionado['id']?>">
-          <div class="formthird">
-              <p><label><i class="fa fa-question-circle"></i>Nombre</label><input name='nombre' value='<?=$seleccionado['nombre']?>' type="text" required></p>
-              <p><label><i class="fa fa-question-circle"></i>Apellidos</label><input name='apellidos' value='<?=$seleccionado['apellidos']?>' type="text" required></p>
-              
-          </div>
-          <div class="formthird">
-              <p><label><i class="fa fa-question-circle"></i>Telefono</label><input name='tel' value='<?=$seleccionado['telefono']?>' type="tel" required></p>
-          </div>
-          <div class="formthird">
-          </div>
-          <div class="submitbuttons">
-              <input style = " color:white;background-color: #4CAF50;" type="submit" value="Enviar" />
-          </div>
+
+      <h2>Motivo de la incapacidad</h2>
+
+      <form action="darBaja.php" method="post">
+      <input type="hidden" name="e" value="<?=$seleccionado['id']?>">
+      <div class="formthird">
+      <?php
+        $lista= $incapacidad->listaIncapacidad();
+        echo "<select name='select_baja'>";
+        ?>
+        <option selected disabled>Elegir opcion</option>
+        <?php
+        foreach ($lista as $valor){
+          echo "<option value='".$valor['id']."'>".$valor['tipo']."</option>";
+        }
+        echo "</select>";
+      ?>
+
+
+      </div>
+      <div class="submitbuttons">
+        <input style = " color:white;background-color: #4CAF50;" type="submit" value="Enviar" />
+      </div>
   </form>
       </div> <!-- END container -->
-    </div> <!-- END site-content -->
-  </div> <!-- END site-pusher -->
-</div> <!-- END site-container -->
+      </div> <!-- END site-content -->
+      </div> <!-- END site-pusher -->
+     </div> <!-- END site-container -->
 
 <!-- Scripts para que el menu en versión movil funcione -->
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
@@ -86,23 +95,18 @@ if (isset($_SESSION['usuario'])==false){
 
 </body>
 </html>
-<?php
-//comprobamos que se ha rellenado el nombre y los apellidos
-  if(isset($_POST['nombre'])&&isset($_POST['apellidos'])){
-    //inicializamos alta a 0
-    $alta=0;
-//si se ha pulsado en la casilla de alta, ponemos la variable a 1
-    if (isset($_POST['alta'])){
-      $alta=1;
-    }
 
-     //llamamos a la consulta de editar el empleado
-    $editarEmpleado = $empleado->editarEmpleado($_POST['e'], $_POST['nombre'], $_POST['apellidos'], $_POST['tel']);
+<?php
+//comprobamos que se ha rellenado el formulario
+  if (isset($_POST['select_baja'])){
+   //llamamos a la consulta de editar el empleado
+  $editarEmpleado= $empleado->darBaja($_POST['e'], $_POST['select_baja'],$nombreuser['name']);
+
     if ($editarEmpleado==null){
       //si no se ha podido actualizar, avisamos al usaurio
       ?>
       <script type="text/javascript">
-        alert('Error al registrar el nuevo empleado');
+        alert('Error al dar de baja el empleado');
         window.location='index.php';
       </script>
       <?php
@@ -117,4 +121,4 @@ if (isset($_SESSION['usuario'])==false){
     }
   }
  ?>
- <?php } ?>
+ <?php }?>

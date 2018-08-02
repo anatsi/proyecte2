@@ -1,3 +1,4 @@
+
 <?php
 //llamamos a la clase db encargada de la conexion contra la base de datos.
 require_once 'db.php';
@@ -15,7 +16,7 @@ class Empleados extends db
   //funcion para listar todos los empleados de la bbdd
   function listaEmpleados(){
     //Construimos la consulta
-    $sql="SELECT * from empleados order by activo desc";
+    $sql="SELECT * from empleados order by alta ";
     //Realizamos la consulta
     $resultado=$this->realizarConsulta($sql);
     if($resultado!=null){
@@ -33,7 +34,7 @@ class Empleados extends db
   //funcion para listar los empleados filtrados
   function listaFiltrados($b){
     //Construimos la consulta
-    $sql="SELECT * from empleados where concat(nombre, ' ', apellidos) like '%".$b."%' order by activo desc";
+    $sql="SELECT * from empleados where concat(nombre, ' ', apellidos, ' ', user) like '%".$b."%' order by alta  ";
     //Realizamos la consulta
     $resultado=$this->realizarConsulta($sql);
     if($resultado!=null){
@@ -50,7 +51,9 @@ class Empleados extends db
 
   //funciones para activar y desactivar empleados
   function ActivarEmpleado($id){
-    $sql="UPDATE empleados SET activo=1 where id=".$id;
+    //Fecha y hora actual
+    $fecha = date("Y-m-d H:i:s");
+    $sql="UPDATE empleados SET alta=0, fecha_mod ='".$fecha."' where id=".$id;
     $finalizarAct=$this->realizarConsulta($sql);
     if ($finalizarAct=!false) {
          return true;
@@ -60,7 +63,9 @@ class Empleados extends db
   }
 
   function DesactivarEmpleado($id){
-    $sql="UPDATE empleados SET activo=0 where id=".$id;
+    //Fecha y hora actual
+    $fecha = date("Y-m-d H:i:s");
+    $sql="UPDATE empleados SET alta=1, fecha_mod='".$fecha."' where id=".$id;
     $finalizarAct=$this->realizarConsulta($sql);
     if ($finalizarAct=!false) {
          return true;
@@ -69,10 +74,68 @@ class Empleados extends db
     }
   }
 
+ //funciones para activar la incapacidad temporal
+
+  function IncapacidadId($id,$usuario){
+       //Fecha y hora actual
+      $fecha = date("Y-m-d H:i:s");
+    //Construimos la consulta
+      $sql="SELECT incapa_temporal FROM empleados WHERE id=".$id;
+      //Realizamos la consulta
+      $resultado = $this->realizarConsulta($sql);
+      $almacena = $resultado->fetch_assoc();
+       $sacar = current($almacena);
+
+      if($sacar==0){
+
+        $sql="UPDATE empleados SET incapa_temporal =1, fecha_mod='".$fecha."', usuario_mod='".$usuario."' WHERE id=".$id;
+          $actIncapacidad=$this->realizarConsulta($sql);
+      }else{
+           $sql="UPDATE empleados SET incapa_temporal =0, fecha_mod='".$fecha."', usuario_mod='".$usuario."' WHERE id=".$id;
+          $actIncapacidad=$this->realizarConsulta($sql);
+      }
+      if ($actIncapacidad=!false){
+               return true;
+      }else{
+               return false;
+          }
+      }
+
+
+  //funcion para activar las vaciones
+
+   function DevacionesId($id, $usuario){
+      //Fecha y hora actual
+      $fecha = date("Y-m-d H:i:s");
+      //Construimos la consulta
+      $sql="SELECT vacaciones FROM empleados WHERE id=".$id;
+      //Realizamos la consulta
+      $resultado = $this->realizarConsulta($sql);
+      $almacena = $resultado->fetch_assoc();
+      $sacar = current($almacena);
+
+      if($sacar==1){
+
+        $sql="UPDATE empleados SET vacaciones =0, fecha_mod='".$fecha."', usuario_mod='".$usuario."' WHERE id=".$id;
+          $actVacaciones=$this->realizarConsulta($sql);
+      }else{
+           $sql="UPDATE empleados SET vacaciones =1, fecha_mod='".$fecha."', usuario_mod='".$usuario."' WHERE id=".$id;
+          $actVacaciones=$this->realizarConsulta($sql);
+      }
+      if ($actVacaciones=!false){
+           return true;
+      }else{
+
+
+           return false;
+    }
+  }
+
   //funcion para insertar un nuevo empleado en la base de datos.
-function nuevoEmpleado($nombre, $apellidos, $activo, $tel){
+
+function nuevoEmpleado($nombre, $apellidos, $dni, $user, $alta, $telefono,$password){
   //realizamos la consuta y la guardamos en $sql
-  $sql="INSERT INTO empleados(id, nombre, apellidos, activo, telefono) VALUES (null, '".$nombre."', '".$apellidos."', ".$activo.", ".$tel.")";
+  $sql="INSERT INTO empleados(id, nombre,apellidos,dni,user,alta, telefono,password) VALUES (null, '".$nombre."', '".$apellidos."','".$dni."', '".$user."',".$alta.",".$telefono.",'".$password."')";
   //Realizamos la consulta utilizando la funcion creada en db.php
   $resultado=$this->realizarConsulta($sql);
   if($resultado!=false){
@@ -80,36 +143,72 @@ function nuevoEmpleado($nombre, $apellidos, $activo, $tel){
   }else{
     return null;
   }
-}
 
-//sacar empleado dependiendo del id
-function EmpleadoId($id){
-//Construimos la consulta
-$sql="SELECT * from empleados WHERE id=".$id;
-//Realizamos la consulta
-$resultado=$this->realizarConsulta($sql);
-if($resultado!=false){
+}
+//Fonction para comprobar si existe un usuario con el mismo user
+function nuevoUsuario($user){
+  //Construimos la consulta
+  $sql="SELECT * from empleados WHERE user='".$user."'";
+
+  //Realizamos la consulta
+  $resultado=$this->realizarConsulta($sql);
   if($resultado!=false){
-    return $resultado->fetch_assoc();
+   if($resultado!=false){
+      return $resultado->fetch_assoc();
+    }else{
+      return null;
+    }
   }else{
     return null;
   }
-}else{
-  return null;
-}
 }
 
-//funcion para editar la informacion del empleado.
+
+
+//sacar empleado dependiendo del id
+function EmpleadoId($id){
+  //Construimos la consulta
+  $sql="SELECT * from empleados WHERE id=".$id;
+
+  //Realizamos la consulta
+  $resultado=$this->realizarConsulta($sql);
+  if($resultado!=false){
+    if($resultado!=false){
+      return $resultado->fetch_assoc();
+    }else{
+      return null;
+    }
+  }else{
+    return null;
+  }
+}
+
+
 function editarEmpleado($id, $nombre, $apellidos, $tel){
-  $sql="UPDATE empleados SET nombre='".$nombre."', apellidos='".$apellidos."', telefono=".$tel." WHERE id=".$id;
+  $sql="UPDATE empleados SET nombre ='".$nombre."', apellidos='".$apellidos."', telefono=".$tel." WHERE id=".$id;
   $finalizarAct=$this->realizarConsulta($sql);
-  if ($finalizarAct=!false) {
+  if($finalizarAct=!false){
        return true;
-  }else {
+  }else{
        return false;
   }
 }
 
-}
+  function darBaja($id, $selbaja,$usuario){
+    //Fecha y hora actual
 
- ?>
+    $fecha = date("Y-m-d H:i:s");
+
+    $sql="UPDATE empleados SET incapa_temporal =".$selbaja.", fecha_mod='".$fecha."', usuario_mod='".$usuario."' WHERE id=".$id;
+    $actIncapacidad=$this->realizarConsulta($sql);
+
+    if($actIncapacidad=!false){
+           return true;
+    }else{
+           return false;
+    }
+
+  }
+
+}
+?>

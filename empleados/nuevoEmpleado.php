@@ -22,12 +22,67 @@ if (isset($_SESSION['usuario'])==false) {
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
     <link rel="stylesheet" href="../css/formulario.css">
     <link rel="shortcut icon" href="../imagenes/favicon.ico">
-		<link rel="stylesheet" type="text/css" href="../css/dashboard.css" />
+    <link rel="stylesheet" type="text/css" href="../css/dashboard.css" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-</head>
-<body>
-  <head>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <script type="text/javascript">
+        function check(f){
+            var res = true;
+            var errores = "";
+            var final = f.dni.value.substr(0, 8);
+            var terminal = f.dni.value.substr(8, 1);
+            var cadena = "TRWAGMYFPDXBNJZSQVHLCKET";
+            var posicion = final % 23;
+            var stri = cadena.substring(posicion, posicion + 1);
+            var letra_dni = stri;
+            var letra_escrita = f.dni.value.substr(8, 1);
+            var extrangero= f.dni.value.substr(0,1);
+
+           /*Probar que en el formulario no hay espacio en blanco ni esta vacio vacio*/
+
+            if (f.nombre.value == "" || /^\s+|\s+$/.test(f.nombre.value)==true){
+                errores += "Falta el nombre.\n";
+                res = false;
+              }
+            if (f.apellidos.value == ""|| /^\s+|\s+$/.test(f.apellidos.value)==true){
+                errores += "Falta apellido.\n";
+                res = false;
+            }
+            if (f.telefono.value == ""||/^\s+|\s+$/.test(f.telefono.value)==true){
+                errores += "Falta el telefono.\n";
+                res = false;
+            }
+            //Primero comprobar si es un NIE de extranjero en este caso no se comproba mas cosas ya que hay muy poco casos
+            if(!isNaN(extrangero)){
+            if(f.dni.value == ""||(/^\s+|\s+$/.test(f.dni.value))==true){
+                errores += "El DNI no puede estar vacio.\n";
+                res = false;
+            }else if(f.dni.value.length !=9 || isNaN(final) || !isNaN(terminal)){
+            errores += "El DNI no se corresponde con el formato esperado DNI-letra.\n";
+                res = false;
+            }else if(letra_escrita!=letra_dni){
+                errores += "La letra del DNI no coincide debería ser  " + letra_dni + ".\n";
+                res = false;
+            }else{
+
+                res = true;
+           }
+         }
+           if (res == false)
+                alert(errores);
+            return res;
+            }
+    </script>
+    </head>
+    <body>
+      <head>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+      <style>
+.alert {
+    padding: 20px;
+    background-color: #f44336;
+    color: white;
+}
+</style>
 </head>
 
 <div class="codrops-top clearfix">
@@ -54,22 +109,25 @@ if (isset($_SESSION['usuario'])==false) {
     <div class="site-content">
       <div class="container">
         <!-- Contenido de la pagina. -->
-        <h2>Nuevo empleado</h2>
-        <form action="nuevoEmpleado.php" method="post">
+        <h2 align="center">Nuevo empleado</h2>
+
+        <form action="nuevoEmpleado.php" method="post" onsubmit="return check(this)">
           <div class="formthird">
-              <p><label><i class="fa fa-question-circle"></i>Nombre (*)</label><input name='nombre' type="text" required></p>
-              <p><label><i class="fa fa-question-circle"></i>Apellidos (*)</label><input name='apellidos' type="text" required></p>
-          </div>
-          <div class="formthird">
-              <p><label><i class="fa fa-question-circle"></i>Telefono</label><input name='tel' type="tel"></p>
-          </div>
-          <div class="formthird">
-              <p><label><i class="fa fa-question-circle"></i>Activo</label><input Name='activo' type="checkbox"/></p>
-          </div>
-          <div class="submitbuttons">
-              <input class="submitone" type="submit" />
-          </div>
-  </form>
+              <p><label><i class="fa fa-question-circle"></i>Nombre</label><input name='nombre' type="text" ></p>
+              <p><label><i class="fa fa-question-circle"></i>Apellidos</label><input name='apellidos' type="text" ></p>
+              <p><label><i class="fa fa-question-circle"></i>Dni</label><input name='dni' type="text" ></p>
+              <p><label><i class="fa fa-question-circle"></i>Telefono</label><input name='telefono' type="tel"></p>
+
+        </div>
+
+        <div class="formthird">
+          <p><label><i class="fa fa-question-circle"></i>Dar de alta al trabajador</label><input Name='alta' type="checkbox"/></p>
+        </div>
+
+        <div class="submit">
+              <input style = " color:white;background-color: #4CAF50;" type="submit" value="Enviar" />
+        </div>
+</form>
       </div> <!-- END container -->
     </div> <!-- END site-content -->
   </div> <!-- END site-pusher -->
@@ -81,26 +139,123 @@ if (isset($_SESSION['usuario'])==false) {
 
 </body>
 </html>
-<?php
+//php funcion para recopilar dato dado por el usuario
+
+     <?php
 //comprobamos si se ha rellenado el nombre y el apellido
-  if (isset($_POST['nombre']) && isset($_POST['apellidos'])) {
-    //incializamos la variable activo a 0
-    $activo=0;
-    //si se ha marcado la casilla de empleado activo, marcamos la variable activo como 1
-    if (isset($_POST['activo'])) {
-      $activo=1;
+  if (isset($_POST['nombre']) && isset($_POST['apellidos'])){
+    //incializamos la variable alta a 0
+     $alta=0;
+     $contador=0;
+     //function para cambiar todo en Majuscula y no dejar espaacio
+     $nombre =trim (strtoupper($_POST['nombre']));
+     $apellido =trim (strtoupper($_POST['apellidos']));
+     //Sacar dos o una letra de los nombres y apellidos
+      $rest0 = substr("$nombre", 0, 3);
+      $rest1 = substr("$nombre", 0, 2);
+      $rest2 = substr("$apellido", 0, 1);
+      $rest3 = substr("$nombre", 0, 1);
+      $rest4 = substr("$apellido", 0, 2);
+      $rest5 = substr("$apellido", 0, 3);
+      $rest6 = substr("$apellido",1,2);
+      $rest7 = substr("$nombre",1,2);
+      $rest8 = substr("$apellido",2,2);
+      $user0=$rest0;
+      $user1=$rest5;
+      $user2=$rest1.$rest2;
+      $user3=$rest3.$rest4;
+      $user4=$rest2.$rest1;
+      $user5=$rest4.$rest3;
+      $user6=$rest3.$rest6;
+      $user7=$rest3.$rest6;
+      $user8=$rest6.$rest3;
+      $user9=$rest3.$rest8;
+      $user10=$rest8.$rest3;
+      $user11=$rest7.$rest2;
+      $user12=$rest2.$rest7;
+
+$lista = array("$user0","$user1","$user2","$user3","$user4","$user5","$user6","$user7","$user8","$user9"
+  ,"$user10","$user11","$user12");
+
+
+
+    //si se ha marcado la casilla de empleado alta, marcamos la variable alta como 0
+    if (isset($_POST['alta'])){
+      $alta=0;
     }
     //llamamos a la funcion de insertar un nuevo usuario en la ddbb
-    $nuevoEmpleado= $empleado->nuevoEmpleado($_POST['nombre'], $_POST['apellidos'], $activo, $_POST['tel']);
-    if ($nuevoEmpleado==null) {
+
+  for( $i=0;$i<=13;$i++){
+   // echo $lista[$i];
+
+       $nuevoUsuario=$empleado->nuevoUsuario($lista[$i]);
+
+    if($nuevoUsuario==null || $nuevoUsuario==false){
+
+      //incryptar la contraseña
+      $salt='$tsi$/';
+      $contra = sha1(md5($salt .$lista[$i]));
+
+      //Insertar los datos en la base de datos
+      $nuevoEmpleado=$empleado->nuevoEmpleado($nombre,$apellido, $_POST['dni'],$lista[$i],$alta,$_POST['telefono'],$contra,$_POST['Fecha_permiso'],$_POST['tareas'],$_POST['tallas']);
+
+// Enviar correo a los responsables de IT con los datos del nuevo usuario
+
+//enviar correo para avisar de que el personal ya esta disponible.
+
+    $mail = "robot@tsiberia.es";
+
+    $header = 'From: ' . $mail . " \r\n";
+    $header .= "X-Mailer: PHP/" . phpversion() . " \r\n";
+    $header .= "Mime-Version: 1.0 \r\n";
+    //$header .= "Content-Type: text/plain";
+    $header .= "Content-Type: text/html; charset=utf-8";
+
+    $mensaje = '<html>' . '<head><title>Email</title>
+    <style type="text/css">
+    h2 {
+        color: black;
+        font-family: Impact;
+      }
+    </style>
+    </head>' .
+    '<body>
+      <h4> <b>Se ha creado un usuario en la base de datos. <br>
+      Nombre: '.$nombre.'</b><br>
+        <b>Apellidos: '.$apellido.'</b><br>
+        <b>User: '.$lista[$i].'</b>
+      </h4><br>' .
+
+      'Por favor, no responda a este correo lo envia un robot automáticamente.'.
+      '<br />Enviado el ' . date('d/m/Y', time()) .
+    '</body></html>';
+
+    $para = 'it@tsiberia.es';
+    $asunto = 'Nuevo usuario creado';
+
+    mail($para, $asunto, $mensaje, $header);
+
+ break;
+  }else{
+    //contar los usuarios que tienen mismo nombre y appelidos
+    $contador++;
+
+   }
+
+  // if nuevousuario
+  }//Bucle de for
+
+     //Si el usurio no existe en la base de dato se pasa a comprobar si la fila se ha insertado correctamente
+    if($nuevoEmpleado==null){
+
       //si no se ha podido insertar, sacamos un mensaje avisando
       ?>
-      <script type="text/javascript">
-        alert('Error al registrar el nuevo empleado');
+      <script type="text/javascript" class="alert">
+        alert('Error al registrar el nuevo empleado').style.color = "blue";
         window.location = 'index.php';
       </script>
       <?php
-    }else {
+    }else{
       //si se inserta con exito, avisamos al usuario y lo devolvemos a inicio
       ?>
         <script type="text/javascript">
@@ -109,6 +264,12 @@ if (isset($_SESSION['usuario'])==false) {
         </script>
       <?php
     }
+
+  // if nuevousuario
+
+  //for
+
   }
+
  ?>
  <?php } ?>

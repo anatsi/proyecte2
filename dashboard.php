@@ -62,12 +62,15 @@
                 echo "<a href='./workOrders/movimientos/filtroMovimientos.php'>Registro movimientos</a>";
               }elseif ($opcion == 5) {
                 echo "<a href='./workOrders/actividades/index.php'>Registro actividades</a>";
+              }elseif ($opcion == 6) {
+                echo "<a href='./empleados/index.php'>Gestión empleados</a>";
               }elseif ($opcion == 0) {
                 echo "<a href='./tickets/index.php'>Tickets</a>";
                 echo "<a href='./operativa/index.php'>Gestión actividades</a>";
                 echo "<a href='./directorio/index.php'>Directorio empleados</a>";
                 echo "<a href='./workOrders/movimientos/filtroMovimientos.php'>Registro movimientos</a>";
                 echo "<a href='./workOrders/actividades/index.php'>Registro actividades</a>";
+                echo "<a href='./empleados/index.php'>Gestión empleados</a>";
               }
             }
 					 ?>

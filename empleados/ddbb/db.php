@@ -1,6 +1,6 @@
 <?php
 /**
- * Permitir la conexion contra la base de datos de la app operativa
+ * Permitir la conexion contra la base de datos de la app gestion empleados
  */
 class db
 {
@@ -8,7 +8,7 @@ class db
   private $host="localhost";
   private $user="root";
   private $pass="";
-  private $db_name="operativa";
+  private $db_name="gestion_empleados";
   //Conector
   private $conexion;
   //Propiedades para controlar errores

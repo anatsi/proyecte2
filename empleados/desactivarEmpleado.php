@@ -8,13 +8,26 @@
       $actualizar=$empleado->DesactivarEmpleado($_GET['e']);
       if ($actualizar==true) {
         //si se desactiva correctamente, le devolvemos a inicio
-        header('Location: index.php');
+        ?>
+        <script type="text/javascript">
+          window.location='index.php';
+        </script>
+        <?php
       }else {
         //si no se puede desactivar avisamos del error
-        echo "ERROR AL DESACTIVAR EL EMPLEADO";
+        ?>
+          <script type="text/javascript">
+            alert('Error al editar la informacion');
+            window.location='index.php';
+          </script>
+        <?php
       }
   }else {
     //si no se ha enviado el empleado a desactivar, avisamos al usuario
-    echo "ERROR";
+    ?>
+      <script type="text/javascript">
+        window.location='index.php';
+      </script>
+    <?php
   }
  ?>
