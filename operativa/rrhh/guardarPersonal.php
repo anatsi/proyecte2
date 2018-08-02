@@ -4,11 +4,13 @@
   $empleados = new Empleados();
   require_once '../bbdd/servicio.php';
   $servicio = new Servicio();
+  require_once '../bbdd/personal.php';
+  $personal= new Personal();
 
   //comprobamos si la variable e existe, para saber si viene del archivo de editar o de insertar
   if ($_GET['e'] && $_GET['e'] == 1) {
     //si viene del archivo de editar, borramos promero el personal de ese dia para esa actividad
-    $borrarPersonal = $empleados -> eliminarPersonal($_POST['id'], $_POST['dia']);
+    $borrarPersonal = $personal -> eliminarPersonal($_POST['id'], $_POST['dia']);
     //si nos da error avisamos de que vuelvan a empezar
     if ($borrarPersonal == null || $borrarPersonal == false) {
       ?>
@@ -146,7 +148,7 @@
 //si alguna de las personas da error, se pondran la variable de arriba que toque a 1
   if ($_POST['noche']) {
     foreach ($_POST['noche'] as $personalNoche) {
-      $nuevoEmpleado = $empleados -> nuevoPersonal($_POST['id'], $personalNoche, 'tn', $_POST['dia']);
+      $nuevoEmpleado = $personal -> nuevoPersonal($_POST['id'], $personalNoche, 'tn', $_POST['dia']);
     }
     if ($nuevoEmpleado == false || $nuevoEmpleado == null) {
       $error = 1;
@@ -155,7 +157,7 @@
 
   if ($_POST['morning']) {
     foreach ($_POST['morning'] as $personalNoche) {
-      $nuevoEmpleado = $empleados -> nuevoPersonal($_POST['id'], $personalNoche, 'tm', $_POST['dia']);
+      $nuevoEmpleado = $personal -> nuevoPersonal($_POST['id'], $personalNoche, 'tm', $_POST['dia']);
 
     }
     if ($nuevoEmpleado == false || $nuevoEmpleado == null) {
@@ -165,7 +167,7 @@
 
   if ($_POST['tarde']) {
     foreach ($_POST['tarde'] as $personalNoche) {
-      $nuevoEmpleado = $empleados -> nuevoPersonal($_POST['id'], $personalNoche, 'tt', $_POST['dia']);
+      $nuevoEmpleado = $personal -> nuevoPersonal($_POST['id'], $personalNoche, 'tt', $_POST['dia']);
 
     }
     if ($nuevoEmpleado == false || $nuevoEmpleado == null) {
@@ -175,7 +177,7 @@
 
   if ($_POST['central']) {
     foreach ($_POST['central'] as $personalNoche) {
-      $nuevoEmpleado = $empleados -> nuevoPersonal($_POST['id'], $personalNoche, 'tc', $_POST['dia']);
+      $nuevoEmpleado = $personal -> nuevoPersonal($_POST['id'], $personalNoche, 'tc', $_POST['dia']);
 
     }
     if ($nuevoEmpleado == false || $nuevoEmpleado == null) {
@@ -185,7 +187,7 @@
 
   if ($_POST['otro1']) {
     foreach ($_POST['otro1'] as $personalNoche) {
-      $nuevoEmpleado = $empleados -> nuevoPersonal($_POST['id'], $personalNoche, 'otro1', $_POST['dia']);
+      $nuevoEmpleado = $personal -> nuevoPersonal($_POST['id'], $personalNoche, 'otro1', $_POST['dia']);
 
     }
     if ($nuevoEmpleado == false || $nuevoEmpleado == null) {
@@ -195,7 +197,7 @@
 
   if ($_POST['otro2']) {
     foreach ($_POST['otro2'] as $personalNoche) {
-      $nuevoEmpleado = $empleados -> nuevoPersonal($_POST['id'], $personalNoche, 'otro2', $_POST['dia']);
+      $nuevoEmpleado = $personal -> nuevoPersonal($_POST['id'], $personalNoche, 'otro2', $_POST['dia']);
 
     }
     if ($nuevoEmpleado == false || $nuevoEmpleado == null) {
@@ -205,7 +207,7 @@
 
   if ($_POST['otro3']) {
     foreach ($_POST['otro3'] as $personalNoche) {
-      $nuevoEmpleado = $empleados -> nuevoPersonal($_POST['id'], $personalNoche, 'otro3', $_POST['dia']);
+      $nuevoEmpleado = $personal -> nuevoPersonal($_POST['id'], $personalNoche, 'otro3', $_POST['dia']);
 
     }
     if ($nuevoEmpleado == false || $nuevoEmpleado == null) {
@@ -215,7 +217,7 @@
 
   if ($_POST['otro4']) {
     foreach ($_POST['otro4'] as $personalNoche) {
-      $nuevoEmpleado = $empleados -> nuevoPersonal($_POST['id'], $personalNoche, 'otro4', $_POST['dia']);
+      $nuevoEmpleado = $personal -> nuevoPersonal($_POST['id'], $personalNoche, 'otro4', $_POST['dia']);
 
     }
     if ($nuevoEmpleado == false || $nuevoEmpleado == null) {
@@ -225,7 +227,7 @@
 
   if ($_POST['otro5']) {
     foreach ($_POST['otro5'] as $personalNoche) {
-      $nuevoEmpleado = $empleados -> nuevoPersonal($_POST['id'], $personalNoche, 'otro5', $_POST['dia']);
+      $nuevoEmpleado = $personal -> nuevoPersonal($_POST['id'], $personalNoche, 'otro5', $_POST['dia']);
 
     }
     if ($nuevoEmpleado == false || $nuevoEmpleado == null) {
@@ -235,7 +237,7 @@
 
   if ($_POST['otro6']) {
     foreach ($_POST['otro6'] as $personalNoche) {
-      $nuevoEmpleado = $empleados -> nuevoPersonal($_POST['id'], $personalNoche, 'otro6', $_POST['dia']);
+      $nuevoEmpleado = $personal -> nuevoPersonal($_POST['id'], $personalNoche, 'otro6', $_POST['dia']);
 
     }
     if ($nuevoEmpleado == false || $nuevoEmpleado == null) {

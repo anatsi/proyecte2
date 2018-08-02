@@ -1,70 +1,16 @@
 <?php
 //llamamos a la clase db encargada de la conexion contra la base de datos.
-require_once 'dbEmpleados.php';
+require_once 'db.php';
 /**
  * Clase empleados encargada de hacer las consultas contra esta tabla de la db
  */
-class Empleados extends dbEmpleados
+class Personal extends db
 {
   //la funcion de construct llama a la funcion de construct de db para la conexion
   function __construct()
   {
     parent::__construct();
   }
-
-  //funcion para listar todos los empleados de la bbdd
-  function listaEmpleados(){
-    //Construimos la consulta
-    $sql="SELECT * from empleados order by alta desc";
-    //Realizamos la consulta
-    $resultado=$this->realizarConsulta($sql);
-    if($resultado!=null){
-      //Montamos la tabla de resultados
-      $tabla=[];
-      while($fila=$resultado->fetch_assoc()){
-        $tabla[]=$fila;
-      }
-      return $tabla;
-    }else{
-      return null;
-    }
-  }
-
-  //funcion para listar todos los empleados de la bbdd
-  function listaEmpleadosActivos(){
-    //Construimos la consulta
-    $sql="SELECT * from empleados where alta = 0 AND vacaciones = 0 AND incapa_temporal = 0";
-    //Realizamos la consulta
-    $resultado=$this->realizarConsulta($sql);
-    if($resultado!=null){
-      //Montamos la tabla de resultados
-      $tabla=[];
-      while($fila=$resultado->fetch_assoc()){
-        $tabla[]=$fila;
-      }
-      return $tabla;
-    }else{
-      return null;
-    }
-  }
-
-
-//sacar empleado dependiendo del id
-function EmpleadoId($id){
-  //Construimos la consulta
-  $sql="SELECT * from empleados WHERE id=".$id;
-  //Realizamos la consulta
-  $resultado=$this->realizarConsulta($sql);
-  if($resultado!=false){
-    if($resultado!=false){
-      return $resultado->fetch_assoc();
-    }else{
-      return null;
-    }
-  }else{
-    return null;
-  }
-}
 
 //funcion para insertar un nuevo empleado para un servicio.
 function nuevoPersonal($servicio, $empleado, $turno, $dia){

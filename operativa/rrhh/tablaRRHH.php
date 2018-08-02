@@ -12,6 +12,7 @@ require_once '../bbdd/cliente.php';
 require_once '../bbdd/servicio.php';
 require_once '../bbdd/recursos.php';
 require_once '../bbdd/empleados.php';
+require_once '../bbdd/personal.php';
 
 $usuario=new User();
 $sesion=new Sesiones();
@@ -19,6 +20,7 @@ $cliente=new Cliente();
 $servicio=new Servicio();
 $recursos=new Recursos();
 $empleados = new Empleados();
+$personal = new Personal();
 
 //comprobamos si hay una sesion iniciada
 if (isset($_SESSION['usuario'])==false) {
@@ -147,7 +149,7 @@ if (isset($_SESSION['usuario'])==false) {
                 $comentario = $modRecursos['com_rrhh'];
               }
               //sacamos el personal que hay asociado a esa actividad ese dia(si lo hay)
-              $asignados = $empleados -> personalAsignado($lista['id'], $fecha);
+              $asignados = $personal -> personalAsignado($lista['id'], $fecha);
 
               //sacamos los recursos del dia anterior para el boton de recuperar
               //restar un dia a la fecha elegida
@@ -162,7 +164,7 @@ if (isset($_SESSION['usuario'])==false) {
                 $recursosAyer = $modRecursosAyer['total'];
               }
               //sacamos el personal asignado para el dia anterior.
-              $asignadosAyer = $empleados -> personalAsignado($lista['id'], $nuevafecha);
+              $asignadosAyer = $personal -> personalAsignado($lista['id'], $nuevafecha);
 
               //sacamos solo las actividades que no tengan 0 recursos.
               if ($recursosTotal > 0) {

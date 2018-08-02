@@ -7,10 +7,12 @@ require_once '../bbdd/servicio.php';
 require_once '../bbdd/cliente.php';
 require_once '../bbdd/recursos.php';
 require_once '../bbdd/empleados.php';
+require_once '../bbdd/personal.php';
 $cliente= new Cliente();
 $servicio= new Servicio();
 $recursos= new Recursos();
 $empleados = new Empleados();
+$personal = new Personal();
 
 // Crea un nuevo objeto PHPExcel
 $objPHPExcel = new PHPExcel();
@@ -58,7 +60,7 @@ foreach ($listaHoy as $actividad) {
     $recursosTotal = $recursos -> RecursosSupervisores($actividad['id'], $_POST['fecha'], $turno);
   }
   //sacar los nombres de los empleados de esa actividad para ese dia.
-  $listaEmpleados = $empleados -> empleadosServicio($actividad['id'], $_POST['fecha'], $turno);
+  $listaEmpleados = $personal -> empleadosServicio($actividad['id'], $_POST['fecha'], $turno);
   //COMPROBAR   que esa actividad tiene recursos para ese turno.
   if ($recursosTotal != null && $recursosTotal != false && $recursosTotal[$turno] > 0) {
     //elegimos si escribir en la columna A o B.
@@ -143,7 +145,7 @@ foreach ($listaHoy as $actividad) {
   //para cada uno de los turnos raros comprobamos si hay recursos en ese dia.
   if ($recursosRaros['tc']>0 && $recursosRaros['tc'] != null && $recursosRaros['tc'] != false) {
     //si los recursos son mayor que 0, sacamos los nombres asignados a esta actividad.
-    $listaEmpleados = $empleados -> empleadosServicio($actividad['id'], $_POST['fecha'], 'tc');
+    $listaEmpleados = $personal -> empleadosServicio($actividad['id'], $_POST['fecha'], 'tc');
     //elegimos si escribir en la columna A o B.
     if ($Bi < $Ai) {
       //cambiar el estilo de la cabecera de la actividad
@@ -214,7 +216,7 @@ foreach ($listaHoy as $actividad) {
   //TURNO RARO 1
   if ($recursosRaros['otro1']>0 && $recursosRaros['otro1'] != null && $recursosRaros['otro1'] != false) {
     //si los recursos son mayor que 0, sacamos los nombres asignados a esta actividad.
-    $listaEmpleados = $empleados -> empleadosServicio($actividad['id'], $_POST['fecha'], 'otro1');
+    $listaEmpleados = $personal -> empleadosServicio($actividad['id'], $_POST['fecha'], 'otro1');
     //elegimos si escribir en la columna A o B.
     if ($Bi < $Ai) {
       //cambiar el estilo de la cabecera de la actividad
@@ -284,7 +286,7 @@ foreach ($listaHoy as $actividad) {
   //TURNO RARO 2
   if ($recursosRaros['otro2']>0 && $recursosRaros['otro2'] != null && $recursosRaros['otro2'] != false) {
     //si los recursos son mayor que 0, sacamos los nombres asignados a esta actividad.
-    $listaEmpleados = $empleados -> empleadosServicio($actividad['id'], $_POST['fecha'], 'otro2');
+    $listaEmpleados = $personal -> empleadosServicio($actividad['id'], $_POST['fecha'], 'otro2');
     //elegimos si escribir en la columna A o B.
     if ($Bi < $Ai) {
       //cambiar el estilo de la cabecera de la actividad
@@ -354,7 +356,7 @@ foreach ($listaHoy as $actividad) {
   //TURNO RARO 3
   if ($recursosRaros['otro3']>0 && $recursosRaros['otro3'] != null && $recursosRaros['otro3'] != false) {
     //si los recursos son mayor que 0, sacamos los nombres asignados a esta actividad.
-    $listaEmpleados = $empleados -> empleadosServicio($actividad['id'], $_POST['fecha'], 'otro3');
+    $listaEmpleados = $personal -> empleadosServicio($actividad['id'], $_POST['fecha'], 'otro3');
     //elegimos si escribir en la columna A o B.
     if ($Bi < $Ai) {
       //cambiar el estilo de la cabecera de la actividad
@@ -424,7 +426,7 @@ foreach ($listaHoy as $actividad) {
   //TURNO RARO 4
   if ($recursosRaros['otro4']>0 && $recursosRaros['otro4'] != null && $recursosRaros['otro4'] != false) {
     //si los recursos son mayor que 0, sacamos los nombres asignados a esta actividad.
-    $listaEmpleados = $empleados -> empleadosServicio($actividad['id'], $_POST['fecha'], 'otro4');
+    $listaEmpleados = $personal -> empleadosServicio($actividad['id'], $_POST['fecha'], 'otro4');
     //elegimos si escribir en la columna A o B.
     if ($Bi < $Ai) {
       //cambiar el estilo de la cabecera de la actividad
@@ -494,7 +496,7 @@ foreach ($listaHoy as $actividad) {
   //TURNO RARO 5
   if ($recursosRaros['otro5']>0 && $recursosRaros['otro5'] != null && $recursosRaros['otro5'] != false) {
     //si los recursos son mayor que 0, sacamos los nombres asignados a esta actividad.
-    $listaEmpleados = $empleados -> empleadosServicio($actividad['id'], $_POST['fecha'], 'otro5');
+    $listaEmpleados = $personal -> empleadosServicio($actividad['id'], $_POST['fecha'], 'otro5');
     //elegimos si escribir en la columna A o B.
     if ($Bi < $Ai) {
       //cambiar el estilo de la cabecera de la actividad
@@ -564,7 +566,7 @@ foreach ($listaHoy as $actividad) {
   //TURNO RARO 6
   if ($recursosRaros['otro6']>0 && $recursosRaros['otro6'] != null && $recursosRaros['otro6'] != false) {
     //si los recursos son mayor que 0, sacamos los nombres asignados a esta actividad.
-    $listaEmpleados = $empleados -> empleadosServicio($actividad['id'], $_POST['fecha'], 'otro6');
+    $listaEmpleados = $personal -> empleadosServicio($actividad['id'], $_POST['fecha'], 'otro6');
     //elegimos si escribir en la columna A o B.
     if ($Bi < $Ai) {
       //cambiar el estilo de la cabecera de la actividad

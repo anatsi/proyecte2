@@ -11,12 +11,14 @@ require_once '../../ddbb/users.php';
 require_once '../bbdd/servicio.php';
 require_once '../bbdd/recursos.php';
 require_once '../bbdd/empleados.php';
+require_once '../bbdd/personal.php';
 
 $usuario=new User();
 $sesion=new Sesiones();
 $servicio=new Servicio();
 $recursos=new Recursos();
 $empleado = new Empleados();
+$personal = new Personal();
 
 if (isset($_SESSION['usuario'])==false) {
   header('Location: ../../index.php');
@@ -125,7 +127,7 @@ if (isset($_SESSION['usuario'])==false) {
               $recurso = $recursos -> RecursosId($_GET['id']);
             }
             //sacar los nombres de todos los empleados de la empresa.
-            $empleados = $empleado -> listaEmpleados();
+            $empleados = $empleado -> listaEmpleadosActivos();
            ?>
            <?php
            //sacamos la fecha del dia anterior para sacar las personas asignadas
@@ -134,7 +136,7 @@ if (isset($_SESSION['usuario'])==false) {
            $nuevafecha = date ( 'Y-m-d' , $nuevafecha );
            //TURNO NOCHE.
            //buscar el personal que hay asignado para ese dia y ese servicio en el turno de noche
-            $personalNoche = $empleado -> empleadosServicio($_GET['id'], $nuevafecha, 'tn');
+            $personalNoche = $personal -> empleadosServicio($_GET['id'], $nuevafecha, 'tn');
             //comprobar si hay alguien asignado.
             if ($personalNoche != null && $personalNoche != false) {
               //sacar el titulo de noche
@@ -174,7 +176,7 @@ if (isset($_SESSION['usuario'])==false) {
             <?php
             //TURNO MAÑANA.
             //buscar el personal que hay asignado para ese dia y ese servicio en el turno de mañana
-             $personalMorning = $empleado -> empleadosServicio($_GET['id'], $nuevafecha, 'tm');
+             $personalMorning = $personal -> empleadosServicio($_GET['id'], $nuevafecha, 'tm');
              //comprobar si hay alguien asignado.
              if ($personalMorning != null && $personalMorning != false) {
                //sacar el titulo de mañana
@@ -214,7 +216,7 @@ if (isset($_SESSION['usuario'])==false) {
              <?php
              //TURNO TARDE.
              //buscar el personal que hay asignado para ese dia y ese servicio en el turno de tarde
-              $personalTarde = $empleado -> empleadosServicio($_GET['id'], $nuevafecha, 'tt');
+              $personalTarde = $personal -> empleadosServicio($_GET['id'], $nuevafecha, 'tt');
               //comprobar si hay alguien asignado.
               if ($personalTarde != null && $personalTarde != false) {
                 //sacar el titulo de tarde
@@ -254,7 +256,7 @@ if (isset($_SESSION['usuario'])==false) {
               <?php
               //TURNO CENTRAL.
               //buscar el personal que hay asignado para ese dia y ese servicio en el turno central
-               $personalCentral = $empleado -> empleadosServicio($_GET['id'], $nuevafecha, 'tc');
+               $personalCentral = $personal -> empleadosServicio($_GET['id'], $nuevafecha, 'tc');
                //comprobar si hay alguien asignado.
                if ($personalCentral != null && $personalCentral != false) {
                  //sacar el titulo central
@@ -294,7 +296,7 @@ if (isset($_SESSION['usuario'])==false) {
                <?php
                //TURNO ESPECIAL 1.
                //buscar el personal que hay asignado para ese dia y ese servicio en el turno de noche
-                $personal1 = $empleado -> empleadosServicio($_GET['id'], $nuevafecha, 'otro1');
+                $personal1 = $personal -> empleadosServicio($_GET['id'], $nuevafecha, 'otro1');
                 //comprobar si hay alguien asignado.
                 if ($personal1 != null && $personal1 != false) {
                   //sacar el titulo de noche
@@ -334,7 +336,7 @@ if (isset($_SESSION['usuario'])==false) {
                 <?php
                 //TURNO ESPECIAL 2.
                 //buscar el personal que hay asignado para ese dia y ese servicio en el turno de noche
-                 $personal2 = $empleado -> empleadosServicio($_GET['id'], $nuevafecha, 'otro2');
+                 $personal2 = $personal -> empleadosServicio($_GET['id'], $nuevafecha, 'otro2');
                  //comprobar si hay alguien asignado.
                  if ($personal2 != null && $personal2 != false) {
                    //sacar el titulo de noche
@@ -374,7 +376,7 @@ if (isset($_SESSION['usuario'])==false) {
                  <?php
                  //TURNO ESPECIAL 3.
                  //buscar el personal que hay asignado para ese dia y ese servicio en el turno de noche
-                  $personal3 = $empleado -> empleadosServicio($_GET['id'], $nuevafecha, 'otro3');
+                  $personal3 = $personal -> empleadosServicio($_GET['id'], $nuevafecha, 'otro3');
                   //comprobar si hay alguien asignado.
                   if ($personal3 != null && $personal3 != false) {
                     //sacar el titulo de noche
@@ -414,7 +416,7 @@ if (isset($_SESSION['usuario'])==false) {
                   <?php
                   //TURNO ESPECIAL 4.
                   //buscar el personal que hay asignado para ese dia y ese servicio en el turno de noche
-                   $personal4 = $empleado -> empleadosServicio($_GET['id'], $nuevafecha, 'otro4');
+                   $personal4 = $personal -> empleadosServicio($_GET['id'], $nuevafecha, 'otro4');
                    //comprobar si hay alguien asignado.
                    if ($personal4 != null && $personal4 != false) {
                      //sacar el titulo de noche
@@ -454,7 +456,7 @@ if (isset($_SESSION['usuario'])==false) {
                    <?php
                    //TURNO ESPECIAL 5.
                    //buscar el personal que hay asignado para ese dia y ese servicio en el turno de noche
-                    $personal5 = $empleado -> empleadosServicio($_GET['id'], $nuevafecha, 'otro5');
+                    $personal5 = $personal -> empleadosServicio($_GET['id'], $nuevafecha, 'otro5');
                     //comprobar si hay alguien asignado.
                     if ($personal5 != null && $personal5 != false) {
                       //sacar el titulo de noche
@@ -494,7 +496,7 @@ if (isset($_SESSION['usuario'])==false) {
                     <?php
                     //TURNO ESPECIAL 6.
                     //buscar el personal que hay asignado para ese dia y ese servicio en el turno de noche
-                     $personal6 = $empleado -> empleadosServicio($_GET['id'], $nuevafecha, 'otro6');
+                     $personal6 = $personal -> empleadosServicio($_GET['id'], $nuevafecha, 'otro6');
                      //comprobar si hay alguien asignado.
                      if ($personal6 != null && $personal6 != false) {
                        //sacar el titulo de noche
