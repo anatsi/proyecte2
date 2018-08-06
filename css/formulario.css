@@ -71,12 +71,40 @@ input[type=file] {
 
 input[type=radio], radio
 /*,input[type=checkbox],checkbox*/
-
-  {
+{
   width: auto;
   padding: 0px;
   margin-left: 2%;
   float: left;
+}
+
+div[class=submitbuttons]{
+  clear: both;
+}
+
+.submitwo{
+  background: red !important;
+  border-color: red !important;
+  width: 25% !important;
+  margin-right: 15% !important;
+  color: #fff;
+  line-height: 25px;
+  font-size: 20px;
+  height: 50px;
+  margin-top: 1%;
+  float: right;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+}
+
+.submitwo:hover{
+  color: black;
+}
+
+.submithree{
+  width: 25% !important;
+  margin-right: 15% !important;
 }
 
 input[type=submit], submit {
@@ -97,6 +125,8 @@ input[type=submit]:hover, submit:hover {
   background: lightgrey;
   border-color: lightgrey;
 }
+
+
 
 input[type=file] {
   width: 275px;
