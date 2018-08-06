@@ -170,31 +170,26 @@ if (isset($_SESSION['usuario'])==false) {
 
               //Poner icones para cada Opciones // labe=opciones tienen que estar en la primera opcion
 
-                if ($empleados['alta']==0){
-
-                    echo "<td data-label='Opciones ' id='tdmod'>";
-                    echo "<a href='desactivarEmpleado.php?e=".$empleados['id']."'
-                    title='Desactivar empleado'><i class='material-icons'>remove_circle</i></a>";
+              if ($empleados['alta']==0){
+                echo "<td data-label='Opciones ' id='tdmod'>";
+                echo "<a href='desactivarEmpleado.php?e=".$empleados['id']."'
+                title='Desactivar empleado'><i class='material-icons'>remove_circle</i></a>";
+                //Poner icono de avion y maleta para vaciones y solo si está dado de alta
+                if ($empleados['vacaciones']==0) {
+                  echo "&nbsp;&nbsp;<a href='deVacaciones.php?e=".$empleados['id']."' title='Dar vacaciones'><i class='material-icons'>flight</i></a>";
+                }else {
+                  echo"&nbsp;&nbsp;<a href='deVacaciones.php?e=".$empleados['id']."' title='Poner fin a las Vacaciones '><i class='material-icons'>work</i></a>";
+                }
+                // poner icono de incapacidad temporal  y solo si está dado de alta
+               if ($empleados['incapa_temporal']==0){
+                     echo "&nbsp;&nbsp;<a href='darBaja.php?e=".$empleados['id']."' title='Incapacidad Temporal'><i class='material-icons'>healing</i></a>";
+               }else{
+                     echo"&nbsp;&nbsp;<a href='incapacidad.php?e=".$empleados['id']."' title='Dar de alta'><i class='material-icons'>sentiment_satisfied_alt</i></a></td></tr>";
+               }
               }else {
-
-                    echo "<td data-label='Opciones ' id='tdmod'>";
-                    echo"&nbsp;&nbsp;<a href='activarEmpleado.php?e=".$empleados['id']."' title='Activar empleado'><i class='material-icons'>check_circle</i></a>";
-                  }
-               //Poner icono de avion y maleta para vaciones y solo si está dado de alta
-              if ($empleados['vacaciones']==0 && $empleados['alta']==0){
-                    echo "&nbsp;&nbsp;<a href='deVacaciones.php?e=".$empleados['id']."' title='Dar vacaciones'><i class='material-icons'>flight</i></a>";
-              }else{
-
-                    echo"&nbsp;&nbsp;<a href='deVacaciones.php?e=".$empleados['id']."' title='Poner fin a las Vacaciones '><i class='material-icons'>work</i></a>";
-                  }
-               // poner icono de incapacidad temporal  y solo si está dado de alta
-              if ($empleados['incapa_temporal']==0 && $empleados['alta']==0){
-                    echo "&nbsp;&nbsp;<a href='darBaja.php?e=".$empleados['id']."' title='Incapacidad Temporal'><i class='material-icons'>healing</i></a>";
-              }else{
-                    echo"&nbsp;&nbsp;<a href='incapacidad.php?e=".$empleados['id']."' title='Dar de alta'><i class='material-icons'>sentiment_satisfied_alt</i></a></td></tr>";
-                  }
-
-
+                echo "<td data-label='Opciones ' id='tdmod'>";
+                echo"&nbsp;&nbsp;<a href='activarEmpleado.php?e=".$empleados['id']."' title='Activar empleado'><i class='material-icons'>check_circle</i></a>";
+              }
            }
         ?>
         </tbody>
