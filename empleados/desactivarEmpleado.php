@@ -4,8 +4,15 @@
     //incluimos los archivos necesarios e inicializamos sus objetos
       require_once './ddbb/empleados.php';
       $empleado= new Empleados();
+      //incuir clases para poder sacar el nombre del usuario.
+      require_once '../ddbb/sesiones.php';
+      require_once '../ddbb/users.php';
+      $usuario=new User();
+      $sesion=new Sesiones();
+      //sacar el nombre del usuario.
+      $nombre = $usuario->nombreUsuario($_SESSION['usuario']);
       //llamamos a la funcion de desactivar el empleado
-      $actualizar=$empleado->DesactivarEmpleado($_GET['e']);
+      $actualizar=$empleado->DesactivarEmpleado($_GET['e'], $nombre['name']);
       if ($actualizar==true) {
         //si se desactiva correctamente, le devolvemos a inicio
         ?>

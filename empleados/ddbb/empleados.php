@@ -50,10 +50,10 @@ class Empleados extends db
   }
 
   //funciones para activar y desactivar empleados
-  function ActivarEmpleado($id){
+  function ActivarEmpleado($id, $user){
     //Fecha y hora actual
     $fecha = date("Y-m-d H:i:s");
-    $sql="UPDATE empleados SET alta=0, fecha_mod ='".$fecha."' where id=".$id;
+    $sql="UPDATE empleados SET alta=0, fecha_mod ='".$fecha."', usuario_mod='".$user."' where id=".$id;
     $finalizarAct=$this->realizarConsulta($sql);
     if ($finalizarAct=!false) {
          return true;
@@ -62,10 +62,10 @@ class Empleados extends db
     }
   }
 
-  function DesactivarEmpleado($id){
+  function DesactivarEmpleado($id, $user){
     //Fecha y hora actual
     $fecha = date("Y-m-d H:i:s");
-    $sql="UPDATE empleados SET alta=1, fecha_mod='".$fecha."' where id=".$id;
+    $sql="UPDATE empleados SET alta=1, fecha_mod='".$fecha."', usuario_mod='".$user."' where id=".$id;
     $finalizarAct=$this->realizarConsulta($sql);
     if ($finalizarAct=!false) {
          return true;
