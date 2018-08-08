@@ -88,7 +88,7 @@ if (isset($_SESSION['usuario'])==false) {
   <div class="container">
     <!-- Contenido de la pagina. -->
     <h2>Elegir dia y turno</h2>
-    <form action="excelSupervisores.php" method="post" id="formulario">
+    <form action="personalSupervisores.php" method="post" id="formulario">
       <div class="formthird">
         <p><label><i class="fa fa-question-circle"></i>FECHA</label><input type="date" name="fecha"/></p>
       </div>

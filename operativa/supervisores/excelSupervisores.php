@@ -34,33 +34,33 @@ $OtherStyle_header2 = array('fill' => array('type' => PHPExcel_Style_Fill::FILL_
 $objPHPExcel->setActiveSheetIndex(0)
 ->setCellValue('A1', 'FECHA')
 ->setCellValue('A2', 'TURNO')
-->setCellValue('B1', PHPExcel_Shared_Date::PHPToExcel( $_POST['fecha'] ))
-->setCellValue('B2', $_POST['turno'])
+->setCellValue('B1', PHPExcel_Shared_Date::PHPToExcel( $_GET['fecha'] ))
+->setCellValue('B2', $_GET['turno'])
 ;
 
 //sacar las actividades para ese dia.
-$listaHoy = $servicio -> listaRRHH($_POST['fecha']);
+$listaHoy = $servicio -> listaRRHH($_GET['fecha']);
 //iniciamos el contador a 4;
 $Ai = 4;
 $Bi = 4;
 
 //convertimos el turno que nos han enviado.
-if ($_POST['turno'] == 'Mañana') {
+if ($_GET['turno'] == 'Mañana') {
   $turno = 'tm';
-}elseif ($_POST['turno'] == 'Tarde') {
+}elseif ($_GET['turno'] == 'Tarde') {
   $turno = 'tt';
-}elseif ( $_POST['turno'] == 'Noche') {
+}elseif ( $_GET['turno'] == 'Noche') {
   $turno = 'tn';
 }
 
 foreach ($listaHoy as $actividad) {
   //sacar el total de recursos para esa actividad, ese dia y ese turno.
-  $recursosTotal = $recursos -> ModSupervisores($actividad['id'], $_POST['fecha'], $turno);
+  $recursosTotal = $recursos -> ModSupervisores($actividad['id'], $_GET['fecha'], $turno);
   if ($recursosTotal == null || $recursosTotal == false) {
-    $recursosTotal = $recursos -> RecursosSupervisores($actividad['id'], $_POST['fecha'], $turno);
+    $recursosTotal = $recursos -> RecursosSupervisores($actividad['id'], $_GET['fecha'], $turno);
   }
   //sacar los nombres de los empleados de esa actividad para ese dia.
-  $listaEmpleados = $personal -> empleadosServicio($actividad['id'], $_POST['fecha'], $turno);
+  $listaEmpleados = $personal -> empleadosServicio($actividad['id'], $_GET['fecha'], $turno);
   //COMPROBAR   que esa actividad tiene recursos para ese turno.
   if ($recursosTotal != null && $recursosTotal != false && $recursosTotal[$turno] > 0) {
     //elegimos si escribir en la columna A o B.
@@ -130,7 +130,7 @@ $objPHPExcel->getActiveSheet()->getStyle("A".$Ai.":B".$Bi)->getFont()->setBold(t
 $objPHPExcel->getActiveSheet()->getStyle('A'.$Ai.':B'.$Bi)->applyFromArray($style_header);
 $objPHPExcel->getActiveSheet()->getStyle('A'.$Ai)->getNumberFormat()->setFormatCode($formatoFecha);
 $objPHPExcel->setActiveSheetIndex(0)
-->setCellValue('A'.$Ai, PHPExcel_Shared_Date::PHPToExcel( $_POST['fecha'] ))
+->setCellValue('A'.$Ai, PHPExcel_Shared_Date::PHPToExcel( $_GET['fecha'] ))
 ->setCellValue('B'.$Bi, 'TURNOS ESPECIALES');
 $Bi=$Bi+2;
 $Ai=$Ai+2;
@@ -138,14 +138,14 @@ $Ai=$Ai+2;
 
 foreach ($listaHoy as $actividad) {
   //SACAR RECURSOS PARA ACTIVIDADES CON HORARIOS RAROS
-  $recursosRaros = $recursos ->ModSupervisoresRaros($actividad['id'], $_POST['fecha']);
+  $recursosRaros = $recursos ->ModSupervisoresRaros($actividad['id'], $_GET['fecha']);
   if ($recursosRaros == null || $recursosRaros == false) {
     $recursosRaros = $recursos -> RecursosId($actividad['id']);
   }
   //para cada uno de los turnos raros comprobamos si hay recursos en ese dia.
   if ($recursosRaros['tc']>0 && $recursosRaros['tc'] != null && $recursosRaros['tc'] != false) {
     //si los recursos son mayor que 0, sacamos los nombres asignados a esta actividad.
-    $listaEmpleados = $personal -> empleadosServicio($actividad['id'], $_POST['fecha'], 'tc');
+    $listaEmpleados = $personal -> empleadosServicio($actividad['id'], $_GET['fecha'], 'tc');
     //elegimos si escribir en la columna A o B.
     if ($Bi < $Ai) {
       //cambiar el estilo de la cabecera de la actividad
@@ -216,7 +216,7 @@ foreach ($listaHoy as $actividad) {
   //TURNO RARO 1
   if ($recursosRaros['otro1']>0 && $recursosRaros['otro1'] != null && $recursosRaros['otro1'] != false) {
     //si los recursos son mayor que 0, sacamos los nombres asignados a esta actividad.
-    $listaEmpleados = $personal -> empleadosServicio($actividad['id'], $_POST['fecha'], 'otro1');
+    $listaEmpleados = $personal -> empleadosServicio($actividad['id'], $_GET['fecha'], 'otro1');
     //elegimos si escribir en la columna A o B.
     if ($Bi < $Ai) {
       //cambiar el estilo de la cabecera de la actividad
@@ -286,7 +286,7 @@ foreach ($listaHoy as $actividad) {
   //TURNO RARO 2
   if ($recursosRaros['otro2']>0 && $recursosRaros['otro2'] != null && $recursosRaros['otro2'] != false) {
     //si los recursos son mayor que 0, sacamos los nombres asignados a esta actividad.
-    $listaEmpleados = $personal -> empleadosServicio($actividad['id'], $_POST['fecha'], 'otro2');
+    $listaEmpleados = $personal -> empleadosServicio($actividad['id'], $_GET['fecha'], 'otro2');
     //elegimos si escribir en la columna A o B.
     if ($Bi < $Ai) {
       //cambiar el estilo de la cabecera de la actividad
@@ -356,7 +356,7 @@ foreach ($listaHoy as $actividad) {
   //TURNO RARO 3
   if ($recursosRaros['otro3']>0 && $recursosRaros['otro3'] != null && $recursosRaros['otro3'] != false) {
     //si los recursos son mayor que 0, sacamos los nombres asignados a esta actividad.
-    $listaEmpleados = $personal -> empleadosServicio($actividad['id'], $_POST['fecha'], 'otro3');
+    $listaEmpleados = $personal -> empleadosServicio($actividad['id'], $_GET['fecha'], 'otro3');
     //elegimos si escribir en la columna A o B.
     if ($Bi < $Ai) {
       //cambiar el estilo de la cabecera de la actividad
@@ -426,7 +426,7 @@ foreach ($listaHoy as $actividad) {
   //TURNO RARO 4
   if ($recursosRaros['otro4']>0 && $recursosRaros['otro4'] != null && $recursosRaros['otro4'] != false) {
     //si los recursos son mayor que 0, sacamos los nombres asignados a esta actividad.
-    $listaEmpleados = $personal -> empleadosServicio($actividad['id'], $_POST['fecha'], 'otro4');
+    $listaEmpleados = $personal -> empleadosServicio($actividad['id'], $_GET['fecha'], 'otro4');
     //elegimos si escribir en la columna A o B.
     if ($Bi < $Ai) {
       //cambiar el estilo de la cabecera de la actividad
@@ -496,7 +496,7 @@ foreach ($listaHoy as $actividad) {
   //TURNO RARO 5
   if ($recursosRaros['otro5']>0 && $recursosRaros['otro5'] != null && $recursosRaros['otro5'] != false) {
     //si los recursos son mayor que 0, sacamos los nombres asignados a esta actividad.
-    $listaEmpleados = $personal -> empleadosServicio($actividad['id'], $_POST['fecha'], 'otro5');
+    $listaEmpleados = $personal -> empleadosServicio($actividad['id'], $_GET['fecha'], 'otro5');
     //elegimos si escribir en la columna A o B.
     if ($Bi < $Ai) {
       //cambiar el estilo de la cabecera de la actividad
@@ -566,7 +566,7 @@ foreach ($listaHoy as $actividad) {
   //TURNO RARO 6
   if ($recursosRaros['otro6']>0 && $recursosRaros['otro6'] != null && $recursosRaros['otro6'] != false) {
     //si los recursos son mayor que 0, sacamos los nombres asignados a esta actividad.
-    $listaEmpleados = $personal -> empleadosServicio($actividad['id'], $_POST['fecha'], 'otro6');
+    $listaEmpleados = $personal -> empleadosServicio($actividad['id'], $_GET['fecha'], 'otro6');
     //elegimos si escribir en la columna A o B.
     if ($Bi < $Ai) {
       //cambiar el estilo de la cabecera de la actividad

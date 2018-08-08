@@ -149,7 +149,7 @@
   //si alguna de las personas da error, se pondran la variable de arriba que toque a 1
     if ($_POST['noche']) {
       foreach ($_POST['noche'] as $personalNoche) {
-        $nuevoEmpleado = $personal -> nuevoPersonal($_POST['id'], $personalNoche, 'tn', $_POST['dia']);
+        $nuevoEmpleado = $personal -> nuevoPersonal($_POST['id'], $personalNoche, 'tn', $_POST['dia'], "");
       }
       if ($nuevoEmpleado == false || $nuevoEmpleado == null) {
         $error = 1;
@@ -158,7 +158,7 @@
 
     if ($_POST['morning']) {
       foreach ($_POST['morning'] as $personalNoche) {
-        $nuevoEmpleado = $personal -> nuevoPersonal($_POST['id'], $personalNoche, 'tm', $_POST['dia']);
+        $nuevoEmpleado = $personal -> nuevoPersonal($_POST['id'], $personalNoche, 'tm', $_POST['dia'], "");
 
       }
       if ($nuevoEmpleado == false || $nuevoEmpleado == null) {
@@ -168,7 +168,7 @@
 
     if ($_POST['tarde']) {
       foreach ($_POST['tarde'] as $personalNoche) {
-        $nuevoEmpleado = $personal -> nuevoPersonal($_POST['id'], $personalNoche, 'tt', $_POST['dia']);
+        $nuevoEmpleado = $personal -> nuevoPersonal($_POST['id'], $personalNoche, 'tt', $_POST['dia'], "");
 
       }
       if ($nuevoEmpleado == false || $nuevoEmpleado == null) {
@@ -178,7 +178,7 @@
 
     if ($_POST['central']) {
       foreach ($_POST['central'] as $personalNoche) {
-        $nuevoEmpleado = $personal -> nuevoPersonal($_POST['id'], $personalNoche, 'tc', $_POST['dia']);
+        $nuevoEmpleado = $personal -> nuevoPersonal($_POST['id'], $personalNoche, 'tc', $_POST['dia'], "");
 
       }
       if ($nuevoEmpleado == false || $nuevoEmpleado == null) {
@@ -188,7 +188,7 @@
 
     if ($_POST['otro1']) {
       foreach ($_POST['otro1'] as $personalNoche) {
-        $nuevoEmpleado = $personal -> nuevoPersonal($_POST['id'], $personalNoche, 'otro1', $_POST['dia']);
+        $nuevoEmpleado = $personal -> nuevoPersonal($_POST['id'], $personalNoche, 'otro1', $_POST['dia'], "");
 
       }
       if ($nuevoEmpleado == false || $nuevoEmpleado == null) {
@@ -198,7 +198,7 @@
 
     if ($_POST['otro2']) {
       foreach ($_POST['otro2'] as $personalNoche) {
-        $nuevoEmpleado = $personal -> nuevoPersonal($_POST['id'], $personalNoche, 'otro2', $_POST['dia']);
+        $nuevoEmpleado = $personal -> nuevoPersonal($_POST['id'], $personalNoche, 'otro2', $_POST['dia'], "");
 
       }
       if ($nuevoEmpleado == false || $nuevoEmpleado == null) {
@@ -208,7 +208,7 @@
 
     if ($_POST['otro3']) {
       foreach ($_POST['otro3'] as $personalNoche) {
-        $nuevoEmpleado = $personal -> nuevoPersonal($_POST['id'], $personalNoche, 'otro3', $_POST['dia']);
+        $nuevoEmpleado = $personal -> nuevoPersonal($_POST['id'], $personalNoche, 'otro3', $_POST['dia'], "");
 
       }
       if ($nuevoEmpleado == false || $nuevoEmpleado == null) {
@@ -218,7 +218,7 @@
 
     if ($_POST['otro4']) {
       foreach ($_POST['otro4'] as $personalNoche) {
-        $nuevoEmpleado = $personal -> nuevoPersonal($_POST['id'], $personalNoche, 'otro4', $_POST['dia']);
+        $nuevoEmpleado = $personal -> nuevoPersonal($_POST['id'], $personalNoche, 'otro4', $_POST['dia'], "");
 
       }
       if ($nuevoEmpleado == false || $nuevoEmpleado == null) {
@@ -228,7 +228,7 @@
 
     if ($_POST['otro5']) {
       foreach ($_POST['otro5'] as $personalNoche) {
-        $nuevoEmpleado = $personal -> nuevoPersonal($_POST['id'], $personalNoche, 'otro5', $_POST['dia']);
+        $nuevoEmpleado = $personal -> nuevoPersonal($_POST['id'], $personalNoche, 'otro5', $_POST['dia'], "");
 
       }
       if ($nuevoEmpleado == false || $nuevoEmpleado == null) {
@@ -238,7 +238,7 @@
 
     if ($_POST['otro6']) {
       foreach ($_POST['otro6'] as $personalNoche) {
-        $nuevoEmpleado = $personal -> nuevoPersonal($_POST['id'], $personalNoche, 'otro6', $_POST['dia']);
+        $nuevoEmpleado = $personal -> nuevoPersonal($_POST['id'], $personalNoche, 'otro6', $_POST['dia'], "");
 
       }
       if ($nuevoEmpleado == false || $nuevoEmpleado == null) {
