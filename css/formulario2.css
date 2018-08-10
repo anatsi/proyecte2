@@ -60,23 +60,25 @@ input[type=radio], radio, input[type=checkbox], checkbox {
   float: left;
 }
 
+.otras{
+    margin-left:10% !important;
+    margin-top: 10% !important;
+}
+
 input[type=submit], submit {
-  background: blue;
-  border-color: blue;
+  background: #322D46;
+  border-color: #322D46;
   color: #fff;
   line-height: 25px;
   font-size: 20px;
   height: 50px;
-  width: 50%;
+  width: 20%;
   margin-top: 1%;
-  margin-right: 25%;
+  margin-left:40%;
+  /*float: left;*/
+cursor: pointer;
 }
 
-input[type=submit]:hover, submit:hover {
-  color: black;
-  background: lightblue;
-  border-color: lightblue;
-}
 
 input[type=file] {
   width: 275px;
@@ -163,6 +165,10 @@ button {
   label {
     font-size: 14px;
   }
+  input[type=submit]{
+    width: 90%;
+    margin-left: 0;
+  }
 }
 
 @media only screen and (max-width: 767px) {
@@ -179,6 +185,10 @@ button {
   }
   #busqueda {
     width: 70%;
+  }
+  input[type=submit]{
+    width: 90%;
+    margin-left: 0;
   }
 }
 

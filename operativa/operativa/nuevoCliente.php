@@ -91,7 +91,7 @@ if (isset($_SESSION['usuario'])==false) {
               <p><label><i class="fa fa-question-circle"></i>Nombre cliente: (*)</label><input type="text" name="nombre" required/></p>
           </div>
           <div class="submitbuttons">
-              <input class="submitone" type="submit"  name="Enviar" value="Enviar"/>
+              <input class="otras" type="submit"  name="Enviar" value="Enviar"/>
           </div>
         </form>
 

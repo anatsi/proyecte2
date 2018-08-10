@@ -30,7 +30,7 @@ for ($i=0; $i < $recuento ; $i++) {
           ?>
             <script type="text/javascript">
               alert('Personal confirmado');
-              window.location = 'filtroSupervisores.php';
+              window.location = '../PDF/pdfSupervisor.php?fecha="'.$_POST['fecha'].'"&turno="'.$_POST['turno'].'"';
             </script>
           <?php
         }

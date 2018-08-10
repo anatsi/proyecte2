@@ -105,26 +105,27 @@ div[class=submitbuttons]{
 .submithree{
   width: 25% !important;
   margin-right: 15% !important;
+ }
+
+.otras{
+    margin-left:10% !important;
+    margin-top: 10% !important;
 }
 
 input[type=submit], submit {
-  background: darkgrey;
-  border-color: darkgrey;
+  background: #322D46;
+  border-color: #322D46;
   color: #fff;
   line-height: 25px;
   font-size: 20px;
   height: 50px;
-  width: 50%;
+  width: 20%;
   margin-top: 1%;
-  margin-right: 25%;
-  float: right;
+  margin-left:40%;
+  /*float: left;*/
+cursor: pointer;
 }
 
-input[type=submit]:hover, submit:hover {
-  color: black;
-  background: lightgrey;
-  border-color: lightgrey;
-}
 
 
 
@@ -232,6 +233,10 @@ button {
     margin-left: 45px;
     margin-bottom: 5px;
   }
+  input[type=submit]{
+    width: 90%;
+    margin-left: 0;
+  }
 }
 
 @media only screen and (max-width: 767px) {
@@ -260,6 +265,10 @@ button {
   #exportarResumen {
     font-size: 20px;
     width: 90%;
+  }
+  input[type=submit]{
+    width: 90%;
+    margin-left: 0;
   }
 }
 

@@ -199,12 +199,12 @@ if (isset($_SESSION['usuario'])==false) {
            ?>
         </tbody>
       </table>
-      <form class="" action="correoSupervisores.php" method="post">
+      <form class="" action="../PDF/pdfRRHH.php" method="post">
         <?php
           echo "<input type='hidden' name='fecha' value='".$fecha."'>";
          ?>
         <div class="submitbuttons">
-            <input class="submitone" type="submit" value="CONFIRMAR Y ENVIAR EXCEL"/>
+            <input class="submitone" type="submit" value="CONFIRMAR Y ENVIAR PDF"/>
         </div>
       </form>
       </div> <!-- END container -->

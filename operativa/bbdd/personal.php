@@ -85,7 +85,7 @@ function empleadosServicio($servicio, $dia, $turno){
   //funcion para listar los empleados de un dia para un servicio
   function personalHoy($dia, $turno){
     //Construimos la consulta
-    $sql="SELECT distinct empleado from personal_servicios where dia='".$dia."' AND turno='".$turno."'";
+    $sql="SELECT distinct empleado from personal_servicios where dia='".$dia."' AND turno LIKE '".$turno."' AND empleado != ''";
     //Realizamos la consulta
     $resultado=$this->realizarConsulta($sql);
     if($resultado!=null){

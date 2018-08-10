@@ -22,7 +22,7 @@
     </head>' .
     '<body>
       <h4>
-        <b>Se ha actualizado el personal para el '.$fecha.'</b>
+        <b>RRHH ha actualizado la planificación del personal para el dia '.$fecha.'</b>
       </h4><br />' .
       'Por favor, no responda a este correo lo envia un robot automáticamente.'.
       '<br />Enviado el ' . date('d/m/Y', time()) .

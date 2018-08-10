@@ -183,7 +183,7 @@ if (isset($_SESSION['usuario'])==false) {
               <p><label><i class="fa fa-question-circle"></i>Comentario Admin. Financiero</label><textarea name="caf"><?=$infoservicio['com_admin_fin']?></textarea></p>
           </div>
           <div class="submitbuttons">
-              <input class="submithree" type="submit" value="Modificar" name="submit"/>
+              <input class="submithree" style="width: 25%; margin-right: 15%; margin-left: 5%;" type="submit" value="Modificar" name="submit"/>
               <button class='submitwo' type='button' name='button' onclick=window.location='actividadesActuales.php'>Atras</button>
           </div>
   </form>

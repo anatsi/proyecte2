@@ -111,7 +111,7 @@ if (isset($_SESSION['usuario'])==false) {
       $fechaMostrar=explode("-", $_POST['fecha']);
       $fechaMostrar=$fechaMostrar[2]."-".$fechaMostrar[1]."-".$fechaMostrar[0];
       echo "<h2>".$fechaMostrar." - Turno ".$_POST['turno']."</h2>";
-      echo "<h3><a href='excelSupervisores.php?fecha=".$_POST['fecha']."&turno=".$_POST['turno']."' title='Exportar excel'><img src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAALbSURBVEhL1VZLaBRBEB1FUEHUgwpCNLiZn6viUQ+iHsSLJyEeNOt0T5SoAcGbB8EFvxdBBQ+KARFEkt3t2URCPC74ARX1oIecFAQ/Nz+gxB/GVz09s7uzEza7afwUPGaquqped1Vt7xitij2SW2UJb6ct2Ekn4KPA60yhb5FanrlsqeTnuKJ3rR34OTvg52zBK47gH0A0mUTbxB1D3fOtYX8DEh+wA3bZEewBEk4kCaZCW8Qgeo6y/UhLOF0QMfIcR1WuNAP8L1G7jGSSdiCJBXuWtpYGbODUXyFGS89qI3YCNoiTPCYg8UvoHyM9tsMmY3QSq5GR4pT4HthHlRoL2WTMv0Ms+ENj0phFTtmRfWbdtAs+IKMh9LuujQtLze+hnO8VPmPKv9foIWBTuRpP7AacqfwGiG+GjuxrtrB3JdlWF701cQIFLcOFBG+yhf4FROKU+To4/YLtAulUDey8kowhYjfwtuN9Vwh2FZt7UtVDKFs6MQFEZyQRBM7FjMgto3fVuwb/ZI9xzR6Cva3hmpC3C8S+1beEnuZYz0L09m2Kr74Th2CDRBgJgk6n+2nqcQT0sl9xSrFK3mbqd5ovEeNZM9XsCzba2lQTEHjfyOdnE6Eb+LslMwRr15O+BC09Rh+/mcN+lhy7ynwF7d4S/nrSzSF/Ke08GaNruE4oPwMOA8oWJ1FJ62LCUlfvamz+Fd3Lsa5ANhmTQjxujh2eSwR0aug/ozUQbpLMaAESPIrshBkPF5pfxM6OEnBb3a1dA55GazjRjdo1NVy91Vhehj4e+0d22GTMVMPVKnT1uGUQsSvYRqvkbyOgIhfpuy3SI6hvOb3E2i6QVvD/EAfsIG4mzqCcR/3vYCefGp2ag4hNsb8Dfcw0Q/S/Xi/4vzUDr8sRfjeVA0lvY1DeJYmSIGKVQa+4ome5JdgOlOgY/dbxfPFHiNOks8wWO2W2Fb090nmNzVPmaYph/AbQ+I/d0UElTgAAAABJRU5ErkJggg=='></a></h3>";
+      echo "<h3><a href='../PDF/pdfSupervisor.php?fecha=".$_POST['fecha']."&turno=".$_POST['turno']."' title='Visualizar personal'><img src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAASzSURBVGhD7VlbixxFFB4RjYhGErwHgghCkBgiC2Z3qmYnxFXXqZ7EBJaARhQfFC8vPqiBQPISCMEfIMlDYi4++CTeEFRIQkyIribkIjEXlSw70725aaIkMbfNd3pOT1fN1Gx6prtnRtgPPna7zulzzleX7qqeTDMoOfl7y45c6Sr5k+uIs64jx1umkv+VldztFcUzHL49KBfksrIj/rYWFZNlJTYeHRycwqnSA3r/bVsByVLsGHm2dzqnTB5uQc5Dj12tTYy2P/D351aIKXUef414RMTcXx6U93HqZIE1sc1IqORvmNe9bG4Jo4XsXMS9bsStxhe/esV5D7BrMhhRvTP0hPj/XMkRM9kcC9T7hgCNWIsHTg8+NZVd46NcEEtqEqxlU2wg3td67Fpi+n2R2AMAhb9hJCjmXmVTbCD2V0ZsC+Gzy13cdz/f0jrQK2/qgT1HvMim2IgixCfWTOwHQFcIAeF7IJaYbhFChP+ektNzJ9/eHLpJCBFPzc/Hh4Zu5RDR0W1CiBDzLoeIjlSFKLFBjx2VqOl80+slTSElp28WYu6zbX9uRtrAcphoSFNIFIwN5e/CVMpjQ3lEr8MtiA/YJRo6LSQA6nhdrwPClrMpGrpFCOXV65gUErDrhdDGDEX3WLhGD4CFt8LiE4unFmYf5jIaIpIQakSB9kNOu6jkh1yOFZGEoFeqx05fEO02HfEdEW3DuP4rDFD1Oxj4MPeg/Uytn08lT9T4+kTc7YEPariGkbmbS6pDxBHRHeQwN1cxnsncUnLkC0h+NPArqWyOzQY8J9uHJDu0eGDjhYmY1a8yE508mxei5E5uroO7KP8IAlwkPySV3FyHQ0OP326K6bAQDP07uOEbT8lHuYkS03SrCqm8ecWPmBqf0AcF3wnwnu9/IowbJuWY63wqsVlfm6kJQXH+E8sr5hZxExXyGbUFQs4ODNwT3itO0Wj4jgBiHa7YwqQQ3XDHm/aIbPkzn7+Dm6gQl/ysQsCTqv8x3xEIROtJadQwwgNEdJSx7UhNSC3KKlsI/BoKeS73kO8MoNBPK+2WpAAVrt+buhB6atH0gu104GcTgtG6op/ekIwXfJiU1tQJJacRK084zgumJoSKpcWNni0ZPqBViBJf+jcCdLbGvf9WbGHSjqyR+ptDBkLoJYbrfeAm/dSGp9Fbof//QIgNXlHOQcHazw8dESJ+4OYM3t4vGTadxdwCdquCNp7oiPcxxf4x/cOkuG74mTS2EKwBT3O4hF4L9kO/mzfrFCchejv5kXjEOGb3A5UY8eMp8T2EXrD6YMcw0XfeSEJKSiyGcdR0bCf9TnmNy7EikpCJgJ6ePCEmiUkhASaFJIzEheAR+gqb2or6d1ruPTZFg+tklxoBlFjNprYCW55Veh24fplN0WCe9HyeGSvkH2RzW0B7OMyMMb2O0YX9T7I5OvA25pMeU4m9ruqbzeZUwV/sh/X8GI3jbG4OddOLgil5jQRp25nEifi/2H5yoPXCpTUPBPi4NmCHuJVLag3jPT23YYp9ZAncRor1+seNWMBwz8e0+hbz9LI9WbLEFLtC08xz5NNcQrKgszcteEoQfBVJlIhL8Sf6jGoik7kBPxfOVGbDVUsAAAAASUVORK5CYII='></a></h3>";
      ?>
     <form method="post" id="formulario" action="guardarSupervisores.php" method="post">
       <?php
@@ -190,6 +190,483 @@ if (isset($_SESSION['usuario'])==false) {
         echo "</div>";
         }
       ?>
+      <br><br>
+      <hr style="width:100%;">
+      <br>
+      <?php
+        //TURNO CENTRAL
+        $personalHoy = $personal -> personalHoy($_POST['fecha'], 'tc');
+
+        //recorremos cada una de las actividades.
+        foreach ($actividadesHoy as $act) {
+          //sacamos el nombre de la actividad
+          echo "<div class='formthird'>";
+          //sacar los nombres asignados a esa actividad para ese dia.
+          $asignados = $personal -> empleadosServicio($act['id'], $_POST['fecha'], 'tc');
+          if ($asignados != null && $asignados != false) {
+            echo "<p><label><i class='fa fa-question-circle'></i>".$act['descripcion']."</label></p>";
+            echo "<p><label><i class='fa fa-question-circle'></i>TURNO CENTRAL</label></p>";
+            echo "<input type='hidden' name='act".$i."[]' value='".$act['id']."'>";
+            //sacamos tantos selects como personas asignadas habia para ese dia.
+            foreach ($asignados as $persona) {
+              echo "<p><select name='select".$i."[]' class='test' id='multiple'>";
+              echo "<option value='NO DISPONIBLE'>NO DISPONIBLE</option>";
+              if ($persona['empleado'] == '') {
+                echo "<option value='' selected>Sin asignar</option>";
+              }
+              //sacamos la lista de personal
+              foreach ($personalHoy as $disponibles) {
+                //comparamos para sacar como seleccionado el que ja estaba
+                if ($disponibles['empleado'] == $persona['empleado']) {
+                  echo "<option value='".$disponibles['empleado']."' selected>".$disponibles['empleado']."</option>";
+                }else {
+                  echo "<option value='".$disponibles['empleado']."'>".$disponibles['empleado']."</option>";
+                }
+              }
+              echo "</select></p>";
+            }
+            $i++;
+
+          }else {
+            //si la actividad esta para hoy, pero no hay nadie asignado, comprobamos cuantos recursos deberia de tener.
+            //sacamos el numero de recursos que deberia de tener la actividad.
+            $recurso = $recursos -> ModificacionId($act['id'], $_POST['fecha']);
+            if ($recurso == null || $recurso == false) {
+              $recurso = $recursos -> RecursosId($act['id']);
+            }
+            if ($recurso['tc']>0) {
+              echo "<p><label><i class='fa fa-question-circle'></i>".$act['descripcion']."</label></p>";
+              echo "<p><label><i class='fa fa-question-circle'></i>TURNO CENTRAL</label></p>";
+              echo "<input type='hidden' name='act".$i."[]' value='".$act['id']."'>";
+
+              //si tenia recursos asignados, sacamos el select con la opcion sin asignar seleccionada
+              for ($r=0; $r < $recurso['tc'] ; $r++) {
+                echo "<p><select name='select".$i."[]' class='test' id='multiple'>";
+                echo "<option value='NO DISPONIBLE'>NO DISPONIBLE</option>";
+                echo "<option value='' selected>SIN ASIGNAR</option>";
+                //sacamos la lista de personal
+                foreach ($personalHoy as $disponibles) {
+                  //comparamos para sacar como seleccionado el que ja estaba
+                  echo "<option value='".$disponibles['empleado']."'>".$disponibles['empleado']."</option>";
+                }
+                echo "</select></p>";
+              }
+              $i++;
+            }
+          }
+
+
+        echo "</div>";
+        }
+       ?>
+
+       <?php
+         //TURNO ESPECIAL 1
+         $personalHoy = $personal -> personalHoy($_POST['fecha'], '%');
+
+         //recorremos cada una de las actividades.
+         foreach ($actividadesHoy as $act) {
+           //sacamos el numero de recursos que deberia de tener la actividad.
+           $recurso = $recursos -> ModificacionId($act['id'], $_POST['fecha']);
+           if ($recurso == null || $recurso == false) {
+             $recurso = $recursos -> RecursosId($act['id']);
+           }
+           //sacamos el nombre de la actividad
+           echo "<div class='formthird'>";
+           //sacar los nombres asignados a esa actividad para ese dia.
+           $asignados = $personal -> empleadosServicio($act['id'], $_POST['fecha'], 'otro1');
+           if ($asignados != null && $asignados != false) {
+             echo "<p><label><i class='fa fa-question-circle'></i>".$act['descripcion']."</label></p>";
+             echo "<p><label><i class='fa fa-question-circle'></i>DE ".$recurso['inicio1']." HASTA ".$recurso['fin1']."</label></p>";
+             echo "<input type='hidden' name='act".$i."[]' value='".$act['id']."'>";
+             //sacamos tantos selects como personas asignadas habia para ese dia.
+             foreach ($asignados as $persona) {
+               echo "<p><select name='select".$i."[]' class='test' id='multiple'>";
+               echo "<option value='NO DISPONIBLE'>NO DISPONIBLE</option>";
+               if ($persona['empleado'] == '') {
+                 echo "<option value='' selected>Sin asignar</option>";
+               }
+               //sacamos la lista de personal
+               foreach ($personalHoy as $disponibles) {
+                 //comparamos para sacar como seleccionado el que ja estaba
+                 if ($disponibles['empleado'] == $persona['empleado']) {
+                   echo "<option value='".$disponibles['empleado']."' selected>".$disponibles['empleado']."</option>";
+                 }else {
+                   echo "<option value='".$disponibles['empleado']."'>".$disponibles['empleado']."</option>";
+                 }
+               }
+               echo "</select></p>";
+             }
+             $i++;
+
+           }else {
+             //si la actividad esta para hoy, pero no hay nadie asignado, comprobamos cuantos recursos deberia de tener.
+
+             if ($recurso['otro1']>0) {
+               echo "<p><label><i class='fa fa-question-circle'></i>".$act['descripcion']."</label></p>";
+               echo "<p><label><i class='fa fa-question-circle'></i>DE ".$recurso['inicio1']." HASTA ".$recurso['fin1']."</label></p>";
+               echo "<input type='hidden' name='act".$i."[]' value='".$act['id']."'>";
+
+               //si tenia recursos asignados, sacamos el select con la opcion sin asignar seleccionada
+               for ($r=0; $r < $recurso['otro1'] ; $r++) {
+                 echo "<p><select name='select".$i."[]' class='test' id='multiple'>";
+                 echo "<option value='NO DISPONIBLE'>NO DISPONIBLE</option>";
+                 echo "<option value='' selected>SIN ASIGNAR</option>";
+                 //sacamos la lista de personal
+                 foreach ($personalHoy as $disponibles) {
+                   //comparamos para sacar como seleccionado el que ja estaba
+                   echo "<option value='".$disponibles['empleado']."'>".$disponibles['empleado']."</option>";
+                 }
+                 echo "</select></p>";
+               }
+               $i++;
+             }
+           }
+
+
+         echo "</div>";
+         }
+        ?>
+
+        <?php
+          //TURNO ESPECIAL 2
+          $personalHoy = $personal -> personalHoy($_POST['fecha'], '%');
+
+          //recorremos cada una de las actividades.
+          foreach ($actividadesHoy as $act) {
+            //sacamos el numero de recursos que deberia de tener la actividad.
+            $recurso = $recursos -> ModificacionId($act['id'], $_POST['fecha']);
+            if ($recurso == null || $recurso == false) {
+              $recurso = $recursos -> RecursosId($act['id']);
+            }
+            //sacamos el nombre de la actividad
+            echo "<div class='formthird'>";
+            //sacar los nombres asignados a esa actividad para ese dia.
+            $asignados = $personal -> empleadosServicio($act['id'], $_POST['fecha'], 'otro2');
+            if ($asignados != null && $asignados != false) {
+              echo "<p><label><i class='fa fa-question-circle'></i>".$act['descripcion']."</label></p>";
+              echo "<p><label><i class='fa fa-question-circle'></i>DE ".$recurso['inicio2']." HASTA ".$recurso['fin2']."</label></p>";
+              echo "<input type='hidden' name='act".$i."[]' value='".$act['id']."'>";
+              //sacamos tantos selects como personas asignadas habia para ese dia.
+              foreach ($asignados as $persona) {
+                echo "<p><select name='select".$i."[]' class='test' id='multiple'>";
+                echo "<option value='NO DISPONIBLE'>NO DISPONIBLE</option>";
+                if ($persona['empleado'] == '') {
+                  echo "<option value='' selected>Sin asignar</option>";
+                }
+                //sacamos la lista de personal
+                foreach ($personalHoy as $disponibles) {
+                  //comparamos para sacar como seleccionado el que ja estaba
+                  if ($disponibles['empleado'] == $persona['empleado']) {
+                    echo "<option value='".$disponibles['empleado']."' selected>".$disponibles['empleado']."</option>";
+                  }else {
+                    echo "<option value='".$disponibles['empleado']."'>".$disponibles['empleado']."</option>";
+                  }
+                }
+                echo "</select></p>";
+              }
+              $i++;
+
+            }else {
+              //si la actividad esta para hoy, pero no hay nadie asignado, comprobamos cuantos recursos deberia de tener.
+
+              if ($recurso['otro1']>0) {
+                echo "<p><label><i class='fa fa-question-circle'></i>".$act['descripcion']."</label></p>";
+                echo "<p><label><i class='fa fa-question-circle'></i>DE ".$recurso['inicio2']." HASTA ".$recurso['fin2']."</label></p>";
+                echo "<input type='hidden' name='act".$i."[]' value='".$act['id']."'>";
+
+                //si tenia recursos asignados, sacamos el select con la opcion sin asignar seleccionada
+                for ($r=0; $r < $recurso['otro2'] ; $r++) {
+                  echo "<p><select name='select".$i."[]' class='test' id='multiple'>";
+                  echo "<option value='NO DISPONIBLE'>NO DISPONIBLE</option>";
+                  echo "<option value='' selected>SIN ASIGNAR</option>";
+                  //sacamos la lista de personal
+                  foreach ($personalHoy as $disponibles) {
+                    //comparamos para sacar como seleccionado el que ja estaba
+                    echo "<option value='".$disponibles['empleado']."'>".$disponibles['empleado']."</option>";
+                  }
+                  echo "</select></p>";
+                }
+                $i++;
+              }
+            }
+
+
+          echo "</div>";
+          }
+         ?>
+
+         <?php
+           //TURNO ESPECIAL 3
+           $personalHoy = $personal -> personalHoy($_POST['fecha'], '%');
+
+           //recorremos cada una de las actividades.
+           foreach ($actividadesHoy as $act) {
+             //sacamos el numero de recursos que deberia de tener la actividad.
+             $recurso = $recursos -> ModificacionId($act['id'], $_POST['fecha']);
+             if ($recurso == null || $recurso == false) {
+               $recurso = $recursos -> RecursosId($act['id']);
+             }
+             //sacamos el nombre de la actividad
+             echo "<div class='formthird'>";
+             //sacar los nombres asignados a esa actividad para ese dia.
+             $asignados = $personal -> empleadosServicio($act['id'], $_POST['fecha'], 'otro3');
+             if ($asignados != null && $asignados != false) {
+               echo "<p><label><i class='fa fa-question-circle'></i>".$act['descripcion']."</label></p>";
+               echo "<p><label><i class='fa fa-question-circle'></i>DE ".$recurso['inicio3']." HASTA ".$recurso['fin3']."</label></p>";
+               echo "<input type='hidden' name='act".$i."[]' value='".$act['id']."'>";
+               //sacamos tantos selects como personas asignadas habia para ese dia.
+               foreach ($asignados as $persona) {
+                 echo "<p><select name='select".$i."[]' class='test' id='multiple'>";
+                 echo "<option value='NO DISPONIBLE'>NO DISPONIBLE</option>";
+                 if ($persona['empleado'] == '') {
+                   echo "<option value='' selected>Sin asignar</option>";
+                 }
+                 //sacamos la lista de personal
+                 foreach ($personalHoy as $disponibles) {
+                   //comparamos para sacar como seleccionado el que ja estaba
+                   if ($disponibles['empleado'] == $persona['empleado']) {
+                     echo "<option value='".$disponibles['empleado']."' selected>".$disponibles['empleado']."</option>";
+                   }else {
+                     echo "<option value='".$disponibles['empleado']."'>".$disponibles['empleado']."</option>";
+                   }
+                 }
+                 echo "</select></p>";
+               }
+               $i++;
+
+             }else {
+               //si la actividad esta para hoy, pero no hay nadie asignado, comprobamos cuantos recursos deberia de tener.
+
+               if ($recurso['otro3']>0) {
+                 echo "<p><label><i class='fa fa-question-circle'></i>".$act['descripcion']."</label></p>";
+                 echo "<p><label><i class='fa fa-question-circle'></i>DE ".$recurso['inicio3']." HASTA ".$recurso['fin3']."</label></p>";
+                 echo "<input type='hidden' name='act".$i."[]' value='".$act['id']."'>";
+
+                 //si tenia recursos asignados, sacamos el select con la opcion sin asignar seleccionada
+                 for ($r=0; $r < $recurso['otro3'] ; $r++) {
+                   echo "<p><select name='select".$i."[]' class='test' id='multiple'>";
+                   echo "<option value='NO DISPONIBLE'>NO DISPONIBLE</option>";
+                   echo "<option value='' selected>SIN ASIGNAR</option>";
+                   //sacamos la lista de personal
+                   foreach ($personalHoy as $disponibles) {
+                     //comparamos para sacar como seleccionado el que ja estaba
+                     echo "<option value='".$disponibles['empleado']."'>".$disponibles['empleado']."</option>";
+                   }
+                   echo "</select></p>";
+                 }
+                 $i++;
+               }
+             }
+
+
+           echo "</div>";
+           }
+          ?>
+
+          <?php
+            //TURNO ESPECIAL 4
+            $personalHoy = $personal -> personalHoy($_POST['fecha'], '%');
+
+            //recorremos cada una de las actividades.
+            foreach ($actividadesHoy as $act) {
+              //sacamos el numero de recursos que deberia de tener la actividad.
+              $recurso = $recursos -> ModificacionId($act['id'], $_POST['fecha']);
+              if ($recurso == null || $recurso == false) {
+                $recurso = $recursos -> RecursosId($act['id']);
+              }
+              //sacamos el nombre de la actividad
+              echo "<div class='formthird'>";
+              //sacar los nombres asignados a esa actividad para ese dia.
+              $asignados = $personal -> empleadosServicio($act['id'], $_POST['fecha'], 'otro4');
+              if ($asignados != null && $asignados != false) {
+                echo "<p><label><i class='fa fa-question-circle'></i>".$act['descripcion']."</label></p>";
+                echo "<p><label><i class='fa fa-question-circle'></i>DE ".$recurso['inicio4']." HASTA ".$recurso['fin4']."</label></p>";
+                echo "<input type='hidden' name='act".$i."[]' value='".$act['id']."'>";
+                //sacamos tantos selects como personas asignadas habia para ese dia.
+                foreach ($asignados as $persona) {
+                  echo "<p><select name='select".$i."[]' class='test' id='multiple'>";
+                  echo "<option value='NO DISPONIBLE'>NO DISPONIBLE</option>";
+                  if ($persona['empleado'] == '') {
+                    echo "<option value='' selected>Sin asignar</option>";
+                  }
+                  //sacamos la lista de personal
+                  foreach ($personalHoy as $disponibles) {
+                    //comparamos para sacar como seleccionado el que ja estaba
+                    if ($disponibles['empleado'] == $persona['empleado']) {
+                      echo "<option value='".$disponibles['empleado']."' selected>".$disponibles['empleado']."</option>";
+                    }else {
+                      echo "<option value='".$disponibles['empleado']."'>".$disponibles['empleado']."</option>";
+                    }
+                  }
+                  echo "</select></p>";
+                }
+                $i++;
+
+              }else {
+                //si la actividad esta para hoy, pero no hay nadie asignado, comprobamos cuantos recursos deberia de tener.
+
+                if ($recurso['otro4']>0) {
+                  echo "<p><label><i class='fa fa-question-circle'></i>".$act['descripcion']."</label></p>";
+                  echo "<p><label><i class='fa fa-question-circle'></i>DE ".$recurso['inicio4']." HASTA ".$recurso['fin4']."</label></p>";
+                  echo "<input type='hidden' name='act".$i."[]' value='".$act['id']."'>";
+
+                  //si tenia recursos asignados, sacamos el select con la opcion sin asignar seleccionada
+                  for ($r=0; $r < $recurso['otro4'] ; $r++) {
+                    echo "<p><select name='select".$i."[]' class='test' id='multiple'>";
+                    echo "<option value='NO DISPONIBLE'>NO DISPONIBLE</option>";
+                    echo "<option value='' selected>SIN ASIGNAR</option>";
+                    //sacamos la lista de personal
+                    foreach ($personalHoy as $disponibles) {
+                      //comparamos para sacar como seleccionado el que ja estaba
+                      echo "<option value='".$disponibles['empleado']."'>".$disponibles['empleado']."</option>";
+                    }
+                    echo "</select></p>";
+                  }
+                  $i++;
+                }
+              }
+
+
+            echo "</div>";
+            }
+           ?>
+
+           <?php
+             //TURNO ESPECIAL 5
+             $personalHoy = $personal -> personalHoy($_POST['fecha'], '%');
+
+             //recorremos cada una de las actividades.
+             foreach ($actividadesHoy as $act) {
+               //sacamos el numero de recursos que deberia de tener la actividad.
+               $recurso = $recursos -> ModificacionId($act['id'], $_POST['fecha']);
+               if ($recurso == null || $recurso == false) {
+                 $recurso = $recursos -> RecursosId($act['id']);
+               }
+               //sacamos el nombre de la actividad
+               echo "<div class='formthird'>";
+               //sacar los nombres asignados a esa actividad para ese dia.
+               $asignados = $personal -> empleadosServicio($act['id'], $_POST['fecha'], 'otro5');
+               if ($asignados != null && $asignados != false) {
+                 echo "<p><label><i class='fa fa-question-circle'></i>".$act['descripcion']."</label></p>";
+                 echo "<p><label><i class='fa fa-question-circle'></i>DE ".$recurso['inicio5']." HASTA ".$recurso['fin5']."</label></p>";
+                 echo "<input type='hidden' name='act".$i."[]' value='".$act['id']."'>";
+                 //sacamos tantos selects como personas asignadas habia para ese dia.
+                 foreach ($asignados as $persona) {
+                   echo "<p><select name='select".$i."[]' class='test' id='multiple'>";
+                   echo "<option value='NO DISPONIBLE'>NO DISPONIBLE</option>";
+                   if ($persona['empleado'] == '') {
+                     echo "<option value='' selected>Sin asignar</option>";
+                   }
+                   //sacamos la lista de personal
+                   foreach ($personalHoy as $disponibles) {
+                     //comparamos para sacar como seleccionado el que ja estaba
+                     if ($disponibles['empleado'] == $persona['empleado']) {
+                       echo "<option value='".$disponibles['empleado']."' selected>".$disponibles['empleado']."</option>";
+                     }else {
+                       echo "<option value='".$disponibles['empleado']."'>".$disponibles['empleado']."</option>";
+                     }
+                   }
+                   echo "</select></p>";
+                 }
+                 $i++;
+
+               }else {
+                 //si la actividad esta para hoy, pero no hay nadie asignado, comprobamos cuantos recursos deberia de tener.
+
+                 if ($recurso['otro5']>0) {
+                   echo "<p><label><i class='fa fa-question-circle'></i>".$act['descripcion']."</label></p>";
+                   echo "<p><label><i class='fa fa-question-circle'></i>DE ".$recurso['inicio5']." HASTA ".$recurso['fin5']."</label></p>";
+                   echo "<input type='hidden' name='act".$i."[]' value='".$act['id']."'>";
+
+                   //si tenia recursos asignados, sacamos el select con la opcion sin asignar seleccionada
+                   for ($r=0; $r < $recurso['otro5'] ; $r++) {
+                     echo "<p><select name='select".$i."[]' class='test' id='multiple'>";
+                     echo "<option value='NO DISPONIBLE'>NO DISPONIBLE</option>";
+                     echo "<option value='' selected>SIN ASIGNAR</option>";
+                     //sacamos la lista de personal
+                     foreach ($personalHoy as $disponibles) {
+                       //comparamos para sacar como seleccionado el que ja estaba
+                       echo "<option value='".$disponibles['empleado']."'>".$disponibles['empleado']."</option>";
+                     }
+                     echo "</select></p>";
+                   }
+                   $i++;
+                 }
+               }
+
+
+             echo "</div>";
+             }
+            ?>
+
+            <?php
+              //TURNO ESPECIAL 6
+              $personalHoy = $personal -> personalHoy($_POST['fecha'], '%');
+
+              //recorremos cada una de las actividades.
+              foreach ($actividadesHoy as $act) {
+                //sacamos el numero de recursos que deberia de tener la actividad.
+                $recurso = $recursos -> ModificacionId($act['id'], $_POST['fecha']);
+                if ($recurso == null || $recurso == false) {
+                  $recurso = $recursos -> RecursosId($act['id']);
+                }
+                //sacamos el nombre de la actividad
+                echo "<div class='formthird'>";
+                //sacar los nombres asignados a esa actividad para ese dia.
+                $asignados = $personal -> empleadosServicio($act['id'], $_POST['fecha'], 'otro6');
+                if ($asignados != null && $asignados != false) {
+                  echo "<p><label><i class='fa fa-question-circle'></i>".$act['descripcion']."</label></p>";
+                  echo "<p><label><i class='fa fa-question-circle'></i>DE ".$recurso['inicio6']." HASTA ".$recurso['fin6']."</label></p>";
+                  echo "<input type='hidden' name='act".$i."[]' value='".$act['id']."'>";
+                  //sacamos tantos selects como personas asignadas habia para ese dia.
+                  foreach ($asignados as $persona) {
+                    echo "<p><select name='select".$i."[]' class='test' id='multiple'>";
+                    echo "<option value='NO DISPONIBLE'>NO DISPONIBLE</option>";
+                    if ($persona['empleado'] == '') {
+                      echo "<option value='' selected>Sin asignar</option>";
+                    }
+                    //sacamos la lista de personal
+                    foreach ($personalHoy as $disponibles) {
+                      //comparamos para sacar como seleccionado el que ja estaba
+                      if ($disponibles['empleado'] == $persona['empleado']) {
+                        echo "<option value='".$disponibles['empleado']."' selected>".$disponibles['empleado']."</option>";
+                      }else {
+                        echo "<option value='".$disponibles['empleado']."'>".$disponibles['empleado']."</option>";
+                      }
+                    }
+                    echo "</select></p>";
+                  }
+                  $i++;
+
+                }else {
+                  //si la actividad esta para hoy, pero no hay nadie asignado, comprobamos cuantos recursos deberia de tener.
+
+                  if ($recurso['otro6']>0) {
+                    echo "<p><label><i class='fa fa-question-circle'></i>".$act['descripcion']."</label></p>";
+                    echo "<p><label><i class='fa fa-question-circle'></i>DE ".$recurso['inicio6']." HASTA ".$recurso['fin6']."</label></p>";
+                    echo "<input type='hidden' name='act".$i."[]' value='".$act['id']."'>";
+
+                    //si tenia recursos asignados, sacamos el select con la opcion sin asignar seleccionada
+                    for ($r=0; $r < $recurso['otro6'] ; $r++) {
+                      echo "<p><select name='select".$i."[]' class='test' id='multiple'>";
+                      echo "<option value='NO DISPONIBLE'>NO DISPONIBLE</option>";
+                      echo "<option value='' selected>SIN ASIGNAR</option>";
+                      //sacamos la lista de personal
+                      foreach ($personalHoy as $disponibles) {
+                        //comparamos para sacar como seleccionado el que ja estaba
+                        echo "<option value='".$disponibles['empleado']."'>".$disponibles['empleado']."</option>";
+                      }
+                      echo "</select></p>";
+                    }
+                    $i++;
+                  }
+                }
+
+
+              echo "</div>";
+              }
+             ?>
       <div class="submitbuttons">
           <input class="submitone" type="submit" value='CONFIRMAR'/>
       </div>
