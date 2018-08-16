@@ -121,8 +121,7 @@ if (isset($_SESSION['usuario'])==false) {
          ?>
         <!-- Contenido de la pagina. -->
         <h2>Actividades para el <?php echo $fechaMostrar; ?></h2>
-
-        <br>
+        <h6 style="color:red;">*Cambios puntuales de recursos</h6>
         <table id="tablamod" class="tablesorter">
         <thead id="theadmod">
           <tr id="trmod">
