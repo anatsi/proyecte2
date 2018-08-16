@@ -9,7 +9,18 @@ $sesion=new Sesiones();
 //sacar el nombre del usuario.
 $nombreUsuario = $usuario->nombreUsuario($_SESSION['usuario']);
 
-$recuento = (count($_POST)-1)/2;
+$error=0;
+
+if ($_POST['turno'] == 'tm') {
+  $turno = 'Mañana';
+}elseif ($_POST['turno'] == 'tt') {
+  $turno = 'Tarde';
+}elseif ( $_POST['turno'] == 'tn') {
+  $turno = 'Noche';
+}
+
+//guardar turnos normales
+$recuento = ($_POST['normal']);
 for ($i=0; $i < $recuento ; $i++) {
   $act = $_POST['act'.$i];
   $id = $act[0];
@@ -20,30 +31,169 @@ for ($i=0; $i < $recuento ; $i++) {
       foreach ($nombres as $nombre) {
         $nuevaEntrada = $personal -> nuevoPersonal($id, $nombre, $_POST['turno'], $_POST['fecha'], $nombreUsuario['name']);
         if ($nuevaEntrada == false || $nuevaEntrada == null) {
-          ?>
-            <script type="text/javascript">
-              alert('Algo salio mal.');
-              window.location = 'filtroSupervisores.php';
-            </script>
-          <?php
-        }else {
-          ?>
-            <script type="text/javascript">
-              alert('Personal confirmado');
-              window.location = '../PDF/pdfSupervisor.php?fecha="'.$_POST['fecha'].'"&turno="'.$_POST['turno'].'"';
-            </script>
-          <?php
+          $error = 1;
         }
       }
     }else {
-      ?>
-        <script type="text/javascript">
-          alert('Algo salio mal al borrar.');
-          window.location = 'filtroSupervisores.php';
-        </script>
-      <?php
+      $error = 1;
     }
 
 }
 
+//guardar turno central
+$recuento = ($_POST['tc']);
+for ($i=0; $i < $recuento ; $i++) {
+  $act = $_POST['tc'.$i];
+  $id = $act[0];
+    //borramos las entradas de esa actividad para ese dia y ese turno.
+    $borrar = $personal -> eliminarPersonalTurno($id, $_POST['fecha'], 'tc');
+    if ($borrar != null || $borrar != false) {
+      $nombres = ($_POST['selectTC'.$i]);
+      foreach ($nombres as $nombre) {
+        $nuevaEntrada = $personal -> nuevoPersonal($id, $nombre, 'tc', $_POST['fecha'], $nombreUsuario['name']);
+        if ($nuevaEntrada == false || $nuevaEntrada == null) {
+          $error = 1;
+        }
+      }
+    }else {
+      $error = 1;
+    }
+}
+
+//guardar turno especial 1
+$recuento = ($_POST['otro1']);
+for ($i=0; $i < $recuento ; $i++) {
+  $act = $_POST['otro1'.$i];
+  $id = $act[0];
+    //borramos las entradas de esa actividad para ese dia y ese turno.
+    $borrar = $personal -> eliminarPersonalTurno($id, $_POST['fecha'], 'otro1');
+    if ($borrar != null || $borrar != false) {
+      $nombres = ($_POST['selectO1'.$i]);
+      foreach ($nombres as $nombre) {
+        $nuevaEntrada = $personal -> nuevoPersonal($id, $nombre, 'otro1', $_POST['fecha'], $nombreUsuario['name']);
+        if ($nuevaEntrada == false || $nuevaEntrada == null) {
+          $error = 1;
+        }
+      }
+    }else {
+      $error = 1;
+    }
+}
+
+//guardar turno especial2
+$recuento = ($_POST['otro2']);
+for ($i=0; $i < $recuento ; $i++) {
+  $act = $_POST['otro2'.$i];
+  $id = $act[0];
+    //borramos las entradas de esa actividad para ese dia y ese turno.
+    $borrar = $personal -> eliminarPersonalTurno($id, $_POST['fecha'], 'otro2');
+    if ($borrar != null || $borrar != false) {
+      $nombres = ($_POST['selectO2'.$i]);
+      foreach ($nombres as $nombre) {
+        $nuevaEntrada = $personal -> nuevoPersonal($id, $nombre, 'otro2', $_POST['fecha'], $nombreUsuario['name']);
+        if ($nuevaEntrada == false || $nuevaEntrada == null) {
+          $error = 1;
+        }
+      }
+    }else {
+      $error = 1;
+    }
+}
+
+//guardar turno especial 3
+$recuento = ($_POST['otro3']);
+for ($i=0; $i < $recuento ; $i++) {
+  $act = $_POST['otro3'.$i];
+  $id = $act[0];
+    //borramos las entradas de esa actividad para ese dia y ese turno.
+    $borrar = $personal -> eliminarPersonalTurno($id, $_POST['fecha'], 'otro3');
+    if ($borrar != null || $borrar != false) {
+      $nombres = ($_POST['selectO3'.$i]);
+      foreach ($nombres as $nombre) {
+        $nuevaEntrada = $personal -> nuevoPersonal($id, $nombre, 'otro3', $_POST['fecha'], $nombreUsuario['name']);
+        if ($nuevaEntrada == false || $nuevaEntrada == null) {
+          $error = 1;
+        }
+      }
+    }else {
+      $error = 1;
+    }
+}
+
+//guardar turno especial 4
+$recuento = ($_POST['otro4']);
+for ($i=0; $i < $recuento ; $i++) {
+  $act = $_POST['otro4'.$i];
+  $id = $act[0];
+    //borramos las entradas de esa actividad para ese dia y ese turno.
+    $borrar = $personal -> eliminarPersonalTurno($id, $_POST['fecha'], 'otro4');
+    if ($borrar != null || $borrar != false) {
+      $nombres = ($_POST['selectO4'.$i]);
+      foreach ($nombres as $nombre) {
+        $nuevaEntrada = $personal -> nuevoPersonal($id, $nombre, 'otro4', $_POST['fecha'], $nombreUsuario['name']);
+        if ($nuevaEntrada == false || $nuevaEntrada == null) {
+          $error = 1;
+        }
+      }
+    }else {
+      $error = 1;
+    }
+}
+
+//guardar turno especial 5
+$recuento = ($_POST['otro5']);
+for ($i=0; $i < $recuento ; $i++) {
+  $act = $_POST['otro5'.$i];
+  $id = $act[0];
+    //borramos las entradas de esa actividad para ese dia y ese turno.
+    $borrar = $personal -> eliminarPersonalTurno($id, $_POST['fecha'], 'otro5');
+    if ($borrar != null || $borrar != false) {
+      $nombres = ($_POST['selectO5'.$i]);
+      foreach ($nombres as $nombre) {
+        $nuevaEntrada = $personal -> nuevoPersonal($id, $nombre, 'otro5', $_POST['fecha'], $nombreUsuario['name']);
+        if ($nuevaEntrada == false || $nuevaEntrada == null) {
+          $error = 1;
+        }
+      }
+    }else {
+      $error = 1;
+    }
+}
+
+//guardar turno especial 6
+$recuento = ($_POST['otro6']);
+for ($i=0; $i < $recuento ; $i++) {
+  $act = $_POST['otro6'.$i];
+  $id = $act[0];
+    //borramos las entradas de esa actividad para ese dia y ese turno.
+    $borrar = $personal -> eliminarPersonalTurno($id, $_POST['fecha'], 'otro6');
+    if ($borrar != null || $borrar != false) {
+      $nombres = ($_POST['selectO6'.$i]);
+      foreach ($nombres as $nombre) {
+        $nuevaEntrada = $personal -> nuevoPersonal($id, $nombre, 'otro6', $_POST['fecha'], $nombreUsuario['name']);
+        if ($nuevaEntrada == false || $nuevaEntrada == null) {
+          $error = 1;
+        }
+      }
+    }else {
+      $error = 1;
+    }
+}
+
+
+if ($error==0) {
+  ?>
+    <script type="text/javascript">
+      alert('Personal confirmado');
+      window.location = '../PDF/pdfSupervisor.php?fecha=<?php echo $_POST['fecha']; ?>&turno=<?php echo $turno; ?>';
+    </script>
+  <?php
+}else {
+  ?>
+    <script type="text/javascript">
+      alert('Algo salio mal');
+      window.location = 'filtroSupervisores.php';
+    </script>
+  <?php
+}
  ?>

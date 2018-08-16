@@ -135,6 +135,9 @@ if (isset($_SESSION['usuario'])==false) {
 
     <div class="site-content">
       <div class="container">
+        <div class="breadcrumb" style="margin-left: 2%;">
+          <a href="../../dashboard.php">INICIO</a> >> <a href="index.php">REGISTRO ACTIVIDADES</a> >> <a href="registroCampa.php">CIRCUITO</a>
+        </div>
         <!-- Contenido de la pagina. -->
         <h2>CIRCUITO</h2>
        <input type="text" id="busqueda" placeholder='FILTRAR'/><br/><br/>

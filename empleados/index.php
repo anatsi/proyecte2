@@ -105,6 +105,9 @@ if (isset($_SESSION['usuario'])==false) {
 
     <div class="site-content">
       <div class="container">
+        <div class="breadcrumb" style="margin-left: 2%;">
+          <a href="../dashboard.php">INICIO</a> >> <a href="index.php">GESTIÓN EMPLEADOS</a>
+        </div>
         <!-- Contenido de la pagina. -->
         <h2>Gestión de empleados</h2>
         <h3><a title='Añadir empleado' href="nuevoEmpleado.php"><i class="material-icons" id="nuevoEmpleado">group_add</i></a></h3>

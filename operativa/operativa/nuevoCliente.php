@@ -84,6 +84,9 @@ if (isset($_SESSION['usuario'])==false) {
 
     <div class="site-content">
       <div class="container">
+        <div class="breadcrumb" style="margin-left: 2%; color:black;">
+          <a href="../../dashboard.php">INICIO</a> >> <a href="../index.php">GESTIÓN EMPLEADOS</a> >> <a href="nuevoCliente.php">NUEVO CLIENTE</a>
+        </div>
         <!-- Contenido de la pagina. -->
         <h2>Nuevo cliente</h2>
         <form action="nuevoCliente.php" method="post" id="formulario" enctype="multipart/form-data">

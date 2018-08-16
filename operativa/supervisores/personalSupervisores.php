@@ -186,7 +186,7 @@ if (isset($_SESSION['usuario'])==false) {
             }
           }
 
-
+          echo "<input type='hidden' name='normal' value='".$i."'>";
         echo "</div>";
         }
       ?>
@@ -194,6 +194,7 @@ if (isset($_SESSION['usuario'])==false) {
       <hr style="width:100%;">
       <br>
       <?php
+      $i=0;
         //TURNO CENTRAL
         $personalHoy = $personal -> personalHoy($_POST['fecha'], 'tc');
 
@@ -206,10 +207,10 @@ if (isset($_SESSION['usuario'])==false) {
           if ($asignados != null && $asignados != false) {
             echo "<p><label><i class='fa fa-question-circle'></i>".$act['descripcion']."</label></p>";
             echo "<p><label><i class='fa fa-question-circle'></i>TURNO CENTRAL</label></p>";
-            echo "<input type='hidden' name='act".$i."[]' value='".$act['id']."'>";
+            echo "<input type='hidden' name='tc".$i."[]' value='".$act['id']."'>";
             //sacamos tantos selects como personas asignadas habia para ese dia.
             foreach ($asignados as $persona) {
-              echo "<p><select name='select".$i."[]' class='test' id='multiple'>";
+              echo "<p><select name='selectTC".$i."[]' class='test' id='multiple'>";
               echo "<option value='NO DISPONIBLE'>NO DISPONIBLE</option>";
               if ($persona['empleado'] == '') {
                 echo "<option value='' selected>Sin asignar</option>";
@@ -237,11 +238,11 @@ if (isset($_SESSION['usuario'])==false) {
             if ($recurso['tc']>0) {
               echo "<p><label><i class='fa fa-question-circle'></i>".$act['descripcion']."</label></p>";
               echo "<p><label><i class='fa fa-question-circle'></i>TURNO CENTRAL</label></p>";
-              echo "<input type='hidden' name='act".$i."[]' value='".$act['id']."'>";
+              echo "<input type='hidden' name='tc".$i."[]' value='".$act['id']."'>";
 
               //si tenia recursos asignados, sacamos el select con la opcion sin asignar seleccionada
               for ($r=0; $r < $recurso['tc'] ; $r++) {
-                echo "<p><select name='select".$i."[]' class='test' id='multiple'>";
+                echo "<p><select name='selectTC".$i."[]' class='test' id='multiple'>";
                 echo "<option value='NO DISPONIBLE'>NO DISPONIBLE</option>";
                 echo "<option value='' selected>SIN ASIGNAR</option>";
                 //sacamos la lista de personal
@@ -255,12 +256,14 @@ if (isset($_SESSION['usuario'])==false) {
             }
           }
 
+          echo "<input type='hidden' name='tc' value='".$i."'>";
 
         echo "</div>";
         }
        ?>
 
        <?php
+       $i=0;
          //TURNO ESPECIAL 1
          $personalHoy = $personal -> personalHoy($_POST['fecha'], '%');
 
@@ -278,10 +281,10 @@ if (isset($_SESSION['usuario'])==false) {
            if ($asignados != null && $asignados != false) {
              echo "<p><label><i class='fa fa-question-circle'></i>".$act['descripcion']."</label></p>";
              echo "<p><label><i class='fa fa-question-circle'></i>DE ".$recurso['inicio1']." HASTA ".$recurso['fin1']."</label></p>";
-             echo "<input type='hidden' name='act".$i."[]' value='".$act['id']."'>";
+             echo "<input type='hidden' name='otro1".$i."[]' value='".$act['id']."'>";
              //sacamos tantos selects como personas asignadas habia para ese dia.
              foreach ($asignados as $persona) {
-               echo "<p><select name='select".$i."[]' class='test' id='multiple'>";
+               echo "<p><select name='selectO1".$i."[]' class='test' id='multiple'>";
                echo "<option value='NO DISPONIBLE'>NO DISPONIBLE</option>";
                if ($persona['empleado'] == '') {
                  echo "<option value='' selected>Sin asignar</option>";
@@ -305,11 +308,11 @@ if (isset($_SESSION['usuario'])==false) {
              if ($recurso['otro1']>0) {
                echo "<p><label><i class='fa fa-question-circle'></i>".$act['descripcion']."</label></p>";
                echo "<p><label><i class='fa fa-question-circle'></i>DE ".$recurso['inicio1']." HASTA ".$recurso['fin1']."</label></p>";
-               echo "<input type='hidden' name='act".$i."[]' value='".$act['id']."'>";
+               echo "<input type='hidden' name='otro1".$i."[]' value='".$act['id']."'>";
 
                //si tenia recursos asignados, sacamos el select con la opcion sin asignar seleccionada
                for ($r=0; $r < $recurso['otro1'] ; $r++) {
-                 echo "<p><select name='select".$i."[]' class='test' id='multiple'>";
+                 echo "<p><select name='selectO1".$i."[]' class='test' id='multiple'>";
                  echo "<option value='NO DISPONIBLE'>NO DISPONIBLE</option>";
                  echo "<option value='' selected>SIN ASIGNAR</option>";
                  //sacamos la lista de personal
@@ -323,12 +326,14 @@ if (isset($_SESSION['usuario'])==false) {
              }
            }
 
+           echo "<input type='hidden' name='otro1' value='".$i."'>";
 
          echo "</div>";
          }
         ?>
 
         <?php
+        $i=0;
           //TURNO ESPECIAL 2
           $personalHoy = $personal -> personalHoy($_POST['fecha'], '%');
 
@@ -346,10 +351,10 @@ if (isset($_SESSION['usuario'])==false) {
             if ($asignados != null && $asignados != false) {
               echo "<p><label><i class='fa fa-question-circle'></i>".$act['descripcion']."</label></p>";
               echo "<p><label><i class='fa fa-question-circle'></i>DE ".$recurso['inicio2']." HASTA ".$recurso['fin2']."</label></p>";
-              echo "<input type='hidden' name='act".$i."[]' value='".$act['id']."'>";
+              echo "<input type='hidden' name='otro2".$i."[]' value='".$act['id']."'>";
               //sacamos tantos selects como personas asignadas habia para ese dia.
               foreach ($asignados as $persona) {
-                echo "<p><select name='select".$i."[]' class='test' id='multiple'>";
+                echo "<p><select name='selectO2".$i."[]' class='test' id='multiple'>";
                 echo "<option value='NO DISPONIBLE'>NO DISPONIBLE</option>";
                 if ($persona['empleado'] == '') {
                   echo "<option value='' selected>Sin asignar</option>";
@@ -373,11 +378,11 @@ if (isset($_SESSION['usuario'])==false) {
               if ($recurso['otro1']>0) {
                 echo "<p><label><i class='fa fa-question-circle'></i>".$act['descripcion']."</label></p>";
                 echo "<p><label><i class='fa fa-question-circle'></i>DE ".$recurso['inicio2']." HASTA ".$recurso['fin2']."</label></p>";
-                echo "<input type='hidden' name='act".$i."[]' value='".$act['id']."'>";
+                echo "<input type='hidden' name='otro2".$i."[]' value='".$act['id']."'>";
 
                 //si tenia recursos asignados, sacamos el select con la opcion sin asignar seleccionada
                 for ($r=0; $r < $recurso['otro2'] ; $r++) {
-                  echo "<p><select name='select".$i."[]' class='test' id='multiple'>";
+                  echo "<p><select name='selectO2".$i."[]' class='test' id='multiple'>";
                   echo "<option value='NO DISPONIBLE'>NO DISPONIBLE</option>";
                   echo "<option value='' selected>SIN ASIGNAR</option>";
                   //sacamos la lista de personal
@@ -390,6 +395,7 @@ if (isset($_SESSION['usuario'])==false) {
                 $i++;
               }
             }
+            echo "<input type='hidden' name='otro2' value='".$i."'>";
 
 
           echo "</div>";
@@ -397,6 +403,7 @@ if (isset($_SESSION['usuario'])==false) {
          ?>
 
          <?php
+         $i=0;
            //TURNO ESPECIAL 3
            $personalHoy = $personal -> personalHoy($_POST['fecha'], '%');
 
@@ -414,10 +421,10 @@ if (isset($_SESSION['usuario'])==false) {
              if ($asignados != null && $asignados != false) {
                echo "<p><label><i class='fa fa-question-circle'></i>".$act['descripcion']."</label></p>";
                echo "<p><label><i class='fa fa-question-circle'></i>DE ".$recurso['inicio3']." HASTA ".$recurso['fin3']."</label></p>";
-               echo "<input type='hidden' name='act".$i."[]' value='".$act['id']."'>";
+               echo "<input type='hidden' name='otro3".$i."[]' value='".$act['id']."'>";
                //sacamos tantos selects como personas asignadas habia para ese dia.
                foreach ($asignados as $persona) {
-                 echo "<p><select name='select".$i."[]' class='test' id='multiple'>";
+                 echo "<p><select name='selectO3".$i."[]' class='test' id='multiple'>";
                  echo "<option value='NO DISPONIBLE'>NO DISPONIBLE</option>";
                  if ($persona['empleado'] == '') {
                    echo "<option value='' selected>Sin asignar</option>";
@@ -441,11 +448,11 @@ if (isset($_SESSION['usuario'])==false) {
                if ($recurso['otro3']>0) {
                  echo "<p><label><i class='fa fa-question-circle'></i>".$act['descripcion']."</label></p>";
                  echo "<p><label><i class='fa fa-question-circle'></i>DE ".$recurso['inicio3']." HASTA ".$recurso['fin3']."</label></p>";
-                 echo "<input type='hidden' name='act".$i."[]' value='".$act['id']."'>";
+                 echo "<input type='hidden' name='otro3".$i."[]' value='".$act['id']."'>";
 
                  //si tenia recursos asignados, sacamos el select con la opcion sin asignar seleccionada
                  for ($r=0; $r < $recurso['otro3'] ; $r++) {
-                   echo "<p><select name='select".$i."[]' class='test' id='multiple'>";
+                   echo "<p><select name='selectO3".$i."[]' class='test' id='multiple'>";
                    echo "<option value='NO DISPONIBLE'>NO DISPONIBLE</option>";
                    echo "<option value='' selected>SIN ASIGNAR</option>";
                    //sacamos la lista de personal
@@ -459,12 +466,14 @@ if (isset($_SESSION['usuario'])==false) {
                }
              }
 
+             echo "<input type='hidden' name='otro3' value='".$i."'>";
 
            echo "</div>";
            }
           ?>
 
           <?php
+          $i=0;
             //TURNO ESPECIAL 4
             $personalHoy = $personal -> personalHoy($_POST['fecha'], '%');
 
@@ -482,10 +491,10 @@ if (isset($_SESSION['usuario'])==false) {
               if ($asignados != null && $asignados != false) {
                 echo "<p><label><i class='fa fa-question-circle'></i>".$act['descripcion']."</label></p>";
                 echo "<p><label><i class='fa fa-question-circle'></i>DE ".$recurso['inicio4']." HASTA ".$recurso['fin4']."</label></p>";
-                echo "<input type='hidden' name='act".$i."[]' value='".$act['id']."'>";
+                echo "<input type='hidden' name='otro4".$i."[]' value='".$act['id']."'>";
                 //sacamos tantos selects como personas asignadas habia para ese dia.
                 foreach ($asignados as $persona) {
-                  echo "<p><select name='select".$i."[]' class='test' id='multiple'>";
+                  echo "<p><select name='selectO4".$i."[]' class='test' id='multiple'>";
                   echo "<option value='NO DISPONIBLE'>NO DISPONIBLE</option>";
                   if ($persona['empleado'] == '') {
                     echo "<option value='' selected>Sin asignar</option>";
@@ -509,11 +518,11 @@ if (isset($_SESSION['usuario'])==false) {
                 if ($recurso['otro4']>0) {
                   echo "<p><label><i class='fa fa-question-circle'></i>".$act['descripcion']."</label></p>";
                   echo "<p><label><i class='fa fa-question-circle'></i>DE ".$recurso['inicio4']." HASTA ".$recurso['fin4']."</label></p>";
-                  echo "<input type='hidden' name='act".$i."[]' value='".$act['id']."'>";
+                  echo "<input type='hidden' name='otro4".$i."[]' value='".$act['id']."'>";
 
                   //si tenia recursos asignados, sacamos el select con la opcion sin asignar seleccionada
                   for ($r=0; $r < $recurso['otro4'] ; $r++) {
-                    echo "<p><select name='select".$i."[]' class='test' id='multiple'>";
+                    echo "<p><select name='selectO4".$i."[]' class='test' id='multiple'>";
                     echo "<option value='NO DISPONIBLE'>NO DISPONIBLE</option>";
                     echo "<option value='' selected>SIN ASIGNAR</option>";
                     //sacamos la lista de personal
@@ -527,12 +536,14 @@ if (isset($_SESSION['usuario'])==false) {
                 }
               }
 
+              echo "<input type='hidden' name='otro4' value='".$i."'>";
 
             echo "</div>";
             }
            ?>
 
            <?php
+           $i=0;
              //TURNO ESPECIAL 5
              $personalHoy = $personal -> personalHoy($_POST['fecha'], '%');
 
@@ -550,10 +561,10 @@ if (isset($_SESSION['usuario'])==false) {
                if ($asignados != null && $asignados != false) {
                  echo "<p><label><i class='fa fa-question-circle'></i>".$act['descripcion']."</label></p>";
                  echo "<p><label><i class='fa fa-question-circle'></i>DE ".$recurso['inicio5']." HASTA ".$recurso['fin5']."</label></p>";
-                 echo "<input type='hidden' name='act".$i."[]' value='".$act['id']."'>";
+                 echo "<input type='hidden' name='otro5".$i."[]' value='".$act['id']."'>";
                  //sacamos tantos selects como personas asignadas habia para ese dia.
                  foreach ($asignados as $persona) {
-                   echo "<p><select name='select".$i."[]' class='test' id='multiple'>";
+                   echo "<p><select name='selectO5".$i."[]' class='test' id='multiple'>";
                    echo "<option value='NO DISPONIBLE'>NO DISPONIBLE</option>";
                    if ($persona['empleado'] == '') {
                      echo "<option value='' selected>Sin asignar</option>";
@@ -577,11 +588,11 @@ if (isset($_SESSION['usuario'])==false) {
                  if ($recurso['otro5']>0) {
                    echo "<p><label><i class='fa fa-question-circle'></i>".$act['descripcion']."</label></p>";
                    echo "<p><label><i class='fa fa-question-circle'></i>DE ".$recurso['inicio5']." HASTA ".$recurso['fin5']."</label></p>";
-                   echo "<input type='hidden' name='act".$i."[]' value='".$act['id']."'>";
+                   echo "<input type='hidden' name='otro5".$i."[]' value='".$act['id']."'>";
 
                    //si tenia recursos asignados, sacamos el select con la opcion sin asignar seleccionada
                    for ($r=0; $r < $recurso['otro5'] ; $r++) {
-                     echo "<p><select name='select".$i."[]' class='test' id='multiple'>";
+                     echo "<p><select name='selectO5".$i."[]' class='test' id='multiple'>";
                      echo "<option value='NO DISPONIBLE'>NO DISPONIBLE</option>";
                      echo "<option value='' selected>SIN ASIGNAR</option>";
                      //sacamos la lista de personal
@@ -595,12 +606,14 @@ if (isset($_SESSION['usuario'])==false) {
                  }
                }
 
+               echo "<input type='hidden' name='otro5' value='".$i."'>";
 
              echo "</div>";
              }
             ?>
 
             <?php
+            $i=0;
               //TURNO ESPECIAL 6
               $personalHoy = $personal -> personalHoy($_POST['fecha'], '%');
 
@@ -618,10 +631,10 @@ if (isset($_SESSION['usuario'])==false) {
                 if ($asignados != null && $asignados != false) {
                   echo "<p><label><i class='fa fa-question-circle'></i>".$act['descripcion']."</label></p>";
                   echo "<p><label><i class='fa fa-question-circle'></i>DE ".$recurso['inicio6']." HASTA ".$recurso['fin6']."</label></p>";
-                  echo "<input type='hidden' name='act".$i."[]' value='".$act['id']."'>";
+                  echo "<input type='hidden' name='otro6".$i."[]' value='".$act['id']."'>";
                   //sacamos tantos selects como personas asignadas habia para ese dia.
                   foreach ($asignados as $persona) {
-                    echo "<p><select name='select".$i."[]' class='test' id='multiple'>";
+                    echo "<p><select name='selectO6".$i."[]' class='test' id='multiple'>";
                     echo "<option value='NO DISPONIBLE'>NO DISPONIBLE</option>";
                     if ($persona['empleado'] == '') {
                       echo "<option value='' selected>Sin asignar</option>";
@@ -645,11 +658,11 @@ if (isset($_SESSION['usuario'])==false) {
                   if ($recurso['otro6']>0) {
                     echo "<p><label><i class='fa fa-question-circle'></i>".$act['descripcion']."</label></p>";
                     echo "<p><label><i class='fa fa-question-circle'></i>DE ".$recurso['inicio6']." HASTA ".$recurso['fin6']."</label></p>";
-                    echo "<input type='hidden' name='act".$i."[]' value='".$act['id']."'>";
+                    echo "<input type='hidden' name='otro6".$i."[]' value='".$act['id']."'>";
 
                     //si tenia recursos asignados, sacamos el select con la opcion sin asignar seleccionada
                     for ($r=0; $r < $recurso['otro6'] ; $r++) {
-                      echo "<p><select name='select".$i."[]' class='test' id='multiple'>";
+                      echo "<p><select name='selectO6".$i."[]' class='test' id='multiple'>";
                       echo "<option value='NO DISPONIBLE'>NO DISPONIBLE</option>";
                       echo "<option value='' selected>SIN ASIGNAR</option>";
                       //sacamos la lista de personal
@@ -663,6 +676,7 @@ if (isset($_SESSION['usuario'])==false) {
                   }
                 }
 
+                echo "<input type='hidden' name='otro6' value='".$i."'>";
 
               echo "</div>";
               }

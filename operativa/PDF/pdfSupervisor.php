@@ -70,22 +70,22 @@
 
   foreach ($listaHoy as $act) {
     //sacar el total de recursos para esa actividad, ese dia y ese turno.
-    $recursosTotal = $recursos -> ModSupervisores($act['id'], $_GET['fecha'], 'tm');
+    $recursosTotal = $recursos -> ModSupervisores($act['id'], $_GET['fecha'], $turno);
     if ($recursosTotal == null || $recursosTotal == false) {
-      $recursosTotal = $recursos -> RecursosSupervisores($act['id'], $_GET['fecha'], 'tm');
+      $recursosTotal = $recursos -> RecursosSupervisores($act['id'], $_GET['fecha'], $turno);
     }
 
     //sacar los nombres de los empleados de esa actividad para ese dia.
-    $listaEmpleados = $personal -> empleadosServicio($act['id'], $_GET['fecha'], 'tm');
+    $listaEmpleados = $personal -> empleadosServicio($act['id'], $_GET['fecha'], $turno);
 
     //COMPROBAR   que esa actividad tiene recursos para ese turno.
-    if ($recursosTotal != null && $recursosTotal != false && $recursosTotal['tm'] > 0) {
+    if ($recursosTotal != null && $recursosTotal != false && $recursosTotal[$turno] > 0) {
 
       if ($i<=1) {
            $der=40;
       }
         //bucle para recoger array de nombre
-        $descripcion = $act['descripcion'] ." - " .$recursosTotal['tm'];
+        $descripcion = $act['descripcion'] ." - " .$recursosTotal[$turno];
        if($izq>$der){
          $derNombre=0;
          $pdf->SetY($der);
@@ -97,7 +97,7 @@
          //si la actividad no tiene a nadie asignado, lo ponemos como sin asignar.
          //sacar la lista de empleados para esa actividad, dia y turno.
          if ($listaEmpleados == null || $listaEmpleados == '') {
-           for ($gente=0; $gente < $recursosTotal['tm'] ; $gente++) {
+           for ($gente=0; $gente < $recursosTotal[$turno] ; $gente++) {
              $der = $der +5;
              $pdf->SetTextColor(3, 3, 3);
              $pdf->SetY($der);
@@ -132,7 +132,7 @@
          //si la actividad no tiene a nadie asignado, lo ponemos como sin asignar.
          //sacar la lista de empleados para esa actividad, dia y turno.
          if ($listaEmpleados == null || $listaEmpleados == '') {
-           for ($gente=0; $gente < $recursosTotal['tm'] ; $gente++) {
+           for ($gente=0; $gente < $recursosTotal[$turno] ; $gente++) {
              $izq = $izq +5;
              $pdf->SetTextColor(3, 3, 3);
              $pdf->SetY($izq);

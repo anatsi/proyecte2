@@ -84,6 +84,9 @@ if (isset($_SESSION['usuario'])==false) {
 
     <div class="site-content">
       <div class="container">
+        <div class="breadcrumb" style="margin-left: 2%; color:black;">
+          <a href="../../dashboard.php">INICIO</a> >> <a href="../index.php">GESTIÓN EMPLEADOS</a> >> <a href="resumen.php">BUSQUEDA</a>
+        </div>
         <!-- Contenido de la pagina. -->
         <h2>Búsqueda por fechas</h2>
         <form action="resumenTabla.php" method="post" id="formulario">

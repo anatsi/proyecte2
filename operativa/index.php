@@ -95,6 +95,9 @@ if (isset($_SESSION['usuario'])==false) {
 
 <div class="site-content">
   <div class="container">
+    <div class="breadcrumb" style="margin-left: 2%;">
+      <a href="../dashboard.php">INICIO</a> >> <a href="index.php">GESTIÓN ACTIVIDADES</a>
+    </div>
     <?php echo "<h2>Semana ".date('W')."</h2>"; ?>
     <div class="derecha">
       <?php

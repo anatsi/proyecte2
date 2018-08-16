@@ -102,6 +102,9 @@ if (isset($_SESSION['usuario'])==false) {
 
     <div class="site-content">
       <div class="container">
+        <div class="breadcrumb" style="margin-left: 2%; color:black;">
+          <a href="../../dashboard.php">INICIO</a> >> <a href="../index.php">GESTIÓN EMPLEADOS</a> >> <a href="nuevoServicio.php">NUEVA ACTIVIDAD</a>
+        </div>
         <!-- Contenido de la pagina. -->
         <h2><?php echo __('Nueva actividad', $lang); ?></h2>
         <form action="nuevoServibbdd.php" method="post" id="formulario" enctype="multipart/form-data">

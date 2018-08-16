@@ -104,6 +104,9 @@ if (isset($_SESSION['usuario'])==false) {
 
     <div class="site-content">
       <div class="container">
+        <div class="breadcrumb" style="margin-left: 2%;">
+          <a href="../../dashboard.php">INICIO</a> >> <a>REGISTRO MOVIMIENTOS</a> >> <a href="movimientosJockeys.php">WORK ORDERS</a>
+        </div>
         <!-- Contenido de la pagina. -->
         <h2>MOVIMIENTOS</h2>
        <input type="text" id="busqueda" placeholder='FILTRAR'/><br/><br/>

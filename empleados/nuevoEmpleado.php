@@ -108,6 +108,9 @@ if (isset($_SESSION['usuario'])==false) {
 
     <div class="site-content">
       <div class="container">
+        <div class="breadcrumb" style="margin-left: 2%; color:black;">
+          <a href="../dashboard.php">INICIO</a> >> <a href="index.php">GESTIÓN EMPLEADOS</a> >> <a href="nuevoEmpleado">NUEVO EMPLEADO</a>
+        </div>
         <!-- Contenido de la pagina. -->
         <h2 align="center">Nuevo empleado</h2>
 

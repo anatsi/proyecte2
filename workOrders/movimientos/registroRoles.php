@@ -66,6 +66,9 @@ if (isset($_SESSION['usuario'])==false) {
 
     <div class="site-content">
       <div class="container">
+        <div class="breadcrumb" style="margin-left: 2%;">
+          <a href="../../dashboard.php">INICIO</a> >> <a>REGISTRO MOVIMIENTOS</a> >> <a href="filtroRoles.php">ROLES</a>
+        </div>
         <!-- Contenido de la pagina. -->
         <h2>ROLES</h2>
         <div id="resultado">
