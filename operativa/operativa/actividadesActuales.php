@@ -100,7 +100,7 @@ if (isset($_SESSION['usuario'])==false) {
     <div class="site-content">
       <div class="container">
         <div class="breadcrumb" style="margin-left: 2%; color:black;">
-          <a href="../../dashboard.php">INICIO</a> >> <a href="../index.php">GESTIÓN EMPLEADOS</a> >> <a href="actividadesActuales.php">ACTIVIDADES ACTUALES</a>
+          <a href="../../dashboard.php">INICIO</a> >> <a href="../index.php">GESTIÓN ACTIVIDADES</a> >> <a href="actividadesActuales.php">ACTIVIDADES ACTUALES</a>
         </div>
         <!-- Contenido de la pagina. -->
         <h2><?php echo __('Actividades actuales', $lang); ?></h2>
