@@ -58,7 +58,7 @@ if (isset($_SESSION['usuario'])==false) {
       <a href="#" class="header__icon" id="header__icon"></a>
 
       <a href="../dashboard.php?lang=<?php echo $lang; ?>" class="header__logo"><img src="../imagenes/logo.png" alt=""></a>
-
+      <!-- menu -->
       <nav class="menu">
         <a href="index.php?lang=<?php echo $lang; ?>"><?php echo __('Inicio', $lang); ?></a>
         <?php
@@ -95,12 +95,15 @@ if (isset($_SESSION['usuario'])==false) {
 
 <div class="site-content">
   <div class="container">
+    <!-- migas de pan -->
     <div class="breadcrumb" style="margin-left: 2%; color:black;">
       <a href="../dashboard.php">INICIO</a> >> <a href="index.php">GESTIÓN ACTIVIDADES</a>
     </div>
+    <!-- titulo -->
     <?php echo "<h2>Semana ".date('W')."</h2>"; ?>
     <div class="derecha">
       <?php
+      //comprobar que dia sera mañana para que no saque los sabados/domingos
       $dia=date('w');
       $fecha = date('d-m-Y');
       if ($dia == 0) {
@@ -123,6 +126,7 @@ if (isset($_SESSION['usuario'])==false) {
         $manana = date('d-m-Y', $manana);
       }
        ?>
+       <!-- primera tabla -->
        <h2><?php echo $hoy; ?></h2>
       <table class="rwd-table">
         <tr>
@@ -205,6 +209,7 @@ if (isset($_SESSION['usuario'])==false) {
       </table>
     </div>
     <div class="izquierda">
+      <!-- segunda tabla -->
       <h2><?php echo $manana; ?></h2>
       <table class="rwd-table">
         <tr>

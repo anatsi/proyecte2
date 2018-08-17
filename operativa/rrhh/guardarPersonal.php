@@ -39,80 +39,80 @@
           </h4><br />';
           if ($_POST['noche']) {
             $mensaje = $mensaje.'<h3>NOCHE</h3><ul>';
-            foreach ($_POST['noche'] as $personal) {
-              $mensaje = $mensaje.'<li>'.$personal.'</li>';
+            foreach ($_POST['noche'] as $gente) {
+              $mensaje = $mensaje.'<li>'.$gente.'</li>';
             }
             $mensaje=$mensaje.'</ul>';
           }
 
           if ($_POST['morning']) {
             $mensaje = $mensaje.'<h3>MAÑANA</h3><ul>';
-            foreach ($_POST['morning'] as $personal) {
-              $mensaje = $mensaje.'<li>'.$personal.'</li>';
+            foreach ($_POST['morning'] as $gente) {
+              $mensaje = $mensaje.'<li>'.$gente.'</li>';
             }
             $mensaje=$mensaje.'</ul>';
           }
 
           if ($_POST['tarde']) {
             $mensaje = $mensaje.'<h3>TARDE</h3><ul>';
-            foreach ($_POST['tarde'] as $personal) {
-              $mensaje = $mensaje.'<li>'.$personal.'</li>';
+            foreach ($_POST['tarde'] as $gente) {
+              $mensaje = $mensaje.'<li>'.$gente.'</li>';
             }
             $mensaje=$mensaje.'</ul>';
           }
 
           if ($_POST['central']) {
             $mensaje = $mensaje.'<h3>CENTRAL</h3><ul>';
-            foreach ($_POST['central'] as $personal) {
-              $mensaje = $mensaje.'<li>'.$personal.'</li>';
+            foreach ($_POST['central'] as $gente) {
+              $mensaje = $mensaje.'<li>'.$gente.'</li>';
             }
             $mensaje=$mensaje.'</ul>';
           }
 
           if ($_POST['otro1']) {
             $mensaje = $mensaje.'<h3>'.$_POST['hora1'].'</h3><ul>';
-            foreach ($_POST['otro1'] as $personal) {
-              $mensaje = $mensaje.'<li>'.$personal.'</li>';
+            foreach ($_POST['otro1'] as $gente) {
+              $mensaje = $mensaje.'<li>'.$gente.'</li>';
             }
             $mensaje=$mensaje.'</ul>';
           }
 
           if ($_POST['otro2']) {
             $mensaje = $mensaje.'<h3>'.$_POST['hora2'].'</h3><ul>';
-            foreach ($_POST['otro2'] as $personal) {
-              $mensaje = $mensaje.'<li>'.$personal.'</li>';
+            foreach ($_POST['otro2'] as $gente) {
+              $mensaje = $mensaje.'<li>'.$gente.'</li>';
             }
             $mensaje=$mensaje.'</ul>';
           }
 
           if ($_POST['otro3']) {
             $mensaje = $mensaje.'<h3>'.$_POST['hora3'].'</h3><ul>';
-            foreach ($_POST['otro3'] as $personal) {
-              $mensaje = $mensaje.'<li>'.$personal.'</li>';
+            foreach ($_POST['otro3'] as $gente) {
+              $mensaje = $mensaje.'<li>'.$gente.'</li>';
             }
             $mensaje=$mensaje.'</ul>';
           }
 
           if ($_POST['otro4']) {
             $mensaje = $mensaje.'<h3>'.$_POST['hora4'].'</h3><ul>';
-            foreach ($_POST['otro4'] as $personal) {
-              $mensaje = $mensaje.'<li>'.$personal.'</li>';
+            foreach ($_POST['otro4'] as $gente) {
+              $mensaje = $mensaje.'<li>'.$gente.'</li>';
             }
             $mensaje=$mensaje.'</ul>';
           }
 
           if ($_POST['otro5']) {
             $mensaje = $mensaje.'<h3>'.$_POST['hora5'].'</h3><ul>';
-            foreach ($_POST['otro5'] as $personal) {
-              $mensaje = $mensaje.'<li>'.$personal.'</li>';
+            foreach ($_POST['otro5'] as $gente) {
+              $mensaje = $mensaje.'<li>'.$gente.'</li>';
             }
             $mensaje=$mensaje.'</ul>';
           }
 
           if ($_POST['otro6']) {
             $mensaje = $mensaje.'<h3>'.$_POST['hora6'].'</h3><ul>';
-            foreach ($_POST['otro6'] as $personal) {
-              $mensaje = $mensaje.'<li>'.$personal.'</li>';
+            foreach ($_POST['otro6'] as $gente) {
+              $mensaje = $mensaje.'<li>'.$gente.'</li>';
             }
             $mensaje=$mensaje.'</ul>';
           }

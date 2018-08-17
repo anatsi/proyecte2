@@ -1259,5 +1259,5 @@
 $pdf->Output('./files/RRHH.pdf','F');
  ?>
  <script type="text/javascript">
-   window.location = '../rrhh/correoPablo.php?fecha="<?php echo $_POST['fecha']; ?>"';
+   window.location = '../rrhh/correoPablo.php?fecha=<?php echo $_POST['fecha']; ?>';
  </script>

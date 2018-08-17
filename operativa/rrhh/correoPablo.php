@@ -63,5 +63,5 @@ $mail->CharSet = 'UTF-8';
 
  ?>
 <script type="text/javascript">
-  window.location = 'correoSupervisores.php?fecha="<?php echo $_GET['fecha']; ?>"';
+  window.location = 'correoSupervisores.php?fecha=<?php echo $_GET['fecha']; ?>';
 </script>

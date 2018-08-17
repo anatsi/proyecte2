@@ -1,6 +1,6 @@
 <?php
   //transformamos la fecha
-  $fecha=explode("-", $_POST['fecha']);
+  $fecha=explode("-", $_GET['fecha']);
   $fecha=$fecha[2]."-".$fecha[1]."-".$fecha[0];
   //enviar correo para vaisar de que el personal ya esta disponible.
     // Enviar el email

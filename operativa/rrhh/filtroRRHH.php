@@ -96,7 +96,7 @@ if (isset($_SESSION['usuario'])==false) {
     <h2>Elegir dia</h2>
     <form action="tablaRRHH.php" method="post" id="formulario">
       <div class="formthird">
-        <p><label><i class="fa fa-question-circle"></i>FECHA</label><input type="date" name="fecha"/></p>
+        <p><label><i class="fa fa-question-circle"></i>FECHA</label><input type="date" name="fecha" required/></p>
       </div>
       <div class="formthird">
       </div>
