@@ -31,10 +31,17 @@ if (isset($_SESSION['usuario'])==false) {
     <link rel="shortcut icon" href="../imagenes/favicon.ico">
     <link rel="stylesheet" type="text/css" href="../css/dashboard.css" />
     <link rel="stylesheet" href="../css/modificar.css">
+    <!-- CSS para alternar los colores de la tabla -->
+    <style media="screen">
+      tr:nth-child(even) {
+        background-color: #CAC6C5;
+      }
+    </style>
+
     <!--  Libreria iconos  -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!--  script para el filtrado en la tabla  -->
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+    <script src="../js/jquery.min.js"></script>
     <script>
         $(document).ready(function(){
             var consulta;
@@ -66,8 +73,15 @@ if (isset($_SESSION['usuario'])==false) {
         });
 
     </script>
+    <!--Script para fijar la cabecera de las tablas-->
+    <script type="text/javascript" src="../js/jquery.stickytableheaders.min.js"></script>
+    <script type="text/javascript">
+      $(function() {
+        $("table").stickyTableHeaders();
+      });
+    </script>
     <!--ORDENAR TABLA-->
-    <script type="text/javascript" src="../js/jquery.min.js"></script>
+    <!--<script type="text/javascript" src="../js/jquery.min.js"></script>-->
     <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.9.1/jquery.tablesorter.min.js"></script>
     <script>
     $(function(){
