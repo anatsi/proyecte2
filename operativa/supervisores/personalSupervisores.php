@@ -681,6 +681,9 @@ if (isset($_SESSION['usuario'])==false) {
               echo "</div>";
               }
              ?>
+      <div class="formthird" style="width: 100%; margin-top: 5%;">
+        <textarea name="comentario" rows="8" cols="900" style="width: 100%;" placeholder="Explicaciones relativas a cambios de personal entre actividades."></textarea>
+      </div>
       <div class="submitbuttons">
           <input class="submitone" type="submit" value='CONFIRMAR'/>
       </div>

@@ -70,7 +70,7 @@ if (isset($_SESSION['usuario'])==false) {
       <a href="../../dashboard.php?lang=<?php echo $lang; ?>" class="header__logo"><img src="../../imagenes/logo.png" alt=""></a>
 
       <nav class="menu">
-        <a href="../index.php?lang=<?php echo $lang; ?>"><?php echo __('Inicio', $lang); ?></a>
+        <a href="../index.php"><?php echo __('Inicio', $lang); ?></a>
         <?php
         $menu=$usuario->menuDash($_SESSION['usuario']);
         $opciones = explode(",", $menu['menu']);
@@ -135,11 +135,11 @@ if (isset($_SESSION['usuario'])==false) {
            $nuevafecha = strtotime ( '-1 day' , strtotime ( $_GET['fecha'] ) ) ;
            $nuevafecha = date ( 'Y-m-d' , $nuevafecha );
            //TURNO NOCHE.
-           //buscar el personal que hay asignado para ese dia y ese servicio en el turno de noche
+           //buscar el personal que hay asignado para ese dia y ese servicio en el turno de mañana
             $personalNoche = $personal -> empleadosServicio($_GET['id'], $nuevafecha, 'tn');
             //comprobar si hay alguien asignado.
             if ($personalNoche != null && $personalNoche != false) {
-              //sacar el titulo de noche
+              //sacar el titulo de mañana
               ?>
               <div class="formthird">
                 <p><label><i class="fa fa-question-circle"></i>Noche</label></p>

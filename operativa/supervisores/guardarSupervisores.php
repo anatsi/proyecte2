@@ -182,10 +182,18 @@ for ($i=0; $i < $recuento ; $i++) {
 
 
 if ($error==0) {
+  $com = urlencode($_POST['comentario']);
+/*  echo $_POST['comentario'];
+  $arreglar = str_replace('\n', '<br>', $_POST['comentario']);
+
+  echo "<br>";
+  echo $arreglar;
+  echo "<br>";*/
+
   ?>
     <script type="text/javascript">
       alert('Personal confirmado');
-      window.location = '../PDF/pdfSupervisor.php?fecha=<?php echo $_POST['fecha']; ?>&turno=<?php echo $turno; ?>';
+      window.location = '../PDF/pdfSupervisor.php?fecha=<?php echo $_POST['fecha']; ?>&turno=<?php echo $turno; ?>&com=<?php echo $com ?>';
     </script>
   <?php
 }else {

@@ -176,6 +176,22 @@
     }
 
   }
+  //si el supervisor ha puesto algun comentario, lo escribimos a continuacion
+  if ($_GET['com'] && $_GET['com'] != '') {
+    //comprobamos que columna es mas larga
+    if ($der > $izq) {
+      $pdf->SetY($der);
+    }else {
+      $pdf->SetY($izq);
+    }
+    //creamos la celda con el comentario
+    $trozosComentario = explode("%0D%0A", $_GET['com']);
+    foreach ($trozosComentario as $com) {
+      $pdf->MultiCell(190, 5, urldecode($com), 1);
+    }
+
+  }
+
   //TURNOS ESPECIALES
   $pdf->AddPage();
   $pdf->SetY(5);
@@ -981,9 +997,7 @@
 
   }
 
-if ($_GET['listo']) {
-    $pdf->Output();
-}else {
+
   if (file_exists('./files/supervisor_'.$turno.'.pdf')) {
     unlink('./files/supervisor_'.$turno.'.pdf');
   }
@@ -992,8 +1006,3 @@ if ($_GET['listo']) {
   <script type="text/javascript">
     window.location = '../supervisores/correoPablo.php?fecha=<?php echo $_GET['fecha']; ?>&turno=<?php echo $turno; ?>';
   </script>
-  <?php
-}
-
-
- ?>
