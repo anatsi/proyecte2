@@ -18,24 +18,34 @@ $mail->CharSet = 'UTF-8';
   $mail->AddAddress("acosinga@tsiberia.es");
   $mail->AddAddress("rrhh@tsiberia.es");
 
+  //$mail->AddAddress('aasins@tsiberia.es');
+
   //transformamos la fecha
   $fecha=explode("-", $_GET['fecha']);
   $fecha=$fecha[2]."-".$fecha[1]."-".$fecha[0];
+  if ($_GET['turno'] == 'tm') {
+    $turno = 'Mañana';
+  }elseif ($_GET['turno'] == 'tt') {
+    $turno = 'Tarde';
+  }elseif ($_GET['turno'] == 'tn') {
+    $turno = 'Noche';
+  }
 
   //Asignamos asunto y cuerpo del mensaje
   //El cuerpo del mensaje lo ponemos en formato html, haciendo
   //que se vea en negrita
-  $mail->Subject = $fecha." personnel planification";
-  $mail->Body = "Se adjunta planificacion del personal por parte de RRHH para el día: ".$fecha;
+  $mail->Subject ="Personal final dia: ".$fecha.", turno ".$_GET['turno'];
+  //$mail->Subject = "Personal final dia: ".$fecha.", turno ".$_GET['turno'];
+  $mail->Body = "Se adjunta planificacion del personal por parte del supervisor del turno: ".$turno." para el día: ".$fecha;
 
   //Definimos AltBody por si el destinatario del correo no admite email con formato html
-  $mail->AltBody = "Se adjunta planificacion del personal por parte de RRHH para el día: ".$fecha;
+  $mail->AltBody = "Se adjunta planificacion del personal por parte del supervisor del turno: ".$turno." para el día: ".$fecha;
 
   //  $mail->AddAttachment($url);
   //adjuntar el pdf y ponerle el nombre que quieras
-  $url='http://acceso.tsiberia.es/operativa/PDF/files/RRHH.pdf';
+  $url='http://acceso.tsiberia.es/operativa/PDF/files/supervisor_'.$_GET['turno'].'.pdf';
   $fichero = file_get_contents($url);
-  $mail->addStringAttachment($fichero, $fecha.'_HR.pdf');
+  $mail->addStringAttachment($fichero, $fecha.'_'.$_GET['turno'].'.pdf');
 
 
   //se envia el mensaje, si no ha habido problemas
@@ -64,6 +74,6 @@ $mail->CharSet = 'UTF-8';
 
 
  ?>
-<script type="text/javascript">
-  window.location = 'correoSupervisores.php?fecha=<?php echo $_GET['fecha']; ?>';
-</script>
+ <script type="text/javascript">
+   window.location = '../PDF/files/supervisor_<?php echo $_GET['turno']; ?>.pdf';
+ </script>

@@ -980,10 +980,20 @@
     }
 
   }
-$pdf->Output();
-if (file_exists('./files/supervisor_'.$turno.'.pdf')) {
-  unlink('./files/supervisor_'.$turno.'.pdf');
+
+if ($_GET['listo']) {
+    $pdf->Output();
+}else {
+  if (file_exists('./files/supervisor_'.$turno.'.pdf')) {
+    unlink('./files/supervisor_'.$turno.'.pdf');
+  }
+  $pdf->Output('./files/supervisor_'.$turno.'.pdf','F');
+  ?>
+  <script type="text/javascript">
+    window.location = '../supervisores/correoPablo.php?fecha=<?php echo $_GET['fecha']; ?>&turno=<?php echo $turno; ?>';
+  </script>
+  <?php
 }
-$pdf->Output('./files/supervisor_'.$turno.'.pdf','F');
+
 
  ?>
