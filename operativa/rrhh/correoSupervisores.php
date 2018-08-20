@@ -23,6 +23,8 @@
     '<body>
       <h4>
         <b>RRHH ha actualizado la planificación del personal para el dia '.$fecha.'</b>
+        <br>
+        <a href="acceso.tsiberia.es">acceso.tsiberia.es</a>
       </h4><br />' .
       'Por favor, no responda a este correo lo envia un robot automáticamente.'.
       '<br />Enviado el ' . date('d/m/Y', time()) .

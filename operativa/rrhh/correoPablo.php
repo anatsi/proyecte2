@@ -15,6 +15,7 @@ $mail->CharSet = 'UTF-8';
 
   //Indicamos cual es la dirección de destino del correo
   $mail->AddAddress("pablo.moreno.g@ts-iberica.com");
+  $mail->AddAddress("acosinga@ford.com");
   $mail->AddAddress("acosinga@tsiberia.es");
   $mail->AddAddress("rrhh@tsiberia.es");
 

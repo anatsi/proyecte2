@@ -9,12 +9,12 @@ $mail->CharSet = 'UTF-8';
   $mail->From = "robot@tsiberia.es";
   $mail->FromName = "Transport service iberia.";
 
-  //el valor por defecto 10 de Timeout es un poco escaso dado que voy a usar
-  //una cuenta gratuita, por tanto lo pongo a 30
+
   $mail->Timeout=300;
 
   //Indicamos cual es la dirección de destino del correo
   $mail->AddAddress("pablo.moreno.g@ts-iberica.com");
+  $mail->AddAddress("acosinga@ford.com");
   $mail->AddAddress("acosinga@tsiberia.es");
   $mail->AddAddress("rrhh@tsiberia.es");
 
@@ -34,9 +34,11 @@ $mail->CharSet = 'UTF-8';
   //Asignamos asunto y cuerpo del mensaje
   //El cuerpo del mensaje lo ponemos en formato html, haciendo
   //que se vea en negrita
-  $mail->Subject ="Personal final dia: ".$fecha.", turno ".$_GET['turno'];
-  //$mail->Subject = "Personal final dia: ".$fecha.", turno ".$_GET['turno'];
-  $mail->Body = "Se adjunta planificacion del personal por parte del supervisor del turno: ".$turno." para el día: ".$fecha;
+  $asunto = "Personal final dia: ".$fecha.", turno ".$turno;
+  //FUNCION PARA QUE EN EL ASUNTO SALGAN LAS Ñ Y LOS ACENTOS
+  $mail->Subject =mb_encode_mimeheader($asunto,"UTF-8");
+  //definimos el body del correo
+  $mail->Body = "Se adjunta planificacion del personal por parte del jefe de turno. <br> Turno: ".$turno." <br>Día: ".$fecha;
 
   //Definimos AltBody por si el destinatario del correo no admite email con formato html
   $mail->AltBody = "Se adjunta planificacion del personal por parte del supervisor del turno: ".$turno." para el día: ".$fecha;

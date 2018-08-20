@@ -186,7 +186,7 @@ textarea::placeholder{
           '<br />Enviado el ' . date('d/m/Y', time()) .
         '</body></html>';
 
-        $para = 'aasins@tsiberia.es';
+        $para = 'rrhh@tsiberia.es, acosinga@tsiberia.es, acosinga@ford.com, pablo.moreno.g@ts-iberica.com';
         $asunto = 'Fin de la actividad "'.$actividad['descripcion'].'"';
 
         mail($para, $asunto, $mensaje, $header);
