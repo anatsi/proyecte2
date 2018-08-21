@@ -184,6 +184,7 @@
     }else {
       $total = $izq;
     }
+    //titulo del comentario
     $pdf->SetY($total);
     $pdf->SetTextColor(220,50,50);
     $pdf->Cell(190,5,'MODIFICACIONES DE PERSONAL.',1,2,"C");
