@@ -101,6 +101,9 @@
                </script>
              <?php
            }else {
+             //transformamos la fecha
+             $fecha=explode("-", $_POST['finicio']);
+             $fecha=$fecha[2]."-".$fecha[1]."-".$fecha[0];
              //si se ha registrado correctamente, enviamos un correo a Pilar y a RRHH.
              // Enviar el email
                $mail = "robot@tsiberia.es";
@@ -124,7 +127,7 @@
                    Nueva actividad.
                  </h2>' .
                  '<h3>'.$_POST['descripcion'].'</h3>'.
-                 '<h4>INICIO: '.$_POST['inicio'].'</h4>'.
+                 '<h4>INICIO: '.$fecha.'</h4>'.
                  '<h4>RECURSOS: '.$_POST['recursos'].'</h4>'.
                  'Accede a <a href="acceso.tsiberia.es">acceso.tsiberia.es</a> para más información.
                  <hr>'.
@@ -133,6 +136,7 @@
                '</body></html>';
 
                $para = 'rrhh@tsiberia.es, acosinga@tsiberia.es, acosinga@ford.com, pablo.moreno.g@ts-iberica.com';
+               //$para ='aasins@tsiberia.es';
                $asunto = 'NUEVA ACTIVIDAD';
 
                mail($para, $asunto, $mensaje, $header);
