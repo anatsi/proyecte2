@@ -138,7 +138,12 @@ if (isset($_SESSION['usuario'])==false) {
                 echo "<p><select name='noche[]' class='test' id='multiple'>";
                 echo "<option value='' selected>Sin asignar</option>";
                   foreach ($empleados as $trabajador) {
-                    echo "<option value='".$trabajador['nombre']." ".$trabajador['apellidos']."'>".$trabajador['nombre']." ".$trabajador['apellidos']."</option>";
+                    if ($trabajador['ett'] == 1) {
+                      $nombre = "ETT-".$trabajador['nombre'] ." ".$trabajador['apellidos'];
+                    }else {
+                      $nombre=$trabajador['nombre'] ." ".$trabajador['apellidos'];
+                    }
+                    echo "<option value='".$nombre."'>".$nombre."</option>";
                   }
                 echo "</select></p>";
               }
@@ -157,7 +162,12 @@ if (isset($_SESSION['usuario'])==false) {
                  echo "<p><select name='morning[]' class='test' id='multiple'>";
                  echo "<option value='' selected>Sin asignar</option>";
                    foreach ($empleados as $trabajador) {
-                     echo "<option value='".$trabajador['nombre']." ".$trabajador['apellidos']."'>".$trabajador['nombre']." ".$trabajador['apellidos']."</option>";
+                     if ($trabajador['ett'] == 1) {
+                       $nombre = "ETT-".$trabajador['nombre'] ." ".$trabajador['apellidos'];
+                     }else {
+                       $nombre=$trabajador['nombre'] ." ".$trabajador['apellidos'];
+                     }
+                     echo "<option value='".$nombre."'>".$nombre."</option>";
                    }
                  echo "</select></p>";
                }
@@ -176,7 +186,12 @@ if (isset($_SESSION['usuario'])==false) {
                   echo "<p><select name='tarde[]' class='test' id='multiple'>";
                   echo "<option value='' selected>Sin asignar</option>";
                     foreach ($empleados as $trabajador) {
-                      echo "<option value='".$trabajador['nombre']." ".$trabajador['apellidos']."'>".$trabajador['nombre']." ".$trabajador['apellidos']."</option>";
+                      if ($trabajador['ett'] == 1) {
+                        $nombre = "ETT-".$trabajador['nombre'] ." ".$trabajador['apellidos'];
+                      }else {
+                        $nombre=$trabajador['nombre'] ." ".$trabajador['apellidos'];
+                      }
+                      echo "<option value='".$nombre."'>".$nombre."</option>";
                     }
                   echo "</select></p>";
                 }
@@ -195,7 +210,12 @@ if (isset($_SESSION['usuario'])==false) {
                    echo "<p><select name='central[]' class='test' id='multiple'>";
                    echo "<option value='' selected>Sin asignar</option>";
                      foreach ($empleados as $trabajador) {
-                       echo "<option value='".$trabajador['nombre']." ".$trabajador['apellidos']."'>".$trabajador['nombre']." ".$trabajador['apellidos']."</option>";
+                       if ($trabajador['ett'] == 1) {
+                         $nombre = "ETT-".$trabajador['nombre'] ." ".$trabajador['apellidos'];
+                       }else {
+                         $nombre=$trabajador['nombre'] ." ".$trabajador['apellidos'];
+                       }
+                       echo "<option value='".$nombre."'>".$nombre."</option>";
                      }
                    echo "</select></p>";
                  }
@@ -214,7 +234,12 @@ if (isset($_SESSION['usuario'])==false) {
                     echo "<p><select name='otro1[]' class='test' id='multiple'>";
                     echo "<option value='' selected>Sin asignar</option>";
                       foreach ($empleados as $trabajador) {
-                        echo "<option value='".$trabajador['nombre']." ".$trabajador['apellidos']."'>".$trabajador['nombre']." ".$trabajador['apellidos']."</option>";
+                        if ($trabajador['ett'] == 1) {
+                          $nombre = "ETT-".$trabajador['nombre'] ." ".$trabajador['apellidos'];
+                        }else {
+                          $nombre=$trabajador['nombre'] ." ".$trabajador['apellidos'];
+                        }
+                        echo "<option value='".$nombre."'>".$nombre."</option>";
                       }
                     echo "</select></p>";
                   }
@@ -233,7 +258,12 @@ if (isset($_SESSION['usuario'])==false) {
                      echo "<p><select name='otro2[]' class='test' id='multiple'>";
                      echo "<option value='' selected>Sin asignar</option>";
                        foreach ($empleados as $trabajador) {
-                         echo "<option value='".$trabajador['nombre']." ".$trabajador['apellidos']."'>".$trabajador['nombre']." ".$trabajador['apellidos']."</option>";
+                         if ($trabajador['ett'] == 1) {
+                           $nombre = "ETT-".$trabajador['nombre'] ." ".$trabajador['apellidos'];
+                         }else {
+                           $nombre=$trabajador['nombre'] ." ".$trabajador['apellidos'];
+                         }
+                         echo "<option value='".$nombre."'>".$nombre."</option>";
                        }
                      echo "</select></p>";
                    }
@@ -252,7 +282,12 @@ if (isset($_SESSION['usuario'])==false) {
                       echo "<p><select name='otro3[]' class='test' id='multiple'>";
                       echo "<option value='' selected>Sin asignar</option>";
                         foreach ($empleados as $trabajador) {
-                          echo "<option value='".$trabajador['nombre']." ".$trabajador['apellidos']."'>".$trabajador['nombre']." ".$trabajador['apellidos']."</option>";
+                          if ($trabajador['ett'] == 1) {
+                            $nombre = "ETT-".$trabajador['nombre'] ." ".$trabajador['apellidos'];
+                          }else {
+                            $nombre=$trabajador['nombre'] ." ".$trabajador['apellidos'];
+                          }
+                          echo "<option value='".$nombre."'>".$nombre."</option>";
                         }
                       echo "</select></p>";
                     }
@@ -271,7 +306,12 @@ if (isset($_SESSION['usuario'])==false) {
                        echo "<p><select name='otro4[]' class='test' id='multiple'>";
                        echo "<option value='' selected>Sin asignar</option>";
                          foreach ($empleados as $trabajador) {
-                           echo "<option value='".$trabajador['nombre']." ".$trabajador['apellidos']."'>".$trabajador['nombre']." ".$trabajador['apellidos']."</option>";
+                           if ($trabajador['ett'] == 1) {
+                             $nombre = "ETT-".$trabajador['nombre'] ." ".$trabajador['apellidos'];
+                           }else {
+                             $nombre=$trabajador['nombre'] ." ".$trabajador['apellidos'];
+                           }
+                           echo "<option value='".$nombre."'>".$nombre."</option>";
                          }
                        echo "</select></p>";
                      }
@@ -290,7 +330,12 @@ if (isset($_SESSION['usuario'])==false) {
                         echo "<p><select name='otro5[]' class='test' id='multiple'>";
                         echo "<option value='' selected>Sin asignar</option>";
                           foreach ($empleados as $trabajador) {
-                            echo "<option value='".$trabajador['nombre']." ".$trabajador['apellidos']."'>".$trabajador['nombre']." ".$trabajador['apellidos']."</option>";
+                            if ($trabajador['ett'] == 1) {
+                              $nombre = "ETT-".$trabajador['nombre'] ." ".$trabajador['apellidos'];
+                            }else {
+                              $nombre=$trabajador['nombre'] ." ".$trabajador['apellidos'];
+                            }
+                            echo "<option value='".$nombre."'>".$nombre."</option>";
                           }
                         echo "</select></p>";
                       }
@@ -309,7 +354,12 @@ if (isset($_SESSION['usuario'])==false) {
                          echo "<p><select name='otro6[]' class='test' id='multiple'>";
                          echo "<option value='' selected>Sin asignar</option>";
                            foreach ($empleados as $trabajador) {
-                             echo "<option value='".$trabajador['nombre']." ".$trabajador['apellidos']."'>".$trabajador['nombre']." ".$trabajador['apellidos']."</option>";
+                             if ($trabajador['ett'] == 1) {
+                               $nombre = "ETT-".$trabajador['nombre'] ." ".$trabajador['apellidos'];
+                             }else {
+                               $nombre=$trabajador['nombre'] ." ".$trabajador['apellidos'];
+                             }
+                             echo "<option value='".$nombre."'>".$nombre."</option>";
                            }
                          echo "</select></p>";
                        }

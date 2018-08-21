@@ -156,12 +156,16 @@ if (isset($_SESSION['usuario'])==false) {
                   //sacar a los trabajadores con un foreach
                   foreach ($empleados as $trabajador) {
                     //guardar el nombre del trabajador en una variable para poder compararlo
-                    $nombre = $trabajador['nombre']." ".$trabajador['apellidos'];
+                    if ($trabajador['ett'] == 1) {
+                      $nombre = "ETT-".$trabajador['nombre']." ".$trabajador['apellidos'];
+                    }else {
+                      $nombre = $trabajador['nombre']." ".$trabajador['apellidos'];
+                    }
                     //si el nombre del trabajador y el asignado es el mismo, lo marcamos por defecto, sinos lo sacamos en la lista normal
                     if ($personalN['empleado'] == $nombre) {
-                      echo "<option value='".$trabajador['nombre']." ".$trabajador['apellidos']."' selected>".$trabajador['nombre']." ".$trabajador['apellidos']."</option>";
+                      echo "<option value='".$nombre."' selected>".$nombre."</option>";
                     }else {
-                      echo "<option value='".$trabajador['nombre']." ".$trabajador['apellidos']."'>".$trabajador['nombre']." ".$trabajador['apellidos']."</option>";
+                      echo "<option value='".$nombre."'>".$nombre."</option>";
                     }
                   }
                   //cerrar el select.
@@ -196,12 +200,16 @@ if (isset($_SESSION['usuario'])==false) {
                    //sacar a los trabajadores con un foreach
                    foreach ($empleados as $trabajador) {
                      //guardar el nombre del trabajador en una variable para poder compararlo
-                     $nombre = $trabajador['nombre']." ".$trabajador['apellidos'];
+                     if ($trabajador['ett'] == 1) {
+                       $nombre = "ETT-".$trabajador['nombre']." ".$trabajador['apellidos'];
+                     }else {
+                       $nombre = $trabajador['nombre']." ".$trabajador['apellidos'];
+                     }
                      //si el nombre del trabajador y el asignado es el mismo, lo marcamos por defecto, sinos lo sacamos en la lista normal
                      if ($personalM['empleado'] == $nombre) {
-                       echo "<option value='".$trabajador['nombre']." ".$trabajador['apellidos']."' selected>".$trabajador['nombre']." ".$trabajador['apellidos']."</option>";
+                       echo "<option value='".$nombre."' selected>".$nombre."</option>";
                      }else {
-                       echo "<option value='".$trabajador['nombre']." ".$trabajador['apellidos']."'>".$trabajador['nombre']." ".$trabajador['apellidos']."</option>";
+                       echo "<option value='".$nombre."'>".$nombre."</option>";
                      }
                    }
                    //cerrar el select.
@@ -236,12 +244,16 @@ if (isset($_SESSION['usuario'])==false) {
                     //sacar a los trabajadores con un foreach
                     foreach ($empleados as $trabajador) {
                       //guardar el nombre del trabajador en una variable para poder compararlo
-                      $nombre = $trabajador['nombre']." ".$trabajador['apellidos'];
+                      if ($trabajador['ett'] == 1) {
+                        $nombre = "ETT-".$trabajador['nombre']." ".$trabajador['apellidos'];
+                      }else {
+                        $nombre = $trabajador['nombre']." ".$trabajador['apellidos'];
+                      }
                       //si el nombre del trabajador y el asignado es el mismo, lo marcamos por defecto, sinos lo sacamos en la lista normal
                       if ($personalT['empleado'] == $nombre) {
-                        echo "<option value='".$trabajador['nombre']." ".$trabajador['apellidos']."' selected>".$trabajador['nombre']." ".$trabajador['apellidos']."</option>";
+                        echo "<option value='".$nombre."' selected>".$nombre."</option>";
                       }else {
-                        echo "<option value='".$trabajador['nombre']." ".$trabajador['apellidos']."'>".$trabajador['nombre']." ".$trabajador['apellidos']."</option>";
+                        echo "<option value='".$nombre."'>".$nombre."</option>";
                       }
                     }
                     //cerrar el select.
@@ -276,12 +288,16 @@ if (isset($_SESSION['usuario'])==false) {
                      //sacar a los trabajadores con un foreach
                      foreach ($empleados as $trabajador) {
                        //guardar el nombre del trabajador en una variable para poder compararlo
-                       $nombre = $trabajador['nombre']." ".$trabajador['apellidos'];
+                       if ($trabajador['ett'] == 1) {
+                         $nombre = "ETT-".$trabajador['nombre']." ".$trabajador['apellidos'];
+                       }else {
+                         $nombre = $trabajador['nombre']." ".$trabajador['apellidos'];
+                       }
                        //si el nombre del trabajador y el asignado es el mismo, lo marcamos por defecto, sinos lo sacamos en la lista normal
                        if ($personalC['empleado'] == $nombre) {
-                         echo "<option value='".$trabajador['nombre']." ".$trabajador['apellidos']."' selected>".$trabajador['nombre']." ".$trabajador['apellidos']."</option>";
+                         echo "<option value='".$nombre."' selected>".$nombre."</option>";
                        }else {
-                         echo "<option value='".$trabajador['nombre']." ".$trabajador['apellidos']."'>".$trabajador['nombre']." ".$trabajador['apellidos']."</option>";
+                         echo "<option value='".$nombre."'>".$nombre."</option>";
                        }
                      }
                      //cerrar el select.
@@ -318,12 +334,16 @@ if (isset($_SESSION['usuario'])==false) {
                       //sacar a los trabajadores con un foreach
                       foreach ($empleados as $trabajador) {
                         //guardar el nombre del trabajador en una variable para poder compararlo
-                        $nombre = $trabajador['nombre']." ".$trabajador['apellidos'];
+                        if ($trabajador['ett'] == 1) {
+                          $nombre = "ETT-".$trabajador['nombre']." ".$trabajador['apellidos'];
+                        }else {
+                          $nombre = $trabajador['nombre']." ".$trabajador['apellidos'];
+                        }
                         //si el nombre del trabajador y el asignado es el mismo, lo marcamos por defecto, sinos lo sacamos en la lista normal
                         if ($personalE1['empleado'] == $nombre) {
-                          echo "<option value='".$trabajador['nombre']." ".$trabajador['apellidos']."' selected>".$trabajador['nombre']." ".$trabajador['apellidos']."</option>";
+                          echo "<option value='".$nombre."' selected>".$nombre."</option>";
                         }else {
-                          echo "<option value='".$trabajador['nombre']." ".$trabajador['apellidos']."'>".$trabajador['nombre']." ".$trabajador['apellidos']."</option>";
+                          echo "<option value='".$nombre."'>".$nombre."</option>";
                         }
                       }
                       //cerrar el select.
@@ -360,12 +380,16 @@ if (isset($_SESSION['usuario'])==false) {
                        //sacar a los trabajadores con un foreach
                        foreach ($empleados as $trabajador) {
                          //guardar el nombre del trabajador en una variable para poder compararlo
-                         $nombre = $trabajador['nombre']." ".$trabajador['apellidos'];
+                         if ($trabajador['ett'] == 1) {
+                           $nombre = "ETT-".$trabajador['nombre']." ".$trabajador['apellidos'];
+                         }else {
+                           $nombre = $trabajador['nombre']." ".$trabajador['apellidos'];
+                         }
                          //si el nombre del trabajador y el asignado es el mismo, lo marcamos por defecto, sinos lo sacamos en la lista normal
                          if ($personalE2['empleado'] == $nombre) {
-                           echo "<option value='".$trabajador['nombre']." ".$trabajador['apellidos']."' selected>".$trabajador['nombre']." ".$trabajador['apellidos']."</option>";
+                           echo "<option value='".$nombre."' selected>".$nombre."</option>";
                          }else {
-                           echo "<option value='".$trabajador['nombre']." ".$trabajador['apellidos']."'>".$trabajador['nombre']." ".$trabajador['apellidos']."</option>";
+                           echo "<option value='".$nombre."'>".$nombre."</option>";
                          }
                        }
                        //cerrar el select.
@@ -402,12 +426,16 @@ if (isset($_SESSION['usuario'])==false) {
                         //sacar a los trabajadores con un foreach
                         foreach ($empleados as $trabajador) {
                           //guardar el nombre del trabajador en una variable para poder compararlo
-                          $nombre = $trabajador['nombre']." ".$trabajador['apellidos'];
+                          if ($trabajador['ett'] == 1) {
+                            $nombre = "ETT-".$trabajador['nombre']." ".$trabajador['apellidos'];
+                          }else {
+                            $nombre = $trabajador['nombre']." ".$trabajador['apellidos'];
+                          }
                           //si el nombre del trabajador y el asignado es el mismo, lo marcamos por defecto, sinos lo sacamos en la lista normal
                           if ($personalE3['empleado'] == $nombre) {
-                            echo "<option value='".$trabajador['nombre']." ".$trabajador['apellidos']."' selected>".$trabajador['nombre']." ".$trabajador['apellidos']."</option>";
+                            echo "<option value='".$nombre."' selected>".$nombre."</option>";
                           }else {
-                            echo "<option value='".$trabajador['nombre']." ".$trabajador['apellidos']."'>".$trabajador['nombre']." ".$trabajador['apellidos']."</option>";
+                            echo "<option value='".$nombre."'>".$nombre."</option>";
                           }
                         }
                         //cerrar el select.
@@ -444,12 +472,16 @@ if (isset($_SESSION['usuario'])==false) {
                          //sacar a los trabajadores con un foreach
                          foreach ($empleados as $trabajador) {
                            //guardar el nombre del trabajador en una variable para poder compararlo
-                           $nombre = $trabajador['nombre']." ".$trabajador['apellidos'];
+                           if ($trabajador['ett'] == 1) {
+                             $nombre = "ETT-".$trabajador['nombre']." ".$trabajador['apellidos'];
+                           }else {
+                             $nombre = $trabajador['nombre']." ".$trabajador['apellidos'];
+                           }
                            //si el nombre del trabajador y el asignado es el mismo, lo marcamos por defecto, sinos lo sacamos en la lista normal
                            if ($personalE4['empleado'] == $nombre) {
-                             echo "<option value='".$trabajador['nombre']." ".$trabajador['apellidos']."' selected>".$trabajador['nombre']." ".$trabajador['apellidos']."</option>";
+                             echo "<option value='".$nombre."' selected>".$nombre."</option>";
                            }else {
-                             echo "<option value='".$trabajador['nombre']." ".$trabajador['apellidos']."'>".$trabajador['nombre']." ".$trabajador['apellidos']."</option>";
+                             echo "<option value='".$nombre."'>".$nombre."</option>";
                            }
                          }
                          //cerrar el select.
@@ -486,12 +518,16 @@ if (isset($_SESSION['usuario'])==false) {
                           //sacar a los trabajadores con un foreach
                           foreach ($empleados as $trabajador) {
                             //guardar el nombre del trabajador en una variable para poder compararlo
-                            $nombre = $trabajador['nombre']." ".$trabajador['apellidos'];
+                            if ($trabajador['ett'] == 1) {
+                              $nombre = "ETT-".$trabajador['nombre']." ".$trabajador['apellidos'];
+                            }else {
+                              $nombre = $trabajador['nombre']." ".$trabajador['apellidos'];
+                            }
                             //si el nombre del trabajador y el asignado es el mismo, lo marcamos por defecto, sinos lo sacamos en la lista normal
                             if ($personalE5['empleado'] == $nombre) {
-                              echo "<option value='".$trabajador['nombre']." ".$trabajador['apellidos']."' selected>".$trabajador['nombre']." ".$trabajador['apellidos']."</option>";
+                              echo "<option value='".$nombre."' selected>".$nombre."</option>";
                             }else {
-                              echo "<option value='".$trabajador['nombre']." ".$trabajador['apellidos']."'>".$trabajador['nombre']." ".$trabajador['apellidos']."</option>";
+                              echo "<option value='".$nombre."'>".$nombre."</option>";
                             }
                           }
                           //cerrar el select.
@@ -528,12 +564,16 @@ if (isset($_SESSION['usuario'])==false) {
                            //sacar a los trabajadores con un foreach
                            foreach ($empleados as $trabajador) {
                              //guardar el nombre del trabajador en una variable para poder compararlo
-                             $nombre = $trabajador['nombre']." ".$trabajador['apellidos'];
-                             //si el nombre del trabajador y el asignado es el mismo, lo marcamos por defecto, sinos lo sacamos en la lista normal
-                             if ($personalE6['empleado'] == $nombre) {
-                               echo "<option value='".$trabajador['nombre']." ".$trabajador['apellidos']."' selected>".$trabajador['nombre']." ".$trabajador['apellidos']."</option>";
+                             if ($trabajador['ett'] == 1) {
+                               $nombre = "ETT-".$trabajador['nombre']." ".$trabajador['apellidos'];
                              }else {
-                               echo "<option value='".$trabajador['nombre']." ".$trabajador['apellidos']."'>".$trabajador['nombre']." ".$trabajador['apellidos']."</option>";
+                               $nombre = $trabajador['nombre']." ".$trabajador['apellidos'];
+                             }
+                             //si el nombre del trabajador y el asignado es el mismo, lo marcamos por defecto, sinos lo sacamos en la lista normal
+                             if ($personalN['empleado'] == $nombre) {
+                               echo "<option value='".$nombre."' selected>".$nombre."</option>";
+                             }else {
+                               echo "<option value='".$nombre."'>".$nombre."</option>";
                              }
                            }
                            //cerrar el select.
