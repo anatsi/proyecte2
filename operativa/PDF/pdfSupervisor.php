@@ -37,7 +37,7 @@
   // Empezar a 120 mm para el segundo cuadro
   $pdf->SetX(120);
   $pdf->Cell(30,5,"Jefe Turno",1,0,"C");
-  $pdf->Cell(40,5,$nombreUsuario['name'],1,1,"C");
+  $pdf->Cell(40,5,utf8_decode($nombreUsuario['name']),1,1,"C");
   $pdf->SetX(120);
   $pdf->Cell(30,5,"Semana",1,0,"C");
   $pdf->Cell(40,5,$semana,1,1,"C");
@@ -181,7 +181,7 @@
 
   }
   //si el supervisor ha puesto algun comentario, lo escribimos a continuacion
-  if ($_GET['com'] && $_GET['com'] != '') {
+  if (isset($_GET['com']) && $_GET['com'] != '') {
     //comprobamos que columna es mas larga
     if ($der > $izq) {
       $total = $der;
@@ -212,7 +212,7 @@
   // Empezar a 120 mm para el segundo cuadro
   $pdf->SetX(120);
   $pdf->Cell(30,5,"Jefe Turno",1,0,"C");
-  $pdf->Cell(40,5,$nombreUsuario['name'],1,1,"C");
+  $pdf->Cell(40,5,utf8_decode($nombreUsuario['name']),1,1,"C");
   $pdf->SetX(120);
   $pdf->Cell(30,5,"Semana",1,0,"C");
   $pdf->Cell(40,5,$semana,1,1,"C");
