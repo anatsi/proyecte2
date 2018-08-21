@@ -5,11 +5,15 @@
   require_once '../bbdd/recursos.php';
   require_once '../bbdd/empleados.php';
   require_once '../bbdd/personal.php';
+  require_once '../../ddbb/users.php';
   $cliente= new Cliente();
   $servicio= new Servicio();
   $recursos= new Recursos();
   $empleados = new Empleados();
   $personal = new Personal();
+  $usuario=new User();
+  //sacar el nombre del usuario conectado
+  $nombreUsuario=$usuario->nombreUsuario($_GET['u']);
   //incluir libreria de pdf's
   require 'fpdf/fpdf.php';
   $pdf = new FPDF();
@@ -32,8 +36,8 @@
   $pdf->Cell(40,5,utf8_decode($_GET['turno']),1,1,"C");
   // Empezar a 120 mm para el segundo cuadro
   $pdf->SetX(120);
-  $pdf->Cell(30,5,"Mes",1,0,"C");
-  $pdf->Cell(40,5,$mes,1,1,"C");
+  $pdf->Cell(30,5,"Jefe Turno",1,0,"C");
+  $pdf->Cell(40,5,$nombreUsuario['name'],1,1,"C");
   $pdf->SetX(120);
   $pdf->Cell(30,5,"Semana",1,0,"C");
   $pdf->Cell(40,5,$semana,1,1,"C");
@@ -207,8 +211,8 @@
   $pdf->Cell(40,5,'ESPECIALES',1,1,"C");
   // Empezar a 120 mm para el segundo cuadro
   $pdf->SetX(120);
-  $pdf->Cell(30,5,"Mes",1,0,"C");
-  $pdf->Cell(40,5,$mes,1,1,"C");
+  $pdf->Cell(30,5,"Jefe Turno",1,0,"C");
+  $pdf->Cell(40,5,$nombreUsuario['name'],1,1,"C");
   $pdf->SetX(120);
   $pdf->Cell(30,5,"Semana",1,0,"C");
   $pdf->Cell(40,5,$semana,1,1,"C");
