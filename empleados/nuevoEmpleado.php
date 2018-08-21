@@ -24,54 +24,6 @@ if (isset($_SESSION['usuario'])==false) {
     <link rel="shortcut icon" href="../imagenes/favicon.ico">
     <link rel="stylesheet" type="text/css" href="../css/dashboard.css" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <script type="text/javascript">
-        function check(f){
-            var res = true;
-            var errores = "";
-            var final = f.dni.value.substr(0, 8);
-            var terminal = f.dni.value.substr(8, 1);
-            var cadena = "TRWAGMYFPDXBNJZSQVHLCKET";
-            var posicion = final % 23;
-            var stri = cadena.substring(posicion, posicion + 1);
-            var letra_dni = stri;
-            var letra_escrita = f.dni.value.substr(8, 1);
-            var extrangero= f.dni.value.substr(0,1);
-
-           /*Probar que en el formulario no hay espacio en blanco ni esta vacio vacio*/
-
-            if (f.nombre.value == "" || /^\s+|\s+$/.test(f.nombre.value)==true){
-                errores += "Falta el nombre.\n";
-                res = false;
-              }
-            if (f.apellidos.value == ""|| /^\s+|\s+$/.test(f.apellidos.value)==true){
-                errores += "Falta apellido.\n";
-                res = false;
-            }
-            if (f.telefono.value == ""||/^\s+|\s+$/.test(f.telefono.value)==true){
-                errores += "Falta el telefono.\n";
-                res = false;
-            }
-            //Primero comprobar si es un NIE de extranjero en este caso no se comproba mas cosas ya que hay muy poco casos
-            if(!isNaN(extrangero)){
-            if(f.dni.value == ""||(/^\s+|\s+$/.test(f.dni.value))==true){
-                errores += "El DNI no puede estar vacio.\n";
-                res = false;
-            }else if(f.dni.value.length !=9 || isNaN(final) || !isNaN(terminal)){
-            errores += "El DNI no se corresponde con el formato esperado DNI-letra.\n";
-                res = false;
-            }else if(letra_escrita!=letra_dni){
-                errores += "La letra del DNI no coincide debería ser  " + letra_dni + ".\n";
-                res = false;
-            }else{
-
-                res = true;
-           }
-         }
-           if (res == false)
-                alert(errores);
-            return res;
-            }
-    </script>
     </head>
     <body>
       <head>
@@ -118,7 +70,6 @@ if (isset($_SESSION['usuario'])==false) {
           <div class="formthird">
               <p><label><i class="fa fa-question-circle"></i>Nombre</label><input name='nombre' type="text" ></p>
               <p><label><i class="fa fa-question-circle"></i>Apellidos</label><input name='apellidos' type="text" ></p>
-              <p><label><i class="fa fa-question-circle"></i>Dni</label><input name='dni' type="text" ></p>
               <p><label><i class="fa fa-question-circle"></i>Telefono</label><input name='telefono' type="tel"></p>
 
         </div>
@@ -142,8 +93,6 @@ if (isset($_SESSION['usuario'])==false) {
 
 </body>
 </html>
-//php funcion para recopilar dato dado por el usuario
-
      <?php
 //comprobamos si se ha rellenado el nombre y el apellido
   if (isset($_POST['nombre']) && isset($_POST['apellidos'])){
@@ -195,12 +144,12 @@ $lista = array("$user0","$user1","$user2","$user3","$user4","$user5","$user6","$
 
     if($nuevoUsuario==null || $nuevoUsuario==false){
 
-      //incryptar la contraseña
+      //encryptar la contraseña
       $salt='$tsi$/';
       $contra = sha1(md5($salt .$lista[$i]));
 
       //Insertar los datos en la base de datos
-      $nuevoEmpleado=$empleado->nuevoEmpleado($nombre,$apellido, $_POST['dni'],$lista[$i],$alta,$_POST['telefono'],$contra,$_POST['Fecha_permiso'],$_POST['tareas'],$_POST['tallas']);
+      $nuevoEmpleado=$empleado->nuevoEmpleado($nombre,$apellido,$lista[$i],$alta,$_POST['telefono'],$contra);
 
 // Enviar correo a los responsables de IT con los datos del nuevo usuario
 
@@ -245,7 +194,6 @@ $lista = array("$user0","$user1","$user2","$user3","$user4","$user5","$user6","$
 
    }
 
-  // if nuevousuario
   }//Bucle de for
 
      //Si el usurio no existe en la base de dato se pasa a comprobar si la fila se ha insertado correctamente
@@ -254,7 +202,7 @@ $lista = array("$user0","$user1","$user2","$user3","$user4","$user5","$user6","$
       //si no se ha podido insertar, sacamos un mensaje avisando
       ?>
       <script type="text/javascript" class="alert">
-        alert('Error al registrar el nuevo empleado').style.color = "blue";
+        alert('Error al registrar el nuevo empleado');
         window.location = 'index.php';
       </script>
       <?php
@@ -267,10 +215,6 @@ $lista = array("$user0","$user1","$user2","$user3","$user4","$user5","$user6","$
         </script>
       <?php
     }
-
-  // if nuevousuario
-
-  //for
 
   }
 

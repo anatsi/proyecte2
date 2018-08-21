@@ -133,9 +133,10 @@ class Empleados extends db
 
   //funcion para insertar un nuevo empleado en la base de datos.
 
-function nuevoEmpleado($nombre, $apellidos, $dni, $user, $alta, $telefono,$password){
+function nuevoEmpleado($nombre, $apellidos, $user, $alta, $telefono,$password){
   //realizamos la consuta y la guardamos en $sql
-  $sql="INSERT INTO empleados(id, nombre,apellidos,dni,user,alta, telefono,password) VALUES (null, '".$nombre."', '".$apellidos."','".$dni."', '".$user."',".$alta.",".$telefono.",'".$password."')";
+  $sql="INSERT INTO empleados(id, nombre,apellidos,user,alta, telefono,password) VALUES (null, '".$nombre."', '".$apellidos."', '".$user."',".$alta.",".$telefono.",'".$password."')";
+
   //Realizamos la consulta utilizando la funcion creada en db.php
   $resultado=$this->realizarConsulta($sql);
   if($resultado!=false){
