@@ -573,7 +573,10 @@ if (isset($_SESSION['usuario'])==false) {
                      }
                      ?>
           <div class="submitbuttons">
-              <input class="submitone" type="submit" value="<?php echo __('Enviar', $lang); ?>"/>
+              <input class="submithree" style="width: 25%; margin-right: 15%; margin-left: 5%;" type="submit" value="<?php echo __('Enviar', $lang); ?>"/>
+              <?php
+                echo "<button class='submitwo' type='button' name='button' onclick=window.location='tablaRRHH.php?fecha=".$_GET['fecha']."'>Atras</button>";
+               ?>
           </div>
   </form>
 
