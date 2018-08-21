@@ -140,9 +140,9 @@ if (isset($_SESSION['usuario'])==false) {
             <button type="button" name="button" onclick="calculoPersonas();"><?php echo __('Calcular', $lang); ?></button>
 
               <p><label><i class="fa fa-question-circle"></i><?php echo __('Recursos totales', $lang); ?> (*)</label><input type="number" min='0' name="recursos" id="total" value=0 readonly/></p>
+              <p><label><i class="fa fa-question-circle"></i><?php echo __('Turno noche', $lang); ?></label><input type="number" min='0'name="tn" id="tn" value='0' onclick="suma();" onkeyup="suma();"/></p>
               <p><label><i class="fa fa-question-circle"></i><?php echo __('Turno mañana', $lang); ?></label><input type="number" min='0' name="tm" id="tm" value='0' onclick="suma();" onkeyup="suma();"/></p>
               <p><label><i class="fa fa-question-circle"></i><?php echo __('Turno tarde', $lang); ?></label><input type="number" min='0' name="tt" id="tt" value='0' onclick="suma();" onkeyup="suma();"/></p>
-              <p><label><i class="fa fa-question-circle"></i><?php echo __('Turno noche', $lang); ?></label><input type="number" min='0'name="tn" id="tn" value='0' onclick="suma();" onkeyup="suma();"/></p>
               <p><label><i class="fa fa-question-circle"></i><?php echo __('Turno central', $lang); ?></label><input type="number" min='0'name="tc" id="tc" value='0' onclick="suma();" onkeyup="suma();"/></p>
 
               <button type="button" name="button" id="nuevoServicio" onclick="nuevo();"><?php echo __('Añadir otro horario', $lang); ?></button>
@@ -159,7 +159,7 @@ if (isset($_SESSION['usuario'])==false) {
               <p><input type='file' name='archivo5' value='archivo5' id='archivo5'></p>
               <p><input type='file' name='archivo6' value='archivo6' id='archivo6'></p>
 
-              <p><label><i class="fa fa-question-circle"></i><?php echo __('Comentario supervisor', $lang); ?></label><textarea name="csup"></textarea></p>
+              <p><label><i class="fa fa-question-circle"></i><?php echo __('Comentario Jefe Turno', $lang); ?></label><textarea name="csup"></textarea></p>
               <p><label><i class="fa fa-question-circle"></i><?php echo __('Comentario RRHH.', $lang); ?></label><textarea name="crrhh"></textarea></p>
               <p><label><i class="fa fa-question-circle"></i><?php echo __('Comentario Admin. Financiero', $lang); ?></label><textarea name="caf"></textarea></p>
           </div>
