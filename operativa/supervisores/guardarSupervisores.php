@@ -182,7 +182,7 @@ for ($i=0; $i < $recuento ; $i++) {
 
 
 if ($error==0) {
-  $com = urlencode($_POST['comentario']);
+  $com = base64_encode($_POST['comentario']);
 /*  echo $_POST['comentario'];
   $arreglar = str_replace('\n', '<br>', $_POST['comentario']);
 

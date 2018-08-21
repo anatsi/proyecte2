@@ -185,10 +185,11 @@
       $pdf->SetY($izq);
     }
     //creamos la celda con el comentario
-    $trozosComentario = explode("%0D%0A", $_GET['com']);
-    foreach ($trozosComentario as $com) {
-      $pdf->MultiCell(190, 5, urldecode($com), 1);
-    }
+    $comentario = base64_decode($_GET['com']);
+    //$trozosComentario = explode("%0D%0A", $comentario);
+    //foreach ($trozosComentario as $com) {
+      $pdf->MultiCell(190, 5, utf8_decode($comentario), 1);
+    //}
 
   }
 
