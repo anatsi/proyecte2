@@ -180,16 +180,19 @@
   if ($_GET['com'] && $_GET['com'] != '') {
     //comprobamos que columna es mas larga
     if ($der > $izq) {
-      $pdf->SetY($der);
+      $total = $der;
     }else {
-      $pdf->SetY($izq);
+      $total = $izq;
     }
+    $pdf->SetY($total);
+    $pdf->SetTextColor(220,50,50);
+    $pdf->Cell(190,5,'MODIFICACIONES DE PERSONAL.',1,2,"C");
     //creamos la celda con el comentario
     $comentario = base64_decode($_GET['com']);
-    //$trozosComentario = explode("%0D%0A", $comentario);
-    //foreach ($trozosComentario as $com) {
-      $pdf->MultiCell(190, 5, utf8_decode($comentario), 1);
-    //}
+    $pdf->SetTextColor(3, 3, 3);
+    $total = $total+5;
+    $pdf->SetY($total);
+    $pdf->MultiCell(190, 5, utf8_decode($comentario), 1);
 
   }
 
