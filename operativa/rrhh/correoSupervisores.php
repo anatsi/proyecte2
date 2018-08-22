@@ -30,7 +30,7 @@
       '<br />Enviado el ' . date('d/m/Y', time()) .
     '</body></html>';
 
-    $para = 'aasins@tsiberia.es, jpratval@tsiberia.es, jsanc267@tsiberia.es, jlluecag@tsiberia.es, mdevita1@tsiberia.es, ariquelme@tsiberia.es, emart309@tsiberia.es';
+    $para = 'jpratval@tsiberia.es, jsanc267@tsiberia.es, jlluecag@tsiberia.es, mdevita1@tsiberia.es, ariquelme@tsiberia.es, emart309@tsiberia.es';
     $asunto = 'Personal para el ' .$fecha;
 
     mail($para, $asunto, $mensaje, $header);

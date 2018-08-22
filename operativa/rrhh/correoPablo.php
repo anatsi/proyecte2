@@ -18,6 +18,18 @@ $mail->CharSet = 'UTF-8';
   $mail->AddAddress("acosinga@ford.com");
   $mail->AddAddress("acosinga@tsiberia.es");
   $mail->AddAddress("rrhh@tsiberia.es");
+  $mail->AddAddress("jpratval@tsiberia.es");
+  $mail->AddAddress("jsanc267@tsiberia.es");
+  $mail->AddAddress("ariquelm@tsiberia.es");
+  $mail->AddAddress("emart309@tsiberia.es");
+  $mail->AddAddress("mdevita1@tsiberia.es");
+  $mail->AddAddress("jlluecag@tsiberia.es");
+  $mail->AddAddress("jpratval@ford.com");
+  $mail->AddAddress("jsanc267@ford.com");
+  $mail->AddAddress("ariquelm@ford.com");
+  $mail->AddAddress("emart309@ford.com");
+  $mail->AddAddress("mdevita1@ford.com");
+  $mail->AddAddress("jlluecag@ford.com");
 
   //transformamos la fecha
   $fecha=explode("-", $_GET['fecha']);
@@ -26,11 +38,11 @@ $mail->CharSet = 'UTF-8';
   //Asignamos asunto y cuerpo del mensaje
   //El cuerpo del mensaje lo ponemos en formato html, haciendo
   //que se vea en negrita
-  $mail->Subject = $fecha." personnel planification";
-  $mail->Body = "Se adjunta planificacion del personal por parte de RRHH para el día: ".$fecha;
+  $mail->Subject = $fecha." Borrador de personal";
+  $mail->Body = "Se adjunta planificacion/borrador del personal por parte de RRHH para el día: ".$fecha;
 
   //Definimos AltBody por si el destinatario del correo no admite email con formato html
-  $mail->AltBody = "Se adjunta planificacion del personal por parte de RRHH para el día: ".$fecha;
+  $mail->AltBody = "Se adjunta planificacion/borrador del personal por parte de RRHH para el día: ".$fecha;
 
   //  $mail->AddAttachment($url);
   //adjuntar el pdf y ponerle el nombre que quieras
@@ -65,6 +77,11 @@ $mail->CharSet = 'UTF-8';
 
 
  ?>
-<script type="text/javascript">
+ <!-- codigo redireccion a correoSupervisores.php-->
+<!--<script type="text/javascript">
   window.location = 'correoSupervisores.php?fecha=<?php echo $_GET['fecha']; ?>';
+</script>-->
+<!-- redireccion a filtroRRHH.php-->
+<script type="text/javascript">
+  window.location = 'filtroRRHH.php';
 </script>
