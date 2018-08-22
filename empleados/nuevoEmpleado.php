@@ -112,12 +112,12 @@ if (isset($_SESSION['usuario'])==false) {
       $rest6 = substr("$apellido",1,2);
       $rest7 = substr("$nombre",1,2);
       $rest8 = substr("$apellido",2,2);
-      $user0=$rest0;
-      $user1=$rest5;
-      $user2=$rest1.$rest2;
-      $user3=$rest3.$rest4;
-      $user4=$rest2.$rest1;
-      $user5=$rest4.$rest3;
+      $user0=$rest1.$rest2;
+      $user1=$rest3.$rest4;
+      $user2=$rest0;
+      $user3=$rest2.$rest1;
+      $user4=$rest4.$rest3;
+      $user5=$rest5;
       $user6=$rest3.$rest6;
       $user7=$rest3.$rest6;
       $user8=$rest6.$rest3;
@@ -125,6 +125,7 @@ if (isset($_SESSION['usuario'])==false) {
       $user10=$rest8.$rest3;
       $user11=$rest7.$rest2;
       $user12=$rest2.$rest7;
+
 
 $lista = array("$user0","$user1","$user2","$user3","$user4","$user5","$user6","$user7","$user8","$user9"
   ,"$user10","$user11","$user12");
