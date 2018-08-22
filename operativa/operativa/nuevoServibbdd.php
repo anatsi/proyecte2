@@ -129,7 +129,7 @@
                  '<h3>'.$_POST['descripcion'].'</h3>'.
                  '<h4>INICIO: '.$fecha.'</h4>'.
                  '<h4>RECURSOS: '.$_POST['recursos'].'</h4>'.
-                 'Accede a <a href="acceso.tsiberia.es">acceso.tsiberia.es</a> para más información.
+                 'Accede a <a href="www.acceso.tsiberia.es">www.acceso.tsiberia.es</a> para más información.
                  <hr>'.
                  'Por favor, no responda a este correo lo envia un robot automáticamente.'.
                  '<br />Enviado el ' . date('d/m/Y', time()) .
