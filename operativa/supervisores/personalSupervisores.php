@@ -113,18 +113,29 @@ if (isset($_SESSION['usuario'])==false) {
       echo "<h2>".$fechaMostrar." - Turno ".$_POST['turno']."</h2>";
       echo "<h3><a href='../PDF/pdfSupervisor.php?fecha=".$_POST['fecha']."&turno=".$_POST['turno']."&u=".$_SESSION['usuario']."' title='Visualizar personal' target='_blank'><img src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAASzSURBVGhD7VlbixxFFB4RjYhGErwHgghCkBgiC2Z3qmYnxFXXqZ7EBJaARhQfFC8vPqiBQPISCMEfIMlDYi4++CTeEFRIQkyIribkIjEXlSw70725aaIkMbfNd3pOT1fN1Gx6prtnRtgPPna7zulzzleX7qqeTDMoOfl7y45c6Sr5k+uIs64jx1umkv+VldztFcUzHL49KBfksrIj/rYWFZNlJTYeHRycwqnSA3r/bVsByVLsGHm2dzqnTB5uQc5Dj12tTYy2P/D351aIKXUef414RMTcXx6U93HqZIE1sc1IqORvmNe9bG4Jo4XsXMS9bsStxhe/esV5D7BrMhhRvTP0hPj/XMkRM9kcC9T7hgCNWIsHTg8+NZVd46NcEEtqEqxlU2wg3td67Fpi+n2R2AMAhb9hJCjmXmVTbCD2V0ZsC+Gzy13cdz/f0jrQK2/qgT1HvMim2IgixCfWTOwHQFcIAeF7IJaYbhFChP+ektNzJ9/eHLpJCBFPzc/Hh4Zu5RDR0W1CiBDzLoeIjlSFKLFBjx2VqOl80+slTSElp28WYu6zbX9uRtrAcphoSFNIFIwN5e/CVMpjQ3lEr8MtiA/YJRo6LSQA6nhdrwPClrMpGrpFCOXV65gUErDrhdDGDEX3WLhGD4CFt8LiE4unFmYf5jIaIpIQakSB9kNOu6jkh1yOFZGEoFeqx05fEO02HfEdEW3DuP4rDFD1Oxj4MPeg/Uytn08lT9T4+kTc7YEPariGkbmbS6pDxBHRHeQwN1cxnsncUnLkC0h+NPArqWyOzQY8J9uHJDu0eGDjhYmY1a8yE508mxei5E5uroO7KP8IAlwkPySV3FyHQ0OP326K6bAQDP07uOEbT8lHuYkS03SrCqm8ecWPmBqf0AcF3wnwnu9/IowbJuWY63wqsVlfm6kJQXH+E8sr5hZxExXyGbUFQs4ODNwT3itO0Wj4jgBiHa7YwqQQ3XDHm/aIbPkzn7+Dm6gQl/ysQsCTqv8x3xEIROtJadQwwgNEdJSx7UhNSC3KKlsI/BoKeS73kO8MoNBPK+2WpAAVrt+buhB6atH0gu104GcTgtG6op/ekIwXfJiU1tQJJacRK084zgumJoSKpcWNni0ZPqBViBJf+jcCdLbGvf9WbGHSjqyR+ptDBkLoJYbrfeAm/dSGp9Fbof//QIgNXlHOQcHazw8dESJ+4OYM3t4vGTadxdwCdquCNp7oiPcxxf4x/cOkuG74mTS2EKwBT3O4hF4L9kO/mzfrFCchejv5kXjEOGb3A5UY8eMp8T2EXrD6YMcw0XfeSEJKSiyGcdR0bCf9TnmNy7EikpCJgJ6ePCEmiUkhASaFJIzEheAR+gqb2or6d1ruPTZFg+tklxoBlFjNprYCW55Veh24fplN0WCe9HyeGSvkH2RzW0B7OMyMMb2O0YX9T7I5OvA25pMeU4m9ruqbzeZUwV/sh/X8GI3jbG4OddOLgil5jQRp25nEifi/2H5yoPXCpTUPBPi4NmCHuJVLag3jPT23YYp9ZAncRor1+seNWMBwz8e0+hbz9LI9WbLEFLtC08xz5NNcQrKgszcteEoQfBVJlIhL8Sf6jGoik7kBPxfOVGbDVUsAAAAASUVORK5CYII='></a></h3>";
      ?>
+     <?php
+       //transformar los turnos.
+       //convertimos el turno que nos han enviado.
+       if ($_POST['turno'] == 'Mañana') {
+         $turno = 'tm';
+       }elseif ($_POST['turno'] == 'Tarde') {
+         $turno = 'tt';
+       }elseif ( $_POST['turno'] == 'Noche') {
+         $turno = 'tn';
+       }
+
+       $supervisor = $personal->nombreSuper($_POST['fecha'], $turno);
+       if ($supervisor == null || $supervisor == false || $supervisor == '') {
+         echo "<h6 style='color:green; margin-left:9%;'>Todavia no se ha confirmado el personal</h6>";
+       }else {
+         echo "<h6 style='color:red; margin-left:9%;'>".$supervisor['usuario']." ya ha confirmado el personal</h6>";
+       }
+
+      ?>
 
     <form method="post" id="formulario" action="guardarSupervisores.php" method="post">
       <?php
-      //transformar los turnos.
-      //convertimos el turno que nos han enviado.
-      if ($_POST['turno'] == 'Mañana') {
-        $turno = 'tm';
-      }elseif ($_POST['turno'] == 'Tarde') {
-        $turno = 'tt';
-      }elseif ( $_POST['turno'] == 'Noche') {
-        $turno = 'tn';
-      }
+
         //sacamos las actividades que hay para el dia seleccionado.
         $actividadesHoy = $servicio -> listaRRHH($_POST['fecha']);
         $personalHoy = $personal -> personalHoy($_POST['fecha'], $turno);

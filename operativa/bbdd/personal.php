@@ -100,6 +100,23 @@ function empleadosServicio($servicio, $dia, $turno){
     }
   }
 
+  //funcion para sacar el nombre del supervisor que ha confirmado el personal
+  function nombreSuper($fecha, $turno){
+    //Construimos la consulta
+    $sql="SELECT * FROM personal_servicios WHERE dia='".$fecha."' AND turno='".$turno."' AND usuario!='rrhh' order by id desc limit 1";
+    //Realizamos la consulta
+    $resultado=$this->realizarConsulta($sql);
+    if($resultado!=false){
+      if($resultado!=false){
+        return $resultado->fetch_assoc();
+      }else{
+        return null;
+      }
+    }else{
+      return null;
+    }
+  }
+
 
 }
 
