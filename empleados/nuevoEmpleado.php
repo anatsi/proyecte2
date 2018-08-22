@@ -182,7 +182,7 @@ $lista = array("$user0","$user1","$user2","$user3","$user4","$user5","$user6","$
       '<br />Enviado el ' . date('d/m/Y', time()) .
     '</body></html>';
 
-    $para = 'it@tsiberia.es';
+    $para = 'it@tsiberia.es, rrhh@tsiberia.es';
     $asunto = 'Nuevo usuario creado';
 
     mail($para, $asunto, $mensaje, $header);
