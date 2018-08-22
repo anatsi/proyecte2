@@ -1,5 +1,8 @@
 <?php
   /*Incluir los archivos necesarios para la db*/
+  require '../../ddbb/sesiones.php';
+  $sesion = new Sesiones();
+  require_once '../../ddbb/users.php';
   require_once '../bbdd/servicio.php';
   require_once '../bbdd/cliente.php';
   require_once '../bbdd/recursos.php';
@@ -10,6 +13,12 @@
   $recursos= new Recursos();
   $empleados = new Empleados();
   $personal = new Personal();
+  $usuario=new User();
+
+  //sacar el nombre del usuario que crea el pdf.
+  $nombreUser=$usuario->nombreUsuario($_SESSION['usuario']);
+
+
   //incluir libreria de pdf's
   require 'fpdf/fpdf.php';
   $pdf = new FPDF();
@@ -20,24 +29,24 @@
   $fecha_actual=explode("-", $_POST['fecha']);
   $fecha_actual=$fecha_actual[2]."-".$fecha_actual[1]."-".$fecha_actual[0];
 
-  $semana = date("W", strtotime($_POST['fecha']));
-  $mes = date("F", strtotime($_POST['fecha']));
+  //sacar la fecha y hora de creacion del pdf.
+  $creacion=date('d-m-Y H:i');
 
   $pdf->SetY(5);
   $pdf->Image('../../assets/files/logo.png',15,8,20,13,"PNG");
   $pdf->SetX(40);
-  $pdf->Cell(80,20,"GRUPOS DE TRABAJO",1,0,"C");
-  $pdf->Cell(30,5,"Turno",1,0,"C");
+  $pdf->Cell(70,20,"GRUPOS DE TRABAJO",1,0,"C");
+  $pdf->Cell(40,5,"Turno",1,0,"C");
   $pdf->Cell(40,5,"NOCHE",1,1,"C");
   // Empezar a 120 mm para el segundo cuadro
-  $pdf->SetX(120);
-  $pdf->Cell(30,5,"Mes",1,0,"C");
-  $pdf->Cell(40,5,$mes,1,1,"C");
-  $pdf->SetX(120);
-  $pdf->Cell(30,5,"Semana",1,0,"C");
-  $pdf->Cell(40,5,$semana,1,1,"C");
-  $pdf->SetX(120);
-  $pdf->Cell(30,5,"Dia",1,0,"C");
+  $pdf->SetX(110);
+  $pdf->Cell(40,5,"RRHH",1,0,"C");
+  $pdf->Cell(40,5,utf8_decode($nombreUser['name']),1,1,"C");
+  $pdf->SetX(110);
+  $pdf->Cell(40,5,utf8_decode('Fecha confimación'),1,0,"C");
+  $pdf->Cell(40,5,$creacion,1,1,"C");
+  $pdf->SetX(110);
+  $pdf->Cell(40,5,utf8_decode('Día efectivo'),1,0,"C");
   $pdf->Cell(40,5,"$fecha_actual",1,1,"C");
   /////////FIN CABEZA DE LA PAGINA
   ////DEBUT ACTIVIDADES
@@ -177,13 +186,13 @@
   $pdf->Cell(40,5,utf8_decode('MAÑANA'),1,1,"C");
   // Empezar a 120 mm para el segundo cuadro
   $pdf->SetX(120);
-  $pdf->Cell(30,5,"Mes",1,0,"C");
-  $pdf->Cell(40,5,$mes,1,1,"C");
+  $pdf->Cell(30,5,"RRHH",1,0,"C");
+  $pdf->Cell(40,5,$nombreUser['name'],1,1,"C");
   $pdf->SetX(120);
-  $pdf->Cell(30,5,"Semana",1,0,"C");
-  $pdf->Cell(40,5,$semana,1,1,"C");
+  $pdf->Cell(30,5,utf8_decode('Fecha confimación'),1,0,"C");
+  $pdf->Cell(40,5,$creacion,1,1,"C");
   $pdf->SetX(120);
-  $pdf->Cell(30,5,"Dia",1,0,"C");
+  $pdf->Cell(30,5,utf8_decode('Día efectivo'),1,0,"C");
   $pdf->Cell(40,5,"$fecha_actual",1,1,"C");
   /////////FIN CABEZA DE LA PAGINA
   ////DEBUT ACTIVIDADES
@@ -320,13 +329,13 @@
   $pdf->Cell(40,5,'TARDE',1,1,"C");
   // Empezar a 120 mm para el segundo cuadro
   $pdf->SetX(120);
-  $pdf->Cell(30,5,"Mes",1,0,"C");
-  $pdf->Cell(40,5,$mes,1,1,"C");
+  $pdf->Cell(30,5,"RRHH",1,0,"C");
+  $pdf->Cell(40,5,$nombreUser['name'],1,1,"C");
   $pdf->SetX(120);
-  $pdf->Cell(30,5,"Semana",1,0,"C");
-  $pdf->Cell(40,5,$semana,1,1,"C");
+  $pdf->Cell(30,5,utf8_decode('Fecha confimación'),1,0,"C");
+  $pdf->Cell(40,5,$creacion,1,1,"C");
   $pdf->SetX(120);
-  $pdf->Cell(30,5,"Dia",1,0,"C");
+  $pdf->Cell(30,5,utf8_decode('Día efectivo'),1,0,"C");
   $pdf->Cell(40,5,"$fecha_actual",1,1,"C");
   /////////FIN CABEZA DE LA PAGINA
   ////DEBUT ACTIVIDADES
@@ -462,13 +471,13 @@
   $pdf->Cell(40,5,'ESPECIALES',1,1,"C");
   // Empezar a 120 mm para el segundo cuadro
   $pdf->SetX(120);
-  $pdf->Cell(30,5,"Mes",1,0,"C");
-  $pdf->Cell(40,5,$mes,1,1,"C");
+  $pdf->Cell(30,5,"RRHH",1,0,"C");
+  $pdf->Cell(40,5,$nombreUser['name'],1,1,"C");
   $pdf->SetX(120);
-  $pdf->Cell(30,5,"Semana",1,0,"C");
-  $pdf->Cell(40,5,$semana,1,1,"C");
+  $pdf->Cell(30,5,utf8_decode('Fecha confimación'),1,0,"C");
+  $pdf->Cell(40,5,$creacion,1,1,"C");
   $pdf->SetX(120);
-  $pdf->Cell(30,5,"Dia",1,0,"C");
+  $pdf->Cell(30,5,utf8_decode('Día efectivo'),1,0,"C");
   $pdf->Cell(40,5,"$fecha_actual",1,1,"C");
   /////////FIN CABEZA DE LA PAGINA
   ////DEBUT ACTIVIDADES
