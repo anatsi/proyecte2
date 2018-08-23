@@ -83,6 +83,28 @@ class Servicio extends db
     }
   }
 
+  //funcion para listar los servicios de actividades actuales
+  function listaActividadesActuales(){
+    //cogemos la fecha de hoy para compararla con lo que vamos a sacar.
+    $fecha=date("Y-m-d");
+    //Construimos la consulta
+    $sql="SELECT * from servicios WHERE f_fin>='".$fecha."'
+    OR f_fin IS NULL
+    ORDER BY f_inicio asc";
+    //Realizamos la consulta
+    $resultado=$this->realizarConsulta($sql);
+    if($resultado!=null){
+      //Montamos la tabla de resultados
+      $tabla=[];
+      while($fila=$resultado->fetch_assoc()){
+        $tabla[]=$fila;
+      }
+      return $tabla;
+    }else{
+      return null;
+    }
+  }
+
   //funcion para sacar el ultimo servicio insertado en a BBDD
   function ultimoServicio(){
     //Construimos la consulta

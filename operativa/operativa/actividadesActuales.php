@@ -111,28 +111,50 @@ if (isset($_SESSION['usuario'])==false) {
           <tr id="trmod">
             <th scope="col" id="thmod"><?php echo __('Actividad', $lang); ?></th>
             <th scope="col" id="thmod"><?php echo __('Modelos', $lang); ?></th>
-            <th scope="col" id="thmod"><?php echo __('Fecha inicio', $lang); ?></th>
-            <th scope="col" id="thmod"><?php echo __('Cliente', $lang); ?></th>
-            <th scope="col" id="thmod">Telefono</th>
+            <th scope="col" id="thmod">Estado</th>
+            <th scope="col" id="thmod">Hoy</th>
+            <th scope="col" id="thmod">Mañana</th>
             <th scope="col" id="thmod"><?php echo __('Opciones', $lang); ?></th>
           </tr>
         </thead>
         <tbody id="tbodymod">
           <?php
           //sacamos la lista de los servicios de hoy
-            $listamodificar=$servicio->listaServiciosHoy();
+            $listamodificar=$servicio->listaActividadesActuales();
             foreach ($listamodificar as $lista) {
-              //transformamos la fecha
-              $fecha=explode("-", $lista['f_inicio']);
-              $fechaHoy=$fecha[2]."-".$fecha[1]."-".$fecha[0];
-              //sacamos el nombre del cliente por su id
-              $clientes=$cliente->ClienteId($lista['id_cliente']);
+              //comprobar si ya se ha iniciado o no.
+              $fechaActual=date('Y-m-d');
+              if ($lista['f_inicio'] <= $fechaActual) {
+                $status='En marcha';
+              }elseif ($lista['f_inicio'] > $fechaActual) {
+                //transformamos la fecha
+                $fecha=explode("-", $lista['f_inicio']);
+                $status=$fecha[2]."-".$fecha[1]."-".$fecha[0];
+              }
+
+              //sacar los recursos para ese dia y ese servicio-
+              $recursoHoy = $recursos -> ModificacionId($lista['id'], $fechaActual);
+              if ($recursoHoy == null || $recursoHoy == false) {
+                $recursoHoy = $lista['recursos'];
+              }else {
+                $recursoHoy = $recursoHoy['total'];
+              }
+
+              //sacar los recursos del dia siguiente para ese servicio
+              $fechaTomorrow=date('+1 day', strtotime($fechaActual));
+              $recursoTomorrow = $recursos -> ModificacionId($lista['id'], $fechaTomorrow);
+              if ($recursoTomorrow == null || $recursoTomorrow == false) {
+                $recursoTomorrow = $lista['recursos'];
+              }else {
+                $recursoTomorrow = $recursoTomorrow['total'];
+              }
+
               echo "<tr id='trmod'>";
               echo "<td scope='row' data-label='".__('Actividad', $lang)."' id='tdmod'><a id='timeline' href='timeline.php?servicio=".$lista['id']."'>".$lista['descripcion']."</a></td>";
               echo "<td data-label='".__('Modelos', $lang)."' id='tdmod'>".$lista['modelos']."</td>";
-              echo "<td data-label='".__('Fecha inicio', $lang)."' id='tdmod'>".$fechaHoy."</td>";
-              echo "<td data-label='".__('Cliente', $lang)."' id='tdmod'>".$clientes['nombre']."</td>";
-              echo "<td data-label='Telefono' id='tdmod'><a href='tel:".$lista['telefono']."'>".$lista['telefono']."</a></td>";
+              echo "<td data-label='Estado' id='tdmod'>".$status."</td>";
+              echo "<td data-label='Hoy id='tdmod'>".$recursoHoy."</td>";
+              echo "<td data-label='Mañana' id='tdmod'>".$recursoTomorrow."</td>";
               echo "  <td data-label='".__('Opciones', $lang)."' id='tdmod'>
               <a href='modificarRecursos.php?servicio=".$lista['id']."' title='".__('Modificar recursos', $lang)."'><i class='material-icons'>people</i></a>
               <a href='modificarInfo.php?servicio=".$lista['id']."' title='".__('Modificar información', $lang)."'><i class='material-icons'>mode_edit</i></a>
