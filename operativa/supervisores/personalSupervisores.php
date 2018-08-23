@@ -123,7 +123,7 @@ if (isset($_SESSION['usuario'])==false) {
        }elseif ( $_POST['turno'] == 'Noche') {
          $turno = 'tn';
        }
-
+       //Sacar cartel de si se habia confirmado el turno o no
        $supervisor = $personal->nombreSuper($_POST['fecha'], $turno);
        if ($supervisor == null || $supervisor == false || $supervisor == '') {
          echo "<h6 style='color:green; margin-left:9%;'>Todavia no se ha confirmado el personal</h6>";
@@ -143,16 +143,39 @@ if (isset($_SESSION['usuario'])==false) {
         echo "<div class='formthird' style='width: 100%; margin-bottom: 2%; border: 1px solid black;'>";
         echo "<h5 style='color:red'>COMENTARIOS OPERATIVA:</h5>";
         foreach ($actividadesHoy as $act) {
-          //sacamos si hay modificaciones para coger el comentario de estas
-         $comentariosMod=$recursos -> ModificacionId($act['id'], $_POST['fecha']);
-         $comentarios=$servicio->ServicioId($act['id']);
-         if ($comentariosMod['com_supervisor'] != null && $comentariosMod['com_supervisor'] != false) {
-           echo "<p><b>".$comentarios['descripcion']."</b>: ".$comentariosMod['com_supervisor']."</p>";
+          //sacamos los recursos de la actividad para ese dia.
+          $recurso = $recursos -> ModificacionId($act['id'], $_POST['fecha']);
+          if ($recurso == null || $recurso == false) {
+            $recurso = $recursos -> RecursosId($act['id']);
+          }
+          //comprobar si la actividad tiene recursos para ese dia y ese turno
+          if ($recurso[$turno]>0) {
+            //sacamos si hay modificaciones para coger el comentario de estas
+           $comentariosMod=$recursos -> ModificacionId($act['id'], $_POST['fecha']);
+           $comentarios=$servicio->ServicioId($act['id']);
+           if ($comentariosMod['com_supervisor'] != null && $comentariosMod['com_supervisor'] != false) {
+             echo "<p><b>".$comentarios['descripcion']."</b>: ".$comentariosMod['com_supervisor']."</p>";
+           }else {
+             if ($comentarios['com_supervisor'] != null && $comentarios['com_supervisor'] != false) {
+               echo "<p><b>".$comentarios['descripcion']."</b>: ".$comentarios['com_supervisor']."</p>";
+             }
+           }
          }else {
-           if ($comentarios['com_supervisor'] != null && $comentarios['com_supervisor'] != false) {
-             echo "<p><b>".$comentarios['descripcion']."</b>: ".$comentarios['com_supervisor']."</p>";
+           // si no tiene, comprbamos si tiene algun turno especial
+           if ($recurso['tc']>0 || $recurso['otro1']>0 || $recurso['otro2']>0 || $recurso['otro3']>0 || $recurso['otro4']>0 || $recurso['otro5']>0 || $recurso['otro6']>0) {
+             //sacamos si hay modificaciones para coger el comentario de estas
+            $comentariosMod=$recursos -> ModificacionId($act['id'], $_POST['fecha']);
+            $comentarios=$servicio->ServicioId($act['id']);
+            if ($comentariosMod['com_supervisor'] != null && $comentariosMod['com_supervisor'] != false) {
+              echo "<p><b>".$comentarios['descripcion']."</b>: ".$comentariosMod['com_supervisor']."</p>";
+            }else {
+              if ($comentarios['com_supervisor'] != null && $comentarios['com_supervisor'] != false) {
+                echo "<p><b>".$comentarios['descripcion']."</b>: ".$comentarios['com_supervisor']."</p>";
+              }
+            }
            }
          }
+
         }
         echo "</div>";
        ?>
