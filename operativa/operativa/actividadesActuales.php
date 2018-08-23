@@ -110,7 +110,7 @@ if (isset($_SESSION['usuario'])==false) {
         <thead id="theadmod">
           <tr id="trmod">
             <th scope="col" id="thmod"><?php echo __('Actividad', $lang); ?></th>
-            <th scope="col" id="thmod"><?php echo __('Modelos', $lang); ?></th>
+            <th scope="col" id="thmod">Responsable</th>
             <th scope="col" id="thmod">Estado</th>
             <th scope="col" id="thmod">Hoy</th>
             <th scope="col" id="thmod">Mañana</th>
@@ -151,9 +151,9 @@ if (isset($_SESSION['usuario'])==false) {
 
               echo "<tr id='trmod'>";
               echo "<td scope='row' data-label='".__('Actividad', $lang)."' id='tdmod'><a id='timeline' href='timeline.php?servicio=".$lista['id']."'>".$lista['descripcion']."</a></td>";
-              echo "<td data-label='".__('Modelos', $lang)."' id='tdmod'>".$lista['modelos']."</td>";
+              echo "<td data-label='Responsable' id='tdmod'>".$lista['responsable']."</td>";
               echo "<td data-label='Estado' id='tdmod'>".$status."</td>";
-              echo "<td data-label='Hoy id='tdmod'>".$recursoHoy."</td>";
+              echo "<td data-label='Hoy' id='tdmod'>".$recursoHoy."</td>";
               echo "<td data-label='Mañana' id='tdmod'>".$recursoTomorrow."</td>";
               echo "  <td data-label='".__('Opciones', $lang)."' id='tdmod'>
               <a href='modificarRecursos.php?servicio=".$lista['id']."' title='".__('Modificar recursos', $lang)."'><i class='material-icons'>people</i></a>

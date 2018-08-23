@@ -150,7 +150,7 @@
                      $size_archivo =  $_FILES['archivo'.$i]['size'];
 
                      //ruta en el servidor donde guardar el archivo
-                     $ruta="files/".$nombre_archivo;
+                     $ruta="../files/".$nombre_archivo;
 
                      if(is_uploaded_file($_FILES['archivo'.$i]['tmp_name'])) {
                        if(move_uploaded_file($_FILES['archivo'.$i]['tmp_name'], $ruta)) {
