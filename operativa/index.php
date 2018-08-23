@@ -150,7 +150,12 @@ if (isset($_SESSION['usuario'])==false) {
           //empezar a sacar la tabla
           $listahoy= $servicio->listaServiciosHoy();
           foreach ($listahoy as $servicios) {
-            $recursoId=$recursos->recursosId($servicios['id']);
+            $fechaHoy=date('Y-m-d', strtotime($hoy));
+            //sacamos los recursos de la actividad para ese dia.
+            $recursoId = $recursos -> ModificacionId($servicios['id'], $fechaHoy);
+            if ($recursoId == null || $recursoId == false) {
+              $recursoId = $recursos -> RecursosId($servicios['id']);
+            }
 
             //sumamos los recursos de cada servicio
             $totalRecursos=$totalRecursos + $recursoId['tm'] + $recursoId['tt'] + $recursoId['tn'] + $recursoId['tc'] + $recursoId['otro1'] + $recursoId['otro2'] + $recursoId['otro3'] + $recursoId['otro4'] + $recursoId['otro5'] + $recursoId['otro6'];
@@ -168,7 +173,7 @@ if (isset($_SESSION['usuario'])==false) {
               echo $relacion['relacionada'];
             }
             echo "</td>";
-            echo "<td data-th='".__('Recursos', $lang)."'>".$servicios['recursos']."</td>";
+            echo "<td data-th='".__('Recursos', $lang)."'>".$recursoId['total']."</td>";
             echo "<td data-th='Mañana'>".$recursoId['tm']."</td>";
             echo "<td data-th='Tarde'>".$recursoId['tt']."</td>";
             echo "<td data-th='Noche'>".$recursoId['tn']."</td>";
@@ -235,7 +240,12 @@ if (isset($_SESSION['usuario'])==false) {
         $servicio=new Servicio();
           $listamanana= $servicio->ServiciosTomorrow();
           foreach ($listamanana as $servicios) {
-            $recursoId=$recursos->recursosId($servicios['id']);
+            $fechaHoy=date('Y-m-d', strtotime($manana));
+            //sacamos los recursos de la actividad para ese dia.
+            $recursoId = $recursos -> ModificacionId($servicios['id'], $fechaHoy);
+            if ($recursoId == null || $recursoId == false) {
+              $recursoId = $recursos -> RecursosId($servicios['id']);
+            }
 
             //sumamos los recursos de cada servicio
             $totalRecursos=$totalRecursos + $recursoId['tm'] + $recursoId['tt'] + $recursoId['tn'] + $recursoId['tc'] + $recursoId['otro1'] + $recursoId['otro2'] + $recursoId['otro3'] + $recursoId['otro4'] + $recursoId['otro5'] + $recursoId['otro6'];
@@ -254,7 +264,7 @@ if (isset($_SESSION['usuario'])==false) {
               echo $relacion['relacionada'];
             }
             echo "</td>";
-            echo "<td data-th='".__('Recursos', $lang)."'>".$servicios['recursos']."</td>";
+            echo "<td data-th='".__('Recursos', $lang)."'>".$recursoId['total']."</td>";
             echo "<td data-th='Mañana'>".$recursoId['tm']."</td>";
             echo "<td data-th='Tarde'>".$recursoId['tt']."</td>";
             echo "<td data-th='Noche'>".$recursoId['tn']."</td>";
