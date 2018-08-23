@@ -13,6 +13,7 @@ require_once '../bbdd/servicio.php';
 require_once '../bbdd/recursos.php';
 require_once '../bbdd/empleados.php';
 require_once '../bbdd/personal.php';
+require_once '../bbdd/comentarios.php';
 
 $usuario=new User();
 $sesion=new Sesiones();
@@ -20,6 +21,7 @@ $servicio=new Servicio();
 $recursos=new Recursos();
 $empleado = new Empleados();
 $personal = new Personal();
+$comentario = new Comentarios();
 
 if (isset($_SESSION['usuario'])==false) {
   header('Location: ../../index.php');
@@ -139,7 +141,7 @@ if (isset($_SESSION['usuario'])==false) {
         //sacamos las actividades que hay para el dia seleccionado.
         $actividadesHoy = $servicio -> listaRRHH($_POST['fecha']);
         $personalHoy = $personal -> personalHoy($_POST['fecha'], $turno);
-        //recorremos las actividades para ver si tienen comentarios
+        //recorremos las actividades para ver si tienen comentarios de operativa
         echo "<div class='formthird' style='width: 100%; margin-bottom: 2%; border: 1px solid black;'>";
         echo "<h5 style='color:red'>COMENTARIOS OPERATIVA:</h5>";
         foreach ($actividadesHoy as $act) {
@@ -179,6 +181,38 @@ if (isset($_SESSION['usuario'])==false) {
         }
         echo "</div>";
        ?>
+       <?php
+        //comentarios de rrhh a jefes de turno.
+        //recorremos las actividades para ver si tienen comentarios de rrhh
+        echo "<div class='formthird' style='width: 100%; margin-bottom: 2%; border: 1px solid black;'>";
+        echo "<h5 style='color:red'>COMENTARIOS RRHH:</h5>";
+        foreach ($actividadesHoy as $act) {
+          //sacamos los recursos de la actividad para ese dia.
+          $recurso = $recursos -> ModificacionId($act['id'], $_POST['fecha']);
+          if ($recurso == null || $recurso == false) {
+            $recurso = $recursos -> RecursosId($act['id']);
+          }
+          //comprobar si la actividad tiene recursos para ese dia y ese turno
+          if ($recurso[$turno]>0) {
+            $comentarios=$comentario->sacarComentario($act['id'], $_POST['fecha']);
+            if ($comentarios != null && $comentarios!= false) {
+              //sacamos si hay modificaciones para coger el comentario de estas
+              echo "<p><b>".$act['descripcion']."</b>: ".$comentarios['comentario']."</p>";
+            }
+         }else {
+           // si no tiene, comprbamos si tiene algun turno especial
+           if ($recurso['tc']>0 || $recurso['otro1']>0 || $recurso['otro2']>0 || $recurso['otro3']>0 || $recurso['otro4']>0 || $recurso['otro5']>0 || $recurso['otro6']>0) {
+             $comentarios=$comentario->sacarComentario($act['id'], $_POST['fecha']);
+             if ($comentarios != null && $comentarios!= false) {
+               //sacamos si hay modificaciones para coger el comentario de estas
+               echo "<p><b>".$act['descripcion']."</b>: ".$comentarios['comentario']."</p>";
+             }
+           }
+         }
+
+        }
+        echo "</div>";
+        ?>
       <?php
       $i=0;
 
@@ -198,7 +232,7 @@ if (isset($_SESSION['usuario'])==false) {
           //sacar los nombres asignados a esa actividad para ese dia.
           $asignados = $personal -> empleadosServicio($act['id'], $_POST['fecha'], $turno);
           if ($asignados != null && $asignados != false) {
-            echo "<p><label><i class='fa fa-question-circle'></i>".$act['descripcion']." - ".$recurso[$turno]." pers.</label></p>";
+            echo "<p><label><i class='fa fa-question-circle'></i>".$act['descripcion']." - ".$recurso[$turno]."P.</label></p>";
             echo "<input type='hidden' name='act".$i."[]' value='".$act['id']."'>";
             //sacamos tantos selects como personas asignadas habia para ese dia.
             foreach ($asignados as $persona) {
@@ -223,7 +257,7 @@ if (isset($_SESSION['usuario'])==false) {
           }else {
             //si la actividad esta para hoy, pero no hay nadie asignado, comprobamos cuantos recursos deberia de tener.
             if ($recurso[$turno]>0) {
-              echo "<p><label><i class='fa fa-question-circle'></i>".$act['descripcion']." - ".$recurso[$turno]." pers.</label></p>";
+              echo "<p><label><i class='fa fa-question-circle'></i>".$act['descripcion']." - ".$recurso[$turno]."P.</label></p>";
               echo "<input type='hidden' name='act".$i."[]' value='".$act['id']."'>";
 
               //si tenia recursos asignados, sacamos el select con la opcion sin asignar seleccionada
@@ -266,7 +300,7 @@ if (isset($_SESSION['usuario'])==false) {
           //sacar los nombres asignados a esa actividad para ese dia.
           $asignados = $personal -> empleadosServicio($act['id'], $_POST['fecha'], 'tc');
           if ($asignados != null && $asignados != false) {
-            echo "<p><label><i class='fa fa-question-circle'></i>".$act['descripcion']." - ".$recurso['tc']."pers.</label></p>";
+            echo "<p><label><i class='fa fa-question-circle'></i>".$act['descripcion']." - ".$recurso['tc']."per.</label></p>";
             echo "<p><label><i class='fa fa-question-circle'></i>TURNO CENTRAL</label></p>";
             echo "<input type='hidden' name='tc".$i."[]' value='".$act['id']."'>";
             //sacamos tantos selects como personas asignadas habia para ese dia.
@@ -293,7 +327,7 @@ if (isset($_SESSION['usuario'])==false) {
             //si la actividad esta para hoy, pero no hay nadie asignado, comprobamos cuantos recursos deberia de tener.
 
             if ($recurso['tc']>0) {
-              echo "<p><label><i class='fa fa-question-circle'></i>".$act['descripcion']." - ".$recurso['tc']." pers.</label></p>";
+              echo "<p><label><i class='fa fa-question-circle'></i>".$act['descripcion']." - ".$recurso['tc']."P.</label></p>";
               echo "<p><label><i class='fa fa-question-circle'></i>TURNO CENTRAL</label></p>";
               echo "<input type='hidden' name='tc".$i."[]' value='".$act['id']."'>";
 
@@ -336,7 +370,7 @@ if (isset($_SESSION['usuario'])==false) {
            //sacar los nombres asignados a esa actividad para ese dia.
            $asignados = $personal -> empleadosServicio($act['id'], $_POST['fecha'], 'otro1');
            if ($asignados != null && $asignados != false) {
-             echo "<p><label><i class='fa fa-question-circle'></i>".$act['descripcion']." - ".$recurso['otro1']." pers.</label></p>";
+             echo "<p><label><i class='fa fa-question-circle'></i>".$act['descripcion']." - ".$recurso['otro1']."P.</label></p>";
              echo "<p><label><i class='fa fa-question-circle'></i>DE ".$recurso['inicio1']." HASTA ".$recurso['fin1']."</label></p>";
              echo "<input type='hidden' name='otro1".$i."[]' value='".$act['id']."'>";
              //sacamos tantos selects como personas asignadas habia para ese dia.
@@ -363,7 +397,7 @@ if (isset($_SESSION['usuario'])==false) {
              //si la actividad esta para hoy, pero no hay nadie asignado, comprobamos cuantos recursos deberia de tener.
 
              if ($recurso['otro1']>0) {
-               echo "<p><label><i class='fa fa-question-circle'></i>".$act['descripcion']." - ".$recurso['otro1']." pers.</label></p>";
+               echo "<p><label><i class='fa fa-question-circle'></i>".$act['descripcion']." - ".$recurso['otro1']."P.</label></p>";
                echo "<p><label><i class='fa fa-question-circle'></i>DE ".$recurso['inicio1']." HASTA ".$recurso['fin1']."</label></p>";
                echo "<input type='hidden' name='otro1".$i."[]' value='".$act['id']."'>";
 
@@ -406,7 +440,7 @@ if (isset($_SESSION['usuario'])==false) {
             //sacar los nombres asignados a esa actividad para ese dia.
             $asignados = $personal -> empleadosServicio($act['id'], $_POST['fecha'], 'otro2');
             if ($asignados != null && $asignados != false) {
-              echo "<p><label><i class='fa fa-question-circle'></i>".$act['descripcion']." - ".$recurso['otro2']." pers.</label></p>";
+              echo "<p><label><i class='fa fa-question-circle'></i>".$act['descripcion']." - ".$recurso['otro2']."P.</label></p>";
               echo "<p><label><i class='fa fa-question-circle'></i>DE ".$recurso['inicio2']." HASTA ".$recurso['fin2']."</label></p>";
               echo "<input type='hidden' name='otro2".$i."[]' value='".$act['id']."'>";
               //sacamos tantos selects como personas asignadas habia para ese dia.
@@ -433,7 +467,7 @@ if (isset($_SESSION['usuario'])==false) {
               //si la actividad esta para hoy, pero no hay nadie asignado, comprobamos cuantos recursos deberia de tener.
 
               if ($recurso['otro2']>0) {
-                echo "<p><label><i class='fa fa-question-circle'></i>".$act['descripcion']." - ".$recurso['otro2']." pers.</label></p>";
+                echo "<p><label><i class='fa fa-question-circle'></i>".$act['descripcion']." - ".$recurso['otro2']."P.</label></p>";
                 echo "<p><label><i class='fa fa-question-circle'></i>DE ".$recurso['inicio2']." HASTA ".$recurso['fin2']."</label></p>";
                 echo "<input type='hidden' name='otro2".$i."[]' value='".$act['id']."'>";
 
@@ -476,7 +510,7 @@ if (isset($_SESSION['usuario'])==false) {
              //sacar los nombres asignados a esa actividad para ese dia.
              $asignados = $personal -> empleadosServicio($act['id'], $_POST['fecha'], 'otro3');
              if ($asignados != null && $asignados != false) {
-               echo "<p><label><i class='fa fa-question-circle'></i>".$act['descripcion']." - ".$recurso['otro3']." pers.</label></p>";
+               echo "<p><label><i class='fa fa-question-circle'></i>".$act['descripcion']." - ".$recurso['otro3']."P.</label></p>";
                echo "<p><label><i class='fa fa-question-circle'></i>DE ".$recurso['inicio3']." HASTA ".$recurso['fin3']."</label></p>";
                echo "<input type='hidden' name='otro3".$i."[]' value='".$act['id']."'>";
                //sacamos tantos selects como personas asignadas habia para ese dia.
@@ -503,7 +537,7 @@ if (isset($_SESSION['usuario'])==false) {
                //si la actividad esta para hoy, pero no hay nadie asignado, comprobamos cuantos recursos deberia de tener.
 
                if ($recurso['otro3']>0) {
-                 echo "<p><label><i class='fa fa-question-circle'></i>".$act['descripcion']." - ".$recurso['otro3']." pers.</label></p>";
+                 echo "<p><label><i class='fa fa-question-circle'></i>".$act['descripcion']." - ".$recurso['otro3']."P.</label></p>";
                  echo "<p><label><i class='fa fa-question-circle'></i>DE ".$recurso['inicio3']." HASTA ".$recurso['fin3']."</label></p>";
                  echo "<input type='hidden' name='otro3".$i."[]' value='".$act['id']."'>";
 
@@ -546,7 +580,7 @@ if (isset($_SESSION['usuario'])==false) {
               //sacar los nombres asignados a esa actividad para ese dia.
               $asignados = $personal -> empleadosServicio($act['id'], $_POST['fecha'], 'otro4');
               if ($asignados != null && $asignados != false) {
-                echo "<p><label><i class='fa fa-question-circle'></i>".$act['descripcion']." - ".$recurso['otro4']." pers.</label></p>";
+                echo "<p><label><i class='fa fa-question-circle'></i>".$act['descripcion']." - ".$recurso['otro4']."P.</label></p>";
                 echo "<p><label><i class='fa fa-question-circle'></i>DE ".$recurso['inicio4']." HASTA ".$recurso['fin4']."</label></p>";
                 echo "<input type='hidden' name='otro4".$i."[]' value='".$act['id']."'>";
                 //sacamos tantos selects como personas asignadas habia para ese dia.
@@ -573,7 +607,7 @@ if (isset($_SESSION['usuario'])==false) {
                 //si la actividad esta para hoy, pero no hay nadie asignado, comprobamos cuantos recursos deberia de tener.
 
                 if ($recurso['otro4']>0) {
-                  echo "<p><label><i class='fa fa-question-circle'></i>".$act['descripcion']." - ".$recurso['otro4']." pers.</label></p>";
+                  echo "<p><label><i class='fa fa-question-circle'></i>".$act['descripcion']." - ".$recurso['otro4']."P.</label></p>";
                   echo "<p><label><i class='fa fa-question-circle'></i>DE ".$recurso['inicio4']." HASTA ".$recurso['fin4']."</label></p>";
                   echo "<input type='hidden' name='otro4".$i."[]' value='".$act['id']."'>";
 
@@ -616,7 +650,7 @@ if (isset($_SESSION['usuario'])==false) {
                //sacar los nombres asignados a esa actividad para ese dia.
                $asignados = $personal -> empleadosServicio($act['id'], $_POST['fecha'], 'otro5');
                if ($asignados != null && $asignados != false) {
-                 echo "<p><label><i class='fa fa-question-circle'></i>".$act['descripcion']." - ".$recurso['otro5']." pers.</label></p>";
+                 echo "<p><label><i class='fa fa-question-circle'></i>".$act['descripcion']." - ".$recurso['otro5']."P.</label></p>";
                  echo "<p><label><i class='fa fa-question-circle'></i>DE ".$recurso['inicio5']." HASTA ".$recurso['fin5']."</label></p>";
                  echo "<input type='hidden' name='otro5".$i."[]' value='".$act['id']."'>";
                  //sacamos tantos selects como personas asignadas habia para ese dia.
@@ -643,7 +677,7 @@ if (isset($_SESSION['usuario'])==false) {
                  //si la actividad esta para hoy, pero no hay nadie asignado, comprobamos cuantos recursos deberia de tener.
 
                  if ($recurso['otro5']>0) {
-                   echo "<p><label><i class='fa fa-question-circle'></i>".$act['descripcion']." - ".$recurso['otro5']." pers.</label></p>";
+                   echo "<p><label><i class='fa fa-question-circle'></i>".$act['descripcion']." - ".$recurso['otro5']."P.</label></p>";
                    echo "<p><label><i class='fa fa-question-circle'></i>DE ".$recurso['inicio5']." HASTA ".$recurso['fin5']."</label></p>";
                    echo "<input type='hidden' name='otro5".$i."[]' value='".$act['id']."'>";
 
@@ -686,7 +720,7 @@ if (isset($_SESSION['usuario'])==false) {
                 //sacar los nombres asignados a esa actividad para ese dia.
                 $asignados = $personal -> empleadosServicio($act['id'], $_POST['fecha'], 'otro6');
                 if ($asignados != null && $asignados != false) {
-                  echo "<p><label><i class='fa fa-question-circle'></i>".$act['descripcion']." - ".$recurso['otro6']." pers.</label></p>";
+                  echo "<p><label><i class='fa fa-question-circle'></i>".$act['descripcion']." - ".$recurso['otro6']."P.</label></p>";
                   echo "<p><label><i class='fa fa-question-circle'></i>DE ".$recurso['inicio6']." HASTA ".$recurso['fin6']."</label></p>";
                   echo "<input type='hidden' name='otro6".$i."[]' value='".$act['id']."'>";
                   //sacamos tantos selects como personas asignadas habia para ese dia.
@@ -713,7 +747,7 @@ if (isset($_SESSION['usuario'])==false) {
                   //si la actividad esta para hoy, pero no hay nadie asignado, comprobamos cuantos recursos deberia de tener.
 
                   if ($recurso['otro6']>0) {
-                    echo "<p><label><i class='fa fa-question-circle'></i>".$act['descripcion']." - ".$recurso['otro6']." pers.</label></p>";
+                    echo "<p><label><i class='fa fa-question-circle'></i>".$act['descripcion']." - ".$recurso['otro6']."P.</label></p>";
                     echo "<p><label><i class='fa fa-question-circle'></i>DE ".$recurso['inicio6']." HASTA ".$recurso['fin6']."</label></p>";
                     echo "<input type='hidden' name='otro6".$i."[]' value='".$act['id']."'>";
 

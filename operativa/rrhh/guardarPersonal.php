@@ -6,6 +6,8 @@
   $servicio = new Servicio();
   require_once '../bbdd/personal.php';
   $personal= new Personal();
+  require_once '../bbdd/comentarios.php';
+  $comentarios = new Comentarios();
 
   //comprobamos si la variable e existe, para saber si viene del archivo de editar o de insertar
   if ($_GET['e'] && $_GET['e'] == 1) {
@@ -246,12 +248,19 @@
       }
     }
 
+  if ($_POST['comentario']) {
+    $comentario = $comentarios->nuevoComentario($_POST['id'], $_POST['dia'], $_POST['comentario']);
+    if ($comentario == false || $comentario == null) {
+      $error = 1;
+    }
+  }
+
     //si alguna de las variables estava puesto a 1, avisamos de que no se ha insertado bien
     if ($error == 1) {
       ?>
         <script type="text/javascript">
           alert('Algo salio mal, intentalo más tarde');
-          window.location = 'filtroRRHH.php';
+          //window.location = 'filtroRRHH.php';
         </script>
       <?php
       //si todo esta bien, le devolvemos a la pantalla con las actividades del dia seleccionado

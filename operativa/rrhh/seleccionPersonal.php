@@ -368,6 +368,9 @@ if (isset($_SESSION['usuario'])==false) {
                        <?php
                      }
                      ?>
+           <div class="formthird" style="width: 100%; margin-top: 5%;">
+             <textarea name="comentario" rows="8" cols="900" style="width: 100%;" placeholder="Comentario para jefes de turno."></textarea>
+           </div>
           <div class="submitbuttons">
               <input class="submithree" style="width: 25%; margin-right: 15%; margin-left: 5%;" type="submit" value="<?php echo __('Enviar', $lang); ?>"/>
               <?php

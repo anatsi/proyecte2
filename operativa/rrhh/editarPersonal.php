@@ -12,6 +12,7 @@ require_once '../bbdd/servicio.php';
 require_once '../bbdd/recursos.php';
 require_once '../bbdd/empleados.php';
 require '../bbdd/personal.php';
+require_once '../bbdd/comentarios.php';
 
 $usuario=new User();
 $sesion=new Sesiones();
@@ -19,6 +20,7 @@ $servicio=new Servicio();
 $recursos=new Recursos();
 $empleado = new Empleados();
 $personal = new Personal();
+$comentarios = new Comentarios();
 
 if (isset($_SESSION['usuario'])==false) {
   header('Location: ../../index.php');
@@ -1129,6 +1131,24 @@ if (isset($_SESSION['usuario'])==false) {
                  echo "</div>";
                }
                ?>
+
+        <?php
+          //sacar si habia algun comentario para esa actividad y ese dia.
+          $comentario = $comentarios->sacarComentario($_GET['id'], $_GET['fecha']);
+          if ($comentario == null || $comentario == false) {
+            ?>
+            <div class="formthird" style="width: 100%; margin-top: 5%;">
+              <textarea name="comentario" rows="8" cols="900" style="width: 100%;" placeholder="Comentario para jefes de turno."></textarea>
+            </div>
+            <?php
+          }else {
+            ?>
+            <div class="formthird" style="width: 100%; margin-top: 5%;">
+              <textarea name="comentario" rows="8" cols="900" style="width: 100%;"><?php echo $comentario['comentario']; ?></textarea>
+            </div>
+            <?php
+          }
+         ?>
 
        <div class="submitbuttons">
            <input class="submithree" style="width: 25%; margin-right: 15%; margin-left: 5%;" type="submit" value="<?php echo __('Enviar', $lang); ?>"/>
