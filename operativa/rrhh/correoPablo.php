@@ -30,6 +30,8 @@ $mail->CharSet = 'UTF-8';
   $mail->AddAddress("emart309@ford.com");
   $mail->AddAddress("mdevita1@ford.com");
   $mail->AddAddress("jlluecag@ford.com");
+  $mail->AddAddress("vicente.catala.g@ts-iberica.com");
+  $mail->AddAddress("aasins@tsiberia.es");
 
   //transformamos la fecha
   $fecha=explode("-", $_GET['fecha']);

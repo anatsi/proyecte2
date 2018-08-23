@@ -97,7 +97,7 @@ if (isset($_SESSION['usuario'])==false) {
 //comprobamos si se ha rellenado el nombre y el apellido
   if (isset($_POST['nombre']) && isset($_POST['apellidos'])){
     //incializamos la variable alta a 0
-     $alta=0;
+     $alta=1;
      $contador=0;
      //function para cambiar todo en Majuscula y no dejar espaacio
      $nombre =trim (strtoupper($_POST['nombre']));
