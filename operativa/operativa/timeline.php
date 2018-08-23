@@ -50,7 +50,7 @@ if (isset($_SESSION['usuario'])==false) {
       <a href="#" class="header__icon" id="header__icon"></a>
       <a href="../../dashboard.php" class="header__logo"><img src="../../imagenes/logo.png" alt=""></a>
       <nav class="menu">
-        <a href="index.php">Inicio</a>
+        <a href="../index.php">Inicio</a>
         <?php
         $menu=$usuario->menuDash($_SESSION['usuario']);
         $opciones = explode(",", $menu['menu']);
