@@ -17,6 +17,8 @@ $mail->CharSet = 'UTF-8';
   $mail->AddAddress("acosinga@ford.com");
   $mail->AddAddress("acosinga@tsiberia.es");
   $mail->AddAddress("rrhh@tsiberia.es");
+  $mail->AddAddress("aasins@tsiberia.es");
+  $mail->AddAddress("vicente.catala.g@ts-iberica.com");
 
   //$mail->AddAddress('aasins@tsiberia.es');
 
