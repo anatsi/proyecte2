@@ -49,6 +49,7 @@ echo "<a><strong>Bienvenido ".$nombreuser['name']."</strong></a>";
       <a href="../dashboard.php" class="header__logo"><img src="../imagenes/logo.png" alt=""></a>
       <nav class="menu">
         <a href="index.php">Inicio</a>
+        <a href="listaFechas.php">Fechas</a>
       </nav>
 
     </header>
