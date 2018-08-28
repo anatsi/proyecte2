@@ -134,11 +134,11 @@ if (isset($_SESSION['usuario'])==false) {
               <p><label><i class="fa fa-question-circle"></i><?php echo __('Correo responsable', $lang); ?></label><input type="email" name="correo"/></p>
           </div>
           <div class="formthird" id='contenedor'>
-            <p><label><i class="fa fa-question-circle"></i><?php echo __('Personas (aprox.)', $lang); ?></label><input type="number" min='0' id="calculo" readonly/></p>
+          <!--  <p><label><i class="fa fa-question-circle"></i><?php echo __('Personas (aprox.)', $lang); ?></label><input type="number" min='0' id="calculo" readonly/></p>
             <p><label><i class="fa fa-question-circle"></i><?php echo __('Ciclo (segundos)', $lang); ?></label><input type="number" min='0'id="segundos"/></p>
             <p><label><i class="fa fa-question-circle"></i><?php echo __('Nº coches', $lang); ?></label><input type="number" min='0'id="coches"/></p>
             <button type="button" name="button" onclick="calculoPersonas();"><?php echo __('Calcular', $lang); ?></button>
-
+            -->
               <p><label><i class="fa fa-question-circle"></i><?php echo __('Recursos totales', $lang); ?> (*)</label><input type="number" min='0' name="recursos" id="total" value=0 readonly/></p>
               <p><label><i class="fa fa-question-circle"></i><?php echo __('Turno noche', $lang); ?></label><input type="number" min='0'name="tn" id="tn" value='0' onclick="suma();" onkeyup="suma();"/></p>
               <p><label><i class="fa fa-question-circle"></i><?php echo __('Turno mañana', $lang); ?></label><input type="number" min='0' name="tm" id="tm" value='0' onclick="suma();" onkeyup="suma();"/></p>
