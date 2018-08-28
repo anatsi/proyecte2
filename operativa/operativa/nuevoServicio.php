@@ -149,13 +149,13 @@ if (isset($_SESSION['usuario'])==false) {
               <p id="enviar"></p>
           </div>
           <div class="formthird">
-            <p><label><i class="fa fa-question-circle"></i>QPS</label></p>
+            <p><label><i class="fa fa-question-circle"></i>Qps</label></p>
               <p><input type='file' name='archivo1' value='archivo1' id='archivo1'></p>
               <p><input type='file' name='archivo2' value='archivo2' id='archivo2'></p>
-            <p><label><i class="fa fa-question-circle"></i>IMAGENES</label></p>
+            <p><label><i class="fa fa-question-circle"></i>Imagenes</label></p>
               <p><input type='file' name='archivo3' value='archivo3' id='archivo3'></p>
               <p><input type='file' name='archivo4' value='archivo4' id='archivo4'></p>
-            <p><label><i class="fa fa-question-circle"></i>VIDEOS</label></p>
+            <p><label><i class="fa fa-question-circle"></i>Videos</label></p>
               <p><input type='file' name='archivo5' value='archivo5' id='archivo5'></p>
               <p><input type='file' name='archivo6' value='archivo6' id='archivo6'></p>
 
