@@ -101,7 +101,7 @@ if (isset($_SESSION['usuario'])==false) {
 
             <p><label>SELECCIONAR DIAS</label></p>
             <p><label><i class="fa fa-question-circle"></i>Dia suelto</label><input type="date" name="suelto" min= <?php echo date('Y-m-d');?> id="suelto"/></p>
-            <p><label>Mas de un dia</label></p>
+            <p><label><i class="fa fa-question-circle"></i>Más de un dia</label></p>
             <p><label><i class="fa fa-question-circle"></i>Inicio</label><input type="date" name="inicio" min= <?php echo date('Y-m-d');?> id="inicio"/></p>
             <p><label><i class="fa fa-question-circle"></i>Fin</label><input type="date" name="fin" min= <?php echo date('Y-m-d');?> id="fin"/></p>
 
@@ -150,10 +150,10 @@ if (isset($_SESSION['usuario'])==false) {
             </p>
           </div>
           <div class="formthird">
-              <p><label><i class="fa fa-question-circle"></i>Comentario Jefe Turno</label><textarea name="csup"></textarea></p>
-              <p><label><i class="fa fa-question-circle"></i>Comentario RRHH</label><textarea name="crrhh"></textarea></p>
-              <p><label><i class="fa fa-question-circle"></i>Comentario Depto. Operativo</label><textarea name="cdo"></textarea></p>
-              <p><label><i class="fa fa-question-circle"></i>Comentario Admin. Financiero</label><textarea name="caf"></textarea></p>
+              <p><label><i class="fa fa-question-circle"></i>Com. Jefe Turno</label><textarea name="csup"></textarea></p>
+              <p><label><i class="fa fa-question-circle"></i>Com. RRHH</label><textarea name="crrhh"></textarea></p>
+              <p><label><i class="fa fa-question-circle"></i>Com. Depto. Operativo</label><textarea name="cdo"></textarea></p>
+              <p><label><i class="fa fa-question-circle"></i>Com. Admin. Financiero</label><textarea name="caf"></textarea></p>
           </div>
           <div class="submitbuttons">
               <input class="submithree" style="width: 25%; margin-right: 15%; margin-left: 5%;" type="submit" value="Modificar"/>

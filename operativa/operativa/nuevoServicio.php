@@ -159,9 +159,9 @@ if (isset($_SESSION['usuario'])==false) {
               <p><input type='file' name='archivo5' value='archivo5' id='archivo5'></p>
               <p><input type='file' name='archivo6' value='archivo6' id='archivo6'></p>
 
-              <p><label><i class="fa fa-question-circle"></i><?php echo __('Comentario Jefe Turno', $lang); ?></label><textarea name="csup"></textarea></p>
-              <p><label><i class="fa fa-question-circle"></i><?php echo __('Comentario RRHH.', $lang); ?></label><textarea name="crrhh"></textarea></p>
-              <p><label><i class="fa fa-question-circle"></i><?php echo __('Comentario Admin. Financiero', $lang); ?></label><textarea name="caf"></textarea></p>
+              <p><label><i class="fa fa-question-circle"></i><?php echo __('Com. Jefe Turno', $lang); ?></label><textarea name="csup"></textarea></p>
+              <p><label><i class="fa fa-question-circle"></i><?php echo __('Com. RRHH.', $lang); ?></label><textarea name="crrhh"></textarea></p>
+              <p><label><i class="fa fa-question-circle"></i><?php echo __('Com. Admin. Financiero', $lang); ?></label><textarea name="caf"></textarea></p>
           </div>
           <div class="submitbuttons">
               <input class="submitone" type="submit" value="<?php echo __('Enviar', $lang); ?>"/>

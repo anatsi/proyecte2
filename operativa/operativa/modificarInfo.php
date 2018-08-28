@@ -178,9 +178,9 @@ if (isset($_SESSION['usuario'])==false) {
             <p><label><i class="fa fa-question-circle"></i>Correo responsable</label><input type="email" value='<?=$infoservicio['correo']?>' name="correo"/></p>
           </div>
           <div class="formthird">
-              <p><label><i class="fa fa-question-circle"></i>Comentario Jefe Turno</label><textarea name="csup"><?=$infoservicio['com_supervisor']?></textarea></p>
-              <p><label><i class="fa fa-question-circle"></i>Comentario RRHH</label><textarea name="crrhh"><?=$infoservicio['com_rrhh']?></textarea></p>
-              <p><label><i class="fa fa-question-circle"></i>Comentario Admin. Financiero</label><textarea name="caf"><?=$infoservicio['com_admin_fin']?></textarea></p>
+              <p><label><i class="fa fa-question-circle"></i>Com. Jefe Turno</label><textarea name="csup"><?=$infoservicio['com_supervisor']?></textarea></p>
+              <p><label><i class="fa fa-question-circle"></i>Com. RRHH</label><textarea name="crrhh"><?=$infoservicio['com_rrhh']?></textarea></p>
+              <p><label><i class="fa fa-question-circle"></i>Com. Admin. Financiero</label><textarea name="caf"><?=$infoservicio['com_admin_fin']?></textarea></p>
           </div>
           <div class="submitbuttons">
               <input class="submithree" style="width: 25%; margin-right: 15%; margin-left: 5%;" type="submit" value="Modificar" name="submit"/>
