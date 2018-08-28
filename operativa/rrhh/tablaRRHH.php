@@ -47,6 +47,14 @@ if (isset($_SESSION['usuario'])==false) {
         background-color: #CAC6C5;
       }
     </style>
+    <!--Script para fijar la cabecera de las tablas-->
+    <script src="../../js/jquery.min.js"></script>
+    <script type="text/javascript" src="../../js/jquery.stickytableheaders.min.js"></script>
+    <script type="text/javascript">
+      $(function() {
+        $("table").stickyTableHeaders();
+      });
+    </script>
 
 
 </head>
@@ -214,8 +222,8 @@ if (isset($_SESSION['usuario'])==false) {
   </div> <!-- END site-pusher -->
 </div> <!-- END site-container -->
 
-<!--ORDENAR TABLA -->
-<script type="text/javascript" src="../../js/jquery.min.js"></script>
+<!--ORDENAR TABLA
+<script type="text/javascript" src="../../js/jquery.min.js"></script>-->
 <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.9.1/jquery.tablesorter.min.js"></script>
 <script>
   $(function(){
