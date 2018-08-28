@@ -28,6 +28,7 @@
 		<title>Area trabajadores.</title>
 		<link rel="shortcut icon" href="imagenes/favicon.ico">
 		<link rel="stylesheet" type="text/css" href="css/dashboard.css" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 	</head>
 	<body>
 		<div class="container demo-1">

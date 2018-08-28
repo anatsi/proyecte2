@@ -1,6 +1,7 @@
+@import url(https://fonts.googleapis.com/css?family=Lato);
 @import url(https://fonts.googleapis.com/css?family=Roboto);
 body {
-  font-family: "Roboto thin";
+  font-family: "Lato";
   line-height: 1.25;
   color: black;
 }
@@ -14,6 +15,7 @@ body {
   padding: 0;
   width: 100%;
   table-layout: fixed;
+  font-family: 'Roboto';
 }
 #theadmod{
   background-color: #DEB887;
