@@ -216,6 +216,8 @@ if (isset($_SESSION['usuario'])==false) {
         ?>
 
     <?php
+    $recursosNormales=0;
+    $recursosRaros=0;
     $c=0;
       //actividad de conductores.
       $actCon = $servicio -> actConductores();
@@ -229,6 +231,7 @@ if (isset($_SESSION['usuario'])==false) {
         //echo "<div class='formthird'>";
         if ($personalCon != false && $personalCon != null) {
           echo "<p><label><i class='fa fa-question-circle'></i>".$actCon['descripcion']." - ".$recursoCon[$turno]." </label></p>";
+          $recursosNormales = $recursosNormales + $recursoCon[$turno];
           echo "<input type='hidden' name='conID' value='".$actCon['id']."'>";
           //sacar los selects con la gente seleccionada
           foreach ($personalCon as $persona) {
@@ -262,6 +265,7 @@ if (isset($_SESSION['usuario'])==false) {
           if ($recursoCon[$turno]>0) {
             //si la actividad esta para hoy, pero no hay nadie asignado, comprobamos cuantos recursos deberia de tener.
               echo "<p><label><i class='fa fa-question-circle'></i>".$actCon['descripcion']." - ".$recursoCon[$turno]." </label></p>";
+              $recursosNormales = $recursosNormales + $recursoCon[$turno];
               echo "<input type='hidden' name='conID' value='".$actCon['id']."'>";
               //si tenia recursos asignados, sacamos el select con la opcion SIN ASIGNAR seleccionada
               for ($r=0; $r < $recursoCon[$turno] ; $r++) {
@@ -313,6 +317,7 @@ if (isset($_SESSION['usuario'])==false) {
             $asignados = $personal -> empleadosServicio($act['id'], $_POST['fecha'], $turno);
             if ($asignados != null && $asignados != false) {
               echo "<p><label><i class='fa fa-question-circle'></i>".$act['descripcion']." - ".$recurso[$turno]." </label></p>";
+              $recursosNormales = $recursosNormales + $recurso[$turno];
               echo "<input type='hidden' name='act".$i."[]' value='".$act['id']."'>";
               //sacamos tantos selects como personas asignadas habia para ese dia.
               foreach ($asignados as $persona) {
@@ -338,6 +343,7 @@ if (isset($_SESSION['usuario'])==false) {
               //si la actividad esta para hoy, pero no hay nadie asignado, comprobamos cuantos recursos deberia de tener.
               if ($recurso[$turno]>0) {
                 echo "<p><label><i class='fa fa-question-circle'></i>".$act['descripcion']." - ".$recurso[$turno]." </label></p>";
+                $recursosNormales = $recursosNormales + $recurso[$turno];
                 echo "<input type='hidden' name='act".$i."[]' value='".$act['id']."'>";
 
                 //si tenia recursos asignados, sacamos el select con la opcion SIN ASIGNAR seleccionada
@@ -383,6 +389,7 @@ if (isset($_SESSION['usuario'])==false) {
           $asignados = $personal -> empleadosServicio($act['id'], $_POST['fecha'], 'tc');
           if ($asignados != null && $asignados != false) {
             echo "<p><label><i class='fa fa-question-circle'></i>".$act['descripcion']." - ".$recurso['tc']."per.</label></p>";
+            $recursosRaros = $recursosRaros + $recurso['tc'];
             echo "<p><label><i class='fa fa-question-circle'></i>TURNO CENTRAL</label></p>";
             echo "<input type='hidden' name='tc".$i."[]' value='".$act['id']."'>";
             //sacamos tantos selects como personas asignadas habia para ese dia.
@@ -410,6 +417,7 @@ if (isset($_SESSION['usuario'])==false) {
 
             if ($recurso['tc']>0) {
               echo "<p><label><i class='fa fa-question-circle'></i>".$act['descripcion']." - ".$recurso['tc']." </label></p>";
+              $recursosRaros = $recursosRaros + $recurso['tc'];
               echo "<p><label><i class='fa fa-question-circle'></i>TURNO CENTRAL</label></p>";
               echo "<input type='hidden' name='tc".$i."[]' value='".$act['id']."'>";
 
@@ -453,6 +461,7 @@ if (isset($_SESSION['usuario'])==false) {
            $asignados = $personal -> empleadosServicio($act['id'], $_POST['fecha'], 'otro1');
            if ($asignados != null && $asignados != false) {
              echo "<p><label><i class='fa fa-question-circle'></i>".$act['descripcion']." - ".$recurso['otro1']." </label></p>";
+             $recursosRaros = $recursosRaros + $recurso['otro1'];
              echo "<p><label><i class='fa fa-question-circle'></i>DE ".$recurso['inicio1']." HASTA ".$recurso['fin1']."</label></p>";
              echo "<input type='hidden' name='otro1".$i."[]' value='".$act['id']."'>";
              //sacamos tantos selects como personas asignadas habia para ese dia.
@@ -480,6 +489,7 @@ if (isset($_SESSION['usuario'])==false) {
 
              if ($recurso['otro1']>0) {
                echo "<p><label><i class='fa fa-question-circle'></i>".$act['descripcion']." - ".$recurso['otro1']." </label></p>";
+               $recursosRaros = $recursosRaros + $recurso['otro1'];
                echo "<p><label><i class='fa fa-question-circle'></i>DE ".$recurso['inicio1']." HASTA ".$recurso['fin1']."</label></p>";
                echo "<input type='hidden' name='otro1".$i."[]' value='".$act['id']."'>";
 
@@ -523,6 +533,7 @@ if (isset($_SESSION['usuario'])==false) {
             $asignados = $personal -> empleadosServicio($act['id'], $_POST['fecha'], 'otro2');
             if ($asignados != null && $asignados != false) {
               echo "<p><label><i class='fa fa-question-circle'></i>".$act['descripcion']." - ".$recurso['otro2']." </label></p>";
+              $recursosRaros = $recursosRaros + $recurso['otro2'];
               echo "<p><label><i class='fa fa-question-circle'></i>DE ".$recurso['inicio2']." HASTA ".$recurso['fin2']."</label></p>";
               echo "<input type='hidden' name='otro2".$i."[]' value='".$act['id']."'>";
               //sacamos tantos selects como personas asignadas habia para ese dia.
@@ -550,6 +561,7 @@ if (isset($_SESSION['usuario'])==false) {
 
               if ($recurso['otro2']>0) {
                 echo "<p><label><i class='fa fa-question-circle'></i>".$act['descripcion']." - ".$recurso['otro2']." </label></p>";
+                $recursosRaros = $recursosRaros + $recurso['otro2'];
                 echo "<p><label><i class='fa fa-question-circle'></i>DE ".$recurso['inicio2']." HASTA ".$recurso['fin2']."</label></p>";
                 echo "<input type='hidden' name='otro2".$i."[]' value='".$act['id']."'>";
 
@@ -593,6 +605,7 @@ if (isset($_SESSION['usuario'])==false) {
              $asignados = $personal -> empleadosServicio($act['id'], $_POST['fecha'], 'otro3');
              if ($asignados != null && $asignados != false) {
                echo "<p><label><i class='fa fa-question-circle'></i>".$act['descripcion']." - ".$recurso['otro3']." </label></p>";
+               $recursosRaros = $recursosRaros + $recurso['otro3'];
                echo "<p><label><i class='fa fa-question-circle'></i>DE ".$recurso['inicio3']." HASTA ".$recurso['fin3']."</label></p>";
                echo "<input type='hidden' name='otro3".$i."[]' value='".$act['id']."'>";
                //sacamos tantos selects como personas asignadas habia para ese dia.
@@ -620,6 +633,7 @@ if (isset($_SESSION['usuario'])==false) {
 
                if ($recurso['otro3']>0) {
                  echo "<p><label><i class='fa fa-question-circle'></i>".$act['descripcion']." - ".$recurso['otro3']." </label></p>";
+                 $recursosRaros = $recursosRaros + $recurso['otro3'];
                  echo "<p><label><i class='fa fa-question-circle'></i>DE ".$recurso['inicio3']." HASTA ".$recurso['fin3']."</label></p>";
                  echo "<input type='hidden' name='otro3".$i."[]' value='".$act['id']."'>";
 
@@ -663,6 +677,7 @@ if (isset($_SESSION['usuario'])==false) {
               $asignados = $personal -> empleadosServicio($act['id'], $_POST['fecha'], 'otro4');
               if ($asignados != null && $asignados != false) {
                 echo "<p><label><i class='fa fa-question-circle'></i>".$act['descripcion']." - ".$recurso['otro4']." </label></p>";
+                $recursosRaros = $recursosRaros + $recurso['otro4'];
                 echo "<p><label><i class='fa fa-question-circle'></i>DE ".$recurso['inicio4']." HASTA ".$recurso['fin4']."</label></p>";
                 echo "<input type='hidden' name='otro4".$i."[]' value='".$act['id']."'>";
                 //sacamos tantos selects como personas asignadas habia para ese dia.
@@ -690,6 +705,7 @@ if (isset($_SESSION['usuario'])==false) {
 
                 if ($recurso['otro4']>0) {
                   echo "<p><label><i class='fa fa-question-circle'></i>".$act['descripcion']." - ".$recurso['otro4']." </label></p>";
+                  $recursosRaros = $recursosRaros + $recurso['otro4'];
                   echo "<p><label><i class='fa fa-question-circle'></i>DE ".$recurso['inicio4']." HASTA ".$recurso['fin4']."</label></p>";
                   echo "<input type='hidden' name='otro4".$i."[]' value='".$act['id']."'>";
 
@@ -733,6 +749,7 @@ if (isset($_SESSION['usuario'])==false) {
                $asignados = $personal -> empleadosServicio($act['id'], $_POST['fecha'], 'otro5');
                if ($asignados != null && $asignados != false) {
                  echo "<p><label><i class='fa fa-question-circle'></i>".$act['descripcion']." - ".$recurso['otro5']." </label></p>";
+                 $recursosRaros = $recursosRaros + $recurso['otro5'];
                  echo "<p><label><i class='fa fa-question-circle'></i>DE ".$recurso['inicio5']." HASTA ".$recurso['fin5']."</label></p>";
                  echo "<input type='hidden' name='otro5".$i."[]' value='".$act['id']."'>";
                  //sacamos tantos selects como personas asignadas habia para ese dia.
@@ -760,6 +777,7 @@ if (isset($_SESSION['usuario'])==false) {
 
                  if ($recurso['otro5']>0) {
                    echo "<p><label><i class='fa fa-question-circle'></i>".$act['descripcion']." - ".$recurso['otro5']." </label></p>";
+                   $recursosRaros = $recursosRaros + $recurso['otro5'];
                    echo "<p><label><i class='fa fa-question-circle'></i>DE ".$recurso['inicio5']." HASTA ".$recurso['fin5']."</label></p>";
                    echo "<input type='hidden' name='otro5".$i."[]' value='".$act['id']."'>";
 
@@ -803,6 +821,7 @@ if (isset($_SESSION['usuario'])==false) {
                 $asignados = $personal -> empleadosServicio($act['id'], $_POST['fecha'], 'otro6');
                 if ($asignados != null && $asignados != false) {
                   echo "<p><label><i class='fa fa-question-circle'></i>".$act['descripcion']." - ".$recurso['otro6']." </label></p>";
+                  $recursosRaros = $recursosRaros + $recurso['otro6'];
                   echo "<p><label><i class='fa fa-question-circle'></i>DE ".$recurso['inicio6']." HASTA ".$recurso['fin6']."</label></p>";
                   echo "<input type='hidden' name='otro6".$i."[]' value='".$act['id']."'>";
                   //sacamos tantos selects como personas asignadas habia para ese dia.
@@ -830,6 +849,7 @@ if (isset($_SESSION['usuario'])==false) {
 
                   if ($recurso['otro6']>0) {
                     echo "<p><label><i class='fa fa-question-circle'></i>".$act['descripcion']." - ".$recurso['otro6']." </label></p>";
+                    $recursosRaros = $recursosRaros + $recurso['otro6'];
                     echo "<p><label><i class='fa fa-question-circle'></i>DE ".$recurso['inicio6']." HASTA ".$recurso['fin6']."</label></p>";
                     echo "<input type='hidden' name='otro6".$i."[]' value='".$act['id']."'>";
 
@@ -854,6 +874,10 @@ if (isset($_SESSION['usuario'])==false) {
               echo "</div>";
               }
              ?>
+             <?php
+             echo "<input type='hidden' name='totalNormales' value='".$recursosNormales."'>";
+              echo "<input type='hidden' name='totalRaros' value='".$recursosRaros."'>";
+              ?>
       <div class="formthird" style="width: 100%; margin-top: 5%;">
         <textarea name="comentario" rows="8" cols="900" style="width: 100%;" placeholder="Explicaciones relativas a cambios de personal entre actividades."></textarea>
       </div>

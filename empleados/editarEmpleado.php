@@ -31,6 +31,24 @@ if (isset($_SESSION['usuario'])==false){
     <link rel="shortcut icon" href="../imagenes/favicon.ico">
     <link rel="stylesheet" type="text/css" href="../css/dashboard.css" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script type="text/javascript">
+  function alerta()
+      {
+      var mensaje;
+      var opcion = confirm("¿Quires borrar el empleado?");
+      if (opcion == true) {
+          //mensaje = "Has clickado OK";
+        window.location="borrar.php?e=<?php echo $_GET['e']; ?>";
+
+    } else {
+        //mensaje = "Has clickado Cancelar";
+        window.location="index.php";
+
+    }
+    document.getElementById("ejemplo").innerHTML = mensaje;
+  }
+</script>
+
 </head>
 <body>
   <head>
@@ -74,7 +92,7 @@ if (isset($_SESSION['usuario'])==false){
 
         <!-- Contenido de la pagina. -->
         <h2>Editar empleado</h2>
-        <div> <p align='center'><a href='borrar.php?e=<?=$seleccionado['id']?>'  style ="color :red;" > &nbsp &nbsp Borrar definitivamente el empleado </a> <p/> </div>
+        <div> <p align='center'><button style ="color :red;" onclick="alerta()">  &nbsp  Borrar definitivamente el empleado  &nbsp </button> </p> </div>
 
         <div> <p style ="color :red;"> &nbsp &nbsp Los campos con (*) son obligatorios </p></div>
         <form action="editarEmpleado.php" method="post">

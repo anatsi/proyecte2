@@ -31,7 +31,7 @@
   $pdf->SetY(5);
   $pdf->Image('../../assets/files/logo.png',15,8,20,13,"PNG");
   $pdf->SetX(40);
-  $pdf->Cell(80,20,"GRUPOS DE TRABAJO",1,0,"C");
+  $pdf->Cell(80,25,"GRUPOS DE TRABAJO",1,0,"C");
   $pdf->Cell(30,5,"Turno",1,0,"C");
   $pdf->Cell(40,5,utf8_decode($_GET['turno']),1,1,"C");
   // Empezar a 120 mm para el segundo cuadro
@@ -44,6 +44,9 @@
   $pdf->SetX(120);
   $pdf->Cell(30,5,"Dia",1,0,"C");
   $pdf->Cell(40,5,$fechaMostrar,1,1,"C");
+  $pdf->SetX(120);
+  $pdf->Cell(30,5,"Total recursos",1,0,"C");
+  $pdf->Cell(40,5,$_GET['n'].' - Otros turnos: '.$_GET['r'],1,1,"C");
   /////////FIN CABEZA DE LA PAGINA
   ////DEBUT ACTIVIDADES
 
@@ -251,7 +254,7 @@
          $der=$add+(5*$cont1)+($sepa*$p2);
 
    ////Para añadir una nueva pagina cuando abscisse Y=250 con sus parametros para seguir
-       if($der>=240||$izq>=240){
+       if($der>=250||$izq>=250){
            $pdf->AddPage();
 
            $der=10;
@@ -292,9 +295,9 @@
   $pdf->SetY(5);
   $pdf->Image('../../assets/files/logo.png',15,8,20,13,"PNG");
   $pdf->SetX(40);
-  $pdf->Cell(80,20,"GRUPOS DE TRABAJO",1,0,"C");
+  $pdf->Cell(80,25,"GRUPOS DE TRABAJO",1,0,"C");
   $pdf->Cell(30,5,"Turno",1,0,"C");
-  $pdf->Cell(40,5,'ESPECIALES',1,1,"C");
+  $pdf->Cell(40,5,'TURNOS ESPECIALES',1,1,"C");
   // Empezar a 120 mm para el segundo cuadro
   $pdf->SetX(120);
   $pdf->Cell(30,5,"Jefe Turno",1,0,"C");
@@ -305,6 +308,9 @@
   $pdf->SetX(120);
   $pdf->Cell(30,5,"Dia",1,0,"C");
   $pdf->Cell(40,5,$fechaMostrar,1,1,"C");
+  $pdf->SetX(120);
+  $pdf->Cell(30,5,"Total recursos",1,0,"C");
+  $pdf->Cell(40,5,$_GET['n'].' - Otros turnos: '.$_GET['r'],1,1,"C");
   /////////FIN CABEZA DE LA PAGINA
   ////DEBUT ACTIVIDADES
 

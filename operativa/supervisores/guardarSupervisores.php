@@ -208,7 +208,7 @@ if ($error==0) {
   ?>
     <script type="text/javascript">
       alert('Personal confirmado');
-      window.location = '../PDF/pdfSupervisor.php?fecha=<?php echo $_POST['fecha']; ?>&turno=<?php echo $turno; ?>&com=<?php echo $com ?>&u=<?php echo $_SESSION['usuario']; ?>';
+      window.location = '../PDF/pdfSupervisor.php?fecha=<?php echo $_POST['fecha']; ?>&turno=<?php echo $turno; ?>&com=<?php echo $com ?>&u=<?php echo $_SESSION['usuario']; ?>&n=<?php echo $_POST['totalNormales']; ?>&r=<?php echo $_POST['totalRaros']; ?>';
     </script>
   <?php
 }else {
