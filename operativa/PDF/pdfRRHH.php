@@ -1265,6 +1265,7 @@
     }
 
   }
+  //$pdf->Output();
 $pdf->Output('./files/RRHH.pdf','F');
  ?>
  <script type="text/javascript">

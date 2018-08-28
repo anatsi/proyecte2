@@ -211,7 +211,7 @@ class Servicio extends db
     //funcion para listar las actividades para RRHH
     function listaRRHH($fecha){
       //Construimos la consulta
-      $sql="SELECT * from servicios WHERE f_inicio<='".$fecha."' AND f_fin>='".$fecha."' OR f_inicio<='".$fecha."' AND f_fin IS NULL";
+      $sql="SELECT * from servicios WHERE f_inicio<='".$fecha."' AND f_fin>='".$fecha."' OR f_inicio<='".$fecha."' AND f_fin IS NULL order by id desc";
       //Realizamos la consulta
       $resultado=$this->realizarConsulta($sql);
       if($resultado!=null){
@@ -423,6 +423,23 @@ class Servicio extends db
          return false;
     }
   }
+
+  //funcion para sacar el servicio de conductores
+  function actConductores(){
+    //Construimos la consulta
+     $sql="SELECT * from servicios WHERE descripcion LIKE 'conductores'";
+     //Realizamos la consulta
+     $resultado=$this->realizarConsulta($sql);
+     if($resultado!=false){
+       if($resultado!=false){
+         return $resultado->fetch_assoc();
+       }else{
+         return null;
+       }
+     }else{
+       return null;
+     }
+}
 
 }
 

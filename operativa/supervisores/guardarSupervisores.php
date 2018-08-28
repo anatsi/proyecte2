@@ -19,6 +19,21 @@ if ($_POST['turno'] == 'tm') {
   $turno = 'Noche';
 }
 
+//guardar conductores
+//borramos los datos anteriores.
+$borrarCon = $personal -> eliminarPersonalTurno($_POST['conID'], $_POST['fecha'], $_POST['turno']);
+if ($borrarCon != null && $borrarCon != false) {
+  $recuento = count($_POST['con0']);
+  for ($i=0; $i < $recuento; $i++) {
+    $nuevo = $personal ->nuevoConductor($_POST['conID'], $_POST['con0'][$i], $_POST['turno'], $_POST['fecha'], $nombreUsuario['name'], $_POST['furgo0'][$i]);
+    if ($nuevo == false || $nuevo == null) {
+      $error =1;
+    }
+  }
+}else {
+  $error=1;
+}
+
 //guardar turnos normales
 $recuento = ($_POST['normal']);
 for ($i=0; $i < $recuento ; $i++) {

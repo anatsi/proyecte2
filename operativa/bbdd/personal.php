@@ -25,6 +25,19 @@ function nuevoPersonal($servicio, $empleado, $turno, $dia, $usuario){
   }
 }
 
+//funcion para insertar un nuevo empleado para un servicio.
+function nuevoConductor($servicio, $empleado, $turno, $dia, $usuario, $furgo){
+  //realizamos la consuta y la guardamos en $sql
+  $sql="INSERT INTO personal_servicios(id, servicio, empleado, turno, dia, usuario, furgo) VALUES (null, ".$servicio.", '".$empleado."', '".$turno."', '".$dia."', '".$usuario."', '".$furgo."')";
+  //Realizamos la consulta utilizando la funcion creada en db.php
+  $resultado=$this->realizarConsulta($sql);
+  if($resultado!=false){
+    return true;
+  }else{
+    return null;
+  }
+}
+
 //funcion para listar los empleados de un dia para un servicio
 function empleadosServicio($servicio, $dia, $turno){
   //Construimos la consulta
@@ -117,6 +130,41 @@ function empleadosServicio($servicio, $dia, $turno){
     }
   }
 
+  //funcion para listar los empleados de un dia para un servicio
+  function furgonetas($dia, $turno, $servicio){
+    //Construimos la consulta
+    $sql="SELECT DISTINCT furgo from personal_servicios where dia='".$dia."' and turno ='".$turno."' and servicio=".$servicio;
+    //Realizamos la consulta
+    $resultado=$this->realizarConsulta($sql);
+    if($resultado!=null){
+      //Montamos la tabla de resultados
+      $tabla=[];
+      while($fila=$resultado->fetch_assoc()){
+        $tabla[]=$fila;
+      }
+      return $tabla;
+    }else{
+      return null;
+    }
+  }
+
+  //funcion para listar los empleados de un dia para un servicio
+  function empleadosFurgo($servicio, $dia, $turno, $furgo){
+    //Construimos la consulta
+    $sql="SELECT * from personal_servicios where servicio=".$servicio." AND dia='".$dia."' AND turno='".$turno."' AND furgo='".$furgo."'";
+    //Realizamos la consulta
+    $resultado=$this->realizarConsulta($sql);
+    if($resultado!=null){
+      //Montamos la tabla de resultados
+      $tabla=[];
+      while($fila=$resultado->fetch_assoc()){
+        $tabla[]=$fila;
+      }
+      return $tabla;
+    }else{
+      return null;
+    }
+  }
 
 }
 
