@@ -197,49 +197,59 @@
 
 
 
-       //sacar empleado dependiendo del id
-       function EmpleadoId($id){
-         //Construimos la consulta
-         $sql="SELECT * from empleados WHERE id=".$id;
+   //sacar empleado dependiendo del id
+   function EmpleadoId($id){
+     //Construimos la consulta
+     $sql="SELECT * from empleados WHERE id=".$id;
 
-         //Realizamos la consulta
-         $resultado=$this->realizarConsulta($sql);
-         if($resultado!=false){
-           if($resultado!=false){
-             return $resultado->fetch_assoc();
-           }else{
-             return null;
-           }
-         }else{
-           return null;
-         }
+     //Realizamos la consulta
+     $resultado=$this->realizarConsulta($sql);
+     if($resultado!=false){
+       if($resultado!=false){
+         return $resultado->fetch_assoc();
+       }else{
+         return null;
        }
+     }else{
+       return null;
+     }
+   }
 
 
-       function editarEmpleado($id, $nombre, $apellidos, $tel){
-         $sql="UPDATE empleados SET nombre ='".$nombre."', apellidos='".$apellidos."', telefono=".$tel." WHERE id=".$id;
-         $finalizarAct=$this->realizarConsulta($sql);
-         if($finalizarAct=!false){
+   function editarEmpleado($id, $nombre, $apellidos, $tel){
+     $sql="UPDATE empleados SET nombre ='".$nombre."', apellidos='".$apellidos."', telefono=".$tel." WHERE id=".$id;
+     $finalizarAct=$this->realizarConsulta($sql);
+     if($finalizarAct=!false){
+          return true;
+     }else{
+          return false;
+     }
+   }
+
+     function darBaja($id, $selbaja,$usuario){
+       //Fecha y hora actual
+
+       $fecha = date("Y-m-d H:i:s");
+
+       $sql="UPDATE empleados SET incapa_temporal =".$selbaja.", fecha_mod='".$fecha."', usuario_mod='".$usuario."' WHERE id=".$id;
+       $actIncapacidad=$this->realizarConsulta($sql);
+
+       if($actIncapacidad=!false){
               return true;
-         }else{
+       }else{
               return false;
-         }
        }
 
-         function darBaja($id, $selbaja,$usuario){
-           //Fecha y hora actual
-
-           $fecha = date("Y-m-d H:i:s");
-
-           $sql="UPDATE empleados SET incapa_temporal =".$selbaja.", fecha_mod='".$fecha."', usuario_mod='".$usuario."' WHERE id=".$id;
-           $actIncapacidad=$this->realizarConsulta($sql);
-
-           if($actIncapacidad=!false){
-                  return true;
-           }else{
-                  return false;
-           }
-
-         }
+     }
+   //funcion encargada de borrar un empleado
+    function BorrarEmpleado($id){
+       $sql="DELETE FROM empleados WHERE id=".$id;
+       $borrar=$this->realizarConsulta($sql);
+       if ($borrar=!NULL) {
+         return true;
+       }else {
+         return false;
+       }
+     }
   }
 ?>

@@ -5,12 +5,9 @@ require_once '../operativa/Classes/PHPExcel.php';
 $objPHPExcel = new PHPExcel();
 
 /*Incluir los archivos necesarios para la db*/
-require_once './ddbb/empleados.php';
-$empleado=new Empleados();
-require_once './ddbb/incapacidad.php';
-$incapacidad = new Incapacidad();
-require_once './ddbb/fechas.php';
-$fechas = new Fechas();
+require_once './ddbb/excel.php';
+$empleado=new Excel();
+
 
 // Establecer propiedades
 $objPHPExcel->getProperties()
@@ -72,13 +69,14 @@ foreach ($lista as $trabajador) {
 
   //traducir campo incapacidad Temporal
   if ($trabajador['incapa_temporal']!=0) {
-    $incapa = $incapacidad->ConverseIncapacidadId($trabajador['id']);
+    $incapa = $empleado->ConverseIncapacidadId($trabajador['incapa_temporal']);
+    $incapa = $incapa['tipo'];
   }else {
     $incapa=' ';
   }
 
   //sacar las fechas de ese empleado.
-  $dates= $fechas->fechaId($trabajador['id']);
+  $dates= $empleado->fechaId($trabajador['id']);
   //comprobar que la fecha no esta vacia.
   if ($dates['pase_ford']=='0000-00-00' || $dates['pase_ford']==null) {
     $pase ='';
@@ -129,6 +127,24 @@ foreach ($lista as $trabajador) {
   ;
   $i++;
 }
+/*for ($i=0; $i <200 ; $i++) {
+  $objPHPExcel->setActiveSheetIndex(0)
+  ->setCellValue('A'.$i, "trabajador['nombre']")
+  ->setCellValue('B'.$i, "trabajador['apellidos']" )
+  ->setCellValue('C'.$i, "trabajador['user']")
+  ->setCellValue('D'.$i, "trabajador['telefono']")
+  ->setCellValue('E'.$i, "alta")
+  ->setCellValue('F'.$i, "vacaciones")
+  ->setCellValue('G'.$i, "incapa")
+  ->setCellValue('H'.$i, "ett")
+  ->setCellValue('I'.$i, "PHPExcel_Shared_Date::PHPToExcel( pase )")
+  ->setCellValue('J'.$i, "PHPExcel_Shared_Date::PHPToExcel( dni )")
+  ->setCellValue('K'.$i, "PHPExcel_Shared_Date::PHPToExcel( conducir )")
+  ->setCellValue('L'.$i, "PHPExcel_Shared_Date::PHPToExcel( cford )")
+  ->setCellValue('M'.$i, "PHPExcel_Shared_Date::PHPToExcel( medico )")
+  ->setCellValue('N'.$i, "PHPExcel_Shared_Date::PHPToExcel( nacimiento )")
+  ;
+}*/
 
 // Establecer la hoja activa, para que cuando se abra el documento se muestre primero.
 $objPHPExcel->setActiveSheetIndex(0);

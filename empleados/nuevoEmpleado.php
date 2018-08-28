@@ -70,6 +70,7 @@ if (isset($_SESSION['usuario'])==false) {
       <nav class="menu">
         <a href="index.php">Inicio</a>
         <a href="listaFechas.php">Fechas</a>
+        <a href="materialEmpleado.php">Material</a>
       </nav>
 
     </header>

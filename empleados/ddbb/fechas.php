@@ -98,6 +98,16 @@ function editarFecha($id,$cadPassFord,$cadDni,$cadPerm,$cadPermFord, $revmedico,
     }
   }
 
+  //funcion encargada de borrar un empleado
+   function BorrarFechas($id){
+      $sql="DELETE FROM fechas WHERE empleado=".$id;
+      $borrar=$this->realizarConsulta($sql);
+      if ($borrar=!NULL) {
+        return true;
+      }else {
+        return false;
+      }
+    }
 
 }
 ?>
