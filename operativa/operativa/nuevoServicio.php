@@ -110,7 +110,7 @@ if (isset($_SESSION['usuario'])==false) {
         <form action="nuevoServibbdd.php" method="post" id="formulario" enctype="multipart/form-data">
           <div class="formthird">
               <p><label><i class="fa fa-question-circle"></i><?php echo __('Actividad', $lang); ?> (*)</label><input type="text" name="descripcion" required/></p>
-              <p><label><i class="fa fa-question-circle"></i>Descripción actividad</label><textarea name="cdo"></textarea></p>
+              <p><label><i class="fa fa-question-circle"></i>Descripción</label><textarea name="cdo"></textarea></p>
               <p><label><i class="fa fa-question-circle"></i><?php echo __('Modelos', $lang); ?></label>
                 <select name="sel[]" class="test" multiple="multiple" id='multiple'>
                         <option value='MONDEO'>MONDEO</option>
