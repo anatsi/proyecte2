@@ -97,11 +97,12 @@ b {
 .codrops-top {
   background: #fff;
   background: rgba(255, 255, 255, 0.95);
-  text-transform: uppercase;
+/*  text-transform: uppercase;*/
   position: relative;
-  font-size: 0.68em;
+  font-size: 0.70em;
   box-shadow: 1px 0px 2px rgba(0, 0, 0, 0.2);
   line-height: 2.2;
+  font-weight: bold;
 }
 
 .codrops-top a {
@@ -155,7 +156,7 @@ h2 {
   font-weight: bold;
   padding: 1%;
   margin-left: 9%;
-  font-variant: small-caps;
+/*  font-variant: small-caps;*/
 }
 
 h3 {

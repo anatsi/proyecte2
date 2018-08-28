@@ -38,7 +38,7 @@
 					//llamamos a la función para devolver el nombre de usuario.
 					$nombreuser=$usuario->nombreUsuario($_SESSION['usuario']);
 					//sacamos el nombre de usuario por su id
-					echo "<a><strong>".__('Bienvenido ', $lang).$nombreuser['name']."</strong></a>";
+					echo "<a>".__('Bienvenido ', $lang).$nombreuser['name']."</a>";
 				 ?>
 				<span class="right"><a href="logout.php?lang=<?php echo $lang; ?>" id="logout"><?php echo __('Cerrar Sesion', $lang) ?></a></span>
 			</div><!--/ Codrops top bar -->

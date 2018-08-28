@@ -1,6 +1,7 @@
+@import url(https://fonts.googleapis.com/css?family=Lato);
 @import url(https://fonts.googleapis.com/css?family=Roboto);
 html, body {
-  font-family: 'Roboto thin';
+  font-family: 'Lato';
   font-size: 1em;
   line-height: 1.4;
   height: 100%;

@@ -36,7 +36,7 @@ body {
 #tablamod #thmod {
   font-size: .70em;
   letter-spacing: .1em;
-  text-transform: uppercase;
+  /*text-transform: uppercase;*/
   font-weight: bold;
 }
 
