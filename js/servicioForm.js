@@ -1,6 +1,26 @@
 //inicializamos un contador
 var i=0;
 var z=1;
+
+function borrar() {
+  var inputs1 = document.getElementsByClassName('numero');
+  for (var i = 0; i < inputs1.length; i++) {
+    inputs1[i].value=0;
+  }
+  var inputs2 = document.getElementsByClassName('threeinputs1');
+  for (var i = 0; i < inputs2.length; i++) {
+    inputs2[i].value=0;
+  }
+  var horas1= document.getElementsByClassName('threeinputs2');
+  for (var i = 0; i < horas1.length; i++) {
+    horas1[i].value='';
+  }
+  var horas2= document.getElementsByClassName('threeinputs');
+  for (var i = 0; i < horas2.length; i++) {
+    horas2[i].value='';
+  }
+}
+
   //funcion que añadira los input del nuevo horario
   function nuevo() {
     if (i>5) {
