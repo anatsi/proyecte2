@@ -68,6 +68,10 @@ if (isset($_SESSION['usuario'])==false){
       ?>
     <div class="site-content">
       <div class="container">
+        <div class="breadcrumb" style="margin-left: 2%; color:black;">
+          <a href="../dashboard.php">INICIO</a> >> <a href="index.php">GESTIÓN EMPLEADOS</a> >> <a href="">EDITAR EMPLEADO</a>
+        </div>
+
         <!-- Contenido de la pagina. -->
         <h2>Editar empleado</h2>
         <div> <p align='center'><a href='borrar.php?e=<?=$seleccionado['id']?>'  style ="color :red;" > &nbsp &nbsp Borrar definitivamente el empleado </a> <p/> </div>
