@@ -55,7 +55,7 @@ if (isset($_SESSION['usuario'])==false){
       <nav class="menu">
         <a href="index.php">Inicio</a>
         <a href="listaFechas.php">Fechas</a>
-        <a href="materialEmpleado.php">Material</a>
+         <a href="materialEmpleado.php">Material</a>
       </nav>
 
     </header>
@@ -87,6 +87,8 @@ if (isset($_SESSION['usuario'])==false){
               </p>
               <p><label><i class="fa fa-question-circle"></i>Caducidad Pass Ford</label><input type="date" name='cadPassFord' value ='<?=$seleccionad['pase_ford']?>'></p>
               <p><label><i class="fa fa-question-circle"></i>Fecha Revision Medica</label><input type="date"  name='revMedico' value ='<?=$seleccionad['medico']?>'></p>
+              <p style="visibility:hidden;"><label><i class="fa fa-question-circle"></i>Fecha Revision Medica</label><input type="date"  name=''></p>
+              <p style="visibility:hidden;"><label><i class="fa fa-question-circle"></i>Fecha Revision Medica</label><input type="date"  name=''></p>
 
               </div>
 <?php
@@ -95,7 +97,7 @@ $seleccionado1=$material->MaterialId($_GET['e'],1);
 
 <div class="formthird">
 <p><label >Pantalon Verano</label>
-<input type="date" name="pentalon_ver" value ='<?=$seleccionado1['fecha_entrega']?>'>
+<input type="date" name="pantalon_ver" value ='<?=$seleccionado1['fecha_entrega']?>'>
 </p></div>
 <div class="formthird">
 <p>
@@ -115,7 +117,7 @@ $seleccionado2=$material->MaterialId($_GET['e'],2);
 
 <div class="formthird">
 <p><label >Pantalon Invierno</label>
-<input type="date" name="pentalon_inv" value ='<?=$seleccionado2['fecha_entrega']?>'>
+<input type="date" name="pantalon_inv" value ='<?=$seleccionado2['fecha_entrega']?>'>
 </p></div>
 <div class="formthird">
 <p>
@@ -306,18 +308,54 @@ $seleccionado11=$material->MaterialId($_GET['e'],11);
 </p></div>
 <div class="formthird">
 <p>
-<select id="" name="talla_guantes" value ='<?=$seleccionado11['fecha_entrega']?>'>
+<select id="" name="talla_guantes" value ='<?=$seleccionado11['talla']?>'>
 <option value="SIN">SIN</option>
 </select>
-<input type="number"  min= "0" name="cant_guantes" value ='<?=$seleccionado11['fecha_entrega']?>'>
+<input type="number"  min= "0" name="cant_guantes" value ='<?=$seleccionado11['cantidad']?>'>
+</p></div>
+
+<?php
+$seleccionado12=$material->MaterialId($_GET['e'],12);
+?>
+<div class="formthird">
+<p><label >Zapatos Agua</label>
+<input type="date" name="agua" value ='<?=$seleccionado12['fecha_entrega']?>'>
+</p></div>
+<div class="formthird">
+<p>
+<select id="" name="talla_agua" value ='<?=$seleccionado12['talla']?>'>
+  <option value="46">&nbsp 46</option>
+  <option value="45">&nbsp 45</option>
+  <option value="44">&nbsp 44</option>
+  <option value="43">&nbsp 43</option>
+  <option value="42">&nbsp 42</option>
+  <option value="41">&nbsp 41</option>
+  <option value="40">&nbsp 40</option>
+  <option value="39">&nbsp 39</option>
+  <option value="38">&nbsp 38</option>
+  <option value="37">&nbsp 37</option>
+  <option value="36">&nbsp 36</option>
+</select>
+<input type="number"  min= "0" name="cant_agua" value ='<?=$seleccionado12['cantidad']?>'>
 </p></div>
 
 
-
-
-
-
-
+<?php
+$seleccionado13=$material->MaterialId($_GET['e'],13);
+?>
+<div class="formthird">
+<p><label >Chaleco colores</label>
+<input type="date" name="colores" value ='<?=$seleccionado13['fecha_entrega']?>'>
+</p></div>
+<div class="formthird">
+<p>
+<select id="" name="talla_colores" value ='<?=$seleccionado13['talla']?>'>
+  <option value="Rosa">Rosa</option>
+  <option value="Azul">Azul</option>
+  <option value="Verde">Verde</option>
+</select>
+<input type="number"  min= "0" name="cant_colores" value ='<?=$seleccionado13['cantidad']?>'>
+</p></div>
           <div class="submitbuttons">
               <input style = " color:white;background-color: #4CAF50;" type="submit" value="Enviar" />
           </div>
@@ -342,63 +380,112 @@ $seleccionado11=$material->MaterialId($_GET['e'],11);
     if (isset($_POST['alta'])){
       $alta=0;
     }
-
+$error = 0;
      //llamamos a la consulta de editar el empleado
     $editarEmpleado = $empleado->editarEmpleado($_POST['e'], $_POST['nombre'], $_POST['apellidos'], $_POST['tel']);
-
+    if ($editarEmpleado == false || $editarEmpleado == null) {
+      $error = 1;
+    }
 //Llamar la consulta de editar fechas
      $editarEmpleado= $fecha->editarFecha($_POST['e'],$_POST['cadPassFord'],$_POST['cadDni'],$_POST['cadPerm'],$_POST['cadPermFord'],$_POST['revMedico'],$_POST['nacim']);
-
+     if ($editarEmpleado == false || $editarEmpleado == null) {
+       $error=1;
+     }
 
 //Llamar la consulta para editar material
      //Las variables inicializadas son para representar los numero de material
-    $pantalon_ve=1;
-    $editarEmpleado= $material->editarMaterial($_POST['e'],
-      $pantalon_ve,$_POST['pentalon_ver'],$_POST['talla_pentalon_ver'],$_POST['cant_pentalon_ver']);
+     if (isset($_POST['pantalon_ver']) && $_POST['pantalon_ver']!='' && isset($_POST['cant_pantalon_ver'])) {
+       $editarEmpleado= $material->editarMaterial($_POST['e'],1,$_POST['pantalon_ver'],$_POST['talla_pantalon_ver'],$_POST['cant_pantalon_ver']);
+       if ($editarEmpleado== false || $editarEmpleado == null) {
+         $error=1;
+       }
+     }
 
-    $pantalon_in=2;
-     $editarEmpleado= $material->editarMaterial($_POST['e'],
-      $pantalon_inv,$_POST['pantalon_inv'],$_POST['talla_pentalon_inv'],$_POST['cant_pentalon_inv']);
+     if (isset($_POST['pantalon_inv']) && $_POST['pantalon_inv']!='' && isset($_POST['cant_pantalon_inv'])) {
+       $editarEmpleado= $material->editarMaterial($_POST['e'],2,$_POST['pantalon_inv'],$_POST['talla_pantalon_inv'],$_POST['cant_pantalon_inv']);
+       if ($editarEmpleado== false || $editarEmpleado == null) {
+         $error=1;
+       }
+     }
 
-     $polo_c=3;
-     $editarEmpleado= $material->editarMaterial($_POST['e'],
-      $polo_c,$_POST['polo_mc'],$_POST['talla_polo_mc'],$_POST['cant_polo_mc']);
+     if (isset($_POST['polo_mc']) && $_POST['polo_mc']!='' && isset($_POST['cant_polo_mc'])) {
+       $editarEmpleado= $material->editarMaterial($_POST['e'],3,$_POST['polo_mc'],$_POST['talla_polo_mc'],$_POST['cant_polo_mc']);
+       if ($editarEmpleado== false || $editarEmpleado == null) {
+         $error=1;
+       }
+     }
 
-     $polo_l=4;
-     $editarEmpleado= $material->editarMaterial($_POST['e'],
-      $polo_l,$_POST['polo_ml'],$_POST['talla_polo_ml'],$_POST['cant_polo_ml']);
+     if (isset($_POST['polo_ml']) && $_POST['polo_ml']!='' && isset($_POST['cant_polo_ml'])) {
+       $editarEmpleado= $material->editarMaterial($_POST['e'],4,$_POST['polo_ml'],$_POST['talla_polo_ml'],$_POST['cant_polo_ml']);
+       if ($editarEmpleado== false || $editarEmpleado == null) {
+         $error=1;
+       }
+     }
 
-      $zapatos=5;
-     $editarEmpleado= $material->editarMaterial($_POST['e'],
-      $zapatos,$_POST['zapato'],$_POST['talla_zapato'],$_POST['cant_zapato']);
+     if (isset($_POST['zapato']) && $_POST['zapato']!='' && isset($_POST['cant_zapato'])) {
+       $editarEmpleado= $material->editarMaterial($_POST['e'],5,$_POST['zapato'],$_POST['talla_zapato'],$_POST['cant_zapato']);
+       if ($editarEmpleado== false || $editarEmpleado == null) {
+         $error=1;
+       }
+     }
 
-      $cazadoras=6;
-      $editarEmpleado= $material->editarMaterial($_POST['e'],
-      $cazadoras,$_POST['cazadora'],$_POST['talla_cazadora'],$_POST['cant_cazadora']);
+     if (isset($_POST['cazadora']) && $_POST['cazadora']!='' && isset($_POST['cant_cazadora'])) {
+       $editarEmpleado= $material->editarMaterial($_POST['e'],6,$_POST['cazadora'],$_POST['talla_cazadora'],$_POST['cant_cazadora']);
+       if ($editarEmpleado== false || $editarEmpleado == null) {
+         $error=1;
+       }
+     }
 
-      $polare=7;
-      $editarEmpleado= $material->editarMaterial($_POST['e'],
-      $polare,$_POST['polar'],$_POST['talla_polar'],$_POST['cant_polar']);
+     if (isset($_POST['polar']) && $_POST['polar']!='' && isset($_POST['cant_polar'])) {
+       $editarEmpleado= $material->editarMaterial($_POST['e'],7,$_POST['polar'],$_POST['talla_polar'],$_POST['cant_polar']);
+       if ($editarEmpleado== false || $editarEmpleado == null) {
+         $error=1;
+       }
+     }
 
+     if (isset($_POST['impermeable']) && $_POST['impermeable']!='' && isset($_POST['cant_imper'])) {
+       $editarEmpleado= $material->editarMaterial($_POST['e'],8,$_POST['impermeable'],$_POST['talla_imper'],$_POST['cant_imper']);
+       if ($editarEmpleado== false || $editarEmpleado == null) {
+         $error=1;
+       }
+     }
 
-      $imper=8;
-      $editarEmpleado= $material->editarMaterial($_POST['e'],
-      $imper,$_POST['impermeable'],$_POST['talla_imper'],$_POST['cant_imper']);
+     if (isset($_POST['chaleco']) && $_POST['chaleco']!='' && isset($_POST['cant_chaleco'])) {
+       $editarEmpleado= $material->editarMaterial($_POST['e'],9,$_POST['chaleco'],$_POST['talla_chaleco'],$_POST['cant_chaleco']);
+       if ($editarEmpleado== false || $editarEmpleado == null) {
+         $error=1;
+       }
+     }
 
-      $chalecos=9;
-      $editarEmpleado= $material->editarMaterial($_POST['e'],
-       $chalecos,$_POST['chaleco'],$_POST['talla_chaleco'],$_POST['cant_chaleco']);
+     if (isset($_POST['gorra']) && $_POST['gorra']!='' && isset($_POST['cant_gorra'])) {
+       $editarEmpleado= $material->editarMaterial($_POST['e'],10,$_POST['gorra'],$_POST['talla_gorra'],$_POST['cant_gorra']);
+       if ($editarEmpleado== false || $editarEmpleado == null) {
+         $error=1;
+       }
+     }
 
-      $gorras=10;
-      $editarEmpleado= $material->editarMaterial($_POST['e'],
-      $gorras,$_POST['gorra'],$_POST['talla_gorra'],$_POST['cant_gorra']);
+     if (isset($_POST['guantes']) && $_POST['guantes']!='' && isset($_POST['cant_guantes'])) {
+       $editarEmpleado= $material->editarMaterial($_POST['e'],11,$_POST['guantes'],$_POST['talla_guantes'],$_POST['cant_guantes']);
+       if ($editarEmpleado== false || $editarEmpleado == null) {
+         $error=1;
+       }
+     }
 
-      $guantes=11;
-      $editarEmpleado= $material->editarMaterial($_POST['e'],
-      $guantes,$_POST['guantes'],$_POST['talla_guantes'],$_POST['cant_guantes']);
+     if (isset($_POST['agua']) && $_POST['agua']!='' && isset($_POST['cant_agua'])) {
+       $editarEmpleado= $material->editarMaterial($_POST['e'],12,$_POST['agua'],$_POST['talla_agua'],$_POST['cant_agua']);
+       if ($editarEmpleado== false || $editarEmpleado == null) {
+         $error=1;
+       }
+     }
 
+     if (isset($_POST['colores']) && $_POST['colores']!='' && isset($_POST['cant_colores'])) {
+       $editarEmpleado= $material->editarMaterial($_POST['e'],13,$_POST['colores'],$_POST['talla_colores'],$_POST['cant_colores']);
+       if ($editarEmpleado== false || $editarEmpleado == null) {
+         $error=1;
+       }
+     }
 
-    if ($editarEmpleado==null){
+    if ($error==1){
       //si no se ha podido actualizar, avisamos al usaurio
       ?>
       <script type="text/javascript">
