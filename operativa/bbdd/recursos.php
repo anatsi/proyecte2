@@ -141,6 +141,35 @@ function ActualizarRecursosActividad($id, $total, $tm, $tt, $tn, $tc, $o1, $i1, 
   }
 }
 
+
+//funcion para sacar un servicio a partir de su id
+function comprobarMod($servicio, $inicio, $fin, $suelto){
+  //Construimos la consulta
+  $sql="SELECT * from dias_recursos WHERE servicio=".$servicio." AND inicio='".$inicio."' AND fin='".$fin."' AND suelto='".$suelto."' order by id desc limit 1";
+  //Realizamos la consulta
+  $resultado=$this->realizarConsulta($sql);
+  if($resultado!=false){
+    if($resultado!=false){
+      return $resultado->fetch_assoc();
+    }else{
+      return null;
+    }
+  }else{
+    return null;
+  }
+}
+
+//funcion encargada de borrar un empleado
+ function borrarMod($id){
+    $sql="DELETE FROM dias_recursos WHERE id=".$id;
+    $borrar=$this->realizarConsulta($sql);
+    if ($borrar=!NULL) {
+      return true;
+    }else {
+      return false;
+    }
+  }
+
 }
 
  ?>

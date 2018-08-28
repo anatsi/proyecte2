@@ -178,6 +178,26 @@ if (isset($_SESSION['usuario'])==false) {
 <?php
 if (isset($_POST['id']) && isset($_POST['recursos'])) {
   if (isset($_POST['id']) && empty($_POST['inicio'])==false || isset($_POST['id']) && empty($_POST['suelto'])==false) {
+    if (empty($_POST['inicio'])==false && $_POST['inicio']!='0000-00-00') {
+      $inicio = $_POST['inicio'];
+      $fin = $_POST['fin'];
+    }else {
+      $inicio = '0000-00-00';
+      $fin = '0000-00-00';
+    }
+
+    if (empty($_POST['suelto'])==false && $_POST['suelto']!='0000-00-00') {
+      $suelto=$_POST['suelto'];
+    }else {
+      $suelto='0000-00-00';
+    }
+    //antes de guardar la modificacion comoribamos que no hay otra para ese dia.
+    $comprobar = $recursos -> comprobarMod($_POST['id'], $inicio, $fin, $suelto);
+    if ($comprobar != null && $comprobar != false) {
+      //si la hya, borramos la anterior y dejamos la ultima
+      $borrar = $recursos->borrarMod($comprobar['id']);
+    }
+    //guardamos la nueva modificacion
     $nuevorecurso=$recursos->modundia($_POST['id'], $_POST['suelto'], $_POST['inicio'], $_POST['fin'], $_POST['recursos'], $_POST['tm'], $_POST['tt'], $_POST['tn'], $_POST['tc'], $_POST['o1'], $_POST['i1'], $_POST['f1'],
      $_POST['o2'], $_POST['i2'],
      $_POST['f2'], $_POST['o3'], $_POST['i3'], $_POST['f3'], $_POST['o4'], $_POST['i4'], $_POST['f4'], $_POST['o5'], $_POST['i5'], $_POST['f5'],
