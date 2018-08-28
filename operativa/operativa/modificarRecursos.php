@@ -155,7 +155,7 @@ if (isset($_SESSION['usuario'])==false) {
               <p><label><i class="fa fa-question-circle"></i>Com. Jefe Turno</label><textarea name="csup"></textarea></p>
               <p><label><i class="fa fa-question-circle"></i>Com. RRHH</label><textarea name="crrhh"></textarea></p>
               <p><label><i class="fa fa-question-circle"></i>Com. Depto. Operativo</label><textarea name="cdo"></textarea></p>
-              <p><label><i class="fa fa-question-circle"></i>Com. Admin. Financiero</label><textarea name="caf"></textarea></p>
+              <p><label><i class="fa fa-question-circle"></i>Com. Finanzas</label><textarea name="caf"></textarea></p>
           </div>
 
           <div class="submitbuttons">

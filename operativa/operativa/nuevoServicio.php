@@ -162,7 +162,7 @@ if (isset($_SESSION['usuario'])==false) {
 
               <p><label><i class="fa fa-question-circle"></i><?php echo __('Com. Jefe Turno', $lang); ?></label><textarea name="csup"></textarea></p>
               <p><label><i class="fa fa-question-circle"></i><?php echo __('Com. RRHH.', $lang); ?></label><textarea name="crrhh"></textarea></p>
-              <p><label><i class="fa fa-question-circle"></i><?php echo __('Com. Admin. Financiero', $lang); ?></label><textarea name="caf"></textarea></p>
+              <p><label><i class="fa fa-question-circle"></i><?php echo __('Com. Finanzas', $lang); ?></label><textarea name="caf"></textarea></p>
           </div>
           <div class="submitbuttons">
               <input class="submitone" type="submit" value="<?php echo __('Enviar', $lang); ?>"/>

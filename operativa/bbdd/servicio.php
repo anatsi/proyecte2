@@ -286,7 +286,7 @@ class Servicio extends db
   //funcion para sacar las modificaciones de informacion de un servicio
   function dias_recursos($id){
     //Construimos la consulta
-     $sql="SELECT *, replace(concat(inicio, suelto), '0000-00-00', '') AS fecha FROM dias_recursos WHERE servicio=".$id." ORDER BY fecha desc";
+     $sql="SELECT *, replace(concat(inicio, suelto), '0000-00-00', '') AS fecha FROM dias_recursos WHERE servicio=".$id." ORDER BY fecha desc, id desc";
      //Realizamos la consulta
      $resultado=$this->realizarConsulta($sql);
      if($resultado!=null){
