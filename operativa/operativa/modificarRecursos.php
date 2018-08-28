@@ -235,6 +235,44 @@ if (isset($_POST['id']) && isset($_POST['recursos'])) {
           $asunto = 'MODIFICACIÓN EN SERVICIO';
 
           mail($para, $asunto, $mensaje, $header);
+          //si se ha rellenado el comentario para Pilar, le enviamos un correo.
+          if (isset($_POST['caf']) && $_POST['caf']!='') {
+            // Enviar el email
+              $mail = "robot@tsiberia.es";
+
+              $header = 'From: ' . $mail . " \r\n";
+              $header .= "X-Mailer: PHP/" . phpversion() . " \r\n";
+              $header .= "Mime-Version: 1.0 \r\n";
+              //$header .= "Content-Type: text/plain";
+              $header .= "Content-Type: text/html; charset=utf-8";
+
+              $mensaje = '<html>' . '<head><title>Email</title>
+              <style type="text/css">
+              h2 {
+                  color: black;
+                  font-family: Impact;
+                }
+              </style>
+              </head>' .
+              '<body>
+              <h2>
+                <b>Nueva modificacion en servicio</b>
+                </h2><br />' .
+                '<b>SERVICIO: </b>'.$_POST['descripcion']. '<br />
+                <b> DIAS: </b>'.$dias.' <br>
+                <b> RECURSOS TOTALES: </b>'.$_POST['recursos'].' <br>
+                <b>COMENTARIO OPERATIVA: </b>'.$_POST['caf'].'<br>
+                <hr>'.
+                'Por favor, no responda a este correo lo envia un robot automáticamente.'.
+                '<br />Enviado el ' . date('d/m/Y', time()) .
+              '</body></html>';
+
+              $para = 'mariap.urbina.t@ts-iberica.com';
+              //$para ='aasins@tsiberia.es';
+              $asunto = 'NUEVA ACTIVIDAD';
+
+              mail($para, $asunto, $mensaje, $header);
+          }
         ?>
           <script type="text/javascript">
             alert('Actividad actualizada con exito');
