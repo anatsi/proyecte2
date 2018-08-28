@@ -27,7 +27,7 @@ if (isset($_SESSION['usuario'])==false) {
     <link rel="shortcut icon" href="../../imagenes/favicon.ico">
 		<link rel="stylesheet" type="text/css" href="../../css/dashboard.css" />
     <link rel="stylesheet" href="../../css/timeline.css">
-    <script type="text/javascript" src="../../timeline.js"></script>
+    <script type="text/javascript" src="../../js/timeline.js"></script>
 </head>
 <body>
   <head>
