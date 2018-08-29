@@ -28,20 +28,12 @@ if (isset($_SESSION['usuario'])==false) {
 <head>
   <meta charset="UTF-8">
   <title><?php echo __('Inicio', $lang); ?></title>
+    <link rel="stylesheet" href="../css/tabla.css">
     <link rel="stylesheet" href="../css/menu.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
     <link rel="stylesheet" href="../css/formulario.css">
     <link rel="shortcut icon" href="../imagenes/favicon.ico">
-    <link rel="stylesheet" href="../css/modificar.css">
 		<link rel="stylesheet" type="text/css" href="../css/dashboard.css" />
-    <style media="screen">
-      tr:nth-child(even) {
-        background-color: #CAC6C5;
-      }
-      table{
-        color: black;
-      }
-    </style>
 </head>
 <body>
   <head>
@@ -109,6 +101,7 @@ if (isset($_SESSION['usuario'])==false) {
     </div>
     <!-- titulo -->
     <?php echo "<h2>Semana ".date('W')."</h2>"; ?>
+    <div class="derecha">
       <?php
       //comprobar que dia sera mañana para que no saque los sabados/domingos
       $dia=date('w');
@@ -135,103 +128,105 @@ if (isset($_SESSION['usuario'])==false) {
        ?>
        <!-- primera tabla -->
        <h2><?php echo $hoy; ?></h2>
-       <table id="tablamod" class="tablesorter">
-       <thead id="theadmod">
-         <tr id="trmod">
-           <th scope="col" id="thmod">Actividad</th>
-           <th scope="col" id="thmod">Recursos</th>
-           <th scope="col" id="thmod">Mañana</th>
-           <th scope="col" id="thmod">Tarde</th>
-           <th scope="col" id="thmod">Noche</th>
-           <th scope="col" id="thmod">Central</th>
-           <th scope="col" id="thmod">Especiales</th>
-         </tr>
-       </thead>
-       <tbody id="tbodymod">
-         <?php
-         //variables para sacar el total de recursos al final de la tabla
-         $totalRecursos=0;
-         $totalM=0;
-         $totalT=0;
-         $totalN=0;
-         $totalC=0;
-         $totalE=0;
-           //empezar a sacar la tabla
-           $listahoy= $servicio->listaServiciosHoy();
-           foreach ($listahoy as $servicios) {
-             $fechaHoy=date('Y-m-d', strtotime($hoy));
-             //sacamos los recursos de la actividad para ese dia.
-             $recursoId = $recursos -> ModificacionId($servicios['id'], $fechaHoy);
-             if ($recursoId == null || $recursoId == false) {
-               $recursoId = $recursos -> RecursosId($servicios['id']);
-             }
+      <table class="rwd-table">
+        <tr>
+          <th><?php echo __('Actividad', $lang); ?></th>
+          <th>Relacion</th>
+          <th><?php echo __('Recursos', $lang); ?></th>
+          <th>Mañana</th>
+          <th>Tarde</th>
+          <th>Noche</th>
+          <th>Central</th>
+          <th>Especiales</th>
+        </tr>
+        <?php
+        //variables para sacar el total de recursos al final de la tabla
+        $totalRecursos=0;
+        $totalM=0;
+        $totalT=0;
+        $totalN=0;
+        $totalC=0;
+        $totalE=0;
+          //empezar a sacar la tabla
+          $listahoy= $servicio->listaServiciosHoy();
+          foreach ($listahoy as $servicios) {
+            $fechaHoy=date('Y-m-d', strtotime($hoy));
+            //sacamos los recursos de la actividad para ese dia.
+            $recursoId = $recursos -> ModificacionId($servicios['id'], $fechaHoy);
+            if ($recursoId == null || $recursoId == false) {
+              $recursoId = $recursos -> RecursosId($servicios['id']);
+            }
 
-             //sumamos los recursos de cada servicio
-             $totalRecursos=$totalRecursos + $recursoId['tm'] + $recursoId['tt'] + $recursoId['tn'] + $recursoId['tc'] + $recursoId['otro1'] + $recursoId['otro2'] + $recursoId['otro3'] + $recursoId['otro4'] + $recursoId['otro5'] + $recursoId['otro6'];
-             $totalM = $totalM + $recursoId['tm'];
-             $totalT = $totalT + $recursoId['tt'];
-             $totalN = $totalN + $recursoId['tn'];
-             $totalC = $totalC + $recursoId['tc'];
-             $totalE = $totalE + $recursoId['otro1'] + $recursoId['otro2'] + $recursoId['otro3'] + $recursoId['otro4'] + $recursoId['otro5'] + $recursoId['otro6'];
+            //sumamos los recursos de cada servicio
+            $totalRecursos=$totalRecursos + $recursoId['tm'] + $recursoId['tt'] + $recursoId['tn'] + $recursoId['tc'] + $recursoId['otro1'] + $recursoId['otro2'] + $recursoId['otro3'] + $recursoId['otro4'] + $recursoId['otro5'] + $recursoId['otro6'];
+            $totalM = $totalM + $recursoId['tm'];
+            $totalT = $totalT + $recursoId['tt'];
+            $totalN = $totalN + $recursoId['tn'];
+            $totalC = $totalC + $recursoId['tc'];
+            $totalE = $totalE + $recursoId['otro1'] + $recursoId['otro2'] + $recursoId['otro3'] + $recursoId['otro4'] + $recursoId['otro5'] + $recursoId['otro6'];
 
-             echo "<tr id='trmod'>";
-             echo "<td data-label='".__('Actividad', $lang)."' id='tdmod'>".$servicios['descripcion']."</td>";
-             echo "<td data-label='".__('Recursos', $lang)."' id='tdmod'>".$recursoId['total']."</td>";
-             echo "<td data-label='Mañana' id='tdmod'>".$recursoId['tm']."</td>";
-             echo "<td data-label='Tarde' id='tdmod'>".$recursoId['tt']."</td>";
-             echo "<td data-label='Noche' id='tdmod'>".$recursoId['tn']."</td>";
-             echo "<td data-label='Central' id='tdmod'>".$recursoId['tc']."</td>";
-             echo "<td data-label='Especiales' id='tdmod'>";
-             if ($recursoId['otro1']!=0) {
-               echo $recursoId['otro1'] ." (" .$recursoId['inicio1'] ."-". $recursoId['fin1'] .")<br>";
-             }
-             if ($recursoId['otro2']!=0) {
-               echo $recursoId['otro2'] ." (" .$recursoId['inicio2'] ."-". $recursoId['fin2'] .")<br>";
-             }
-             if ($recursoId['otro3']!=0) {
-               echo $recursoId['otro3'] ." (" .$recursoId['inicio3'] ."-". $recursoId['fin3'] .")<br>";
-             }
-             if ($recursoId['otro4']!=0) {
-               echo $recursoId['otro4'] ." (" .$recursoId['inicio4'] ."-". $recursoId['fin4'] .")<br>";
-             }
-             if ($recursoId['otro5']!=0) {
-               echo $recursoId['otro5'] ." (" .$recursoId['inicio5'] ."-". $recursoId['fin5'] .")<br>";
-             }
-             if ($recursoId['otro6']!=0) {
-               echo $recursoId['otro6'] ." (" .$recursoId['inicio6'] ."-". $recursoId['fin6'] .")<br>";
-             }
-             echo "</td>";
-             echo "</tr>";
-           }
-           echo "<tr id='totalRecursos trmod'>";
-           echo "<td data-label='Actividad' id='tdmod'>TOTAL RECURSOS</td>";
-           echo "<td data-label='".__('Recursos', $lang)."' id='tdmod'>".$totalRecursos."</td>";
-           echo "<td data-label='Mañana' id='tdmod'>".$totalM."</td>";
-           echo "<td data-label='Tarde' id='tdmod'>".$totalT."</td>";
-           echo "<td data-label='Noche' id='tdmod'>".$totalN."</td>";
-           echo "<td data-label='Central' id='tdmod'>".$totalC."</td>";
-           echo "<td data-label='Especiales' id='tdmod'>".$totalE."</td>";
-           echo "</tr>";
-          ?>
-       </tbody>
-     </table>
-
-
+            echo "<tr>";
+            echo "<td data-th='".__('Actividad', $lang)."'>".$servicios['descripcion']."</td>";
+            echo "<td data-th='Relacion'>";
+            if ($servicios['relacion']!=null && $servicios['relacion']!=0) {
+              $relacion=$servicio->ServicioRelacion($servicios['id']);
+              echo $relacion['relacionada'];
+            }
+            echo "</td>";
+            echo "<td data-th='".__('Recursos', $lang)."'>".$recursoId['total']."</td>";
+            echo "<td data-th='Mañana'>".$recursoId['tm']."</td>";
+            echo "<td data-th='Tarde'>".$recursoId['tt']."</td>";
+            echo "<td data-th='Noche'>".$recursoId['tn']."</td>";
+            echo "<td data-th='Central'>".$recursoId['tc']."</td>";
+            echo "<td data-th='Especiales'>";
+            if ($recursoId['otro1']!=0) {
+              echo $recursoId['otro1'] ." (" .$recursoId['inicio1'] ."-". $recursoId['fin1'] .")<br>";
+            }
+            if ($recursoId['otro2']!=0) {
+              echo $recursoId['otro2'] ." (" .$recursoId['inicio2'] ."-". $recursoId['fin2'] .")<br>";
+            }
+            if ($recursoId['otro3']!=0) {
+              echo $recursoId['otro3'] ." (" .$recursoId['inicio3'] ."-". $recursoId['fin3'] .")<br>";
+            }
+            if ($recursoId['otro4']!=0) {
+              echo $recursoId['otro4'] ." (" .$recursoId['inicio4'] ."-". $recursoId['fin4'] .")<br>";
+            }
+            if ($recursoId['otro5']!=0) {
+              echo $recursoId['otro5'] ." (" .$recursoId['inicio5'] ."-". $recursoId['fin5'] .")<br>";
+            }
+            if ($recursoId['otro6']!=0) {
+              echo $recursoId['otro6'] ." (" .$recursoId['inicio6'] ."-". $recursoId['fin6'] .")<br>";
+            }
+            echo "</td>";
+            echo "</tr>";
+          }
+          echo "<tr id='totalRecursos'>";
+          echo "<td data-th='Actividad'>TOTAL RECURSOS</td>";
+          echo "<td data-th='Relacion'></td>";
+          echo "<td data-th='".__('Recursos', $lang)."'>".$totalRecursos."</td>";
+          echo "<td data-th='Mañana'>".$totalM."</td>";
+          echo "<td data-th='Tarde'>".$totalT."</td>";
+          echo "<td data-th='Noche'>".$totalN."</td>";
+          echo "<td data-th='Central'>".$totalC."</td>";
+          echo "<td data-th='Especiales'>".$totalE."</td>";
+          echo "</tr>";
+         ?>
+      </table>
+    </div>
+    <div class="izquierda">
       <!-- segunda tabla -->
       <h2><?php echo $manana; ?></h2>
-      <table id="tablamod" class="tablesorter">
-      <thead id="theadmod">
-        <tr id="trmod">
-          <th scope="col" id="thmod">Actividad</th>
-          <th scope="col" id="thmod">Recursos</th>
-          <th scope="col" id="thmod">Mañana</th>
-          <th scope="col" id="thmod">Tarde</th>
-          <th scope="col" id="thmod">Noche</th>
-          <th scope="col" id="thmod">Central</th>
-          <th scope="col" id="thmod">Especiales</th>
+      <table class="rwd-table">
+        <tr>
+          <th><?php echo __('Actividad', $lang); ?></th>
+          <th>Relacion</th>
+          <th><?php echo __('Recursos', $lang); ?></th>
+          <th>Mañana</th>
+          <th>Tarde</th>
+          <th>Noche</th>
+          <th>Central</th>
+          <th>Especiales</th>
         </tr>
-      </thead>
-      <tbody id="tbodymod">
         <?php
         //variables para sacar el total de recursos al final de la tabla
         $totalRecursos=0;
@@ -261,14 +256,20 @@ if (isset($_SESSION['usuario'])==false) {
             $totalE = $totalE + $recursoId['otro1'] + $recursoId['otro2'] + $recursoId['otro3'] + $recursoId['otro4'] + $recursoId['otro5'] + $recursoId['otro6'];
 
 
-            echo "<tr id='trmod'>";
-            echo "<td data-label='".__('Actividad', $lang)."' id='tdmod'>".$servicios['descripcion']."</td>";
-            echo "<td data-label='".__('Recursos', $lang)."' id='tdmod'>".$recursoId['total']."</td>";
-            echo "<td data-label='Mañana' id='tdmod'>".$recursoId['tm']."</td>";
-            echo "<td data-label='Tarde' id='tdmod'>".$recursoId['tt']."</td>";
-            echo "<td data-label='Noche' id='tdmod'>".$recursoId['tn']."</td>";
-            echo "<td data-label='Central' id='tdmod'>".$recursoId['tc']."</td>";
-            echo "<td data-label='Especiales' id='tdmod'>";
+            echo "<tr>";
+            echo "<td data-th='".__('Actividad', $lang)."'>".$servicios['descripcion']."</td>";
+            echo "<td data-th='relacion'>";
+            if ($servicios['relacion']!=null && $servicios['relacion']!=0) {
+              $relacion=$servicio->ServicioRelacion($servicios['id']);
+              echo $relacion['relacionada'];
+            }
+            echo "</td>";
+            echo "<td data-th='".__('Recursos', $lang)."'>".$recursoId['total']."</td>";
+            echo "<td data-th='Mañana'>".$recursoId['tm']."</td>";
+            echo "<td data-th='Tarde'>".$recursoId['tt']."</td>";
+            echo "<td data-th='Noche'>".$recursoId['tn']."</td>";
+            echo "<td data-th='Central'>".$recursoId['tc']."</td>";
+            echo "<td data-th='Especiales'>";
             if ($recursoId['otro1']!=0) {
               echo $recursoId['otro1'] ." (" .$recursoId['inicio1'] ."-". $recursoId['fin1'] .")<br>";
             }
@@ -291,18 +292,19 @@ if (isset($_SESSION['usuario'])==false) {
             echo "</tr>";
           }
 
-          echo "<tr id='totalRecursos trmod0'>";
-          echo "<td data-label='Actividad' id='tdmod'>TOTAL RECURSOS</td>";
-          echo "<td data-label='".__('Recursos', $lang)."' id='tdmod'>".$totalRecursos."</td>";
-          echo "<td data-label='Mañana' id='tdmod'>".$totalM."</td>";
-          echo "<td data-label='Tarde' id='tdmod'>".$totalT."</td>";
-          echo "<td data-label='Noche' id='tdmod'>".$totalN."</td>";
-          echo "<td data-label='Central' id='tdmod'>".$totalC."</td>";
-          echo "<td data-label='Especiales' id='tdmod'>".$totalE."</td>";
+          echo "<tr id='totalRecursos'>";
+          echo "<td data-th='Actividad'>TOTAL RECURSOS</td>";
+          echo "<td data-th='Relacion'></td>";
+          echo "<td data-th='".__('Recursos', $lang)."'>".$totalRecursos."</td>";
+          echo "<td data-th='Mañana'>".$totalM."</td>";
+          echo "<td data-th='Tarde'>".$totalT."</td>";
+          echo "<td data-th='Noche'>".$totalN."</td>";
+          echo "<td data-th='Central'>".$totalC."</td>";
+          echo "<td data-th='Especiales'>".$totalE."</td>";
           echo "</tr>";
          ?>
-      </tbody>
       </table>
+    </div>
   </div>
 </div>
 </div>
