@@ -98,6 +98,9 @@ if (isset($_SESSION['usuario'])==false) {
 
     <div class="site-content">
       <div class="container">
+        <div class="breadcrumb" style="margin-left: 2%; color:black;">
+          <a href="../../dashboard.php">Inicio</a> >> <a href="../index.php">Gestión Actividades</a> >> <a href="actividadesActuales.php">Actividades actuales</a> >> <a href="">Modfificar actividad</a>
+        </div>
         <!-- Contenido de la pagina. -->
         <h2>Modificar informacion de la actividad</h2>
         <h3><?=$infoservicio['descripcion']?></h3>
@@ -128,47 +131,47 @@ if (isset($_SESSION['usuario'])==false) {
                 //sacamos los modelos de la bbdd y los separamos
                 $modelos=explode(",", $infoservicio['modelos']);
                 foreach ($modelos as $modelo) {
-                  if ($modelo==" MONDEO" || $modelo=="MONDEO") {
+                  if ($modelo==" Mondeo" || $modelo=="Mondeo") {
                     $mondeo=1;
                   }
-                  if ($modelo==" GALAXY" || $modelo=="GALAXY") {
+                  if ($modelo==" Galaxy" || $modelo=="Galaxy") {
                     $galaxy=1;
                   }
-                  if ($modelo==" S-MAX" || $modelo=="S-MAX") {
+                  if ($modelo==" S-Max" || $modelo=="S-Max") {
                     $smax=1;
                   }
-                  if ($modelo==" TRANSIT CONNECT" || $modelo=="TRANSIT CONNECT") {
+                  if ($modelo==" Transit connect" || $modelo=="Transit connect") {
                     $transit=1;
                   }
-                  if ($modelo==" KUGA" || $modelo=="KUGA") {
+                  if ($modelo==" Kuga" || $modelo=="Kuga") {
                     $kuga=1;
                   }
                 }
                 //sacamos por pantalla todos deoendiendo de si estan checked o no
                 if ($mondeo==1) {
-                  echo "<option value='MONDEO' selected>MONDEO</option>";
+                  echo "<option value='Mondeo' selected>Mondeo</option>";
                 }else {
-                  echo "<option value='MONDEO'>MONDEO</option>";
+                  echo "<option value='Mondeo'>Mondeo</option>";
                 }
                 if ($galaxy==1) {
-                  echo "<option value='GALAXY' selected>GALAXY</option>";
+                  echo "<option value='Galaxy' selected>Galaxy</option>";
                 }else {
-                  echo "<option value='GALAXY'>GALAXY</option>";
+                  echo "<option value='Galaxy'>Galaxy</option>";
                 }
                 if ($smax==1) {
-                    echo "<option value='S-MAX' selected>S-MAX</option>";
+                    echo "<option value='S-Max' selected>S-Max</option>";
                 }else {
-                  echo "<option value='S-MAX'>S-MAX</option>";
+                  echo "<option value='S-Max'>S-Max</option>";
                 }
                 if ($transit==1) {
-                  echo "<option value='TRANSIT CONNECT' selected>CONNECT</option>";
+                  echo "<option value='Transit connect' selected>Connect</option>";
                 }else {
-                  echo "<option value='TRANSIT CONNECT'>CONNECT</option>";
+                  echo "<option value='Transit connect'>Connect</option>";
                 }
                 if ($kuga==1) {
-                  echo "<option value='KUGA' selected>KUGA</option>";
+                  echo "<option value='Kuga' selected>Kuga</option>";
                 }else {
-                  echo "<option value='KUGA'>KUGA</option>";
+                  echo "<option value='Kuga'>Kuga</option>";
                 }
 
                ?>

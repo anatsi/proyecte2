@@ -120,6 +120,9 @@ textarea::placeholder{
 
     <div class="site-content">
       <div class="container">
+        <div class="breadcrumb" style="margin-left: 2%; color:black;">
+          <a href="../../dashboard.php">Inicio</a> >> <a href="../index.php">Gestión actividades</a> >> <a href="actividadesActuales.php">Actividades actuales</a> >> <a href="">Finalizar actividad</a>
+        </div>
         <!-- Contenido de la pagina. -->
         <h2>Finalizar servicio</h2>
         <form id="contactForm" action="finalizarServicio.php" method="post">

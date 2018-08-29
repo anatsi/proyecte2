@@ -97,7 +97,7 @@ if (isset($_SESSION['usuario'])==false) {
   <div class="container">
     <!-- migas de pan -->
     <div class="breadcrumb" style="margin-left: 2%; color:black;">
-      <a href="../dashboard.php">INICIO</a> >> <a href="index.php">GESTIÓN ACTIVIDADES</a>
+      <a href="../dashboard.php">Inicio</a> >> <a href="index.php">Gestión actividades</a>
     </div>
     <!-- titulo -->
     <?php echo "<h2>Semana ".date('W')."</h2>"; ?>

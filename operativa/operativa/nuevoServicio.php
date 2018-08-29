@@ -103,7 +103,7 @@ if (isset($_SESSION['usuario'])==false) {
     <div class="site-content">
       <div class="container">
         <div class="breadcrumb" style="margin-left: 2%; color:black;">
-          <a href="../../dashboard.php">INICIO</a> >> <a href="../index.php">GESTIÓN ACTIVIDADES</a> >> <a href="nuevoServicio.php">NUEVA ACTIVIDAD</a>
+          <a href="../../dashboard.php">Inicio</a> >> <a href="../index.php">Gestión actividades</a> >> <a href="nuevoServicio.php">Nueva actividad</a>
         </div>
         <!-- Contenido de la pagina. -->
         <h2><?php echo __('Nueva actividad', $lang); ?></h2>
@@ -113,11 +113,11 @@ if (isset($_SESSION['usuario'])==false) {
               <p><label><i class="fa fa-question-circle"></i>Descripción</label><textarea name="cdo"></textarea></p>
               <p><label><i class="fa fa-question-circle"></i><?php echo __('Modelos', $lang); ?></label>
                 <select name="sel[]" class="test" multiple="multiple" id='multiple'>
-                        <option value='MONDEO'>MONDEO</option>
-                        <option value='KUGA'>KUGA</option>
-                        <option value='TRANSIT CONNECT'>CONNECT</option>
-                        <option value='GALAXY'>GALAXY</option>
-                        <option value='S-MAX'>S-MAX</option>
+                        <option value='Mondeo'>Mondeo</option>
+                        <option value='Kuga'>Kuga</option>
+                        <option value='Transit connect'>Connect</option>
+                        <option value='Galaxy'>Galaxy</option>
+                        <option value='S-Max'>S-Max</option>
                 </select></p>
               <p><label><i class="fa fa-question-circle"></i><?php echo __('Fecha inicio', $lang); ?> (*)</label><input type="date" name="finicio" required/></p>
               <p><label><i class="fa fa-question-circle"></i><?php echo __('Cliente', $lang); ?></label>

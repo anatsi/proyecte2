@@ -113,7 +113,7 @@ if (isset($_SESSION['usuario'])==false) {
     <div class="site-content">
       <div class="container">
         <div class="breadcrumb" style="margin-left: 2%; color:black;">
-          <a href="../../dashboard.php">INICIO</a> >> <a href="../index.php">GESTIÓN ACTIVIDADES</a> >> <a href="filtroRRHH.php">SELECCIÓN PERSONAL</a>
+          <a href="../../dashboard.php">Inicio</a> >> <a href="../index.php">Gestión actividades</a> >> <a href="filtroRRHH.php">Selección personal</a>
         </div>
         <?php
           //recogemos la fecha sea por get o por post.

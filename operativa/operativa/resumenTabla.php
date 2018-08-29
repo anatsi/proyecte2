@@ -104,7 +104,7 @@ if ($_POST['fin']<$_POST['inicio']) {
       <div class="site-content">
         <div class="container">
           <div class="breadcrumb" style="margin-left: 2%; color:black;">
-            <a href="../../dashboard.php">INICIO</a> >> <a href="../index.php">GESTIÓN ACTIVIDADES</a> >> <a href="resumen.php">BUSQUEDA</a>
+            <a href="../../dashboard.php">Inicio</a> >> <a href="../index.php">Gestión actividades</a> >> <a href="resumen.php">Búsqueda</a>
           </div>
           <!-- Contenido de la pagina. -->
           <?php

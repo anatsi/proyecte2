@@ -87,7 +87,7 @@ if (isset($_SESSION['usuario'])==false){
     <div class="site-content">
       <div class="container">
         <div class="breadcrumb" style="margin-left: 2%; color:black;">
-          <a href="../dashboard.php">INICIO</a> >> <a href="index.php">GESTIÓN EMPLEADOS</a> >> <a href="">EDITAR EMPLEADO</a>
+          <a href="../dashboard.php">Inicio</a> >> <a href="index.php">Gestión empleados</a> >> <a href="">Editar empleado</a>
         </div>
 
         <!-- Contenido de la pagina. -->

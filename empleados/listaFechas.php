@@ -126,8 +126,8 @@ if (isset($_SESSION['usuario'])==false) {
     <div class="site-content">
       <div class="container">
         <div class="breadcrumb" style="margin-left: 2%;">
-          <a href="../dashboard.php">INICIO</a> >> <a href="index.php">GESTIÓN EMPLEADOS</a>
-          >> <a href="fechas.php">FECHAS</a>
+          <a href="../dashboard.php">Inicio</a> >> <a href="index.php">Gestión empleados</a>
+          >> <a href="fechas.php">Fechas</a>
         </div>
         <!-- Contenido de la pagina. -->
         <h2>Consultas de fechas </h2>
