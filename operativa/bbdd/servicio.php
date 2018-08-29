@@ -193,7 +193,7 @@ class Servicio extends db
       //cogemos la fecha de hoy para compararla con lo que vamos a sacar.
       $fecha=date("Y-m-d");
       //Construimos la consulta
-      $sql="SELECT * from servicios WHERE f_fin<='".$fecha."'";
+      $sql="SELECT * from servicios WHERE f_fin<='".$fecha."' OR cancelado=true";
       //Realizamos la consulta
       $resultado=$this->realizarConsulta($sql);
       if($resultado!=null){

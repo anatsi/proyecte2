@@ -147,10 +147,9 @@ if (isset($_SESSION['usuario'])==false) {
                 <th scope='col' id='thmod'>".__('Actividad', $lang)."</th>
                 <th scope='col' id='thmod'>Inicio</th>
                 <th scope='col' id='thmod'>Fin</th>
-                <th scope='col' id='thmod'>".__('Modelos', $lang)."</th>
                 <th scope='col' id='thmod'>".__('Cliente', $lang)."</th>
                 <th scope='col' id='thmod'>".__('Responsable', $lang)."</th>
-                <th scope='col' id='thmod'>Telefono</th>
+                <th scope='col' id='thmod'>Estado</th>
               </tr>
             </thead><tbody id='tbodymod'>
 
@@ -161,15 +160,20 @@ if (isset($_SESSION['usuario'])==false) {
               $inicio=$inicio[2]."-".$inicio[1]."-".$inicio[0];
               $fin=explode("-", $servicio['f_fin']);
               $fin=$fin[2]."-".$fin[1]."-".$fin[0];
+              //comprobar si la actividad habia sido finalizada o cancelada
+              if ($servicio['cancelado']==true) {
+                $estado = 'Cancelada';
+              }else {
+                $estado = 'Finalizada';
+              }
                echo "
                   <tr id='trmod'>
                     <td data-label='".__('Actividad', $lang)."' id='tdmod'><a href='timeline.php?servicio=".$servicio['id']."'>".$servicio['descripcion']."</a></td>
                     <td data-label='Inicio' id='tdmod'>".$inicio."</td>
                     <td data-label='Fin' id='tdmod'>".$fin."</td>
-                    <td data-label='".__('Modelos', $lang)."' id='tdmod'>".$servicio['modelos']."</td>
                     <td data-label='".__('Cliente', $lang)."' id='tdmod'>".$clientes['nombre']."</td>
                     <td data-label='".__('Responsable', $lang)."' id='tdmod'>".$servicio['responsable']."</td>
-                    <td data-label='Telefono' id='tdmod'><a href='tel:".$servicio['telefono']."'>".$servicio['telefono']."</a></td>
+                    <td data-label='Estado' id='tdmod'>".$estado."</td>
                   </tr>
 
             ";} echo "</tbody></table></div>";
