@@ -160,6 +160,7 @@ if (isset($_SESSION['usuario'])==false) {
               <p><label><i class="fa fa-question-circle"></i>Com. Depto. Operativo</label><textarea name="cdo"></textarea></p>
               <p><label><i class="fa fa-question-circle"></i>Com. Finanzas</label><textarea name="caf"></textarea></p>
           </div>
+        <input type="hidden" value=<?=$inforecurso['total']?> name="recursosViejos"/>
 
           <div class="submitbuttons">
               <input class="submithree" style="width: 25%; margin-right: 15%; margin-left: 5%;" type="submit" value="Modificar"/>
@@ -250,8 +251,9 @@ if (isset($_POST['id']) && isset($_POST['recursos'])) {
               <b>Nueva modificacion en servicio</b>
             </h2><br />' .
             '<b>SERVICIO: </b>'.$_POST['descripcion']. '<br />
+            <b> RECURSOS NORMALES: </b>'.$_POST['recursosViejos'].' <br>
             <b> DIAS: </b>'.$dias.' <br>
-            <b> RECURSOS TOTALES: </b>'.$_POST['recursos'].' <br>
+            <b> RECURSOS PARA LOS DIAS MODIFICADOS: </b>'.$_POST['recursos'].' <br>
             <hr>'.
             'Por favor, no responda a este correo lo envia un robot automáticamente.'.
             '<br />Enviado el ' . date('d/m/Y', time()) .
