@@ -99,7 +99,7 @@ if (isset($_SESSION['usuario'])==false) {
     <div class="site-content">
       <div class="container">
         <div class="breadcrumb" style="margin-left: 2%; color:black;">
-          <a href="../../dashboard.php">Inicio</a> >> <a href="../index.php">Gestión Actividades</a> >> <a href="actividadesActuales.php">Actividades actuales</a> >> <a href="">Modfificar actividad</a>
+          <a href="../../dashboard.php">Inicio</a> >> <a href="../index.php">Gestión Actividades</a> >> <a href="actividadesActuales.php">Actividades actuales</a> >> <a href="">Modificar actividad</a>
         </div>
         <!-- Contenido de la pagina. -->
         <h2>Modificar informacion de la actividad</h2>
