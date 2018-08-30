@@ -11,12 +11,14 @@ require_once '../../ddbb/users.php';
 require_once '../bbdd/cliente.php';
 require_once '../bbdd/servicio.php';
 require_once '../bbdd/recursos.php';
+require_once '../bbdd/responsable.php';
 
 $usuario=new User();
 $sesion=new Sesiones();
 $cliente=new Cliente();
 $servicio=new Servicio();
 $recursos=new Recursos();
+$responsable=new Responsable();
 
 //comprobamos si hay una sesion iniciada
 if (isset($_SESSION['usuario'])==false) {
@@ -167,9 +169,11 @@ if (isset($_SESSION['usuario'])==false) {
                 $recursoTomorrow=0;
               }
 
+              $resp=$responsable->responsableId($lista['responsable']);
+
               echo "<tr id='trmod'>";
               echo "<td scope='row' data-label='".__('Actividad', $lang)."' id='tdmod'><a id='timeline' href='timeline.php?servicio=".$lista['id']."'>".$lista['descripcion']."</a></td>";
-              echo "<td data-label='Responsable' id='tdmod'>".$lista['responsable']."</td>";
+              echo "<td data-label='Responsable' id='tdmod'>".$resp['nombre']."</td>";
               echo "<td data-label='Estado' id='tdmod'>".$status."</td>";
               echo "<td data-label='Hoy' id='tdmod'>".$recursoHoy."</td>";
               echo "<td data-label='Mañana' id='tdmod'>".$recursoTomorrow."</td>";

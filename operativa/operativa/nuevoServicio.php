@@ -11,12 +11,14 @@ require_once '../../ddbb/users.php';
 require_once '../bbdd/cliente.php';
 require_once '../bbdd/servicio.php';
 require_once '../bbdd/recursos.php';
+require_once '../bbdd/responsable.php';
 
 $usuario=new User();
 $sesion=new Sesiones();
 $cliente=new Cliente();
 $servicio=new Servicio();
 $recursos=new Recursos();
+$responsable=new Responsable();
 
 if (isset($_SESSION['usuario'])==false) {
   header('Location: ../../index.php');
@@ -129,9 +131,15 @@ if (isset($_SESSION['usuario'])==false) {
                     }
                    ?>
                 </select></p>
-              <p><label><i class="fa fa-question-circle"></i><?php echo __('Responsable', $lang); ?></label><input type="text" name="responsable"/></p>
-              <p><label><i class="fa fa-question-circle"></i><?php echo __('Tel. responsable', $lang); ?></label><input type="tel" name="telefono"/></p>
-              <p><label><i class="fa fa-question-circle"></i><?php echo __('Correo responsable', $lang); ?></label><input type="email" name="correo"/></p>
+            <p><label><i class="fa fa-question-circle"></i>Responsable</label>
+              <select name="responsable">
+                <?php
+                  $responsables= $responsable->listaResponsables();
+                  foreach ($responsables as $persona) {
+                    echo "<option value=".$persona['id'].">".$persona['nombre']."</option>";
+                  }
+                 ?>
+              </select></p>
           </div>
           <div class="formthird" id='contenedor'>
           <!--  <p><label><i class="fa fa-question-circle"></i><?php echo __('Personas (aprox.)', $lang); ?></label><input type="number" min='0' id="calculo" readonly/></p>

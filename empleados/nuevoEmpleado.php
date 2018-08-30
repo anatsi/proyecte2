@@ -33,23 +33,23 @@ if (isset($_SESSION['usuario'])==false) {
       <head>
       <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
       <style>
-.alert {
-    padding: 20px;
-    background-color: #f44336;
-    color: white;
-}
-.hidden{
-  display: none;
-}
-.shown{
-  display: block;
-}
-  .personal{
-    color:white;
-    background-color:#1F523F;
+        .alert {
+            padding: 20px;
+            background-color: #f44336;
+            color: white;
+        }
+        .hidden{
+          display: none;
+        }
+        .shown{
+          display: block;
+        }
+          .personal{
+            color:white;
+            background-color:#1F523F;
 
-}
-</style>
+        }
+        </style>
 </head>
 
 <div class="codrops-top clearfix">

@@ -64,7 +64,7 @@
           $ruta5="/operativa/files/".$_FILES['archivo6']['name'];
         }
         //si los ha rellenado, llamamos a la función de insertar el servicio y le pasamos los datos.
-        $nuevoServicio=$servicio->nuevoServicio($_POST['descripcion'], $modelos, $_POST['recursos'], $_POST['finicio'], $_POST['cliente'], $_POST['responsable'], $_POST['telefono'], $_POST['correo'], $_POST['csup'],
+        $nuevoServicio=$servicio->nuevoServicio($_POST['descripcion'], $modelos, $_POST['recursos'], $_POST['finicio'], $_POST['cliente'], $_POST['responsable'], $_POST['csup'],
          $_POST['crrhh'], $_POST['caf'], $_POST['cdo'], $ruta1, $ruta2, $ruta3, $ruta4, $ruta5, $ruta6);
         //comprobamos que se haya registrado.
         if ($nuevoServicio==null) {

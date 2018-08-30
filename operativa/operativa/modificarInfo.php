@@ -4,11 +4,13 @@ require_once '../../ddbb/sesiones.php';
 require_once '../../ddbb/users.php';
 require_once '../bbdd/cliente.php';
 require_once '../bbdd/servicio.php';
+require_once '../bbdd/responsable.php';
 
 $usuario=new User();
 $sesion=new Sesiones();
 $cliente=new Cliente();
 $servicio=new Servicio();
+$responsable=new Responsable();
 
 if (isset($_SESSION['usuario'])==false) {
   header('Location: ../../index.php');
@@ -176,9 +178,23 @@ if (isset($_SESSION['usuario'])==false) {
 
                ?>
                </select></p>
-            <p><label><i class="fa fa-question-circle"></i>Responsable</label><input type="text" value='<?=$infoservicio['responsable']?>' name="responsable"/></p>
-            <p><label><i class="fa fa-question-circle"></i>Tel. responsable</label><input type="tel" value=<?=$infoservicio['telefono']?> name="tel"/></p>
-            <p><label><i class="fa fa-question-circle"></i>Correo responsable</label><input type="email" value='<?=$infoservicio['correo']?>' name="correo"/></p>
+               <?php
+                $resp=$responsable->responsableId($infoservicio['responsable']);
+                ?>
+               <p><label><i class="fa fa-question-circle"></i>Responsable</label>
+                 <select name="responsable" value='<?php echo $resp['nombre']; ?>'>
+                   <?php
+                     $responsables= $responsable->listaResponsables();
+                     foreach ($responsables as $persona) {
+                       if ($persona['id']==$resp['id']) {
+                         echo "<option value=".$persona['id']." selected>".$persona['nombre']."</option>";
+
+                       }else {
+                         echo "<option value=".$persona['id'].">".$persona['nombre']."</option>";                         
+                       }
+                     }
+                    ?>
+                 </select></p>
           </div>
           <div class="formthird">
               <p><label><i class="fa fa-question-circle"></i>Com. Jefe Turno</label><textarea name="csup"><?=$infoservicio['com_supervisor']?></textarea></p>

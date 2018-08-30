@@ -11,12 +11,14 @@ require_once '../../ddbb/users.php';
 require_once '../bbdd/cliente.php';
 require_once '../bbdd/servicio.php';
 require_once '../bbdd/recursos.php';
+require_once '../bbdd/responsable.php';
 
 $usuario=new User();
 $sesion=new Sesiones();
 $cliente=new Cliente();
 $servicio=new Servicio();
 $recursos=new Recursos();
+$responsable=new Responsable();
 
 if (isset($_SESSION['usuario'])==false) {
   header('Location: ../../index.php');
@@ -166,13 +168,16 @@ if (isset($_SESSION['usuario'])==false) {
               }else {
                 $estado = 'Finalizada';
               }
+              //sacar nombre del responsable
+              $resp=$responsable->responsableId($servicio['responsable']);
+
                echo "
                   <tr id='trmod'>
                     <td data-label='".__('Actividad', $lang)."' id='tdmod'><a href='timeline.php?servicio=".$servicio['id']."'>".$servicio['descripcion']."</a></td>
                     <td data-label='Inicio' id='tdmod'>".$inicio."</td>
                     <td data-label='Fin' id='tdmod'>".$fin."</td>
                     <td data-label='".__('Cliente', $lang)."' id='tdmod'>".$clientes['nombre']."</td>
-                    <td data-label='".__('Responsable', $lang)."' id='tdmod'>".$servicio['responsable']."</td>
+                    <td data-label='".__('Responsable', $lang)."' id='tdmod'>".$resp['nombre']."</td>
                     <td data-label='Estado' id='tdmod'>".$estado."</td>
                   </tr>
 

@@ -5,12 +5,14 @@ require_once '../../ddbb/users.php';
 require_once '../bbdd/cliente.php';
 require_once '../bbdd/servicio.php';
 require_once '../bbdd/recursos.php';
+require_once '../bbdd/responsable.php';
 
 $usuario=new User();
 $sesion=new Sesiones();
 $cliente=new Cliente();
 $servicio=new Servicio();
 $recursos=new Recursos();
+$responsable=new Responsable();
 
 if (isset($_SESSION['usuario'])==false) {
   header('Location: ../../index.php');
@@ -97,19 +99,6 @@ if (isset($_SESSION['usuario'])==false) {
           echo "<h2>".$servicioId['descripcion']."</h2>";
           echo "<h4><a style='color:red;' href='modificarGeneral.php?servicio=".$servicioId['id']."'>Modificar actividad</a></h4>";
           echo "<br>";
-          //si tiene alguna relacion, sacar la infor de la relacion
-          if ($servicioId['relacion']!=null && $servicioId['relacion']!=0) {
-            $relacion=$servicio->ServicioRelacion($servicioId['id']);
-            $fecha=explode("-", $relacion['inicio']);
-            $inicio=$fecha[2]."-".$fecha[1]."-".$fecha[0];
-            echo "<h4 id='relacion'>RELACIONADA CON <a href='timeline.php?servicio=".$relacion['id_relacionada']."'>".$relacion['relacionada'] ."</a> DESDE ".$inicio;
-              if ($relacion['fin']!=null && $relacion['fin']!='0000-00-00') {
-                $fecha=explode("-", $relacion['fin']);
-                $fin=$fecha[2]."-".$fecha[1]."-".$fecha[0];
-                echo " HASTA ".$fin;
-              }
-            echo "</h4>";
-          }
           //parte de la derecha
           echo "<div id='listaDerecha'>";
           echo "<ul>";
@@ -168,9 +157,10 @@ if (isset($_SESSION['usuario'])==false) {
           //parte de la izquierda
           echo "<div id='listaIzquierda'>";
           echo "<ul>";
-          echo "<li><b>Responsable: </b>".$servicioId['responsable']."</li>";
-          echo "<li><b>Tel. responsable: </b>".$servicioId['telefono']."</li>";
-          echo "<li><b>Correo responsable: </b><a href='mailto: ".$servicioId['correo']."'>".$servicioId['correo']."</a></li>";
+          $resp=$responsable->responsableId($servicioId['responsable']);
+          echo "<li><b>Responsable: </b>".$resp['nombre']."</li>";
+          echo "<li><b>Tel. responsable: </b>".$resp['telefono']."</li>";
+          echo "<li><b>Correo responsable: </b><a href='mailto: ".$resp['email']."'>".$resp['email']."</a></li>";
           //comentarios
           if ($servicioId['com_supervisor']!=null) {
             echo "<li><b>Comentario Supervisor: </b>".$servicioId['com_supervisor']."</li>";
