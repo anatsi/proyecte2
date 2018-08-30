@@ -25,7 +25,7 @@ $fecha= new Fechas();
           $interval = $datetime1->diff($datetime2);
           $alerta=$interval->format('%a');
           //Poner una condición de si la diferencia es 15 o 10 o 1 enviar correo  y además el empleado está de  alta
-           if($alerta<=15){
+           if($alerta==15 || $alerta==10 || $alerta==1){
              $empleados= $empleado->EmpleadoId($fechas['empleado']);
            //Solo los empleados en activo pueden apacer
              if($empleados['alta']==0){
@@ -88,7 +88,7 @@ $fecha= new Fechas();
           $interval = $datetime1->diff($datetime2);
           $alerta=$interval->format('%a');
           //Poner una condición de si la diferencia es 15 o 10 o 1 enviar correo  y además el empleado está de  alta
-           if($alerta<=15){
+           if($alerta==15 || $alerta==10 || $alerta==1){
              $empleados= $empleado->EmpleadoId($fechas['empleado']);
            //Solo los empleados en activo pueden apacer
              if($empleados['alta']==0){
@@ -151,7 +151,7 @@ $fecha= new Fechas();
           $interval = $datetime1->diff($datetime2);
           $alerta=$interval->format('%a');
           //Poner una condición de si la diferencia es 15 o 10 o 1 enviar correo  y además el empleado está de  alta
-           if($alerta<=15){
+           if($alerta==15 || $alerta==10 || $alerta==1){
              $empleados= $empleado->EmpleadoId($fechas['empleado']);
            //Solo los empleados en activo pueden apacer
              if($empleados['alta']==0){
@@ -214,7 +214,7 @@ $fecha= new Fechas();
           $interval = $datetime1->diff($datetime2);
           $alerta=$interval->format('%a');
           //Poner una condición de si la diferencia es 15 o 10 o 1 enviar correo  y además el empleado está de  alta
-           if($alerta<=15){
+           if($alerta==15 || $alerta==10 || $alerta==1){
              $empleados= $empleado->EmpleadoId($fechas['empleado']);
            //Solo los empleados en activo pueden apacer
              if($empleados['alta']==0){
@@ -276,7 +276,7 @@ $fecha= new Fechas();
           $interval = $datetime1->diff($datetime2);
           $alerta=$interval->format('%a');
           //Poner una condición de si la diferencia es 15 o 10 o 1 enviar correo  y además el empleado está de  alta
-           if($alerta<=15){
+           if($alerta==15 || $alerta==10 || $alerta==1){
              $empleados= $empleado->EmpleadoId($fechas['empleado']);
            //Solo los empleados en activo pueden apacer
              if($empleados['alta']==0){
