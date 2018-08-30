@@ -17,14 +17,15 @@
         //si se activa correctamente, lo devolvemos a index
         ?>
           <script type="text/javascript">
-            window.location='index.php';
+           alert('Por favor revisar las fechas del empleado !');
+              window.location='index.php';
           </script>
         <?php
       }else {
         //si se activa mal, le avisamos
         ?>
           <script type="text/javascript">
-            alert('Error al activar el empleado!');
+            alert('2Error al activar el empleado!');
             window.location='index.php';
           </script>
         <?php
@@ -33,7 +34,8 @@
     //si no se ha enviado el empleado que se quiere activar, lo devolvemos a index.
     ?>
       <script type="text/javascript">
-        window.location='index.php';
+           window.location='index.php';
+
       </script>
     <?php
   }
