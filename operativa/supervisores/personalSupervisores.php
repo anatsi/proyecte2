@@ -84,7 +84,7 @@ if (isset($_SESSION['usuario'])==false) {
             echo "<a href='../operativa/actividadesActuales.php'>Actividades actuales</a>";
             echo "<a href='../operativa/historicoActividades.php'>Histórico actividades</a>";
             echo "<a href='../operativa/resumen.php'>Búsqueda por fechas</a>";
-            echo "<a href='../operativa/nuevoCliente.php'>Nuevo cliente</a>";
+            echo "<a href='../operativa/nuevoCliente.php'>Nuevo cliente/resp.</a>";
           }elseif ($opcion == 22) {
             echo '<a href="../rrhh/filtroRRHH.php">Selección personal</a>';
           }elseif ($opcion == 23) {
@@ -95,7 +95,7 @@ if (isset($_SESSION['usuario'])==false) {
             echo "<a href='../operativa/actividadesActuales.php'>Actividades actuales</a>";
             echo "<a href='../operativa/historicoActividades.php'>Histórico actividades</a>";
             echo "<a href='../operativa/resumen.php'>Búsqueda por fechas</a>";
-            echo "<a href='../operativa/nuevoCliente.php'>Nuevo cliente</a>";
+            echo "<a href='../operativa/nuevoCliente.php'>Nuevo cliente/resp.</a>";
             echo '<a href="../rrhh/filtroRRHH.php">Selección personal</a>';
             echo '<a href="filtroSupervisores.php">Jefe de turno</a>';
           }

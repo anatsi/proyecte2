@@ -72,7 +72,7 @@ if (isset($_SESSION['usuario'])==false) {
             echo "<a href='actividadesActuales.php'>Actividades actuales</a>";
             echo "<a href='historicoActividades.php'>Histórico actividades</a>";
             echo "<a href='resumen.php'>Búsqueda por fechas</a>";
-            echo "<a href='nuevoCliente.php'>Nuevo cliente</a>";
+            echo "<a href='nuevoCliente.php'>Nuevo cliente/resp.</a>";
           }elseif ($opcion == 22) {
             echo '<a href="../rrhh/filtroRRHH.php">Selección personal</a>';
 
@@ -84,7 +84,7 @@ if (isset($_SESSION['usuario'])==false) {
             echo "<a href='actividadesActuales.php'>Actividades actuales</a>";
             echo "<a href='historicoActividades.php'>Histórico actividades</a>";
             echo "<a href='resumen.php'>Búsqueda por fechas</a>";
-            echo "<a href='nuevoCliente.php'>Nuevo cliente</a>";
+            echo "<a href='nuevoCliente.php'>Nuevo cliente/resp.</a>";
             echo '<a href="../rrhh/filtroRRHH.php">Selección personal</a>';
             echo '<a href="../supervisores/filtroSupervisores.php">Jefe de turno</a>';
           }
@@ -190,7 +190,7 @@ if (isset($_SESSION['usuario'])==false) {
                          echo "<option value=".$persona['id']." selected>".$persona['nombre']."</option>";
 
                        }else {
-                         echo "<option value=".$persona['id'].">".$persona['nombre']."</option>";                         
+                         echo "<option value=".$persona['id'].">".$persona['nombre']."</option>";
                        }
                      }
                     ?>
