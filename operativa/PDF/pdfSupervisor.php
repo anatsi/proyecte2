@@ -1104,6 +1104,18 @@
   }
   $pdf->Output('./files/supervisor_'.$turno.'.pdf','F');
   ?>
-  <script type="text/javascript">
-    window.location = '../supervisores/correoPablo.php?fecha=<?php echo $_GET['fecha']; ?>&turno=<?php echo $turno; ?>';
-  </script>
+  <?php
+    if (isset($_GET['x'])==false) {
+      ?>
+      <script type="text/javascript">
+        window.location = '../supervisores/correoPablo.php?fecha=<?php echo $_GET['fecha']; ?>&turno=<?php echo $turno; ?>';
+      </script>
+      <?php
+    }else {
+      ?>
+      <script type="text/javascript">
+        window.location = '../PDF/files/supervisor_<?php echo $turno; ?>.pdf';
+      </script>
+      <?php
+    }
+    ?>
