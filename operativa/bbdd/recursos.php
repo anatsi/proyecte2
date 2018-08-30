@@ -60,9 +60,9 @@ function ModificacionId($id, $fecha){
   }
 }
 
-function ModSupervisores($id, $fecha, $turno){
+function ModSupervisores($id, $fecha){
   //Construimos la consulta
-  $sql="SELECT * FROM dias_recursos WHERE servicio=".$id." AND inicio <= '".$fecha."' AND fin>='".$fecha."' AND ".$turno." > 0 OR servicio=".$id." AND suelto = '".$fecha."' AND ".$turno." > 0 ORDER BY id DESC LIMIT 1";
+  $sql="SELECT * FROM dias_recursos WHERE servicio=".$id." AND inicio <= '".$fecha."' AND fin>='".$fecha."' OR servicio=".$id." AND suelto = '".$fecha."' ORDER BY id DESC LIMIT 1";
   //Realizamos la consulta
   $resultado=$this->realizarConsulta($sql);
   if($resultado!=false){
