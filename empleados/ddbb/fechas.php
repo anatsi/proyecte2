@@ -109,5 +109,24 @@ function editarFecha($id,$cadPassFord,$cadDni,$cadPerm,$cadPermFord, $revmedico,
       }
     }
 
+    //funcion para listar todos los empleados de la bbdd
+    function listaFechas(){
+      //Construimos la consulta
+      $sql="SELECT * from fechas";
+
+      //Realizamos la consulta
+      $resultado=$this->realizarConsulta($sql);
+      if($resultado!=null){
+        //Montamos la tabla de resultados
+        $tabla=[];
+        while($fila=$resultado->fetch_assoc()){
+          $tabla[]=$fila;
+        }
+        return $tabla;
+      }else{
+        return null;
+      }
+    }
+
 }
 ?>
