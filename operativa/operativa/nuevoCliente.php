@@ -24,7 +24,26 @@ if (isset($_SESSION['usuario'])==false) {
     <link rel="shortcut icon" href="../../imagenes/favicon.ico">
 		<link rel="stylesheet" type="text/css" href="../../css/dashboard.css" />
     <script type="text/javascript" src="../../js/servicioForm.js"></script>
+    <script type="text/javascript" src="../../js/nuevoCliente.js"></script>
     <script src="../../js/jquery.min.js"></script>
+    <style>
+      .alert {
+          padding: 20px;
+          background-color: #f44336;
+          color: white;
+      }
+      .hidden{
+        display: none;
+      }
+      .shown{
+        display: block;
+      }
+        .personal{
+          color:white;
+          background-color:#1F523F;
+
+      }
+      </style>
 </head>
 <body>
   <head>
@@ -87,7 +106,13 @@ if (isset($_SESSION['usuario'])==false) {
         <div class="breadcrumb" style="margin-left: 2%; color:black;">
           <a href="../../dashboard.php">Inicio</a> >> <a href="../index.php">Gestión actividades</a> >> <a href="nuevoCliente.php">Nuevo cliente</a>
         </div>
+        <br>
+        <div class="botones">
+           <button class="personal" onclick="cliente();">Cliente</button>
+           <button class="personal" onclick="responsable();">Responsable</button>
+         </div>
         <!-- Contenido de la pagina. -->
+        <div id='formCliente' class="shown">
         <h2>Nuevo cliente</h2>
         <form action="nuevoCliente.php" method="post" id="formulario" enctype="multipart/form-data">
           <div class="formthird">
@@ -97,6 +122,24 @@ if (isset($_SESSION['usuario'])==false) {
               <input class="otras" type="submit"  name="Enviar" value="Enviar"/>
           </div>
         </form>
+      </div>
+        <div id='formResponsable' class="hidden">
+        <h2>Nuevo responsable</h2>
+        <form action="nuevoResponsable.php" method="post" id="formulario" enctype="multipart/form-data">
+          <div class="formthird">
+              <p><label><i class="fa fa-question-circle"></i>Nombre: (*)</label><input type="text" name="nombre" required/></p>
+          </div>
+          <div class="formthird">
+              <p><label><i class="fa fa-question-circle"></i>Correo: </label><input type="email" name="correo"/></p>
+          </div>
+          <div class="formthird">
+              <p><label><i class="fa fa-question-circle"></i>Telefono: </label><input type="tel" name="telefono"/></p>
+          </div>
+          <div class="submitbuttons">
+              <input class="otras" type="submit"  name="Enviar" value="Enviar"/>
+          </div>
+        </form>
+      </div>
 
       </div> <!-- END container -->
     </div> <!-- END site-content -->

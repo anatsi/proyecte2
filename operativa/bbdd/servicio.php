@@ -46,10 +46,10 @@ class Servicio extends db
   }
 
     //funcion para insertar un nuevo servicio en la base de datos.
-  function nuevoServicio($descripcion, $modelos, $recursos, $finicio, $cliente, $responsable, $telefono, $correo, $csup, $crrhh, $caf, $cdo, $qps1, $qps2, $img1, $img2, $video1, $video2){
+  function nuevoServicio($descripcion, $modelos, $recursos, $finicio, $cliente, $responsable, $csup, $crrhh, $caf, $cdo, $qps1, $qps2, $img1, $img2, $video1, $video2){
     //realizamos la consuta y la guardamos en $sql
-    $sql="INSERT INTO servicios(id, descripcion, modelos, recursos, f_inicio, f_fin, id_cliente, responsable, telefono, correo, com_supervisor, com_rrhh, com_admin_fin, com_depto, relacion, qps1, qps2, img1, img2, video1, video2)
-    VALUES (NULL, '".$descripcion."', '".$modelos."', ".$recursos.", '".$finicio."', NULL, ".$cliente.", '".$responsable."', ".$telefono.", '".$correo."', '".$csup."', '".$crrhh."', '".$caf."',
+    $sql="INSERT INTO servicios(id, descripcion, modelos, recursos, f_inicio, f_fin, id_cliente, responsable, com_supervisor, com_rrhh, com_admin_fin, com_depto, relacion, qps1, qps2, img1, img2, video1, video2)
+    VALUES (NULL, '".$descripcion."', '".$modelos."', ".$recursos.", '".$finicio."', NULL, ".$cliente.", '".$responsable."', '".$csup."', '".$crrhh."', '".$caf."',
      '".$cdo."', NULL, '".$qps1."', '".$qps2."', '".$img1."', '".$img2."', '".$video1."', '".$video2."')";
      echo $sql;
     //Realizamos la consulta utilizando la funcion creada en db.php
