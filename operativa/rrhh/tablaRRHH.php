@@ -189,7 +189,7 @@ if (isset($_SESSION['usuario'])==false) {
                   echo "  <td data-label='".__('Opciones', $lang)."' id='tdmod'>
                   <a href='seleccionPersonal.php?id=".$lista['id']."&fecha=".$fecha."' title='Seleccionar personal'><i class='material-icons'>people</i></a>";
                   //si los recursos de ayer son iguales a los del dia seleccionado y estan asignados, sacamos el boton de recuperar personal.
-                  if ($recursosAyer == $recursosTotal && $asignadosAyer['total'] == $recursosAyer) {
+                  if ($recursosAyer <= $recursosTotal && $asignadosAyer['total'] <= $recursosAyer) {
                     echo "<a href='recuperarPersonal.php?id=".$lista['id']."&fecha=".$fecha."' title='Recuperar personal del dia anterior.'><i class='material-icons'>repeat</i></a>";
                   }
                 }else {
