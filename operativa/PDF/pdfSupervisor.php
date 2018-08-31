@@ -43,21 +43,21 @@
   $pdf->Image('../../assets/files/logo.png',15,8,20,13,"PNG");
   $pdf->SetX(40);
   $pdf->Cell(80,25,"GRUPOS DE TRABAJO",1,0,"C");
-  $pdf->Cell(30,5,"Turno",1,0,"C");
-  $pdf->Cell(40,5,utf8_decode($_GET['turno']),1,1,"C");
+  $pdf->Cell(30,5,"Turno",1,0,"L");
+  $pdf->Cell(40,5,utf8_decode($_GET['turno']),1,1,"L");
   // Empezar a 120 mm para el segundo cuadro
   $pdf->SetX(120);
-  $pdf->Cell(30,5,"Jefe Turno",1,0,"C");
-  $pdf->Cell(40,5,utf8_decode($nombreUsuario['name']),1,1,"C");
+  $pdf->Cell(30,5,"Jefe Turno",1,0,"L");
+  $pdf->Cell(40,5,utf8_decode($nombreUsuario['name']),1,1,"L");
   $pdf->SetX(120);
-  $pdf->Cell(30,5,"Semana",1,0,"C");
-  $pdf->Cell(40,5,$semana,1,1,"C");
+  $pdf->Cell(30,5,"Semana",1,0,"L");
+  $pdf->Cell(40,5,$semana,1,1,"L");
   $pdf->SetX(120);
-  $pdf->Cell(30,5,"Dia",1,0,"C");
-  $pdf->Cell(40,5,$fechaMostrar,1,1,"C");
+  $pdf->Cell(30,5,"Dia",1,0,"L");
+  $pdf->Cell(40,5,$fechaMostrar,1,1,"L");
   $pdf->SetX(120);
-  $pdf->Cell(30,5,"Total recursos",1,0,"C");
-  $pdf->Cell(40,5,$normales['recuento'].' - Otros turnos: '.$raros['recuento'],1,1,"C");
+  $pdf->Cell(30,5,"Total recursos",1,0,"L");
+  $pdf->Cell(40,5,$normales['recuento'].' - Otros turnos: '.$raros['recuento'],1,1,"L");
   /////////FIN CABEZA DE LA PAGINA
   ////DEBUT ACTIVIDADES
 
@@ -300,21 +300,21 @@
   $pdf->Image('../../assets/files/logo.png',15,8,20,13,"PNG");
   $pdf->SetX(40);
   $pdf->Cell(80,25,"GRUPOS DE TRABAJO",1,0,"C");
-  $pdf->Cell(30,5,"Turno",1,0,"C");
-  $pdf->Cell(40,5,'TURNOS ESPECIALES',1,1,"C");
+  $pdf->Cell(30,5,"Turno",1,0,"L");
+  $pdf->Cell(40,5,'TURNOS ESPECIALES',1,1,"L");
   // Empezar a 120 mm para el segundo cuadro
   $pdf->SetX(120);
-  $pdf->Cell(30,5,"Jefe Turno",1,0,"C");
-  $pdf->Cell(40,5,utf8_decode($nombreUsuario['name']),1,1,"C");
+  $pdf->Cell(30,5,"Jefe Turno",1,0,"L");
+  $pdf->Cell(40,5,utf8_decode($nombreUsuario['name']),1,1,"L");
   $pdf->SetX(120);
-  $pdf->Cell(30,5,"Semana",1,0,"C");
-  $pdf->Cell(40,5,$semana,1,1,"C");
+  $pdf->Cell(30,5,"Semana",1,0,"L");
+  $pdf->Cell(40,5,$semana,1,1,"L");
   $pdf->SetX(120);
-  $pdf->Cell(30,5,"Dia",1,0,"C");
-  $pdf->Cell(40,5,$fechaMostrar,1,1,"C");
+  $pdf->Cell(30,5,"Dia",1,0,"L");
+  $pdf->Cell(40,5,$fechaMostrar,1,1,"L");
   $pdf->SetX(120);
-  $pdf->Cell(30,5,"Total recursos",1,0,"C");
-  $pdf->Cell(40,5,$normales['recuento'].' - Otros turnos: '.$raros['recuento'],1,1,"C");
+  $pdf->Cell(30,5,"Total recursos",1,0,"L");
+  $pdf->Cell(40,5,$normales['recuento'].' - Otros turnos: '.$raros['recuento'],1,1,"L");
   /////////FIN CABEZA DE LA PAGINA
   ////DEBUT ACTIVIDADES
 
