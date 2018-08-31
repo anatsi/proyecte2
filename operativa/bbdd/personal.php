@@ -166,6 +166,42 @@ function empleadosServicio($servicio, $dia, $turno){
     }
   }
 
+  //sacar empleado dependiendo del id
+  function recuentoNormal($dia, $turno){
+    //Construimos la consulta
+    $sql="SELECT distinct count(*) as 'recuento' FROM `personal_servicios` WHERE dia='".$dia."' and turno='".$turno."' and empleado!=''";
+    //Realizamos la consulta
+    $resultado=$this->realizarConsulta($sql);
+    if($resultado!=false){
+      if($resultado!=false){
+        return $resultado->fetch_assoc();
+      }else{
+        return null;
+      }
+    }else{
+      return null;
+    }
+  }
+
+  //sacar empleado dependiendo del id
+  function recuentoRaros($dia){
+    //Construimos la consulta
+    $sql="SELECT distinct count(*) as 'recuento' FROM `personal_servicios` WHERE dia='".$dia."' and turno='tc' and empleado!=''
+    OR dia='".$dia."' and turno='tc' and empleado!='' OR dia='".$dia."' and turno='otro1' and empleado!='' OR dia='".$dia."' and turno='otro2' and empleado!=''
+    OR dia='".$dia."' and turno='otro3' and empleado!='' OR dia='".$dia."' and turno='otro4' and empleado!='' OR dia='".$dia."' and turno='otro5' and empleado!='' OR dia='".$dia."' and turno='otro6' and empleado!=''";
+    //Realizamos la consulta
+    $resultado=$this->realizarConsulta($sql);
+    if($resultado!=false){
+      if($resultado!=false){
+        return $resultado->fetch_assoc();
+      }else{
+        return null;
+      }
+    }else{
+      return null;
+    }
+  }
+
 }
 
  ?>

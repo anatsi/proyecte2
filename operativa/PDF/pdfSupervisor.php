@@ -27,6 +27,17 @@
   $semana = date("W", strtotime($_GET['fecha']));
   //SACAR EL NOMBRE DEL MES A PARTIR DE LA FECHA
   $mes = date("F", strtotime($_GET['fecha']));
+  //convertimos el turno que nos han enviado.
+  if ($_GET['turno'] == 'Mañana') {
+    $turno = 'tm';
+  }elseif ($_GET['turno'] == 'Tarde') {
+    $turno = 'tt';
+  }elseif ( $_GET['turno'] == 'Noche') {
+    $turno = 'tn';
+  }
+//sacar recuento de personal para el dia y el turno
+  $normales = $personal -> recuentoNormal($_GET['fecha'], $turno);
+  $raros = $personal -> recuentoRaros($_GET['fecha']);
 
   $pdf->SetY(5);
   $pdf->Image('../../assets/files/logo.png',15,8,20,13,"PNG");
@@ -46,7 +57,7 @@
   $pdf->Cell(40,5,$fechaMostrar,1,1,"C");
   $pdf->SetX(120);
   $pdf->Cell(30,5,"Total recursos",1,0,"C");
-  $pdf->Cell(40,5,$_GET['n'].' - Otros turnos: '.$_GET['r'],1,1,"C");
+  $pdf->Cell(40,5,$normales['recuento'].' - Otros turnos: '.$raros['recuento'],1,1,"C");
   /////////FIN CABEZA DE LA PAGINA
   ////DEBUT ACTIVIDADES
 
@@ -66,14 +77,7 @@
   //sacar las actividades para ese dia.
   $listaHoy = $servicio -> listaRRHH($_GET['fecha']);
 
-  //convertimos el turno que nos han enviado.
-  if ($_GET['turno'] == 'Mañana') {
-    $turno = 'tm';
-  }elseif ($_GET['turno'] == 'Tarde') {
-    $turno = 'tt';
-  }elseif ( $_GET['turno'] == 'Noche') {
-    $turno = 'tn';
-  }
+
 
   //sacar la actividad de conductores
   $actCon = $servicio -> actConductores();
@@ -117,7 +121,7 @@
                $pdf->SetTextColor(3, 3, 3);
                $pdf->SetY($der);
                $pdf->SetX(110);
-               $pdf->Cell(90, $t, utf8_decode($empleado['empleado']), 1, 1, "C");
+               $pdf->Cell(90, $t, utf8_decode($empleado['empleado']), 1, 1, "L");
                $derNombre++;
              }
 
@@ -141,7 +145,7 @@
                $izq = $izq +5;
                $pdf->SetTextColor(3, 3, 3);
                $pdf->SetY($izq);
-               $pdf->Cell(90, $t, utf8_decode($empleado['empleado']), 1, 1, "C");
+               $pdf->Cell(90, $t, utf8_decode($empleado['empleado']), 1, 1, "L");
                $izqNombre++;
              }
 
@@ -195,7 +199,7 @@
                $pdf->SetTextColor(3, 3, 3);
                $pdf->SetY($der);
                $pdf->SetX(110);
-               $pdf->Cell(90, $t, 'SIN ASIGNAR', 1, 1, "C");
+               $pdf->Cell(90, $t, 'SIN ASIGNAR', 1, 1, "L");
                $derNombre++;
              }
            }else {
@@ -208,7 +212,7 @@
                $pdf->SetTextColor(3, 3, 3);
                $pdf->SetY($der);
                $pdf->SetX(110);
-               $pdf->Cell(90, $t, utf8_decode($empleado['empleado']), 1, 1, "C");
+               $pdf->Cell(90, $t, utf8_decode($empleado['empleado']), 1, 1, "L");
                $derNombre++;
              }
            }
@@ -229,7 +233,7 @@
                $izq = $izq +5;
                $pdf->SetTextColor(3, 3, 3);
                $pdf->SetY($izq);
-               $pdf->Cell(90, $t, 'SIN ASIGNAR', 1, 1, "C");
+               $pdf->Cell(90, $t, 'SIN ASIGNAR', 1, 1, "L");
                $izqNombre++;
              }
            }else {
@@ -241,7 +245,7 @@
                $izq = $izq +5;
                $pdf->SetTextColor(3, 3, 3);
                $pdf->SetY($izq);
-               $pdf->Cell(90, $t, utf8_decode($empleado['empleado']), 1, 1, "C");
+               $pdf->Cell(90, $t, utf8_decode($empleado['empleado']), 1, 1, "L");
                $izqNombre++;
              }
            }
@@ -310,7 +314,7 @@
   $pdf->Cell(40,5,$fechaMostrar,1,1,"C");
   $pdf->SetX(120);
   $pdf->Cell(30,5,"Total recursos",1,0,"C");
-  $pdf->Cell(40,5,$_GET['n'].' - Otros turnos: '.$_GET['r'],1,1,"C");
+  $pdf->Cell(40,5,$normales['recuento'].' - Otros turnos: '.$raros['recuento'],1,1,"C");
   /////////FIN CABEZA DE LA PAGINA
   ////DEBUT ACTIVIDADES
 
@@ -365,7 +369,7 @@
              $pdf->SetTextColor(3, 3, 3);
              $pdf->SetY($der);
              $pdf->SetX(110);
-             $pdf->Cell(90, $t, 'SIN ASIGNAR', 1, 1, "C");
+             $pdf->Cell(90, $t, 'SIN ASIGNAR', 1, 1, "L");
              $derNombre++;
            }
          }else {
@@ -378,7 +382,7 @@
              $pdf->SetTextColor(3, 3, 3);
              $pdf->SetY($der);
              $pdf->SetX(110);
-             $pdf->Cell(90, $t, utf8_decode($empleado['empleado']), 1, 1, "C");
+             $pdf->Cell(90, $t, utf8_decode($empleado['empleado']), 1, 1, "L");
              $derNombre++;
            }
          }
@@ -403,7 +407,7 @@
              $izq = $izq +5;
              $pdf->SetTextColor(3, 3, 3);
              $pdf->SetY($izq);
-             $pdf->Cell(90, $t, 'SIN ASIGNAR', 1, 1, "C");
+             $pdf->Cell(90, $t, 'SIN ASIGNAR', 1, 1, "L");
              $izqNombre++;
            }
          }else {
@@ -415,7 +419,7 @@
              $izq = $izq +5;
              $pdf->SetTextColor(3, 3, 3);
              $pdf->SetY($izq);
-             $pdf->Cell(90, $t, utf8_decode($empleado['empleado']), 1, 1, "C");
+             $pdf->Cell(90, $t, utf8_decode($empleado['empleado']), 1, 1, "L");
              $izqNombre++;
            }
          }
@@ -473,7 +477,7 @@
              $pdf->SetTextColor(3, 3, 3);
              $pdf->SetY($der);
              $pdf->SetX(110);
-             $pdf->Cell(90, $t, 'SIN ASIGNAR', 1, 1, "C");
+             $pdf->Cell(90, $t, 'SIN ASIGNAR', 1, 1, "L");
              $derNombre++;
            }
          }else {
@@ -486,7 +490,7 @@
              $pdf->SetTextColor(3, 3, 3);
              $pdf->SetY($der);
              $pdf->SetX(110);
-             $pdf->Cell(90, $t, utf8_decode($empleado['empleado']), 1, 1, "C");
+             $pdf->Cell(90, $t, utf8_decode($empleado['empleado']), 1, 1, "L");
              $derNombre++;
            }
          }
@@ -512,7 +516,7 @@
              $izq = $izq +5;
              $pdf->SetTextColor(3, 3, 3);
              $pdf->SetY($izq);
-             $pdf->Cell(90, $t, 'SIN ASIGNAR', 1, 1, "C");
+             $pdf->Cell(90, $t, 'SIN ASIGNAR', 1, 1, "L");
              $izqNombre++;
            }
          }else {
@@ -524,7 +528,7 @@
              $izq = $izq +5;
              $pdf->SetTextColor(3, 3, 3);
              $pdf->SetY($izq);
-             $pdf->Cell(90, $t, utf8_decode($empleado['empleado']), 1, 1, "C");
+             $pdf->Cell(90, $t, utf8_decode($empleado['empleado']), 1, 1, "L");
              $izqNombre++;
            }
          }
@@ -582,7 +586,7 @@
              $pdf->SetTextColor(3, 3, 3);
              $pdf->SetY($der);
              $pdf->SetX(110);
-             $pdf->Cell(90, $t, 'SIN ASIGNAR', 1, 1, "C");
+             $pdf->Cell(90, $t, 'SIN ASIGNAR', 1, 1, "L");
              $derNombre++;
            }
          }else {
@@ -595,7 +599,7 @@
              $pdf->SetTextColor(3, 3, 3);
              $pdf->SetY($der);
              $pdf->SetX(110);
-             $pdf->Cell(90, $t, utf8_decode($empleado['empleado']), 1, 1, "C");
+             $pdf->Cell(90, $t, utf8_decode($empleado['empleado']), 1, 1, "L");
              $derNombre++;
            }
          }
@@ -621,7 +625,7 @@
              $izq = $izq +5;
              $pdf->SetTextColor(3, 3, 3);
              $pdf->SetY($izq);
-             $pdf->Cell(90, $t, 'SIN ASIGNAR', 1, 1, "C");
+             $pdf->Cell(90, $t, 'SIN ASIGNAR', 1, 1, "L");
              $izqNombre++;
            }
          }else {
@@ -633,7 +637,7 @@
              $izq = $izq +5;
              $pdf->SetTextColor(3, 3, 3);
              $pdf->SetY($izq);
-             $pdf->Cell(90, $t, utf8_decode($empleado['empleado']), 1, 1, "C");
+             $pdf->Cell(90, $t, utf8_decode($empleado['empleado']), 1, 1, "L");
              $izqNombre++;
            }
          }
@@ -691,7 +695,7 @@
              $pdf->SetTextColor(3, 3, 3);
              $pdf->SetY($der);
              $pdf->SetX(110);
-             $pdf->Cell(90, $t, 'SIN ASIGNAR', 1, 1, "C");
+             $pdf->Cell(90, $t, 'SIN ASIGNAR', 1, 1, "L");
              $derNombre++;
            }
          }else {
@@ -704,7 +708,7 @@
              $pdf->SetTextColor(3, 3, 3);
              $pdf->SetY($der);
              $pdf->SetX(110);
-             $pdf->Cell(90, $t, utf8_decode($empleado['empleado']), 1, 1, "C");
+             $pdf->Cell(90, $t, utf8_decode($empleado['empleado']), 1, 1, "L");
              $derNombre++;
            }
          }
@@ -730,7 +734,7 @@
              $izq = $izq +5;
              $pdf->SetTextColor(3, 3, 3);
              $pdf->SetY($izq);
-             $pdf->Cell(90, $t, 'SIN ASIGNAR', 1, 1, "C");
+             $pdf->Cell(90, $t, 'SIN ASIGNAR', 1, 1, "L");
              $izqNombre++;
            }
          }else {
@@ -742,7 +746,7 @@
              $izq = $izq +5;
              $pdf->SetTextColor(3, 3, 3);
              $pdf->SetY($izq);
-             $pdf->Cell(90, $t, utf8_decode($empleado['empleado']), 1, 1, "C");
+             $pdf->Cell(90, $t, utf8_decode($empleado['empleado']), 1, 1, "L");
              $izqNombre++;
            }
          }
@@ -800,7 +804,7 @@
              $pdf->SetTextColor(3, 3, 3);
              $pdf->SetY($der);
              $pdf->SetX(110);
-             $pdf->Cell(90, $t, 'SIN ASIGNAR', 1, 1, "C");
+             $pdf->Cell(90, $t, 'SIN ASIGNAR', 1, 1, "L");
              $derNombre++;
            }
          }else {
@@ -813,7 +817,7 @@
              $pdf->SetTextColor(3, 3, 3);
              $pdf->SetY($der);
              $pdf->SetX(110);
-             $pdf->Cell(90, $t, utf8_decode($empleado['empleado']), 1, 1, "C");
+             $pdf->Cell(90, $t, utf8_decode($empleado['empleado']), 1, 1, "L");
              $derNombre++;
            }
          }
@@ -839,7 +843,7 @@
              $izq = $izq +5;
              $pdf->SetTextColor(3, 3, 3);
              $pdf->SetY($izq);
-             $pdf->Cell(90, $t, 'SIN ASIGNAR', 1, 1, "C");
+             $pdf->Cell(90, $t, 'SIN ASIGNAR', 1, 1, "L");
              $izqNombre++;
            }
          }else {
@@ -851,7 +855,7 @@
              $izq = $izq +5;
              $pdf->SetTextColor(3, 3, 3);
              $pdf->SetY($izq);
-             $pdf->Cell(90, $t, utf8_decode($empleado['empleado']), 1, 1, "C");
+             $pdf->Cell(90, $t, utf8_decode($empleado['empleado']), 1, 1, "L");
              $izqNombre++;
            }
          }
@@ -909,7 +913,7 @@
              $pdf->SetTextColor(3, 3, 3);
              $pdf->SetY($der);
              $pdf->SetX(110);
-             $pdf->Cell(90, $t, 'SIN ASIGNAR', 1, 1, "C");
+             $pdf->Cell(90, $t, 'SIN ASIGNAR', 1, 1, "L");
              $derNombre++;
            }
          }else {
@@ -922,7 +926,7 @@
              $pdf->SetTextColor(3, 3, 3);
              $pdf->SetY($der);
              $pdf->SetX(110);
-             $pdf->Cell(90, $t, utf8_decode($empleado['empleado']), 1, 1, "C");
+             $pdf->Cell(90, $t, utf8_decode($empleado['empleado']), 1, 1, "L");
              $derNombre++;
            }
          }
@@ -948,7 +952,7 @@
              $izq = $izq +5;
              $pdf->SetTextColor(3, 3, 3);
              $pdf->SetY($izq);
-             $pdf->Cell(90, $t, 'SIN ASIGNAR', 1, 1, "C");
+             $pdf->Cell(90, $t, 'SIN ASIGNAR', 1, 1, "L");
              $izqNombre++;
            }
          }else {
@@ -960,7 +964,7 @@
              $izq = $izq +5;
              $pdf->SetTextColor(3, 3, 3);
              $pdf->SetY($izq);
-             $pdf->Cell(90, $t, utf8_decode($empleado['empleado']), 1, 1, "C");
+             $pdf->Cell(90, $t, utf8_decode($empleado['empleado']), 1, 1, "L");
              $izqNombre++;
            }
          }
@@ -1018,7 +1022,7 @@
              $pdf->SetTextColor(3, 3, 3);
              $pdf->SetY($der);
              $pdf->SetX(110);
-             $pdf->Cell(90, $t, 'SIN ASIGNAR', 1, 1, "C");
+             $pdf->Cell(90, $t, 'SIN ASIGNAR', 1, 1, "L");
              $derNombre++;
            }
          }else {
@@ -1031,7 +1035,7 @@
              $pdf->SetTextColor(3, 3, 3);
              $pdf->SetY($der);
              $pdf->SetX(110);
-             $pdf->Cell(90, $t, utf8_decode($empleado['empleado']), 1, 1, "C");
+             $pdf->Cell(90, $t, utf8_decode($empleado['empleado']), 1, 1, "L");
              $derNombre++;
            }
          }
@@ -1057,7 +1061,7 @@
              $izq = $izq +5;
              $pdf->SetTextColor(3, 3, 3);
              $pdf->SetY($izq);
-             $pdf->Cell(90, $t, 'SIN ASIGNAR', 1, 1, "C");
+             $pdf->Cell(90, $t, 'SIN ASIGNAR', 1, 1, "L");
              $izqNombre++;
            }
          }else {
@@ -1069,7 +1073,7 @@
              $izq = $izq +5;
              $pdf->SetTextColor(3, 3, 3);
              $pdf->SetY($izq);
-             $pdf->Cell(90, $t, utf8_decode($empleado['empleado']), 1, 1, "C");
+             $pdf->Cell(90, $t, utf8_decode($empleado['empleado']), 1, 1, "L");
              $izqNombre++;
            }
          }
