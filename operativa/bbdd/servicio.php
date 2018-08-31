@@ -15,22 +15,27 @@ class Servicio extends db
   //funcion para sacar los servicios para mañana para index de operativa
   function ServiciosTomorrow()
   {
-    //cogemos la fecha de mañana para compararla con lo que vamos a sacar.
-    $dia_manana = date('d')+1;
-    $mes=date('m');
-    $numerodias=date('t');
-    if ($dia_manana>$numerodias) {
-      $dia_manana=1;
-      if ($mes!=12) {
-        $mes=$mes+1;
-      }else {
-        $mes=1;
-      }
+    //comprobar que dia sera mañana para que no saque los sabados/domingos
+    $dia=date('w');
+    $fecha = date('Y-m-d');
+    if ($dia == 0) {
+      $manana= strtotime('+2 day', strtotime($fecha));
+      $manana = date('Y-m-d', $manana);
+    }elseif ($dia == 6) {
+      $manana= strtotime('+3 day', strtotime($fecha));
+      $manana = date('Y-m-d', $manana);
+    }elseif ($dia == 5) {
+      $manana= strtotime('+3 day', strtotime($fecha));
+      $manana = date('Y-m-d', $manana);
+    }else {
+      $manana= strtotime('+1 day', strtotime($fecha));
+      $manana = date('Y-m-d', $manana);
     }
-    $ano = date('Y');
-    $fecha=$ano."-".$mes."-".$dia_manana;
+
+    $fecha=$manana;
     //Construimos la consulta
     $sql="SELECT * from servicios WHERE f_inicio<='".$fecha."' AND f_fin IS NULL ORDER BY f_inicio desc";
+    echo $sql;
     //Realizamos la consulta
     $resultado=$this->realizarConsulta($sql);
     if($resultado!=null){

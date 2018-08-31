@@ -151,13 +151,14 @@ if (isset($_SESSION['usuario'])==false) {
 
               //sacar los recursos del dia siguiente para ese servicio
               $nuevafecha = strtotime ( '+1 day' , strtotime ( $fechaActual ) ) ;
-              $fechaTomorrow = date ( 'Y-m-j' , $nuevafecha );
+              $fechaTomorrow = date ( 'Y-m-d' , $nuevafecha );
               $recursoTomorrow = $recursos -> ModificacionId($lista['id'], $fechaTomorrow);
               if ($recursoTomorrow == null || $recursoTomorrow == false) {
                 $recursoTomorrow = $lista['recursos'];
               }else {
                 $recursoTomorrow = $recursoTomorrow['total'];
               }
+
 
               if ($lista['f_inicio']>$fechaActual) {
                 $recursoHoy=0;
@@ -168,7 +169,6 @@ if (isset($_SESSION['usuario'])==false) {
               if ($lista['f_fin']!=null && $lista['f_fin']<$fechaTomorrow) {
                 $recursoTomorrow=0;
               }
-
               $resp=$responsable->responsableId($lista['responsable']);
 
               echo "<tr id='trmod'>";
