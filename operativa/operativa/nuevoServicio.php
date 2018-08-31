@@ -122,8 +122,8 @@ if (isset($_SESSION['usuario'])==false) {
                         <option value='S-Max'>S-Max</option>
                 </select></p>
               <p><label><i class="fa fa-question-circle"></i><?php echo __('Fecha inicio', $lang); ?> (*)</label><input type="date" name="finicio" required/></p>
-              <p><label><i class="fa fa-question-circle"></i><?php echo __('Cliente', $lang); ?></label>
-                <select name="cliente">
+              <p><label><i class="fa fa-question-circle"></i><?php echo __('Cliente', $lang); ?> (*)</label>
+                <select name="cliente" required>
                   <?php
                     $clientes= $cliente->listaClientes();
                     foreach ($clientes as $cliente) {
@@ -131,8 +131,8 @@ if (isset($_SESSION['usuario'])==false) {
                     }
                    ?>
                 </select></p>
-            <p><label><i class="fa fa-question-circle"></i>Responsable</label>
-              <select name="responsable">
+            <p><label><i class="fa fa-question-circle"></i>Responsable (*)</label>
+              <select name="responsable" required>
                 <?php
                   $responsables= $responsable->listaResponsables();
                   foreach ($responsables as $persona) {

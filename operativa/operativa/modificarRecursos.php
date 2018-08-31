@@ -260,7 +260,7 @@ if (isset($_POST['id']) && isset($_POST['recursos'])) {
           '</body></html>';
 
           $para = 'rrhh@tsiberia.es, acosinga@tsiberia.es, acosinga@ford.com, pablo.moreno.g@ts-iberica.com';
-          $asunto = 'MODIFICACIÓN EN SERVICIO';
+          $asunto = 'MODIFICACIÓN EN ACTIVIDAD';
 
           mail($para, $asunto, $mensaje, $header);
           //si se ha rellenado el comentario para Pilar, le enviamos un correo.
@@ -290,6 +290,7 @@ if (isset($_POST['id']) && isset($_POST['recursos'])) {
                 <b> DIAS: </b>'.$dias.' <br>
                 <b> RECURSOS TOTALES: </b>'.$_POST['recursos'].' <br>
                 <b>COMENTARIO OPERATIVA: </b>'.$_POST['caf'].'<br>
+                <b>ENVIADO POR: </b>'.$nombreuser['name'].'<br>
                 <hr>'.
                 'Por favor, no responda a este correo lo envia un robot automáticamente.'.
                 '<br />Enviado el ' . date('d/m/Y', time()) .
@@ -297,7 +298,7 @@ if (isset($_POST['id']) && isset($_POST['recursos'])) {
 
               $para = 'mariap.urbina.t@ts-iberica.com';
               //$para ='aasins@tsiberia.es';
-              $asunto = 'NUEVA ACTIVIDAD';
+              $asunto = 'MODIFICACION EN ACTIVIDAD';
 
               mail($para, $asunto, $mensaje, $header);
           }

@@ -129,7 +129,9 @@ textarea::placeholder{
           <input type="hidden" name="fin" value="<?=$_GET['servicio']?>">
           <input type="date" name="fecha" value=""  min="<?=$info['f_inicio']?>">
           <br>
-         <textarea class="formInput" name="comentario" id="message" placeholder="Ultimo comentario"></textarea>
+          <textarea class="formInput" name="comentario" id="message" placeholder="Comentario operativa"></textarea>
+          <br>
+          <textarea class="formInput" name="finanzas" id="message" placeholder="Comentario finanzas"></textarea>
           <br>
           <input class="submitForm" type="submit" value="Finalizar Servicio"/>
          </form>
@@ -189,10 +191,46 @@ textarea::placeholder{
           '<br />Enviado el ' . date('d/m/Y', time()) .
         '</body></html>';
 
-        $para = 'rrhh@tsiberia.es, acosinga@tsiberia.es, acosinga@ford.com, pablo.moreno.g@ts-iberica.com, mariap.urbina.t@ts-iberica.com';
+        $para = 'rrhh@tsiberia.es, acosinga@tsiberia.es, acosinga@ford.com, pablo.moreno.g@ts-iberica.com';
         $asunto = 'Fin de la actividad "'.$actividad['descripcion'].'"';
 
         mail($para, $asunto, $mensaje, $header);
+
+        if (isset($_POST['finanzas']) && $_POST['finanzas']!=null && $_POST['finanzas']!=false) {
+          //si hay comentario para Pilar, se lo enviamos en el correo.
+          $mail = "robot@tsiberia.es";
+
+          $header = 'From: ' . $mail . " \r\n";
+          $header .= "X-Mailer: PHP/" . phpversion() . " \r\n";
+          $header .= "Mime-Version: 1.0 \r\n";
+          //$header .= "Content-Type: text/plain";
+          $header .= "Content-Type: text/html; charset=utf-8";
+
+          $mensaje = '<html>' . '<head><title>Email</title>
+          <style type="text/css">
+          h2 {
+              color: black;
+              font-family: Impact;
+            }
+          </style>
+          </head>' .
+          '<body>
+            <h4>
+              La actividad "'.$actividad['descripcion'].'" finaliza el dia '.$fecha.'
+              <br>
+              </h4>
+              Comentario por parte de operativa: '.$_POST['finanzas'].'
+              Enviado por: '.$nombreuser['name'].'
+            <br />' .
+            'Por favor, no responda a este correo lo envia un robot automáticamente.'.
+            '<br />Enviado el ' . date('d/m/Y', time()) .
+          '</body></html>';
+
+          $para = 'mariap.urbina.t@ts-iberica.com';
+          $asunto = 'Fin de la actividad "'.$actividad['descripcion'].'"';
+
+          mail($para, $asunto, $mensaje, $header);
+        }
         ?>
           <script type="text/javascript">
             window.location='actividadesActuales.php';

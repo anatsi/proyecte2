@@ -11,10 +11,18 @@
   </head>
   <body>
     <?php
+    require_once '../../ddbb/sesiones.php';
+    require_once '../../ddbb/users.php';
     require_once '../bbdd/servicio.php';
     require_once '../bbdd/recursos.php';
+    require_once '../bbdd/cliente.php';
+    $usuario=new User();
+    $sesion=new Sesiones();
     $servicio=new Servicio();
     $recursos= new Recursos();
+    $cliente= new Cliente();
+    //llamamos a la función para devolver el nombre de usuario.
+    $nombreuser=$usuario->nombreUsuario($_SESSION['usuario']);
     //comprbamos que realmente haya rellenado algunos campos
       if (isset($_POST['descripcion'])) {
         //juntamos todos los modelos en una variable
@@ -143,6 +151,7 @@
              //fin correo.
              //si se habia rellenado el comentario para Pilar, se lo enviamos por correo.
              if (isset($_POST['caf']) && $_POST['caf']!='') {
+               $nombreCli = $cliente->clienteId($_POST['cliente']);
                // Enviar el email
                  $mail = "robot@tsiberia.es";
 
@@ -168,6 +177,8 @@
                    '<h4>INICIO: '.$fecha.'</h4>'.
                    '<h4>RECURSOS: '.$_POST['recursos'].'</h4>'.
                    '<h4>COMENTARIO DE OPERATIVA: '.$_POST['caf'].'</h4>'.
+                   '<h4>CLIENTE: '.$nombreCli['nombre'].'</h4>'.
+                   '<h4>Enviado por: '.$nombreuser['name'].'</h4>'.
                    '<hr>'.
                    'Por favor, no responda a este correo lo envia un robot automáticamente.'.
                    '<br />Enviado el ' . date('d/m/Y', time()) .
